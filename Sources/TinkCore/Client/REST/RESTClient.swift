@@ -1,6 +1,6 @@
 import Foundation
 
-final class RESTClient {
+final class RESTClient: Client {
     let restURL: URL
     let behavior: ClientBehavior
     private let session: URLSession
