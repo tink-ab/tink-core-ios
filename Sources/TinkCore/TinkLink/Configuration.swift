@@ -13,9 +13,6 @@ extension Tink {
         /// The environment to use.
         public var environment: Environment
 
-        /// Certificate to use with gRPC API.
-        public var grpcCertificateURL: URL?
-
         /// Certificate to use with REST API.
         public var restCertificateURL: URL?
 
@@ -29,7 +26,6 @@ extension Tink {
             clientID: String,
             redirectURI: URL,
             environment: Environment = .production,
-            grpcCertificateURL: URL? = nil,
             restCertificateURL: URL? = nil
         ) throws {
             guard let host = redirectURI.host, !host.isEmpty else {
@@ -38,7 +34,6 @@ extension Tink {
             self.clientID = clientID
             self.redirectURI = redirectURI
             self.environment = environment
-            self.grpcCertificateURL = grpcCertificateURL
             self.restCertificateURL = restCertificateURL
         }
     }
@@ -65,7 +60,6 @@ extension Tink.Configuration {
         self.clientID = clientID
         self.redirectURI = redirectURI
         self.environment = processInfo.tinkEnvironment ?? .production
-        self.grpcCertificateURL = processInfo.tinkGrpcCertificateURL
         self.restCertificateURL = processInfo.tinkRestCertificateURL
     }
 }
