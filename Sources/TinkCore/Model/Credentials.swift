@@ -149,7 +149,7 @@ public struct Credentials: Identifiable {
     public let fields: [String: String]
 
     /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    public let supplementalInformationFields: [Provider.FieldSpecification]
+    internal let supplementalInformationFields: [Provider.FieldSpecification]
 
     /// Information about the third party authentication app.
     ///
