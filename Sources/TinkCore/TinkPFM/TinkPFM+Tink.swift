@@ -9,8 +9,20 @@ public typealias TinkContext = Tink
 /// It is also the object you use to set which user the SDK should display data for.
 public final class Tink {
 
-    /// The shared `Tink` instance.
-    public static let shared = Tink()
+    static var _shared: Tink?
+
+    // MARK: - Using the Shared Instance
+
+    /// The shared `TinkLink` instance.
+    ///
+    /// Note: You need to configure the shared instance by calling `TinkLink.configure(with:)`
+    /// before accessing the shared instance. Not doing so will cause a run-time error.
+    public static var shared: Tink {
+        guard let shared = _shared else {
+            fatalError("Configure Tink Link by calling `TinkLink.configure(with:)` before accessing the shared instance")
+        }
+        return shared
+    }
 
     let configuration: Configuration
 
@@ -37,6 +49,13 @@ public final class Tink {
     @available(*, unavailable, renamed: "init(configuration:)")
     public init(clientConfiguration: Configuration) {
         fatalError()
+    }
+
+    // MARK: - Configuring the Tink Link Object
+
+    /// Configure shared instance with configration description.
+    public static func configure(with configuration: Configuration) {
+        _shared = Tink(configuration: configuration)
     }
 
     // MARK: - Specifying the Credential
