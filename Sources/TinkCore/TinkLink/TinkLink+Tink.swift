@@ -25,7 +25,7 @@ public class Tink {
     }
 
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(sessionCredential: nil)
-    private lazy var oAuthService = RESTOAuthService(client: client)
+    public lazy var oAuthService = RESTOAuthService(client: client)
     private(set) var client: RESTClient
 
     // MARK: - Specifying the Credential
