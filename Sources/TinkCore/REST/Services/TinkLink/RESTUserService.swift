@@ -7,7 +7,7 @@ final class RESTUserService: UserService {
         self.client = client
     }
 
-    func userProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) -> RetryCancellable? {
+    func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTUser>(path: "/api/v1/user", method: .get, contentType: .json) { result in
             completion(result.map(User.init))
         }
@@ -16,8 +16,8 @@ final class RESTUserService: UserService {
     }
 
     @discardableResult
-    func userProfile(completion: @escaping (Result<RESTUserProfile, Error>) -> Void) -> RetryCancellable? {
-        let request = RESTResourceRequest(path: "/api/v1/user/profile", method: .get, contentType: .json) { result in
+    func userProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) -> RetryCancellable? {
+        let request = RESTResourceRequest<RESTUserProfile>(path: "/api/v1/user/profile", method: .get, contentType: .json) { result in
             completion(result.map(UserProfile.init))
         }
 
