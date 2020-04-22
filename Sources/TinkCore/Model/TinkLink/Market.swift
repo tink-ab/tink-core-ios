@@ -26,7 +26,7 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     /// Returns a localized string for a specified region code.
     ///
     /// For example, in the “en” locale, the result for "SE" is "Sweden".
-    public var localizedString: String? {
+    var localizedString: String? {
         return Locale.current.localizedString(forRegionCode: code)
     }
 }
