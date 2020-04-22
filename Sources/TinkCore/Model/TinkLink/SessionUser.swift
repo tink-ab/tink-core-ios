@@ -1,17 +1,17 @@
 import Foundation
 
 /// A user in the Tink API.
-public struct User {
+public struct SessionUser {
     let accessToken: AccessToken
-    let userProfile: UserProfile?
+    let user: User?
 
     /// The username of the current user.
     public var username: String? {
-        return userProfile?.username
+        return user?.username
     }
 
-    init(accessToken: AccessToken, userProfile: UserProfile? = nil) {
+    init(accessToken: AccessToken, user: User? = nil) {
         self.accessToken = accessToken
-        self.userProfile = userProfile
+        self.user = user
     }
 }

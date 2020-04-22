@@ -14,17 +14,3 @@ struct RESTUser: Decodable {
     /// The username (usually email) of the user.
     var username: String?
 }
-
-struct RESTUserProfile: Decodable {
-    enum PeriodMode: String, Codable {
-        case monthly = "MONTHLY"
-        case monthlyAdjusted = "MONTHLY_ADJUSTED"
-    }
-
-    var currency: String
-    var locale: String
-    var market: String
-    var periodAdjustedDay: Int
-    var periodMode: PeriodMode
-    var timeZone: String
-}
