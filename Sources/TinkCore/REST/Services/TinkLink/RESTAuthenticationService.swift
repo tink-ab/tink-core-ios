@@ -34,7 +34,9 @@ public final class RESTAuthenticationService: AuthenticationService {
         ]
         let data = try? JSONEncoder().encode(body)
 
-        let request = RESTResourceRequest(path: "/api/v1/oauth/authorize", method: .post, body: data, contentType: .json, completion:  completion)
+        let request = RESTResourceRequest<RESTAuthorizationResponse>(path: "/api/v1/oauth/authorize", method: .post, body: data, contentType: .json) { result in
+            completion(result.map { $0.code })
+        }
 
         return client.performRequest(request)
     }
