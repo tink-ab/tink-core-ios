@@ -25,8 +25,10 @@ public final class RESTOAuthService: OAuthService {
         return client.performRequest(request)
     }
 
-    public func authenticate(code: AuthorizationCode, completion: @escaping (Result<AuthenticateResponse, Error>) -> Void) -> RetryCancellable? {
-        var request = RESTResourceRequest(path: "/link/v1/authentication/token", method: .post, contentType: .json, completion: completion)
+    public func authenticate(code: AuthorizationCode, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+        var request = RESTResourceRequest<RESTAuthenticateResponse>(path: "/link/v1/authentication/token", method: .post, contentType: .json) { result in
+            completion(result.map { $0.accessToken})
+        }
         let body = ["code": code.rawValue]
         request.body = try? JSONEncoder().encode(body)
 
