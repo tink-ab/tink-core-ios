@@ -4,6 +4,10 @@ final class RESTOAuthService: OAuthService {
 
     private let client: RESTClient
 
+    init(tink: Tink) {
+        self.client = tink.client
+    }
+
     init(client: RESTClient) {
         self.client = client
     }
