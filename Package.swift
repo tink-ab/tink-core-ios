@@ -18,5 +18,9 @@ let package = Package(
         .target(
             name: "TinkCore"
         ),
+        .testTarget(
+            name: "TinkCoreTests",
+            dependencies: ["TinkCore"]
+        ),
     ]
 )
