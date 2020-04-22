@@ -92,7 +92,7 @@ class RESTTransactionService {
         completion: @escaping (Result<[RESTTransaction], Error>) -> Void
     ) -> Cancellable? {
 
-        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: ["categoryId": categoryId]) { result in
+        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [(name: "categoryId", value: categoryId)]) { result in
             let mapped = result.map { $0.transactions }
             completion(mapped)
         }
