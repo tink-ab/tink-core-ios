@@ -77,12 +77,30 @@ public class Tink {
     ///
     /// - Parameters:
     ///   - configuration: The configuration to be used for the shared instance.
-    public static func configure(with configuration: Tink.Configuration) {
+    public static func configure(with configuration: Configuration) {
         _shared = Tink(configuration: configuration)
     }
 
     /// The current configuration.
     public let configuration: Configuration
+}
+
+// TODO: Move this extension to TinkLink?
+extension Tink {
+
+    public enum UserError: Swift.Error {
+        /// The market and/or locale was invalid. The payload from the backend can be found in the associated value.
+        case invalidMarketOrLocale(String)
+
+        init?(createTemporaryUserError error: Swift.Error) {
+            switch error {
+            case ServiceError.invalidArgument(let message):
+                self = .invalidMarketOrLocale(message)
+            default:
+                return nil
+            }
+        }
+    }
 
     // MARK: - Handling Redirects
 
@@ -112,23 +130,6 @@ public class Tink {
         NotificationCenter.default.post(name: .credentialThirdPartyCallback, object: nil, userInfo: parameters)
 
         return true
-    }
-}
-
-extension Tink {
-
-    public enum UserError: Swift.Error {
-        /// The market and/or locale was invalid. The payload from the backend can be found in the associated value.
-        case invalidMarketOrLocale(String)
-
-        init?(createTemporaryUserError error: Swift.Error) {
-            switch error {
-            case ServiceError.invalidArgument(let message):
-                self = .invalidMarketOrLocale(message)
-            default:
-                return nil
-            }
-        }
     }
 
     // MARK: - Authenticating a User

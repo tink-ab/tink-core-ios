@@ -1,5 +1,8 @@
 import Foundation
 
+@available(*, unavailable, renamed: "Tink.Configuration")
+public typealias ClientConfiguration = Tink.Configuration
+
 // MARK: - Tink Link Configuration
 extension Tink {
     /// Configuration used to set up the TinkLink
