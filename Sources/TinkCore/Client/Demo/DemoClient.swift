@@ -1,7 +1,7 @@
 import Foundation
 
 final class DemoClient: Client {
-    func performRequest(_ request: RESTRequest) -> Cancellable? {
+    func performRequest(_ request: RESTRequest) -> RetryCancellable? {
         let resourceName: String
         switch request.path {
         case "/api/v1/statistics/query":
