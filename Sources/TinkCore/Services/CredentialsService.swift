@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CredentialsService {
+public protocol CredentialsService {
     func credentialsList(completion: @escaping (Result<[Credentials], Error>) -> Void) -> RetryCancellable?
     func credentials(id: Credentials.ID, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable?
     func createCredentials(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appUri: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable?

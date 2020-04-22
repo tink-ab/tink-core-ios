@@ -1,10 +1,10 @@
 import Foundation
 
-final class RESTProviderService: ProviderService {
+public final class RESTProviderService: ProviderService {
 
     private let client: RESTClient
 
-    init(tink: Tink) {
+    public init(tink: Tink) {
         self.client = tink.client
     }
 
@@ -12,7 +12,7 @@ final class RESTProviderService: ProviderService {
         self.client = client
     }
 
-    func providers(market: Market?, capabilities: Provider.Capabilities, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
+    public func providers(market: Market?, capabilities: Provider.Capabilities, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
 
         let parameters = [(name: "includeTestProviders", value: includeTestProviders ? "true" : "false")]
 

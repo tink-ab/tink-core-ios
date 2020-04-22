@@ -1,9 +1,9 @@
 import Foundation
 
-final class RESTUserService: UserService {
+public final class RESTUserService: UserService {
     private let client: RESTClient
 
-    init(tink: Tink) {
+    public init(tink: Tink) {
         self.client = tink.client
     }
 
@@ -11,7 +11,7 @@ final class RESTUserService: UserService {
         self.client = client
     }
 
-    func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+    public func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTUser>(path: "/api/v1/user", method: .get, contentType: .json) { result in
             completion(result.map(User.init))
         }
@@ -20,7 +20,7 @@ final class RESTUserService: UserService {
     }
 
     @discardableResult
-    func userProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) -> RetryCancellable? {
+    public func userProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTUserProfile>(path: "/api/v1/user/profile", method: .get, contentType: .json) { result in
             completion(result.map(UserProfile.init))
         }
