@@ -57,7 +57,7 @@ public struct Credentials: Identifiable {
             }
         }
 
-        var sortOrder: Int {
+        public var sortOrder: Int {
             switch self {
             case .mobileBankID:
                 return 1
@@ -149,7 +149,7 @@ public struct Credentials: Identifiable {
     public let fields: [String: String]
 
     /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    internal let supplementalInformationFields: [Provider.FieldSpecification]
+    public let supplementalInformationFields: [Provider.FieldSpecification]
 
     /// Information about the third party authentication app.
     ///

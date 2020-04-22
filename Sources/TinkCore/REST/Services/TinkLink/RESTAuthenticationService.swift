@@ -25,7 +25,7 @@ public final class RESTAuthenticationService: AuthenticationService {
         return client.performRequest(request)
     }
 
-    public func authorize(clientID: String, redirectURI: URL, scopes: [Scope], completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> RetryCancellable? {
+    public func authorize(clientID: String, redirectURI: URL, scopes: [Scope], completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
 
         let body = [
             "clientId": clientID,

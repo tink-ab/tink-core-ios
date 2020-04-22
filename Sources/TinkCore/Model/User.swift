@@ -1,6 +1,6 @@
 import Foundation
 
-struct User {
+public struct User {
     typealias ID = Identifier<User>
 
     var created: Date?

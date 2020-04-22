@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserProfile {
+public struct UserProfile {
 //    let currency: CurrencyCode
 //    let locale: Locale
 //    let market: CountryCode

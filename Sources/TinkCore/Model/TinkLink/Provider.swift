@@ -78,27 +78,27 @@ public struct Provider: Identifiable {
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
 
-    internal struct FieldSpecification {
+    public struct FieldSpecification {
         // description
-        internal let fieldDescription: String
+        public let fieldDescription: String
         /// Gray text in the input view (Similar to a placeholder)
-        internal let hint: String
-        internal let maxLength: Int?
-        internal let minLength: Int?
+        public let hint: String
+        public let maxLength: Int?
+        public let minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
-        internal let isMasked: Bool
-        internal let isNumeric: Bool
-        internal let isImmutable: Bool
-        internal let isOptional: Bool
-        internal let name: String
-        internal let initialValue: String
-        internal let pattern: String
-        internal let patternError: String
+        public let isMasked: Bool
+        public let isNumeric: Bool
+        public let isImmutable: Bool
+        public let isOptional: Bool
+        public let name: String
+        public let initialValue: String
+        public let pattern: String
+        public let patternError: String
         /// Text displayed next to the input field
-        internal let helpText: String
+        public let helpText: String
     }
 
-    internal let fields: [FieldSpecification]
+    public let fields: [FieldSpecification]
 
     /// A display name for providers which are branches of a bigger group.
     public let groupDisplayName: String
