@@ -85,4 +85,9 @@ public class Tink {
 
     /// The current configuration.
     public let configuration: Configuration
+
+    public var _sdkName: String {
+        get { sdkHeaderBehavior.sdkName }
+        set { sdkHeaderBehavior.sdkName = newValue }
+    }
 }
