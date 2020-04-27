@@ -1,14 +1,18 @@
 import Foundation
 
-class RESTStatisticService {
+class RESTStatisticService: StatisticService {
     private let client: Client
 
     init(client: Client) {
         self.client = client
     }
 
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
+
     @discardableResult
-    func statistics(
+    public func statistics(
         description: String = "",
         periods: [DateComponents] = [],
         types: [RESTStatisticQueryType] = [],

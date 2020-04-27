@@ -10,32 +10,23 @@ class RESTTransactionService {
 
     @discardableResult
     func transactions(
-        limit: Int? = nil,
+        query: TransactionsQuery,
         offset: Int? = nil,
-        accounts: [String] = [],
-        categories: [String] = [],
-        startDate: Date? = nil,
-        endDate: Date? = nil,
-        includeUpcoming: Bool = false,
-        query: String? = nil,
-        sort: RESTSortType = .date,
-        order: RESTOrderType = .desc,
-        completion: @escaping (Result<([RESTTransaction], Bool), Error>) -> Void
+        completion: @escaping (Result<([Transaction], Bool), Error>) -> Void
     ) -> Cancellable? {
         var searchQuery = RESTSearchQuery()
 
-        searchQuery.limit = limit
+        searchQuery.limit = query.limit
         searchQuery.offset = offset
-        searchQuery.accounts = accounts.isEmpty ? nil : accounts
-        searchQuery.categories = categories.isEmpty ? nil : categories
-        searchQuery.startDate = startDate
-        searchQuery.endDate = endDate
+        searchQuery.accounts = query.accountIDs.isEmpty ? nil : query.accountIDs.map { $0.value }
+        searchQuery.categories = query.categoryIDs.isEmpty ? nil : query.categoryIDs.map { $0.value }
+        searchQuery.startDate = query.dateInterval?.start
+        searchQuery.endDate = query.dateInterval?.end
         // FIXME: We have to always fetch with `includeUpcoming` set to `true` since backend will not include todays transactions until noon when a transaction has changed from being upcoming.
         searchQuery.includeUpcoming = true
-        searchQuery.queryString = query
-        // Default to sorting by date to match gRPC api.
-        searchQuery.order = order
-        searchQuery.sort = sort
+        searchQuery.queryString = query.query
+        searchQuery.order = RESTOrderType(transactionQueryOrder: query.order)
+        searchQuery.sort = RESTSortType(transactionQuerySort: query.sort)
 
         let bodyEncoder = JSONEncoder()
         bodyEncoder.dateEncodingStrategy = .custom({ (date, encoder) in
@@ -45,9 +36,9 @@ class RESTTransactionService {
         let body = try! bodyEncoder.encode(searchQuery)
 
         let request = RESTResourceRequest<RESTSearchResponse>(path: "/api/v1/search", method: .post, body: body, contentType: .json) { result in
-            let mapped = result.map { transactionsResponse -> ([RESTTransaction], Bool) in
-                let transactions = transactionsResponse.results.compactMap { $0.transaction }
-                let hasMore = transactions.count >= (limit ?? 50)
+            let mapped = result.map { transactionsResponse -> ([Transaction], Bool) in
+                let transactions = transactionsResponse.results.compactMap({$0.transaction.flatMap(Transaction.init)})
+                let hasMore = transactions.count >= (query.limit ?? 50)
                 return (transactions, hasMore)
             }
             completion(mapped)
