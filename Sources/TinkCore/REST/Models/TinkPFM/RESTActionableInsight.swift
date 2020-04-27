@@ -47,6 +47,10 @@ enum RESTActionableInsightType: String, Decodable {
     case weeklySummaryExpensesByCategory = "WEEKLY_SUMMARY_EXPENSES_BY_CATEGORY"
     case weeklyExpensesByDay = "WEEKLY_SUMMARY_EXPENSES_BY_DAY"
     case monthlySummaryExpensesByCategory = "MONTHLY_SUMMARY_EXPENSES_BY_CATEGORY"
+    case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
+    case weeklySummaryExpenseTransactions = "WEEKLY_SUMMARY_EXPENSE_TRANSACTIONS"
+    case monthlySummaryExpenseTransactions = "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS"
+    case newIncomeTransaction = "NEW_INCOME_TRANSACTION"
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

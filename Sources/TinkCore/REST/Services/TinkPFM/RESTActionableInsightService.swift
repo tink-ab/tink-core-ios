@@ -1,7 +1,7 @@
 import Foundation
 
-final class RESTActionableInsightService {
-    
+class RESTActionableInsightService {
+
     private let client: RESTClient
 
     init(client: RESTClient) {
@@ -9,10 +9,12 @@ final class RESTActionableInsightService {
     }
 
     @discardableResult
-    func insights(
-        completion: @escaping (Result<[RESTActionableInsight], Error>) -> Void
+    public func insights(
+        completion: @escaping (Result<[ActionableInsight], Error>) -> Void
     ) -> Cancellable? {
-        let request = RESTResourceRequest(path: "/api/v1/insights", method: .get, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<[RESTActionableInsight]>(path: "/api/v1/insights", method: .get, contentType: .json) { result in
+            completion(result.map { $0.compactMap(ActionableInsight.init) })
+        }
         return client.performRequest(request)
     }
 
@@ -20,15 +22,17 @@ final class RESTActionableInsightService {
     ///
     /// - Parameter completion: Completion handler with a result of archived insights if successful or an error if request failed.
     @discardableResult
-    func archivedInsights(
-        completion: @escaping (Result<[RESTArchivedInsight], Error>) -> Void
+    public func archivedInsights(
+        completion: @escaping (Result<[ActionableInsight], Error>) -> Void
     ) -> Cancellable? {
-        let request = RESTResourceRequest(path: "/api/v1/insights/archived", method: .get, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<[RESTArchivedInsight]>(path: "/api/v1/insights/archived", method: .get, contentType: .json) { result in
+            completion(result.map { $0.compactMap(ActionableInsight.init) })
+        }
         return client.performRequest(request)
     }
 
     @discardableResult
-    func archiveInsight(
+    public func archiveInsight(
         id: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> Cancellable? {
