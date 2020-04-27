@@ -7,8 +7,12 @@ final public class RESTBudgetService: BudgetService {
         self.client = client
     }
 
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
+    
     @discardableResult
-    func budgets(
+    public func budgets(
         includeArchived: Bool,
         completion: @escaping (Result<[Budget], Error>) -> Void
     ) -> Cancellable? {
