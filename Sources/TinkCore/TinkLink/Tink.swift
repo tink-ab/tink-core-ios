@@ -19,7 +19,7 @@ public class Tink {
     /// before accessing the shared instance. Not doing so will cause a run-time error.
     public static var shared: Tink {
         guard let shared = _shared else {
-            fatalError("Configure Tink Link by calling `TinkLink.configure(with:)` before accessing the shared instance")
+            fatalError("Configure Tink by calling `Tink.configure(with:)` before accessing the shared instance")
         }
         return shared
     }
