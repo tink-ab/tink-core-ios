@@ -3,9 +3,9 @@ import Foundation
 @available(*, unavailable, renamed: "Tink.Configuration")
 public typealias ClientConfiguration = Tink.Configuration
 
-// MARK: - Tink Link Configuration
+// MARK: - Tink Configuration
 extension Tink {
-    /// Configuration used to set up the TinkLink
+    /// Configuration used to set up the Tink
     public struct Configuration {
         /// The client id for your app.
         public var clientID: String
@@ -23,7 +23,6 @@ extension Tink {
         ///   - clientID: The client id for your app.
         ///   - redirectURI: The URI you've setup in Console.
         ///   - environment: The environment to use, defaults to production.
-        ///   - grpcCertificateURL: URL to a certificate file to use with gRPC API.
         ///   - restCertificateURL: URL to a certificate file to use with REST API.
         public init(
             clientID: String,

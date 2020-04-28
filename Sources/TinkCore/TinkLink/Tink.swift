@@ -13,13 +13,13 @@ public class Tink {
 
     // MARK: - Using the Shared Instance
 
-    /// The shared `TinkLink` instance.
+    /// The shared `Tink` instance.
     ///
-    /// Note: You need to configure the shared instance by calling `TinkLink.configure(with:)`
+    /// Note: You need to configure the shared instance by calling `Tink.configure(with:)`
     /// before accessing the shared instance. Not doing so will cause a run-time error.
     public static var shared: Tink {
         guard let shared = _shared else {
-            fatalError("Configure Tink Link by calling `TinkLink.configure(with:)` before accessing the shared instance")
+            fatalError("Configure Tink by calling `Tink.configure(with:)` before accessing the shared instance")
         }
         return shared
     }
@@ -31,7 +31,7 @@ public class Tink {
 
     // MARK: - Specifying the Credential
 
-    /// Sets the credential to be used for this Tink Context.
+    /// Sets the credential to be used for this Tink instance.
     ///
     /// The credential is associated with a specific user which has been
     /// created and authenticated through the Tink API.

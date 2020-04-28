@@ -9,7 +9,7 @@ class ConfigurationTests: XCTestCase {
         XCTAssertNotNil(link.configuration)
     }
 
-    func testConfigureTinkLinkWithConfiguration() {
+    func testConfigureTinkWithConfiguration() {
         let redirectURI = URL(string: "http://my-customer-app.com/authentication")!
         let configuration = try! Tink.Configuration(clientID: "abc", redirectURI: redirectURI, environment: .production)
         let link = Tink(configuration: configuration)
@@ -20,15 +20,15 @@ class ConfigurationTests: XCTestCase {
         let redirectURI = URL(string: "http-my-customer-app://")!
         do {
             _ = try Tink.Configuration(clientID: "abc", redirectURI: redirectURI, environment: .production)
-            XCTFail("Cannot configure TinkLink with redriect url without host")
+            XCTFail("Cannot configure Tink with redriect url without host")
         } catch let urlError as URLError {
             XCTAssert(urlError.code == .cannotFindHost)
         } catch {
-            XCTFail("Cannot configure TinkLink with redriect url without host")
+            XCTFail("Cannot configure Tink with redriect url without host")
         }
     }
 
-    func testConfigureSharedTinkLinkWithConfigurationWithAppURI() {
+    func testConfigureSharedTinkWithConfigurationWithAppURI() {
         Tink._shared = nil
         let redirectURI = URL(string: "my-customer-app://authentication")!
         let configuration = try! Tink.Configuration(clientID: "abc", redirectURI: redirectURI, environment: .production)

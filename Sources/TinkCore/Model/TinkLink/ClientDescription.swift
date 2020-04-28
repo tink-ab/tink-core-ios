@@ -1,6 +1,6 @@
 import Foundation
 
-/// Description of a client using TinkLink.
+/// Description of a client using Tink.
 public struct ClientDescription {
     let iconURL: URL?
     /// The name of the client.
