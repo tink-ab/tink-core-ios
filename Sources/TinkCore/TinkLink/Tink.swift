@@ -13,9 +13,9 @@ public class Tink {
 
     // MARK: - Using the Shared Instance
 
-    /// The shared `TinkLink` instance.
+    /// The shared `Tink` instance.
     ///
-    /// Note: You need to configure the shared instance by calling `TinkLink.configure(with:)`
+    /// Note: You need to configure the shared instance by calling `Tink.configure(with:)`
     /// before accessing the shared instance. Not doing so will cause a run-time error.
     public static var shared: Tink {
         guard let shared = _shared else {
