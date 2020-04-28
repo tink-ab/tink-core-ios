@@ -23,7 +23,6 @@ extension Tink {
         ///   - clientID: The client id for your app.
         ///   - redirectURI: The URI you've setup in Console.
         ///   - environment: The environment to use, defaults to production.
-        ///   - grpcCertificateURL: URL to a certificate file to use with gRPC API.
         ///   - restCertificateURL: URL to a certificate file to use with REST API.
         public init(
             clientID: String,
