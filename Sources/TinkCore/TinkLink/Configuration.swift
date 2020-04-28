@@ -3,9 +3,9 @@ import Foundation
 @available(*, unavailable, renamed: "Tink.Configuration")
 public typealias ClientConfiguration = Tink.Configuration
 
-// MARK: - Tink Link Configuration
+// MARK: - Tink Configuration
 extension Tink {
-    /// Configuration used to set up the TinkLink
+    /// Configuration used to set up the Tink
     public struct Configuration {
         /// The client id for your app.
         public var clientID: String
