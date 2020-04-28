@@ -1,12 +1,12 @@
 import Foundation
 
-protocol StatisticService {
+public protocol StatisticService {
     func statistics(
-    description: String,
+    description: String?,
     periods: [DateComponents],
-    types: [RESTStatisticQueryType],
-    periodMode: RESTPeriodMode,
+    types: [Statistic.Kind],
+    resolution: Statistic.Resolution,
     padResultsUntilToday: Bool,
-    completion: @escaping (Result<[RESTStatistic], Error>) -> Void
+    completion: @escaping (Result<[Statistic], Error>) -> Void
     ) -> Cancellable?
 }

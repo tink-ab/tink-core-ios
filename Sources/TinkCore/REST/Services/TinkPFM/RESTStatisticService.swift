@@ -13,29 +13,21 @@ class RESTStatisticService: StatisticService {
 
     @discardableResult
     public func statistics(
-        description: String = "",
+        description: String?,
         periods: [DateComponents] = [],
-        types: [RESTStatisticQueryType] = [],
-        periodMode: RESTPeriodMode,
+        types: [Statistic.Kind] = [],
+        resolution: Statistic.Resolution,
         padResultsUntilToday: Bool = false,
-        completion: @escaping (Result<[RESTStatistic], Error>) -> Void
+        completion: @escaping (Result<[Statistic], Error>) -> Void
     ) -> Cancellable? {
         let dates = periods.isEmpty ? nil : periods.compactMap { Calendar.current.date(from: $0) }
 
-        let resolution: RESTStatisticQueryResolution
-        switch periodMode {
-        case .monthly:
-            resolution = .monthly
-        case .monthlyAdjusted:
-            resolution = .monthlyAdjusted
-        }
-
         let query = RESTStatisticQuery(
-            description: nil,
-            padResultUntilToday: false,
+            description: description,
+            padResultUntilToday: padResultsUntilToday,
             periods: dates,
-            resolution: resolution,
-            types: types
+            resolution: .init(statisticResolution: resolution),
+            types: types.map(RESTStatisticQueryType.init)
         )
 
         let bodyEncoder = JSONEncoder()
@@ -44,7 +36,9 @@ class RESTStatisticService: StatisticService {
         bodyEncoder.dateEncodingStrategy = .formatted(dateFormatter)
         let body = try! bodyEncoder.encode(query)
 
-        let request = RESTResourceRequest(path: "/api/v1/statistics/query", method: .post, body: body, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: body, contentType: .json) { result -> Void in
+            completion(result.map { $0.map(Statistic.init) })
+        }
 
         return client.performRequest(request)
     }
