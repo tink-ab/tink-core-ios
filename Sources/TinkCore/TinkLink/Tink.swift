@@ -31,7 +31,7 @@ public class Tink {
 
     // MARK: - Specifying the Credential
 
-    /// Sets the credential to be used for this Tink Context.
+    /// Sets the credential to be used for this Tink instance.
     ///
     /// The credential is associated with a specific user which has been
     /// created and authenticated through the Tink API.
