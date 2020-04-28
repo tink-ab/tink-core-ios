@@ -1,6 +1,6 @@
 import Foundation
 
-final public class RESTBudgetService: BudgetService {
+public final class RESTBudgetService: BudgetService {
     private let client: Client
 
     init(client: Client) {

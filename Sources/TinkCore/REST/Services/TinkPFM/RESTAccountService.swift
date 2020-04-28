@@ -1,6 +1,6 @@
 import Foundation
 
-public class RESTAccountService: AccountService {
+public final class RESTAccountService: AccountService {
 
     private let client: Client
 

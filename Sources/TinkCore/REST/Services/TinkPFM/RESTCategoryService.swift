@@ -1,6 +1,6 @@
 import Foundation
 
-public class RESTCategoryService: CategoryService {
+public final class RESTCategoryService: CategoryService {
     private let client: Client
 
     init(client: Client) {

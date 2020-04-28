@@ -1,6 +1,6 @@
 import Foundation
 
-class RESTTransactionService {
+public final class RESTTransactionService: TransactionService {
 
     private let client: Client
 
@@ -8,8 +8,12 @@ class RESTTransactionService {
         self.client = client
     }
 
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
+
     @discardableResult
-    func transactions(
+    public func transactions(
         query: TransactionsQuery,
         offset: Int? = nil,
         completion: @escaping (Result<([Transaction], Bool), Error>) -> Void
@@ -48,7 +52,7 @@ class RESTTransactionService {
     }
 
     @discardableResult
-    func categorize(
+    public func categorize(
         _ transactionIds: [String],
         as newCategoryId: String,
         completion: @escaping (Result<Void, Error>) -> Void
@@ -77,14 +81,14 @@ class RESTTransactionService {
     }
 
     @discardableResult
-    func transactionsSimilar(
+    public func transactionsSimilar(
         to transactionId: String,
         ifCategorizedAs categoryId: String,
-        completion: @escaping (Result<[RESTTransaction], Error>) -> Void
+        completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable? {
 
         let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [(name: "categoryId", value: categoryId)]) { result in
-            let mapped = result.map { $0.transactions }
+            let mapped = result.map { $0.transactions.compactMap(Transaction.init) }
             completion(mapped)
         }
 
