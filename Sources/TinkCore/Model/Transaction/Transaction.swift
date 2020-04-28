@@ -5,15 +5,15 @@ public struct Transaction {
     /// A unique identifier of a `Transaction`.
     public typealias ID = Identifier<Transaction>
 
-    let accountID: Account.ID
-    let amount: CurrencyDenominatedAmount?
-    var categoryID: Category.ID
-    let description: String
-    let date: Date?
+    public let accountID: Account.ID
+    public let amount: CurrencyDenominatedAmount?
+    public var categoryID: Category.ID
+    public let description: String
+    public let date: Date?
     /// The unique identifier of this `Transaction`.
     public let id: ID
-    let inserted: Date?
-    let isUpcomingOrInFuture: Bool
+    public let inserted: Date?
+    public let isUpcomingOrInFuture: Bool
 }
 
 extension Transaction: Hashable {}

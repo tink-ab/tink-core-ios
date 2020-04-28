@@ -3,15 +3,15 @@ import Foundation
 public struct Budget {
     public typealias ID = Identifier<Budget>
 
-    enum Filter {
+    public enum Filter {
         case account(Account.ID)
         case category(Category.Code)
         case tag(String)
         case search(String)
     }
 
-    let id: ID
-    let name: String
-    let amount: CurrencyDenominatedAmount?
-    let filter: [Filter]
+    public let id: ID
+    public let name: String
+    public let amount: CurrencyDenominatedAmount?
+    public let filter: [Filter]
 }
