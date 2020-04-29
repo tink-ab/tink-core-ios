@@ -4,19 +4,19 @@ import Foundation
 /// If no queries are selected, all transactions will be available.
 public struct TransactionsQuery: Equatable {
     /// A list of account ids to include transactions from.
-    public let accountIDs: [Account.ID]
+    public var accountIDs: [Account.ID]
     /// A list of caregory ids to include transactions from.
     public var categoryIDs: [Category.ID]
     /// A date interval for which transactions to include.
-    public let dateInterval: DateInterval?
+    public var dateInterval: DateInterval?
     /// Transaction query.
     public var query: String?
     /// Incluce planned transactions which have not been withdrawn yet.
-    public let includeUpcoming: Bool
+    public var includeUpcoming: Bool
     /// Determine sortation for transactions.
-    public let sort: Sort
+    public var sort: Sort
     /// Determinea how the transactions will be ordered.
-    public let order: Order
+    public var order: Order
     /// The maximum amount of transactions to fetch.
     public var limit: Int?
 
