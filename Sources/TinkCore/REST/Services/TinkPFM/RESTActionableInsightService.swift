@@ -1,6 +1,7 @@
 import Foundation
 
 class RESTActionableInsightService {
+    
     private let client: Client
 
     init(client: Client) {

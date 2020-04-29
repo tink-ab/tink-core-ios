@@ -1,6 +1,6 @@
 import Foundation
 
-class RESTTransactionService {
+public final class RESTTransactionService: TransactionService {
 
     private let client: Client
 
@@ -8,34 +8,29 @@ class RESTTransactionService {
         self.client = client
     }
 
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
+
     @discardableResult
-    func transactions(
-        limit: Int? = nil,
+    public func transactions(
+        query: TransactionsQuery,
         offset: Int? = nil,
-        accounts: [String] = [],
-        categories: [String] = [],
-        startDate: Date? = nil,
-        endDate: Date? = nil,
-        includeUpcoming: Bool = false,
-        query: String? = nil,
-        sort: RESTSortType = .date,
-        order: RESTOrderType = .desc,
-        completion: @escaping (Result<([RESTTransaction], Bool), Error>) -> Void
+        completion: @escaping (Result<([Transaction], Bool), Error>) -> Void
     ) -> Cancellable? {
         var searchQuery = RESTSearchQuery()
 
-        searchQuery.limit = limit
+        searchQuery.limit = query.limit
         searchQuery.offset = offset
-        searchQuery.accounts = accounts.isEmpty ? nil : accounts
-        searchQuery.categories = categories.isEmpty ? nil : categories
-        searchQuery.startDate = startDate
-        searchQuery.endDate = endDate
+        searchQuery.accounts = query.accountIDs.isEmpty ? nil : query.accountIDs.map { $0.value }
+        searchQuery.categories = query.categoryIDs.isEmpty ? nil : query.categoryIDs.map { $0.value }
+        searchQuery.startDate = query.dateInterval?.start
+        searchQuery.endDate = query.dateInterval?.end
         // FIXME: We have to always fetch with `includeUpcoming` set to `true` since backend will not include todays transactions until noon when a transaction has changed from being upcoming.
         searchQuery.includeUpcoming = true
-        searchQuery.queryString = query
-        // Default to sorting by date to match gRPC api.
-        searchQuery.order = order
-        searchQuery.sort = sort
+        searchQuery.queryString = query.query
+        searchQuery.order = RESTOrderType(transactionQueryOrder: query.order)
+        searchQuery.sort = RESTSortType(transactionQuerySort: query.sort)
 
         let bodyEncoder = JSONEncoder()
         bodyEncoder.dateEncodingStrategy = .custom({ (date, encoder) in
@@ -45,9 +40,9 @@ class RESTTransactionService {
         let body = try! bodyEncoder.encode(searchQuery)
 
         let request = RESTResourceRequest<RESTSearchResponse>(path: "/api/v1/search", method: .post, body: body, contentType: .json) { result in
-            let mapped = result.map { transactionsResponse -> ([RESTTransaction], Bool) in
-                let transactions = transactionsResponse.results.compactMap { $0.transaction }
-                let hasMore = transactions.count >= (limit ?? 50)
+            let mapped = result.map { transactionsResponse -> ([Transaction], Bool) in
+                let transactions = transactionsResponse.results.compactMap({$0.transaction.flatMap(Transaction.init)})
+                let hasMore = transactions.count >= (query.limit ?? 50)
                 return (transactions, hasMore)
             }
             completion(mapped)
@@ -57,7 +52,7 @@ class RESTTransactionService {
     }
 
     @discardableResult
-    func categorize(
+    public func categorize(
         _ transactionIds: [String],
         as newCategoryId: String,
         completion: @escaping (Result<Void, Error>) -> Void
@@ -86,14 +81,14 @@ class RESTTransactionService {
     }
 
     @discardableResult
-    func transactionsSimilar(
+    public func transactionsSimilar(
         to transactionId: String,
         ifCategorizedAs categoryId: String,
-        completion: @escaping (Result<[RESTTransaction], Error>) -> Void
+        completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable? {
 
         let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [(name: "categoryId", value: categoryId)]) { result in
-            let mapped = result.map { $0.transactions }
+            let mapped = result.map { $0.transactions.compactMap(Transaction.init) }
             completion(mapped)
         }
 

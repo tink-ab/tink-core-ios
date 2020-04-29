@@ -1,18 +1,25 @@
 import Foundation
 
-final class RESTBudgetService {
+public final class RESTBudgetService: BudgetService {
     private let client: Client
 
     init(client: Client) {
         self.client = client
     }
 
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
+    
     @discardableResult
-    func budgets(
-        includeArchived: Bool = false,
-        completion: @escaping (Result<RESTListBudgetSpecificationsResponse, Error>) -> Void
+    public func budgets(
+        includeArchived: Bool,
+        completion: @escaping (Result<[Budget], Error>) -> Void
     ) -> Cancellable? {
-        let request = RESTResourceRequest(path: "/api/v1/budgets", method: .get, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<RESTListBudgetSpecificationsResponse>(path: "/api/v1/budgets", method: .get, contentType: .json) { result in
+            let newResult = result.map { ($0.budgetSpecifications ?? []).compactMap(Budget.init(restBudget:)) }
+            completion(newResult)
+        }
         return client.performRequest(request)
     }
 }
