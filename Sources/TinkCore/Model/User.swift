@@ -7,5 +7,5 @@ public struct User {
     public var id: ID
     public var username: String?
     var nationalID: String?
-    var profile: UserProfile
+    public var profile: UserProfile
 }
