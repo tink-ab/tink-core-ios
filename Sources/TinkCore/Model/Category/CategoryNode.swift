@@ -25,7 +25,7 @@ extension CategoryTree.Node: Comparable {
     }
 }
 
-extension CategoryTree.Node {
+public extension CategoryTree.Node {
     var type: Category.Kind { code.type }
 
     var isIncome: Bool { code.isIncome }
