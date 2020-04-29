@@ -5,10 +5,10 @@ public struct ActionableInsight {
 
     public struct InsightAction {
         /// The action label
-        let label: String?
+        public let label: String?
 
         /// The data that describes the action.
-        let data: InsightActionData?
+        public let data: InsightActionData?
     }
     public enum State {
         case active([InsightAction])
@@ -93,22 +93,22 @@ public extension ActionableInsight {
 
     struct WeeklyExpensesByDay {
         struct ExpenseStatisticsByDay {
-            let date: String
-            let expenseStatistics: ExpenseStatistics
+            public let date: String
+            public let expenseStatistics: ExpenseStatistics
         }
 
         struct ExpenseStatistics {
-            let totalAmount: CurrencyDenominatedAmount
-            let averageAmount: CurrencyDenominatedAmount
+            public let totalAmount: CurrencyDenominatedAmount
+            public let averageAmount: CurrencyDenominatedAmount
         }
 
-        let week: Week
-        let expenseStatisticsByDay: [ExpenseStatisticsByDay]
+        public let week: Week
+        public let expenseStatisticsByDay: [ExpenseStatisticsByDay]
     }
 
     struct MonthlyExpensesByCategory {
-        let month: Month
-        let expensesByCategory: [CategorySpending]
+        public let month: Month
+        public let expensesByCategory: [CategorySpending]
     }
 
     struct Month {
