@@ -92,12 +92,12 @@ public extension ActionableInsight {
     }
 
     struct WeeklyExpensesByDay {
-        struct ExpenseStatisticsByDay {
+        public struct ExpenseStatisticsByDay {
             public let date: String
             public let expenseStatistics: ExpenseStatistics
         }
 
-        struct ExpenseStatistics {
+        public struct ExpenseStatistics {
             public let totalAmount: CurrencyDenominatedAmount
             public let averageAmount: CurrencyDenominatedAmount
         }
