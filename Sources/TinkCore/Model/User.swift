@@ -1,11 +1,11 @@
 import Foundation
 
 public struct User {
-    typealias ID = Identifier<User>
+    public typealias ID = Identifier<User>
 
     var created: Date?
-    var id: ID
-    var username: String?
+    public var id: ID
+    public var username: String?
     var nationalID: String?
-    var profile: UserProfile
+    public var profile: UserProfile
 }
