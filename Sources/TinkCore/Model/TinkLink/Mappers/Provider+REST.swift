@@ -85,6 +85,10 @@ extension Provider.Capabilities {
                 return capability.union(.identityData)
             case .einvoices:
                 return capability
+            case .createBeneficiaries:
+                return capability.union(.createBeneficiaries)
+            case .listBeneficiaries:
+                return capability.union(.listBeneficiaries)
             }
         }
     }
