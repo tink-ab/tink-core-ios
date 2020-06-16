@@ -28,6 +28,7 @@ public class Tink {
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
     public lazy var oAuthService = RESTOAuthService(client: client)
     private(set) var client: RESTClient
+    public var sessionManagers: [SessionManager] = []
 
     private var uiTaskCount = 0 {
         didSet {
