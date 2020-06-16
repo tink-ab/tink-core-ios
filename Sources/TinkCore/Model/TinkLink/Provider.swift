@@ -97,14 +97,32 @@ public struct Provider: Identifiable {
         /// Controls whether or not the field should be shown masked, like a password field.
         public let isMasked: Bool
         public let isNumeric: Bool
-        public var isImmutable: Bool
+        public let isImmutable: Bool
         public let isOptional: Bool
         public let name: String
-        public var initialValue: String
+        public let initialValue: String
         public let pattern: String
         public let patternError: String
         /// Text displayed next to the input field
         public let helpText: String
+
+        public mutating func setImmutable(initialValue newValue: String) {
+            self = .init(
+                fieldDescription: fieldDescription,
+                hint: hint,
+                maxLength: maxLength,
+                minLength: minLength,
+                isMasked: isMasked,
+                isNumeric: isNumeric,
+                isImmutable: true,
+                isOptional: isOptional,
+                name: name,
+                initialValue: newValue,
+                pattern: pattern,
+                patternError: patternError,
+                helpText: helpText
+            )
+        }
     }
 
     public let fields: [FieldSpecification]
