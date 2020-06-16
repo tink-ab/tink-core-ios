@@ -1,13 +1,13 @@
 import Foundation
 
 public struct CurrencyDenominatedAmount: Equatable, Hashable, Codable {
-    public let value: ExactNumber
+    public let value: Decimal
     public let currencyCode: CurrencyCode
 }
 
 public extension CurrencyDenominatedAmount {
     var doubleValue: Double {
-        return value.doubleValue
+        return NSDecimalNumber(decimal: value).doubleValue
     }
 
     init() {
@@ -23,23 +23,13 @@ public extension CurrencyDenominatedAmount {
     }
 
     init(_ decimal: Decimal, currencyCode: CurrencyCode) {
-        self.value = ExactNumber(value: decimal)
+        self.value = decimal
         self.currencyCode = currencyCode
     }
 
     init(_ number: NSNumber, currencyCode: CurrencyCode) {
-        self.value = ExactNumber(value: number.decimalValue)
+        self.value = number.decimalValue
         self.currencyCode = currencyCode
-    }
-
-    init(_ value: ExactNumber, currencyCode: CurrencyCode) {
-        self.value = value
-        self.currencyCode = currencyCode
-    }
-
-    init(unscaledValue: Int64, scale: Int64, currencyCode: String) {
-        self.value = ExactNumber(unscaledValue: unscaledValue, scale: scale)
-        self.currencyCode = .init(currencyCode)
     }
 
     static func + (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {

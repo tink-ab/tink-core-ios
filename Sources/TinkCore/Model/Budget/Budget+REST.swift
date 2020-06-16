@@ -6,11 +6,7 @@ extension Budget {
         self.id = .init(id)
         self.name = restBudget.name ?? ""
         if let amount = restBudget.amount {
-            self.amount = CurrencyDenominatedAmount(
-                unscaledValue: Int64(amount.unscaledValue),
-                scale: Int64(amount.scale),
-                currencyCode: amount.currencyCode
-            )
+            self.amount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: amount)
         } else {
             self.amount = nil
         }

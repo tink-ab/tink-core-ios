@@ -4,13 +4,7 @@ extension Transaction {
     init(from restTransaction: RESTTransaction) {
         self.id = .init(restTransaction.id)
         self.accountID = .init(restTransaction.accountId)
-        self.amount = CurrencyDenominatedAmount(
-            ExactNumber(
-                unscaledValue: Int64(restTransaction.currencyDenominatedAmount.unscaledValue),
-                scale: Int64(restTransaction.currencyDenominatedAmount.scale)
-            ),
-            currencyCode: CurrencyCode(restTransaction.currencyDenominatedAmount.currencyCode)
-        )
+        self.amount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: restTransaction.currencyDenominatedAmount)
         self.categoryID = .init(restTransaction.categoryId)
         self.description = restTransaction.description
         self.date = restTransaction.date
