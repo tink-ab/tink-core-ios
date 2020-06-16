@@ -1,4 +1,4 @@
-@testable import TinkLink
+@testable import TinkCore
 import XCTest
 
 class CredentialRESTTests: XCTestCase {
