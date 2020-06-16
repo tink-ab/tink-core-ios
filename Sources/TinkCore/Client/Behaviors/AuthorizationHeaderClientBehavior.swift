@@ -1,15 +1,14 @@
 import Foundation
 
 final class AuthorizationHeaderClientBehavior: ClientBehavior {
+    var userSession: UserSession?
 
-    var sessionCredential: SessionCredential?
-    
-    init(sessionCredential: SessionCredential?) {
-        self.sessionCredential = sessionCredential
+    init(userSession: UserSession?) {
+        self.userSession = userSession
     }
-    
+
     var headers: [String: String] {
-        switch sessionCredential {
+        switch userSession {
         case .sessionID(let sessionID):
             return ["Authorization": "Session \(sessionID)"]
         case .accessToken(let accessToken):
