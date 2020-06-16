@@ -22,7 +22,11 @@ public final class RESTTransferService: TransferService {
         return client.performRequest(request)
     }
 
-    public func transfer(transfer: Transfer, redirectURI: URL, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable? {
+    public func transfer(
+        transfer: Transfer,
+        redirectURI: URL,
+        completion: @escaping (Result<SignableOperation, Error>) -> Void
+    ) -> RetryCancellable? {
         let body = RESTTransferRequest(
             amount: NSDecimalNumber(decimal: transfer.amount).doubleValue,
             credentialsId: transfer.credentialsID?.value,
