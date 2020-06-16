@@ -22,18 +22,30 @@ public final class RESTTransferService: TransferService {
         return client.performRequest(request)
     }
 
-    public func transfer(transfer: Transfer, redirectURI: URL, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable? {
+    public func transfer(
+        amount: Decimal,
+        currency: CurrencyCode,
+        credentialsID: Credentials.ID?,
+        transferID: Transfer.ID?,
+        sourceURI: String,
+        destinationURI: String,
+        sourceMessage: String?,
+        destinationMessage: String,
+        dueDate: Date?,
+        redirectURI: URL,
+        completion: @escaping (Result<SignableOperation, Error>) -> Void
+    ) -> RetryCancellable? {
         let body = RESTTransferRequest(
-            amount: NSDecimalNumber(decimal: transfer.amount).doubleValue,
-            credentialsId: transfer.credentialsID?.value,
-            currency: transfer.currency.value,
-            destinationMessage: transfer.destinationMessage,
-            id: transfer.id?.value,
-            sourceMessage: transfer.sourceMessage,
-            dueDate: transfer.dueDate,
+            amount: NSDecimalNumber(decimal: amount).doubleValue,
+            credentialsId: credentialsID?.value,
+            currency: currency.value,
+            destinationMessage: destinationMessage,
+            id: transferID?.value,
+            sourceMessage: sourceMessage,
+            dueDate: dueDate,
             messageType: nil,
-            destinationUri: transfer.destinationUri,
-            sourceUri: transfer.sourceUri,
+            destinationUri: destinationURI,
+            sourceUri: sourceURI,
             redirectUri: redirectURI.absoluteString
         )
         let request = RESTResourceRequest<RESTSignableOperation>(path: "/api/v1/transfer", method: .post, body: body, contentType: .json) { result in
