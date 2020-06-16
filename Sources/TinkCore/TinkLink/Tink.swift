@@ -100,12 +100,12 @@ public class Tink {
     // MARK: - Handling Redirects
 
     ///
-    /// For some providers the redirect needs to be a https link. Use the continue user activity method in your `UIApplicationDelegate` to let TinkLink send the information to Tink if needed.
+    /// For some providers the redirect needs to be a https link. Use the continue user activity method in your `UIApplicationDelegate` to let Tink send the information to Tink if needed.
     ///
     /// ```swift
     /// func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     ///     if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
-    ///         return TinkLink.shared.open(url)
+    ///         return Tink.shared.open(url)
     ///     } else {
     ///         return false
     ///     }
@@ -167,7 +167,7 @@ extension Tink {
     /// :nodoc:
     ///
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
-    /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
+    /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in Tink if nothing is provided.
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func _createTemporaryUser(for market: Market, locale: Locale = Tink.defaultLocale, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {

@@ -1,5 +1,5 @@
 import Foundation
 
 extension Notification.Name {
-    static let credentialThirdPartyCallback = Notification.Name("TinkLinkCredentialThirdPartyCallbackNotificationName")
+    static let credentialThirdPartyCallback = Notification.Name("TinkCredentialThirdPartyCallbackNotificationName")
 }

@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Locales
 
 extension Tink {
-    /// Available locales for TinkLink
+    /// Available locales for Tink
     public static var availableLocales: [Locale] {
         let locales = [
             Locale(identifier: "da_DK"),
