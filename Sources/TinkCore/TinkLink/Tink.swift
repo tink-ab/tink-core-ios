@@ -166,3 +166,11 @@ extension Tink {
         authorizationBehavior.userSession = credential
     }
 }
+
+extension Tink {
+    /// :nodoc:
+    public var _sdkName: String {
+        get { sdkHeaderBehavior.sdkName }
+        set { sdkHeaderBehavior.sdkName = newValue }
+    }
+}
