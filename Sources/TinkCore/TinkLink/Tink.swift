@@ -30,12 +30,6 @@ public class Tink {
     private(set) var client: RESTClient
     public var sessionManagers: [SessionManager] = []
 
-    private var uiTaskCount = 0 {
-        didSet {
-            sdkHeaderBehavior.sdkName = uiTaskCount > 0 ? "Tink Link UI iOS" : "Tink Link iOS"
-        }
-    }
-
     // MARK: - Specifying the Credential
 
     /// The current user session associated with this Tink object.
