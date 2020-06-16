@@ -6,7 +6,7 @@ extension Provider {
         self.displayName = restProvider.displayName
         self.kind = .init(restType: restProvider.type)
         self.status = Status(restStatus: restProvider.status)
-        self.helpText = restProvider.passwordHelpText ?? ""
+        self.helpText = restProvider.passwordHelpText
         self.isPopular = restProvider.popular
         self.fields = restProvider.fields.map(FieldSpecification.init)
         self.groupDisplayName = restProvider.groupDisplayName ?? restProvider.displayName
@@ -38,6 +38,8 @@ extension Provider.Kind {
             self = .test
         case .fraud:
             self = .fraud
+        case .unknown:
+            self = .unknown
         }
     }
 }
@@ -51,6 +53,8 @@ extension Provider.Status {
             self = .disabled
         case .temporaryDisabled:
             self = .temporaryDisabled
+        case .unknown:
+            self = .unknown
         }
     }
 }
@@ -81,6 +85,10 @@ extension Provider.Capabilities {
                 return capability.union(.identityData)
             case .einvoices:
                 return capability
+            case .createBeneficiaries:
+                return capability.union(.createBeneficiaries)
+            case .listBeneficiaries:
+                return capability.union(.listBeneficiaries)
             }
         }
     }
@@ -125,6 +133,8 @@ extension Provider.AccessType {
             self = .openBanking
         case .other:
             self = .other
+        case .unknown:
+            self = .unknown
         }
     }
 }

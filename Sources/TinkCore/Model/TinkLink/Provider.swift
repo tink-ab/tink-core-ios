@@ -8,10 +8,13 @@ public struct Provider: Identifiable {
             self.value = value
         }
 
+        /// Creates an instance initialized to the given string value.
+        /// - Parameter value: The value of the new instance.
         public init(_ value: String) {
             self.value = value
         }
 
+        /// The string value of the ID.
         public let value: String
     }
 
@@ -38,12 +41,18 @@ public struct Provider: Identifiable {
         case test
         case fraud
 
+        /// The provider is a business bank.
         case businessBank
         case firstParty
 
+        public static var `default`: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
+        @available(*, deprecated, renamed: "default")
         public static var defaultKinds: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
-        /// A set of all providers kinds except for the test providers.
+        /// A set for the test providers kind.
+        public static var onlyTest: Set<Provider.Kind> = [.test]
+        @available(*, deprecated)
         public static var excludingTest: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
+
         /// A set of all providers kinds. Note that this also includes test providers.
         public static var all: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
     }
@@ -73,7 +82,7 @@ public struct Provider: Identifiable {
     public let credentialsKind: Credentials.Kind
 
     /// Short description of how to authenticate when creating a new credentials for connected to the provider.
-    public let helpText: String
+    public let helpText: String?
 
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
@@ -138,9 +147,13 @@ public struct Provider: Identifiable {
         /// The provider can fetch identity data.
         public static let identityData = Capabilities(rawValue: 1 << 10)
         /// The provider can fetch e-invoice data.
-        public static let eInvoices = Capabilities(rawValue: 1 << 10)
+        public static let eInvoices = Capabilities(rawValue: 1 << 11)
+        /// The provider can list all beneficiaries.
+        public static let listBeneficiaries = Capabilities(rawValue: 1 << 12)
+        /// The provider can creat beneficiaries.
+        public static let createBeneficiaries = Capabilities(rawValue: 1 << 13)
         /// A list representing all possible capabilities.
-        public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData]
+        public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData, .listBeneficiaries, .createBeneficiaries]
     }
 
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
@@ -192,10 +205,13 @@ public struct Provider: Identifiable {
 public extension Set where Element == Provider.Kind {
     /// A set of all providers kinds. Note that this also includes test providers.
     static var all: Set<Provider.Kind> { Provider.Kind.all }
-    /// A set of all providers kinds except for the test providers.
-    static var excludingTest: Set<Provider.Kind> { Provider.Kind.excludingTest }
     /// A set of default provider kinds
+    static var `default`: Set<Provider.Kind> { Provider.Kind.default }
+    /// A set of default provider kinds
+    @available(*, deprecated, renamed: "default")
     static var defaultKinds: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
+    /// A set of all test providers.
+    static var onlyTest: Set<Provider.Kind> { Provider.Kind.onlyTest }
 }
 
 public extension Set where Element == Provider.AccessType {

@@ -67,10 +67,7 @@ public final class RESTTransactionService: TransactionService {
             ]
         )
 
-        let bodyEncoder = JSONEncoder()
-        let body = try! bodyEncoder.encode(listRequest)
-
-        let request = RESTSimpleRequest(path: "/api/v1/transactions/categorize-multiple", method: .put, body: body, contentType: .json) { result in
+        let request = RESTSimpleRequest(path: "/api/v1/transactions/categorize-multiple", method: .put, body: listRequest, contentType: .json) { result in
             let mapped = result.map { (_) -> Void in
                 return
             }
@@ -87,7 +84,7 @@ public final class RESTTransactionService: TransactionService {
         completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable? {
 
-        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [(name: "categoryId", value: categoryId)]) { result in
+        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [.init(name: "categoryId", value: categoryId)]) { result in
             let mapped = result.map { $0.transactions.compactMap(Transaction.init) }
             completion(mapped)
         }
