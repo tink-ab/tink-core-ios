@@ -67,10 +67,7 @@ public final class RESTTransactionService: TransactionService {
             ]
         )
 
-        let bodyEncoder = JSONEncoder()
-        let body = try! bodyEncoder.encode(listRequest)
-
-        let request = RESTSimpleRequest(path: "/api/v1/transactions/categorize-multiple", method: .put, body: body, contentType: .json) { result in
+        let request = RESTSimpleRequest(path: "/api/v1/transactions/categorize-multiple", method: .put, body: listRequest, contentType: .json) { result in
             let mapped = result.map { (_) -> Void in
                 return
             }
