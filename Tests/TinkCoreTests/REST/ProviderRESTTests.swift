@@ -1,4 +1,4 @@
-@testable import TinkCore
+@testable import TinkLink
 import XCTest
 
 class ProviderRESTTests: XCTestCase {
