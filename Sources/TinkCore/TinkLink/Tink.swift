@@ -28,12 +28,7 @@ public class Tink {
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
     public lazy var oAuthService = RESTOAuthService(client: client)
     private(set) var client: RESTClient
-
-    private var uiTaskCount = 0 {
-        didSet {
-            sdkHeaderBehavior.sdkName = uiTaskCount > 0 ? "Tink Link UI iOS" : "Tink Link iOS"
-        }
-    }
+    public var sessionManagers: [SessionManager] = []
 
     // MARK: - Specifying the Credential
 
