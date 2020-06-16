@@ -97,10 +97,10 @@ public struct Provider: Identifiable {
         /// Controls whether or not the field should be shown masked, like a password field.
         public let isMasked: Bool
         public let isNumeric: Bool
-        public let isImmutable: Bool
+        public var isImmutable: Bool
         public let isOptional: Bool
         public let name: String
-        public let initialValue: String
+        public var initialValue: String
         public let pattern: String
         public let patternError: String
         /// Text displayed next to the input field
