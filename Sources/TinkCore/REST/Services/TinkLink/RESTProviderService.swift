@@ -12,7 +12,7 @@ public final class RESTProviderService: ProviderService {
         self.client = client
     }
 
-    public func providers(market: Market?, capabilities: Provider.Capabilities, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
+    func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
 
         var parameters = [
             URLQueryItem(name: "includeTestProviders", value: includeTestProviders ? "true" : "false")
