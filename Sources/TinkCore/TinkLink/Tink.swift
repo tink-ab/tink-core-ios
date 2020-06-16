@@ -25,7 +25,7 @@ public class Tink {
     }
 
     private let sdkHeaderBehavior: SDKHeaderClientBehavior
-    private var authorizationBehavior = AuthorizationHeaderClientBehavior(sessionCredential: nil)
+    private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
     public lazy var oAuthService = RESTOAuthService(client: client)
     private(set) var client: RESTClient
 
@@ -48,8 +48,8 @@ public class Tink {
     /// - Note: The existence of a `userSession` does not guarantee that the session is
     /// valid. It may have expired or be invalid.
     public var userSession: UserSession? {
-        get { authorizationBehavior.sessionCredential }
-        set { authorizationBehavior.sessionCredential = newValue }
+        get { authorizationBehavior.userSession }
+        set { authorizationBehavior.userSession = newValue }
     }
 
     // MARK: - Creating a Tink Link Object
@@ -205,6 +205,6 @@ extension Tink {
     /// - Parameter credential: The credential to use.
     @available(*, deprecated, message: "Set the userSession property directly instead.")
     public func setCredential(_ credential: SessionCredential?) {
-        authorizationBehavior.sessionCredential = credential
+        authorizationBehavior.userSession = credential
     }
 }
