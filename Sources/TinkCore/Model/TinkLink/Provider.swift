@@ -105,6 +105,24 @@ public struct Provider: Identifiable {
         public let patternError: String
         /// Text displayed next to the input field
         public let helpText: String
+
+        public mutating func setImmutable(initialValue newValue: String) {
+            self = .init(
+                fieldDescription: fieldDescription,
+                hint: hint,
+                maxLength: maxLength,
+                minLength: minLength,
+                isMasked: isMasked,
+                isNumeric: isNumeric,
+                isImmutable: true,
+                isOptional: isOptional,
+                name: name,
+                initialValue: newValue,
+                pattern: pattern,
+                patternError: patternError,
+                helpText: helpText
+            )
+        }
     }
 
     public let fields: [FieldSpecification]
