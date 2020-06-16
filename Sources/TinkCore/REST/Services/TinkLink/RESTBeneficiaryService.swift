@@ -1,13 +1,17 @@
 import Foundation
 
-class RESTBeneficiaryService: BeneficiaryService {
+public class RESTBeneficiaryService: BeneficiaryService {
     private let client: RESTClient
+
+    public init(tink: Tink) {
+        self.client = tink.client
+    }
 
     init(client: RESTClient) {
         self.client = client
     }
 
-    func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
+    public func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTBeneficiaryListResponse>(path: "/api/v1/beneficiaries", method: .get, contentType: .json) { result in
             let mappedResult = result.map { $0.beneficiaries.map { Beneficiary(restBeneficiary: $0) } }
             completion(mappedResult)
@@ -16,7 +20,7 @@ class RESTBeneficiaryService: BeneficiaryService {
         return client.performRequest(request)
     }
 
-    func addBeneficiary(request: CreateBeneficiaryRequest, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    public func addBeneficiary(request: CreateBeneficiaryRequest, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         let body = RESTCreateBeneficiaryRequest(
             accountNumberType: request.accountNumberType,
             accountNumber: request.accountNumber,
