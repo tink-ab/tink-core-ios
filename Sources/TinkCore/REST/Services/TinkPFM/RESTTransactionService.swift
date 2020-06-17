@@ -53,16 +53,16 @@ public final class RESTTransactionService: TransactionService {
 
     @discardableResult
     public func categorize(
-        _ transactionIds: [String],
-        as newCategoryId: String,
+        _ transactionIDs: [String],
+        as newCategoryID: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> Cancellable? {
 
         let listRequest = RESTCategorizeTransactionsListRequest(
             categorizationList: [
                 RESTCategorizeTransactionsRequest(
-                    categoryId: newCategoryId,
-                    transactionIds: transactionIds
+                    categoryId: newCategoryID,
+                    transactionIds: transactionIDs
                 )
             ]
         )
@@ -79,12 +79,12 @@ public final class RESTTransactionService: TransactionService {
 
     @discardableResult
     public func transactionsSimilar(
-        to transactionId: String,
-        ifCategorizedAs categoryId: String,
+        to transactionID: String,
+        ifCategorizedAs categoryID: String,
         completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable? {
 
-        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionId)/similar", method: .get, contentType: nil, parameters: [.init(name: "categoryId", value: categoryId)]) { result in
+        let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionID)/similar", method: .get, contentType: nil, parameters: [.init(name: "categoryId", value: categoryID)]) { result in
             let mapped = result.map { $0.transactions.compactMap(Transaction.init) }
             completion(mapped)
         }
