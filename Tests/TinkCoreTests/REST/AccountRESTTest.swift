@@ -14,8 +14,8 @@ class AccountRESTTest: XCTestCase {
             matchesMultiple: false
         )
         let restCurrencyDenominatedAmount = RESTCurrencyDenominatedAmount(
-            scale: 2,
             unscaledValue: 6861,
+            scale: 2,
             currencyCode: "EUR"
         )
 
@@ -54,8 +54,8 @@ class AccountRESTTest: XCTestCase {
 
     func testCurrencyDenominatedAmountMapping() {
         let restCurrencyDenominatedAmount = RESTCurrencyDenominatedAmount(
-            scale: 2,
             unscaledValue: 6861,
+            scale: 2,
             currencyCode: "EUR"
         )
         let currencyDenominatedAmount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: restCurrencyDenominatedAmount)
