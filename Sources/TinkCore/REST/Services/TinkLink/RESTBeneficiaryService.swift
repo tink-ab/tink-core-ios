@@ -21,16 +21,20 @@ public class RESTBeneficiaryService: BeneficiaryService {
     }
 
     public func createBeneficiary(
-        request: CreateBeneficiaryRequest,
+        accountNumberKind: AccountNumberKind,
+        accountNumber: String,
+        name: String,
+        ownerAccountID: Account.ID,
+        credentialsID: Credentials.ID,
         appURI: URL,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
         let body = RESTCreateBeneficiaryRequest(
-            accountNumberType: request.accountNumberType,
-            accountNumber: request.accountNumber,
-            name: request.name,
-            ownerAccountId: request.ownerAccountID.value,
-            credentialsId: request.credentialsID.value,
+            accountNumberType: accountNumberType.value,
+            accountNumber: accountNumber,
+            name: name,
+            ownerAccountId: ownerAccountID.value,
+            credentialsId: credentialsID.value,
             appUri: appURI.absoluteString
         )
         let request = RESTSimpleRequest(path: "/api/v1/beneficiaries", method: .post, body: body, contentType: .json) { result in
