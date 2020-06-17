@@ -94,6 +94,7 @@ public class Tink {
     // MARK: - Services
     public private(set) lazy var oAuthService: OAuthService = RESTOAuthService(client: client)
     public private(set) lazy var credentialsService: CredentialsService = RESTCredentialsService(client: client)
+    public private(set) lazy var providerService: ProviderService = RESTProviderService(client: client)
 }
 
 extension Tink {
