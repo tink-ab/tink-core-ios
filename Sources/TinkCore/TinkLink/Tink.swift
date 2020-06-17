@@ -92,6 +92,7 @@ public class Tink {
     public let configuration: Configuration
 
     // MARK: - Services
+    public private(set) lazy var authenticationService: AuthenticationService = RESTAuthenticationService(client: client)
     public private(set) lazy var oAuthService: OAuthService = RESTOAuthService(client: client)
     public private(set) lazy var beneficiaryService: BeneficiaryService = RESTBeneficiaryService(client: client)
     public private(set) lazy var credentialsService: CredentialsService = RESTCredentialsService(client: client)
