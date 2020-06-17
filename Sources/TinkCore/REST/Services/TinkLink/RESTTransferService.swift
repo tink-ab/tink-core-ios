@@ -56,8 +56,8 @@ public final class RESTTransferService: TransferService {
         return client.performRequest(request)
     }
 
-    public func transferStatus(transferID: Transfer.ID, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable? {
-        let request = RESTResourceRequest<RESTSignableOperation>(path: "/api/v1/transfer/\(transferID.value)/status", method: .get, contentType: .json) { result in
+    public func transferStatus(id: Transfer.ID, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable? {
+        let request = RESTResourceRequest<RESTSignableOperation>(path: "/api/v1/transfer/\(id.value)/status", method: .get, contentType: .json) { result in
             let mappedResult = result.map { SignableOperation($0) }
             completion(mappedResult)
         }
