@@ -11,8 +11,8 @@ public final class RESTTransferService: TransferService {
         self.client = client
     }
 
-    public func accounts(destinationUris: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable? {
-        let parameters: [URLQueryItem] = destinationUris.map { URLQueryItem(name: "destination[]", value: $0.absoluteString) }
+    public func accounts(destinationURIs: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable? {
+        let parameters: [URLQueryItem] = destinationURIs.map { URLQueryItem(name: "destination[]", value: $0.absoluteString) }
 
         let request = RESTResourceRequest<RESTAccountListResponse>(path: "/api/v1/transfer/accounts", method: .get, contentType: .json, parameters: parameters) { result in
             let mappedResult = result.map { $0.accounts.map { Account(restAccount: $0) } }

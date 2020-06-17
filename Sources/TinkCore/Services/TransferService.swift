@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol TransferService {
-    func accounts(destinationUris: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable?
+    func accounts(destinationURIs: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable?
     func transfer(
         amount: Decimal,
         currency: CurrencyCode,
