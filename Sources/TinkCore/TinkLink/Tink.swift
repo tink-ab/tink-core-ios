@@ -92,7 +92,7 @@ public class Tink {
     public let configuration: Configuration
 
     // MARK: - Services
-    public private(set) lazy var oAuthService = RESTOAuthService(client: client)
+    public private(set) lazy var oAuthService: OAuthService = RESTOAuthService(client: client)
 }
 
 extension Tink {
