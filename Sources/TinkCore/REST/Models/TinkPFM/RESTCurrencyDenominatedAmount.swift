@@ -1,5 +1,5 @@
 struct RESTCurrencyDenominatedAmount: Decodable {
-    let scale: Int
     let unscaledValue: Int
+    let scale: Int
     let currencyCode: String
 }

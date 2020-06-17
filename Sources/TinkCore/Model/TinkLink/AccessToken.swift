@@ -6,7 +6,7 @@ public struct AccessToken: Hashable, RawRepresentable {
         self.rawValue = rawValue
     }
 
-    init(_ value: String) {
+    public init(_ value: String) {
         self.rawValue = value
     }
 }
