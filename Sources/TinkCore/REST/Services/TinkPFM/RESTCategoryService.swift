@@ -7,10 +7,6 @@ final class RESTCategoryService: CategoryService {
         self.client = client
     }
 
-    init(tink: Tink) {
-        self.client = tink.client
-    }
-
     @discardableResult
     func categories(
         completion: @escaping (Result<CategoryTree, Error>) -> Void

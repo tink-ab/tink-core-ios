@@ -4,10 +4,6 @@ final class RESTAccountService: AccountService {
 
     private let client: Client
 
-    init(tink: Tink) {
-        self.client = tink.client
-    }
-
     init(client: Client) {
         self.client = client
     }

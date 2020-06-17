@@ -7,10 +7,6 @@ final class RESTBudgetService: BudgetService {
         self.client = client
     }
 
-    init(tink: Tink) {
-        self.client = tink.client
-    }
-    
     @discardableResult
     func budgets(
         includeArchived: Bool,

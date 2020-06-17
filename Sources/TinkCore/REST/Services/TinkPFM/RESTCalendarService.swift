@@ -7,10 +7,6 @@ final class RESTCalendarService: CalendarService {
         self.client = client
     }
 
-    init(tink: Tink) {
-        self.client = tink.client
-    }
-
     @discardableResult
     func period(
         period: String,

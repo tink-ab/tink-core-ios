@@ -8,10 +8,6 @@ final class RESTTransactionService: TransactionService {
         self.client = client
     }
 
-    init(tink: Tink) {
-        self.client = tink.client
-    }
-
     @discardableResult
     func transactions(
         query: TransactionsQuery,
