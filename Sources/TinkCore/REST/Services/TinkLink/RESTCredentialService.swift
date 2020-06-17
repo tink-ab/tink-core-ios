@@ -31,9 +31,9 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func createCredentials(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appUri: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+    public func createCredentials(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appUri: URL?, callbackUri: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
 
-        let body = RESTCreateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: nil, appUri: appUri?.absoluteString, triggerRefresh: nil)
+        let body = RESTCreateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackUri?.absoluteString, appUri: appUri?.absoluteString, triggerRefresh: nil)
 
         let parameters: [URLQueryItem]
         if refreshableItems != .all {
