@@ -26,7 +26,7 @@ public class Tink {
 
     private let sdkHeaderBehavior: SDKHeaderClientBehavior
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
-    private(set) var client: RESTClient
+    let client: RESTClient
     public var sessionManagers: [SessionManager] = []
 
     // MARK: - Specifying the Credential
