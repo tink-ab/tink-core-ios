@@ -26,7 +26,6 @@ public class Tink {
 
     private let sdkHeaderBehavior: SDKHeaderClientBehavior
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
-    public lazy var oAuthService = RESTOAuthService(client: client)
     private(set) var client: RESTClient
     public var sessionManagers: [SessionManager] = []
 
@@ -91,6 +90,9 @@ public class Tink {
 
     /// The current configuration.
     public let configuration: Configuration
+
+    // MARK: - Services
+    public lazy var oAuthService = RESTOAuthService(client: client)
 }
 
 extension Tink {
