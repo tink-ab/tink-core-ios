@@ -1,10 +1,10 @@
 import Foundation
 
-public final class RESTOAuthService: OAuthService {
+final class RESTOAuthService: OAuthService {
 
     private let client: RESTClient
 
-    public init(tink: Tink) {
+    init(tink: Tink) {
         self.client = tink.client
     }
 
@@ -12,7 +12,7 @@ public final class RESTOAuthService: OAuthService {
         self.client = client
     }
 
-    public func createAnonymous(market: Market?, locale: Locale, origin: String?, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+    func createAnonymous(market: Market?, locale: Locale, origin: String?, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
 
         let body = RESTAnonymousUserRequest(market: market?.code ?? "", origin: origin, locale: locale.identifier)
 
@@ -24,7 +24,7 @@ public final class RESTOAuthService: OAuthService {
         return client.performRequest(request)
     }
 
-    public func authenticate(code: AuthorizationCode, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+    func authenticate(code: AuthorizationCode, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
         let body = ["code": code.rawValue]
         let request = RESTResourceRequest<RESTAuthenticateResponse>(path: "/link/v1/authentication/token", method: .post, body: body, contentType: .json) { result in
             completion(result.map(\.accessToken).map(AccessToken.init(_:)))
