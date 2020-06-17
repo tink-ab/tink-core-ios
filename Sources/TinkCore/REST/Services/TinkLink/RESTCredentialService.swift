@@ -31,9 +31,9 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func createCredentials(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appUri: URL?, callbackUri: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+    public func createCredentials(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
 
-        let body = RESTCreateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackUri?.absoluteString, appUri: appUri?.absoluteString, triggerRefresh: nil)
+        let body = RESTCreateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, triggerRefresh: nil)
 
         let parameters: [URLQueryItem]
         if refreshableItems != .all {
@@ -58,8 +58,8 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func updateCredentials(credentialsID: Credentials.ID, providerID: Provider.ID, appUri: URL?, callbackUri: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTUpdateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackUri?.absoluteString, appUri: appUri?.absoluteString)
+    public func updateCredentials(credentialsID: Credentials.ID, providerID: Provider.ID, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTUpdateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString)
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials/\(credentialsID.value)", method: .put, body: body, contentType: .json) { result in
             completion(result.map(Credentials.init))
         }
