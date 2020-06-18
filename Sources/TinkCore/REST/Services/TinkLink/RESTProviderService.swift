@@ -2,9 +2,9 @@ import Foundation
 
 final class RESTProviderService: ProviderService {
 
-    private let client: RESTClient
+    private let client: Client
 
-    init(client: RESTClient) {
+    init(client: Client) {
         self.client = client
     }
 
