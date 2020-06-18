@@ -40,6 +40,10 @@ public extension CurrencyDenominatedAmount {
         return CurrencyDenominatedAmount(lhs.value - rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 
+    static func * (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
+        return CurrencyDenominatedAmount(lhs.value * rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+    }
+
     static func / (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
         return CurrencyDenominatedAmount(lhs.value / rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
