@@ -35,6 +35,5 @@ struct RESTProviderService: ProviderService {
         }
 
         return client.performRequest(request)
-
     }
 }

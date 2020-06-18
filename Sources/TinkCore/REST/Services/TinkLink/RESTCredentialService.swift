@@ -102,14 +102,15 @@ struct RESTCredentialsService: CredentialsService {
         }
         return client.performRequest(request)
     }
+
     func disableCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
 
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/disable", method: .post, contentType: .json) { result in
             completion(result.map { _ in })
         }
         return client.performRequest(request)
-
     }
+
     func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
 
         let relayedRequest = RESTCallbackRelayedRequest(state: state, parameters: parameters)
