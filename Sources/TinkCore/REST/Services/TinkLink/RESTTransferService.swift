@@ -1,11 +1,8 @@
 import Foundation
 
-final class RESTTransferService: TransferService {
-    private let client: RESTClient
+struct RESTTransferService: TransferService {
 
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func accounts(destinationURIs: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable? {
         let parameters: [URLQueryItem] = destinationURIs.map { URLQueryItem(name: "destination[]", value: $0.absoluteString) }

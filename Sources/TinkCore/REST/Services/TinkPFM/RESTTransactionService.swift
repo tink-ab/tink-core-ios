@@ -1,12 +1,8 @@
 import Foundation
 
-final class RESTTransactionService: TransactionService {
+struct RESTTransactionService: TransactionService {
 
-    private let client: RESTClient
-
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     @discardableResult
     func transactions(

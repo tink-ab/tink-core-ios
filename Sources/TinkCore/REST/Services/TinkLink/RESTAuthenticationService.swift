@@ -1,12 +1,8 @@
 import Foundation
 
-final class RESTAuthenticationService: AuthenticationService {
+struct RESTAuthenticationService: AuthenticationService {
 
-    private let client: RESTClient
-
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func clientDescription(clientID: String, scopes: [Scope], redirectURI: URL, completion: @escaping (Result<ClientDescription, Error>) -> Void) -> RetryCancellable? {
 

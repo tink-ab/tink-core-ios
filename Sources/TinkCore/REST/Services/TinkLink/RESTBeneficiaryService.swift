@@ -1,11 +1,8 @@
 import Foundation
 
-class RESTBeneficiaryService: BeneficiaryService {
-    private let client: RESTClient
+struct RESTBeneficiaryService: BeneficiaryService {
 
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTBeneficiaryListResponse>(path: "/api/v1/beneficiaries", method: .get, contentType: .json) { result in

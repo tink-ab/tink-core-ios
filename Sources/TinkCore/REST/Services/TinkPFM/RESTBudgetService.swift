@@ -1,11 +1,8 @@
 import Foundation
 
-final class RESTBudgetService: BudgetService {
-    private let client: RESTClient
+struct RESTBudgetService: BudgetService {
 
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     @discardableResult
     func budgets(

@@ -1,12 +1,8 @@
 import Foundation
 
-final class RESTUserService: UserService {
+struct RESTUserService: UserService {
 
-    private let client: RESTClient
-
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTUser>(path: "/api/v1/user", method: .get, contentType: .json) { result in

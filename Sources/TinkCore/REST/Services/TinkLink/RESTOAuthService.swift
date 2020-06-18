@@ -1,12 +1,8 @@
 import Foundation
 
-final class RESTOAuthService: OAuthService {
+struct RESTOAuthService: OAuthService {
 
-    private let client: RESTClient
-
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func createAnonymous(market: Market?, locale: Locale, origin: String?, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
 

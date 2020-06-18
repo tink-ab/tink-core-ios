@@ -1,12 +1,8 @@
 import Foundation
 
-final class RESTCredentialsService: CredentialsService {
+struct RESTCredentialsService: CredentialsService {
 
-    private let client: RESTClient
-
-    init(client: RESTClient) {
-        self.client = client
-    }
+    let client: RESTClient
 
     func credentialsList(completion: @escaping (Result<[Credentials], Error>) -> Void) -> RetryCancellable? {
 
