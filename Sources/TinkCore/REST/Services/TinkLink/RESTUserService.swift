@@ -4,6 +4,7 @@ struct RESTUserService: UserService {
 
     let client: RESTClient
 
+    @discardableResult
     func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTUser>(path: "/api/v1/user", method: .get, contentType: .json) { result in
             completion(result.map(User.init))

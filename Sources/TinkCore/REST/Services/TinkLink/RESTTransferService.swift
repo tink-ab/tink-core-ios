@@ -4,6 +4,7 @@ struct RESTTransferService: TransferService {
 
     let client: RESTClient
 
+    @discardableResult
     func accounts(destinationURIs: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable? {
         let parameters: [URLQueryItem] = destinationURIs.map { URLQueryItem(name: "destination[]", value: $0.absoluteString) }
 
@@ -15,6 +16,7 @@ struct RESTTransferService: TransferService {
         return client.performRequest(request)
     }
 
+    @discardableResult
     func transfer(
         amount: Decimal,
         currency: CurrencyCode,
@@ -49,6 +51,7 @@ struct RESTTransferService: TransferService {
         return client.performRequest(request)
     }
 
+    @discardableResult
     func transferStatus(id: Transfer.ID, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTSignableOperation>(path: "/api/v1/transfer/\(id.value)/status", method: .get, contentType: .json) { result in
             let mappedResult = result.map { SignableOperation($0) }

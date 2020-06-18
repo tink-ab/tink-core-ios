@@ -4,6 +4,7 @@ struct RESTAuthenticationService: AuthenticationService {
 
     let client: RESTClient
 
+    @discardableResult
     func clientDescription(clientID: String, scopes: [Scope], redirectURI: URL, completion: @escaping (Result<ClientDescription, Error>) -> Void) -> RetryCancellable? {
 
         let body = RESTDescribeOAuth2ClientRequest(clientId: clientID, redirectUri: redirectURI.absoluteString, scope: scopes.scopeDescription)
@@ -15,6 +16,7 @@ struct RESTAuthenticationService: AuthenticationService {
         return client.performRequest(request)
     }
 
+    @discardableResult
     func authorize(clientID: String, redirectURI: URL, scopes: [Scope], completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
 
         let body = [

@@ -4,6 +4,7 @@ struct RESTBeneficiaryService: BeneficiaryService {
 
     let client: RESTClient
 
+    @discardableResult
     func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTBeneficiaryListResponse>(path: "/api/v1/beneficiaries", method: .get, contentType: .json) { result in
             let mappedResult = result.map { $0.beneficiaries.map { Beneficiary(restBeneficiary: $0) } }
@@ -24,6 +25,7 @@ struct RESTBeneficiaryService: BeneficiaryService {
     ///   - appURI: The end user will be redirected to this URI after the authorization code has been delivered.
     ///   - completion: The completion handler to call when the create beneficiary request is complete.
     /// - Returns: A cancellation handler.
+    @discardableResult
     func createBeneficiary(
         accountNumberKind: AccountNumberKind,
         accountNumber: String,

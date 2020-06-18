@@ -4,6 +4,7 @@ struct RESTProviderService: ProviderService {
 
     let client: RESTClient
 
+    @discardableResult
     func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
 
         var parameters = [
