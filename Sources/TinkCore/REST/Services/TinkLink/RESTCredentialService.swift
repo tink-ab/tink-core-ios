@@ -135,7 +135,7 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func qr(id: Credentials.ID, completion: @escaping (Result<Data, Error>) -> Void) -> RetryCancellable? {
+    public func qrCode(id: Credentials.ID, completion: @escaping (Result<Data, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<Data>(path: "/api/v1/credentials/\(id.value)/qr", method: .get, contentType: .json, completion: completion)
         return client.performRequest(request)
     }

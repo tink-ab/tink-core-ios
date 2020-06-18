@@ -13,5 +13,5 @@ public protocol CredentialsService {
     func disableCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func authenticateCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
-    func qr(id: Credentials.ID, completion: @escaping (Result<Data, Error>) -> Void) -> RetryCancellable?
+    func qrCode(id: Credentials.ID, completion: @escaping (Result<Data, Error>) -> Void) -> RetryCancellable?
 }
