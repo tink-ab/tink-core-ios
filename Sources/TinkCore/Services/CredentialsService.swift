@@ -7,8 +7,8 @@ public protocol CredentialsService {
     func deleteCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func updateCredentials(id: Credentials.ID, providerID: Provider.ID, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable?
     func refreshCredentials(id: Credentials.ID, refreshableItems: RefreshableItems, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
-    func supplementInformation(id: Credentials.ID, fields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
-    func cancelSupplementInformation(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
+    func addSupplementalInformation(id: Credentials.ID, fields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
+    func cancelSupplementalInformation(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func enableCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func disableCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
     func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?

@@ -86,7 +86,7 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func supplementInformation(id: Credentials.ID, fields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    public func addSupplementalInformation(id: Credentials.ID, fields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
 
         let information = RESTSupplementalInformation(information: fields)
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/supplemental-information", method: .post, body: information, contentType: .json) { (result) in
@@ -95,7 +95,7 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func cancelSupplementInformation(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    public func cancelSupplementalInformation(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         let information = RESTSupplementalInformation(information: [:])
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/supplemental-information", method: .post, body: information, contentType: .json) { (result) in
             completion(result.map { _ in })
