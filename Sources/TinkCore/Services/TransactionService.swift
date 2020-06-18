@@ -8,14 +8,14 @@ public protocol TransactionService {
     ) -> Cancellable?
 
     func categorize(
-        _ transactionIds: [String],
-        as newCategoryId: String,
+        _ transactionIDs: [String],
+        as newCategoryID: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> Cancellable?
 
     func transactionsSimilar(
-        to transactionId: String,
-        ifCategorizedAs categoryId: String,
+        to transactionID: String,
+        ifCategorizedAs categoryID: String,
         completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable?
 }
