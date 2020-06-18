@@ -92,7 +92,7 @@ public class Tink {
     public let configuration: Configuration
 
     // MARK: - Services
-    public final class Services {
+    public final class ServiceContainer {
         let client: RESTClient
         init(client: RESTClient) {
             self.client = client
@@ -106,7 +106,7 @@ public class Tink {
         public private(set) lazy var userService: UserService = RESTUserService(client: client)
     }
 
-    public private(set) lazy var services = Services(client: client)
+    public private(set) lazy var services = ServiceContainer(client: client)
 }
 
 extension Tink {
