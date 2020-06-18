@@ -1,9 +1,9 @@
 import Foundation
 
 class RESTBeneficiaryService: BeneficiaryService {
-    private let client: Client
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 

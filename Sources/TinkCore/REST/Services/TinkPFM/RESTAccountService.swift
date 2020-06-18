@@ -2,9 +2,9 @@ import Foundation
 
 final class RESTAccountService: AccountService {
 
-    private let client: Client
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 

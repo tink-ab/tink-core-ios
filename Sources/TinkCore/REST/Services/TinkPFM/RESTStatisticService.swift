@@ -1,9 +1,9 @@
 import Foundation
 
 class RESTStatisticService: StatisticService {
-    private let client: Client
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 

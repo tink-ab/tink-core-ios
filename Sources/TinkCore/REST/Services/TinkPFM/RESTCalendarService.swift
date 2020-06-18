@@ -1,9 +1,9 @@
 import Foundation
 
 final class RESTCalendarService: CalendarService {
-    private let client: Client
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 
