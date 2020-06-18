@@ -41,7 +41,7 @@ public class RESTBeneficiaryService: BeneficiaryService {
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
         let body = RESTCreateBeneficiaryRequest(
-            accountNumberType: accountNumberType.value,
+            accountNumberType: accountNumberKind.value,
             accountNumber: accountNumber,
             name: name,
             ownerAccountId: ownerAccountID.value,
