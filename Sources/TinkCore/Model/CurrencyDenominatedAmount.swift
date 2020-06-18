@@ -31,19 +31,22 @@ public extension CurrencyDenominatedAmount {
         self.value = number.decimalValue
         self.currencyCode = currencyCode
     }
+}
 
-    static func + (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue + rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+extension CurrencyDenominatedAmount {
+    public static func + (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
+        return CurrencyDenominatedAmount(lhs.value + rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 
-    static func - (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue - rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+    public static func - (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
+        return CurrencyDenominatedAmount(lhs.value - rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 
-    static func / (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue / rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+    public static func * (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
+        return CurrencyDenominatedAmount(lhs.value * rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+    }
+
+    public static func / (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
+        return CurrencyDenominatedAmount(lhs.value / rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 }
