@@ -1,6 +1,6 @@
 import Foundation
 
-public final class RESTTransactionService: TransactionService {
+final class RESTTransactionService: TransactionService {
 
     private let client: Client
 
@@ -8,12 +8,12 @@ public final class RESTTransactionService: TransactionService {
         self.client = client
     }
 
-    public init(tink: Tink) {
+    init(tink: Tink) {
         self.client = tink.client
     }
 
     @discardableResult
-    public func transactions(
+    func transactions(
         query: TransactionsQuery,
         offset: Int? = nil,
         completion: @escaping (Result<([Transaction], Bool), Error>) -> Void
@@ -52,7 +52,7 @@ public final class RESTTransactionService: TransactionService {
     }
 
     @discardableResult
-    public func categorize(
+    func categorize(
         _ transactionIDs: [String],
         as newCategoryID: String,
         completion: @escaping (Result<Void, Error>) -> Void
@@ -78,7 +78,7 @@ public final class RESTTransactionService: TransactionService {
     }
 
     @discardableResult
-    public func transactionsSimilar(
+    func transactionsSimilar(
         to transactionID: String,
         ifCategorizedAs categoryID: String,
         completion: @escaping (Result<[Transaction], Error>) -> Void

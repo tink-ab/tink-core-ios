@@ -1,18 +1,18 @@
 import Foundation
 
-public final class RESTBudgetService: BudgetService {
+final class RESTBudgetService: BudgetService {
     private let client: Client
 
     init(client: Client) {
         self.client = client
     }
 
-    public init(tink: Tink) {
+    init(tink: Tink) {
         self.client = tink.client
     }
     
     @discardableResult
-    public func budgets(
+    func budgets(
         includeArchived: Bool,
         completion: @escaping (Result<[Budget], Error>) -> Void
     ) -> Cancellable? {

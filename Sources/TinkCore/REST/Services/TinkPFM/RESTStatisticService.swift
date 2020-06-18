@@ -7,12 +7,12 @@ class RESTStatisticService: StatisticService {
         self.client = client
     }
 
-    public init(tink: Tink) {
+    init(tink: Tink) {
         self.client = tink.client
     }
 
     @discardableResult
-    public func statistics(
+    func statistics(
         description: String?,
         periods: [DateComponents] = [],
         types: [Statistic.Kind] = [],
