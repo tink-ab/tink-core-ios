@@ -33,17 +33,14 @@ public extension CurrencyDenominatedAmount {
     }
 
     static func + (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue + rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+        return CurrencyDenominatedAmount(lhs.value + rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 
     static func - (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue - rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+        return CurrencyDenominatedAmount(lhs.value - rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 
     static func / (lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> CurrencyDenominatedAmount {
-        // TODO: Add with Decimal type instead.
-        return CurrencyDenominatedAmount(lhs.doubleValue / rhs.doubleValue, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
+        return CurrencyDenominatedAmount(lhs.value / rhs.value, currencyCode: lhs.currencyCode.value.isEmpty ? rhs.currencyCode : lhs.currencyCode)
     }
 }
