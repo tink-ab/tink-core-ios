@@ -127,7 +127,7 @@ public final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    public func manualAuthentication(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    public func authenticateCredentials(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
 
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/authenticate", method: .post, contentType: .json) { (result) in
             completion(result.map { _ in })
