@@ -3,20 +3,7 @@ import Foundation
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credentials: Identifiable {
     /// A unique identifier of a `Credentials`.
-    public struct ID: Hashable, ExpressibleByStringLiteral {
-        public init(stringLiteral value: String) {
-            self.value = value
-        }
-
-        /// Creates an instance initialized to the given string value.
-        /// - Parameter value: The value of the new instance.
-        public init(_ value: String) {
-            self.value = value
-        }
-
-        /// The string value of the ID.
-        public let value: String
-    }
+    public typealias ID = Identifier<Credentials>
 
     /// The unique identifier of the credentials.
     public let id: ID
