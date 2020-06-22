@@ -30,7 +30,6 @@ public struct ActionableInsight {
         case weeklySummaryExpensesByCategory(WeeklyExpensesByCategory)
         case weeklySummaryExpensesByDay(WeeklyExpensesByDay)
         case monthlySummaryExpensesByCategory(MonthlyExpensesByCategory)
-        case leftToSpendNegative // TODO: assume there is data here
         case weeklySummaryExpenseTransactions // TODO: assume there is data here
         case monthlySummaryExpenseTransactions // TODO: assume there is data here
         case newIncomeTransaction // TODO: assume there is data here
