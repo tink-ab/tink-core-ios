@@ -1,8 +1,12 @@
 import Foundation
 
-struct RESTAccountService: AccountService {
+final class RESTAccountService: AccountService {
 
-    let client: RESTClient
+    private let client: RESTClient
+
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func accounts(completion: @escaping (Result<[Account], Error>) -> Void) -> Cancellable? {

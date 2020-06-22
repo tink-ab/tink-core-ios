@@ -1,8 +1,11 @@
 import Foundation
 
-struct RESTTransferService: TransferService {
+final class RESTTransferService: TransferService {
+    private let client: RESTClient
 
-    let client: RESTClient
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func accounts(destinationURIs: [URL], completion: @escaping (Result<[Account], Error>) -> Void) -> RetryCancellable? {

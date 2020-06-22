@@ -1,8 +1,11 @@
 import Foundation
 
-struct RESTBeneficiaryService: BeneficiaryService {
+class RESTBeneficiaryService: BeneficiaryService {
+    private let client: RESTClient
 
-    let client: RESTClient
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {

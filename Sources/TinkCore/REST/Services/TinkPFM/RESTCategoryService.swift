@@ -1,8 +1,11 @@
 import Foundation
 
-struct RESTCategoryService: CategoryService {
+final class RESTCategoryService: CategoryService {
+    private let client: RESTClient
 
-    let client: RESTClient
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func categories(

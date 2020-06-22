@@ -1,8 +1,12 @@
 import Foundation
 
-struct RESTProviderService: ProviderService {
+final class RESTProviderService: ProviderService {
 
-    let client: RESTClient
+    private let client: RESTClient
+
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {

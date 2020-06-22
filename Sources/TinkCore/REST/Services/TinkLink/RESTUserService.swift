@@ -1,8 +1,12 @@
 import Foundation
 
-struct RESTUserService: UserService {
+final class RESTUserService: UserService {
 
-    let client: RESTClient
+    private let client: RESTClient
+
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func user(completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {

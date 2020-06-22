@@ -1,8 +1,11 @@
 import Foundation
 
-struct RESTCalendarService: CalendarService {
+final class RESTCalendarService: CalendarService {
+    private let client: RESTClient
 
-    let client: RESTClient
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func period(

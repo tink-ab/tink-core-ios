@@ -1,8 +1,12 @@
 import Foundation
 
-struct RESTActionableInsightService {
+class RESTActionableInsightService {
     
-    let client: RESTClient
+    private let client: RESTClient
+
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func insights(

@@ -1,8 +1,11 @@
 import Foundation
 
-struct RESTStatisticService: StatisticService {
+class RESTStatisticService: StatisticService {
+    private let client: RESTClient
 
-    let client: RESTClient
+    init(client: RESTClient) {
+        self.client = client
+    }
 
     @discardableResult
     func statistics(
