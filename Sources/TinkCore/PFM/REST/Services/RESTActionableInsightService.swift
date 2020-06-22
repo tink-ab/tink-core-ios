@@ -34,13 +34,13 @@ class RESTActionableInsightService: ActionableInsightService {
     @discardableResult
     public func selectAction(
         insightAction: String,
-        insightID: String,
+        insightID: ActionableInsight.ID,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
 
         let body = [
             "insightAction": insightAction,
-            "insightId": insightID
+            "insightId": insightID.value
         ]
 
         let request = RESTSimpleRequest(path: "/api/v1/insights/action", method: .post, body: body, contentType: .json) { result in
@@ -62,7 +62,7 @@ class RESTActionableInsightService: ActionableInsightService {
 
     @discardableResult
     public func archive(
-        id: String,
+        id: ActionableInsight.ID,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
         let request = RESTSimpleRequest(path: "/api/v1/insights/\(id)/archive", method: .put, contentType: .json, completion: { result in
