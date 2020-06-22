@@ -1,0 +1,25 @@
+name: TinkCore
+targets:
+  TinkCore:
+    type: framework
+    platform: [iOS, macOS]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "com.tink.Core"
+      IPHONEOS_DEPLOYMENT_TARGET: 11.0
+      MACOSX_DEPLOYMENT_TARGET: 10.13
+    scheme:
+      testTargets:
+        - name: TinkCoreTests_${platform}
+    sources:
+      - Sources/TinkCore
+  TinkCoreTests:
+    type: bundle.unit-test
+    platform: [iOS, macOS]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "com.tink.CoreTests"
+      IPHONEOS_DEPLOYMENT_TARGET: 11.0
+      MACOSX_DEPLOYMENT_TARGET: 10.13
+    sources:
+      - Tests/TinkCoreTests
+    dependencies:
+      - target: TinkCore_${platform}
