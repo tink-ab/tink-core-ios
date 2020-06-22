@@ -38,7 +38,7 @@ class URLSessionRetryCancellableTask: RetryCancellable {
     }
 
     func start() {
-        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 self.request.onResponse(.failure(error))
                 self.behavior.afterError(error: error)

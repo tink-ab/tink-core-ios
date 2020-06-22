@@ -34,7 +34,7 @@ final class RESTClient: Client {
 
         guard let url = urlComponents.url else {
             request.onResponse(.failure(URLError(.unknown)))
-            self.behavior.afterError(error: URLError(.unknown))
+            behavior.afterError(error: URLError(.unknown))
             return nil
         }
 
@@ -44,9 +44,8 @@ final class RESTClient: Client {
             return task
         } catch {
             request.onResponse(.failure(error))
-            self.behavior.afterError(error: error)
+            behavior.afterError(error: error)
             return nil
         }
-
     }
 }
