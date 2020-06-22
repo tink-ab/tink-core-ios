@@ -29,7 +29,7 @@ final class RESTBeneficiaryService: BeneficiaryService {
     ///   - completion: The completion handler to call when the create beneficiary request is complete.
     /// - Returns: A cancellation handler.
     @discardableResult
-    func createBeneficiary(
+    func create(
         accountNumberKind: AccountNumberKind,
         accountNumber: String,
         name: String,

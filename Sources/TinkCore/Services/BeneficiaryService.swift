@@ -13,7 +13,7 @@ public protocol BeneficiaryService {
     ///   - appURI: The end user will be redirected to this URI after the authorization code has been delivered.
     ///   - completion: The completion handler to call when the create beneficiary request is complete.
     /// - Returns: A cancellation handler.
-    func createBeneficiary(
+    func create(
         accountNumberKind: AccountNumberKind,
         accountNumber: String,
         name: String,
