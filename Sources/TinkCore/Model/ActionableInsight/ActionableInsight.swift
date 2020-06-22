@@ -34,7 +34,7 @@ public struct ActionableInsight {
         case monthlySummaryExpenseTransactions(MonthlyTransactionsSummary)
         case newIncomeTransaction(NewIncomeTransaction)
         case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
-        case unknown(type: String)
+        case unknown
     }
 
     public let id: ID

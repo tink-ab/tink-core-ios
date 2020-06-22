@@ -125,7 +125,7 @@ extension ActionableInsight.Kind {
 
             self = .suggestSetUpSavingsAccount(data)
         default:
-            self = .unknown(type: <#T##String#>)
+            self = .unknown
 
         }
     }
