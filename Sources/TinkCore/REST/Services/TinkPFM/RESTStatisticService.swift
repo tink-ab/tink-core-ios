@@ -1,6 +1,6 @@
 import Foundation
 
-class RESTStatisticService: StatisticService {
+final class RESTStatisticService: StatisticService {
     private let client: RESTClient
 
     init(client: RESTClient) {

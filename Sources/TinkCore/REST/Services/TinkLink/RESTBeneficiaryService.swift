@@ -1,6 +1,6 @@
 import Foundation
 
-class RESTBeneficiaryService: BeneficiaryService {
+final class RESTBeneficiaryService: BeneficiaryService {
     private let client: RESTClient
 
     init(client: RESTClient) {
