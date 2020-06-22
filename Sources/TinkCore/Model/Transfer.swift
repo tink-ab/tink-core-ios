@@ -5,20 +5,7 @@ import Foundation
 /// The source account must belong to the authenticated user. Source and destination accounts are sent in a special URI format.
 public struct Transfer {
     /// A unique identifier of a `Transfer`.
-    public struct ID: Hashable, ExpressibleByStringLiteral {
-        public init(stringLiteral value: String) {
-            self.value = value
-        }
-
-        /// Creates an instance initialized to the given string value.
-        /// - Parameter value: The value of the new instance.
-        public init(_ value: String) {
-            self.value = value
-        }
-
-        /// The string value of the ID.
-        public let value: String
-    }
+    public typealias ID = Identifier<Transfer> 
 
     /// The amount that will be transferred. Should be positive.
     let amount: Decimal
