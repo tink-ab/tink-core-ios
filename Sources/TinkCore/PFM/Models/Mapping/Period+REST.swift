@@ -8,7 +8,7 @@ extension Period {
 }
 
 extension Period.Resolution {
-    init(restResolution: RESTPeriod.Resolution)  {
+    init(restResolution: RESTPeriod.Resolution) {
         switch restResolution {
         case .monthly: self = .monthly
         case .monthlyAdjusted: self = .monthlyAdjusted

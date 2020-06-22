@@ -1,7 +1,6 @@
 import Foundation
 
 class RESTActionableInsightService: ActionableInsightService {
-
     private let client: RESTClient
 
     init(client: RESTClient) {
@@ -37,7 +36,6 @@ class RESTActionableInsightService: ActionableInsightService {
         insightID: ActionableInsight.ID,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
-
         let body = [
             "insightAction": insightAction,
             "insightId": insightID.value
@@ -67,7 +65,7 @@ class RESTActionableInsightService: ActionableInsightService {
     ) -> RetryCancellable? {
         let request = RESTSimpleRequest(path: "/api/v1/insights/\(id)/archive", method: .put, contentType: .json, completion: { result in
             let mapped = result.map { (response) -> Void in
-                return ()
+                ()
             }
             completion(mapped)
         })

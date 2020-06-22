@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Statistic {
-
     public enum Resolution {
         case daily, monthly, monthlyAdjusted, yearly, all, weekly
     }
@@ -29,5 +28,3 @@ public struct Statistic {
 
     let userID: String
 }
-
-

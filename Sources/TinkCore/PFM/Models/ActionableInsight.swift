@@ -10,6 +10,7 @@ public struct ActionableInsight {
         /// The data that describes the action.
         public let data: InsightActionData?
     }
+
     public enum State {
         case active([InsightAction])
         case archived(Date)
@@ -45,8 +46,6 @@ public struct ActionableInsight {
     public let title: String
     public let description: String
     public let created: Date
-
-
 }
 
 public extension ActionableInsight {
@@ -88,7 +87,6 @@ public extension ActionableInsight {
     }
 
     struct TransactionSummary {
-
         public struct TransactionsOverview {
             public let totalCount: Int
             public let mostCommonDescription: String
