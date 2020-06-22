@@ -3,20 +3,7 @@ import Foundation
 /// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
 public struct Provider: Identifiable {
     /// A unique identifier of a `Provider`.
-    public struct ID: Hashable, ExpressibleByStringLiteral {
-        public init(stringLiteral value: String) {
-            self.value = value
-        }
-
-        /// Creates an instance initialized to the given string value.
-        /// - Parameter value: The value of the new instance.
-        public init(_ value: String) {
-            self.value = value
-        }
-
-        /// The string value of the ID.
-        public let value: String
-    }
+    public typealias ID = Identifier<Provider>
 
     /// The unique identifier of the provider.
     /// - Note: This is used when creating new credentials.

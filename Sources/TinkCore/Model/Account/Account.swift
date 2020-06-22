@@ -40,20 +40,7 @@ public struct Account {
     }
 
     /// A unique identifier of an `Account`.
-    public struct ID: Hashable, ExpressibleByStringLiteral {
-        public init(stringLiteral value: String) {
-            self.value = value
-        }
-
-        /// Creates an instance initialized to the given string value.
-        /// - Parameter value: The value of the new instance.
-        public init(_ value: String) {
-            self.value = value
-        }
-
-        /// The string value of the ID.
-        public let value: String
-    }
+    public typealias ID = Identifier<Account>
 
     /// The account number of the account. The format of the account numbers may differ between account types and banks. This property can be updated in a update account request.
     public let accountNumber: String
@@ -73,7 +60,7 @@ public struct Account {
     let isFavored: Bool
 
     /// The internal identifier of account.
-    public let id: Account.ID
+    public let id: ID
 
     /// The display name of the account. This property can be updated in a update account request.
     public let name: String
