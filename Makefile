@@ -11,3 +11,6 @@ endif
 
 generate-carthage-project:
 	xcodegen generate
+
+format:
+	swiftformat . 2> /dev/null
