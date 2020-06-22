@@ -104,19 +104,29 @@ extension ActionableInsight.Kind {
                 expenseStatisticsByDay: weeklyExpenses.expenseStatisticsByDay.map { ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay(date: $0.date, expenseStatistics: .init(totalAmount: .init(restAIAmount: $0.expenseStatistics.totalAmount), averageAmount: .init(restAIAmount: $0.expenseStatistics.averageAmount))) })
             self = .weeklySummaryExpensesByDay(expensesByDay)
 
-        case (.leftToSpendNegative, _):
-            self = .leftToSpendNegative
+        case (.weeklySummaryExpenseTransactions, .weeklySummaryExpenseTransactions(let data)):
+            let transactionSummary = ActionableInsight.TransactionSummary.init(restSummary: data.transactionSummary)
+            let summary = ActionableInsight.WeeklyTransactionsSummary(week: .init(year: data.week.year, week: data.week.week), summary: transactionSummary)
+            self = .weeklySummaryExpenseTransactions(summary)
 
-        case (.weeklySummaryExpenseTransactions, _):
-            self = .weeklySummaryExpenseTransactions
+        case (.monthlySummaryExpenseTransactions, .monthlySummaryExpenseTransactions(let data)):
+            let transactionSummary = ActionableInsight.TransactionSummary.init(restSummary: data.transactionSummary)
+            let summary = ActionableInsight.MonthlyTransactionsSummary(month: .init(year: data.month.year, month: data.month.month), summary: transactionSummary)
+            self = .monthlySummaryExpenseTransactions(summary)
 
-        case (.monthlySummaryExpenseTransactions, _):
-            self = .monthlySummaryExpenseTransactions
+        case (.newIncomeTransaction, .newIncomeTransaction(let data)):
+            self = .newIncomeTransaction(.init(transactionID: .init(data.transactionId), accountID: .init(data.accountId)))
 
-        case (.newIncomeTransaction, _):
-            self = .newIncomeTransaction
+        case (.suggestSetUpSavingsAccount, .suggestSetUpSavingsAccount(let data)):
+            let data = ActionableInsight.SuggestSetUpSavingsAccount(
+                balance: .init(restAIAmount: data.balance),
+                savingsAccount: .init(id: .init(data.savingsAccount.accountId), name: data.savingsAccount.accountName),
+                currentAccount: .init(id: .init(data.currentAccount.accountId), name: data.currentAccount.accountName))
 
-        default: return nil
+            self = .suggestSetUpSavingsAccount(data)
+        default:
+            self = .unknown(type: <#T##String#>)
+
         }
     }
 }
@@ -130,6 +140,23 @@ extension ActionableInsight.BudgetPeriod {
 extension ActionableInsight.BudgetSummary {
     init(restSummary: RESTInsightData.BudgetSummary) {
         self = .init(budgetId: Budget.ID(restSummary.budgetId), budgetPeriod: .init(restBudgetPeriod: restSummary.budgetPeriod))
+    }
+}
+
+extension ActionableInsight.TransactionSummary {
+    init(restSummary: RESTInsightData.TransactionSummary) {
+        self = .init(
+            totalExpenses: .init(restAIAmount: restSummary.totalExpenses),
+            commonTransactionsOverview: .init(
+                totalCount: restSummary.commonTransactionsOverview.totalNumberOfTransactions,
+                mostCommonDescription: restSummary.commonTransactionsOverview.mostCommonTransactionDescription,
+                mostCommonCount: restSummary.commonTransactionsOverview.mostCommonTransactionCount),
+            largestExpense: .init(
+                id: .init(restSummary.largestExpense.id),
+                date: restSummary.largestExpense.date,
+                amount: .init(restAIAmount: restSummary.largestExpense.amount),
+                description: restSummary.largestExpense.description)
+        )
     }
 }
 

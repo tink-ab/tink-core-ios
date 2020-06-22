@@ -31,7 +31,10 @@ struct RESTActionableInsight: Decodable {
 }
 
 // Mapping from type string to enum. Values defined on backend here: https://github.com/tink-ab/tink-backend/blob/master/src/insights/lib/src/main/java/se/tink/backend/insights/core/valueobjects/InsightType.java
-enum RESTActionableInsightType: String, Decodable {
+enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
+
+    static var decodeFallbackValue: RESTActionableInsightType = .unknown
+
     case unknown
     case accountBalanceLow = "ACCOUNT_BALANCE_LOW"
     case budgetOverspent = "BUDGET_OVERSPENT"
@@ -47,33 +50,10 @@ enum RESTActionableInsightType: String, Decodable {
     case weeklySummaryExpensesByCategory = "WEEKLY_SUMMARY_EXPENSES_BY_CATEGORY"
     case weeklyExpensesByDay = "WEEKLY_SUMMARY_EXPENSES_BY_DAY"
     case monthlySummaryExpensesByCategory = "MONTHLY_SUMMARY_EXPENSES_BY_CATEGORY"
-    case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
     case weeklySummaryExpenseTransactions = "WEEKLY_SUMMARY_EXPENSE_TRANSACTIONS"
     case monthlySummaryExpenseTransactions = "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS"
     case newIncomeTransaction = "NEW_INCOME_TRANSACTION"
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let rawValue = try container.decode(String.self)
-        self = RESTActionableInsightType(rawValue: rawValue) ?? .unknown
-    }
-}
-
-enum RESTInsightDataType: String, Decodable {
-    case accountBalanceLow = "ACCOUNT_BALANCE_LOW"
-    case budgetOverspent = "BUDGET_OVERSPENT"
-    case budgetCloseNegative = "BUDGET_CLOSE_NEGATIVE"
-    case budgetClosePositive = "BUDGET_CLOSE_POSITIVE"
-    case budgetSuccess = "BUDGET_SUCCESS"
-    case budgetSummaryAchieved = "BUDGET_SUMMARY_ACHIEVED"
-    case budgetSummaryOverspent = "BUDGET_SUMMARY_OVERSPENT"
-    case largeExpense = "LARGE_EXPENSE"
-    case singleUncategorizedTransaction = "SINGLE_UNCATEGORIZED_TRANSACTION"
-    case doubleCharge = "DOUBLE_CHARGE"
-    case weeklyUncategorizedTransactions = "WEEKLY_UNCATEGORIZED_TRANSACTIONS"
-    case weeklySummaryExpensesByCategory = "WEEKLY_SUMMARY_EXPENSES_BY_CATEGORY"
-    case weeklySummaryExpensesByDay = "WEEKLY_SUMMARY_EXPENSES_BY_DAY"
-    case monthlySummaryExpensesByCategory = "MONTHLY_SUMMARY_EXPENSES_BY_CATEGORY"
+    case suggestSetUpSavingsAccount = "SUGGEST_SET_UP_SAVINGS_ACCOUNT"
 }
 
 enum RESTInsightData: Decodable {
@@ -164,6 +144,30 @@ enum RESTInsightData: Decodable {
         let expenseStatisticsByDay: [ExpenseStatisticsByDay]
     }
 
+    struct TransactionSummary: Decodable {
+        struct Overview: Decodable {
+            let totalNumberOfTransactions: Int
+            let mostCommonTransactionDescription: String
+            let mostCommonTransactionCount: Int
+        }
+
+        struct LargestExpense: Decodable {
+            let id: String
+            let date: Date
+            let amount: RESTInsightData.CurrencyDenominatedAmount
+            let description: String
+        }
+
+        let totalExpenses: CurrencyDenominatedAmount
+        let commonTransactionsOverview: Overview
+        let largestExpense: LargestExpense
+    }
+
+    struct WeeklySummaryExpenseTransactions: Decodable {
+        let week: RESTInsightData.Week
+        let transactionSummary: TransactionSummary
+    }
+
     struct MonthlyExpensesByCategory: Decodable {
         struct CategorySpending: Decodable {
             let categoryCode: String
@@ -172,6 +176,27 @@ enum RESTInsightData: Decodable {
 
         let month: RESTInsightData.Month
         let expensesByCategory: [CategorySpending]
+    }
+
+    struct MonthlySummaryExpenseTransactions: Decodable {
+        let month: RESTInsightData.Month
+        let transactionSummary: TransactionSummary
+    }
+
+    struct NewIncomeTransaction: Decodable {
+        let transactionId: String
+        let accountId: String
+    }
+
+    struct SuggestSetUpSavingsAccount: Decodable {
+        struct Account: Decodable {
+            let accountId: String
+            let accountName: String
+        }
+
+        let balance: CurrencyDenominatedAmount
+        let savingsAccount: Account
+        let currentAccount: Account
     }
 
     case unknown
@@ -188,7 +213,11 @@ enum RESTInsightData: Decodable {
     case weeklyUncategorizedTransactions(WeeklyUncategorizedTransactions)
     case weeklySummaryExpensesByCategory(WeeklyExpensesByCategory)
     case weeklySummaryExpensesByDay(WeeklyExpensesByDay)
+    case weeklySummaryExpenseTransactions(WeeklySummaryExpenseTransactions)
     case monthlySummaryExpensesByCategory(MonthlyExpensesByCategory)
+    case monthlySummaryExpenseTransactions(MonthlySummaryExpenseTransactions)
+    case newIncomeTransaction(NewIncomeTransaction)
+    case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -198,7 +227,7 @@ enum RESTInsightData: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         do {
-            let type = try container.decode(RESTInsightDataType.self, forKey: .type)
+            let type = try container.decode(RESTActionableInsightType.self, forKey: .type)
 
             switch type {
             case .accountBalanceLow:
@@ -237,50 +266,29 @@ enum RESTInsightData: Decodable {
             case .weeklySummaryExpensesByCategory:
                 let data = try WeeklyExpensesByCategory(from: decoder)
                 self = .weeklySummaryExpensesByCategory(data)
-            case .weeklySummaryExpensesByDay:
+            case .weeklyExpensesByDay:
                 let data = try WeeklyExpensesByDay(from: decoder)
                 self = .weeklySummaryExpensesByDay(data)
             case .monthlySummaryExpensesByCategory:
                 let data = try MonthlyExpensesByCategory(from: decoder)
                 self = .monthlySummaryExpensesByCategory(data)
+            case .monthlySummaryExpenseTransactions:
+                let data = try MonthlyExpensesByCategory(from: decoder)
+                self = .monthlySummaryExpensesByCategory(data)
+            case .weeklySummaryExpenseTransactions:
+                let data = try WeeklySummaryExpenseTransactions(from: decoder)
+                self = .weeklySummaryExpenseTransactions(data)
+            case .newIncomeTransaction:
+                let data = try NewIncomeTransaction(from: decoder)
+                self = .newIncomeTransaction(data)
+            case .suggestSetUpSavingsAccount:
+                let data = try SuggestSetUpSavingsAccount(from: decoder)
+                self = .suggestSetUpSavingsAccount(data)
+            case .unknown:
+                self = .unknown
             }
         } catch {
             self = .unknown
-        }
-    }
-
-    var type: RESTInsightDataType? {
-        switch self {
-        case .unknown:
-            return nil
-        case .accountBalanceLow:
-            return .accountBalanceLow
-        case .budgetOverspent:
-            return .budgetOverspent
-        case .budgetCloseNegative:
-            return .budgetCloseNegative
-        case .budgetClosePositive:
-            return .budgetClosePositive
-        case .budgetSuccess:
-            return .budgetSuccess
-        case .budgetSummaryAchieved:
-            return .budgetSummaryAchieved
-        case .budgetSummaryOverspent:
-            return .budgetSummaryOverspent
-        case .largeExpense:
-            return .largeExpense
-        case .singleUncategorizedTransaction:
-            return .singleUncategorizedTransaction
-        case .doubleCharge:
-            return .doubleCharge
-        case .weeklyUncategorizedTransactions:
-            return .weeklyUncategorizedTransactions
-        case .weeklySummaryExpensesByCategory:
-            return .weeklySummaryExpensesByCategory
-        case .weeklySummaryExpensesByDay:
-            return .weeklySummaryExpensesByDay
-        case .monthlySummaryExpensesByCategory:
-            return .monthlySummaryExpensesByCategory
         }
     }
 }

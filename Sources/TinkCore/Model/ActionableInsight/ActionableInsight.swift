@@ -30,9 +30,11 @@ public struct ActionableInsight {
         case weeklySummaryExpensesByCategory(WeeklyExpensesByCategory)
         case weeklySummaryExpensesByDay(WeeklyExpensesByDay)
         case monthlySummaryExpensesByCategory(MonthlyExpensesByCategory)
-        case weeklySummaryExpenseTransactions // TODO: assume there is data here
-        case monthlySummaryExpenseTransactions // TODO: assume there is data here
-        case newIncomeTransaction // TODO: assume there is data here
+        case weeklySummaryExpenseTransactions(WeeklyTransactionsSummary)
+        case monthlySummaryExpenseTransactions(MonthlyTransactionsSummary)
+        case newIncomeTransaction(NewIncomeTransaction)
+        case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
+        case unknown(type: String)
     }
 
     public let id: ID
@@ -85,6 +87,26 @@ public extension ActionableInsight {
         public let spentAmount: CurrencyDenominatedAmount
     }
 
+    struct TransactionSummary {
+
+        public struct TransactionsOverview {
+            public let totalCount: Int
+            public let mostCommonDescription: String
+            public let mostCommonCount: Int
+        }
+
+        public struct LargestExpense {
+            let id: Transaction.ID
+            let date: Date
+            let amount: CurrencyDenominatedAmount
+            let description: String
+        }
+
+        public let totalExpenses: CurrencyDenominatedAmount
+        public let commonTransactionsOverview: TransactionsOverview
+        public let largestExpense: LargestExpense
+    }
+
     struct WeeklyExpensesByCategory {
         public let week: Week
         public let expensesByCategory: [CategorySpending]
@@ -105,9 +127,24 @@ public extension ActionableInsight {
         public let expenseStatisticsByDay: [ExpenseStatisticsByDay]
     }
 
+    struct WeeklyTransactionsSummary {
+        public let week: Week
+        public let summary: TransactionSummary
+    }
+
     struct MonthlyExpensesByCategory {
         public let month: Month
         public let expensesByCategory: [CategorySpending]
+    }
+
+    struct NewIncomeTransaction {
+        public let transactionID: Transaction.ID
+        public let accountID: Account.ID
+    }
+
+    struct MonthlyTransactionsSummary {
+        public let month: Month
+        public let summary: TransactionSummary
     }
 
     struct Month {
@@ -118,6 +155,17 @@ public extension ActionableInsight {
     struct Week {
         public let year: Int
         public let week: Int
+    }
+
+    struct SuggestSetUpSavingsAccount {
+        public struct AccountInfo {
+            public let id: Account.ID
+            public let name: String
+        }
+
+        public let balance: CurrencyDenominatedAmount
+        public let savingsAccount: AccountInfo
+        public let currentAccount: AccountInfo
     }
 }
 

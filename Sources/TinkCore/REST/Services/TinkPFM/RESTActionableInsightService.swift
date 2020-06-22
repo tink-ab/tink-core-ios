@@ -56,6 +56,8 @@ class RESTActionableInsightService {
                 return .success
             })
         }
+
+        return client.performRequest(request)
     }
 
     @discardableResult
