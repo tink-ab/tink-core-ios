@@ -1,17 +1,14 @@
 import Foundation
 
-public class RESTBeneficiaryService: BeneficiaryService {
+final class RESTBeneficiaryService: BeneficiaryService {
     private let client: RESTClient
-
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
 
     init(client: RESTClient) {
         self.client = client
     }
 
-    public func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
+    @discardableResult
+    func beneficiaries(completion: @escaping (Result<[Beneficiary], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTBeneficiaryListResponse>(path: "/api/v1/beneficiaries", method: .get, contentType: .json) { result in
             let mappedResult = result.map { $0.beneficiaries.map { Beneficiary(restBeneficiary: $0) } }
             completion(mappedResult)
@@ -31,7 +28,8 @@ public class RESTBeneficiaryService: BeneficiaryService {
     ///   - appURI: The end user will be redirected to this URI after the authorization code has been delivered.
     ///   - completion: The completion handler to call when the create beneficiary request is complete.
     /// - Returns: A cancellation handler.
-    public func createBeneficiary(
+    @discardableResult
+    func createBeneficiary(
         accountNumberKind: AccountNumberKind,
         accountNumber: String,
         name: String,

@@ -1,18 +1,14 @@
 import Foundation
 
-public final class RESTCategoryService: CategoryService {
-    private let client: Client
+final class RESTCategoryService: CategoryService {
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
-
     @discardableResult
-    public func categories(
+    func categories(
         completion: @escaping (Result<CategoryTree, Error>) -> Void
     ) -> Cancellable? {
         let request = RESTResourceRequest<[RESTCategory]>(path: "/api/v1/categories", method: .get, contentType: .json) { result in

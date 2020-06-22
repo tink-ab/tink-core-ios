@@ -26,8 +26,7 @@ public class Tink {
 
     private let sdkHeaderBehavior: SDKHeaderClientBehavior
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
-    public lazy var oAuthService = RESTOAuthService(client: client)
-    private(set) var client: RESTClient
+    let client: RESTClient
     public var sessionManagers: [SessionManager] = []
 
     // MARK: - Specifying the Credential
@@ -91,6 +90,9 @@ public class Tink {
 
     /// The current configuration.
     public let configuration: Configuration
+
+    // MARK: - Services
+    public private(set) lazy var services = ServiceContainer(client: client)
 }
 
 extension Tink {
@@ -116,7 +118,7 @@ extension Tink {
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        return oAuthService.authenticate(code: authorizationCode, completion: { [weak self] result in
+        return services.oAuthService.authenticate(code: authorizationCode, completion: { [weak self] result in
             do {
                 let accessToken = try result.get()
                 self?.userSession = .accessToken(accessToken.rawValue)
@@ -136,7 +138,7 @@ extension Tink {
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func _createTemporaryUser(for market: Market, locale: Locale = Tink.defaultLocale, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        return oAuthService.createAnonymous(market: market, locale: locale, origin: nil) { [weak self] result in
+        return services.oAuthService.createAnonymous(market: market, locale: locale, origin: nil) { [weak self] result in
             let mappedResult = result.mapError { UserError(createTemporaryUserError: $0) ?? $0 }
             do {
                 let accessToken = try mappedResult.get()

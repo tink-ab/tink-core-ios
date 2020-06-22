@@ -1,18 +1,15 @@
 import Foundation
 
-public final class RESTProviderService: ProviderService {
+final class RESTProviderService: ProviderService {
 
     private let client: RESTClient
-
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
 
     init(client: RESTClient) {
         self.client = client
     }
 
-    public func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
+    @discardableResult
+    func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
 
         var parameters = [
             URLQueryItem(name: "includeTestProviders", value: includeTestProviders ? "true" : "false")
@@ -43,6 +40,5 @@ public final class RESTProviderService: ProviderService {
         }
 
         return client.performRequest(request)
-
     }
 }

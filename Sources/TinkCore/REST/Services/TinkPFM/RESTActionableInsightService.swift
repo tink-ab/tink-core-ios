@@ -1,10 +1,10 @@
 import Foundation
 
-class RESTActionableInsightService {
+final class RESTActionableInsightService {
     
-    private let client: Client
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 

@@ -1,19 +1,15 @@
 import Foundation
 
-public final class RESTAccountService: AccountService {
+final class RESTAccountService: AccountService {
 
-    private let client: Client
+    private let client: RESTClient
 
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
-
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 
     @discardableResult
-    public func accounts(completion: @escaping (Result<[Account], Error>) -> Void) -> Cancellable? {
+    func accounts(completion: @escaping (Result<[Account], Error>) -> Void) -> Cancellable? {
         let request = RESTResourceRequest<RESTAccountListResponse>(path: "/api/v1/accounts/list", method: .get, contentType: .json) { result in
             let newResult = result.map { $0.accounts.map(Account.init) }
             completion(newResult)

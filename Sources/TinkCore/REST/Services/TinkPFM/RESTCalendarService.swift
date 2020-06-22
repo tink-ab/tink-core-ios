@@ -1,18 +1,14 @@
 import Foundation
 
-public final class RESTCalendarService: CalendarService {
-    private let client: Client
+final class RESTCalendarService: CalendarService {
+    private let client: RESTClient
 
-    init(client: Client) {
+    init(client: RESTClient) {
         self.client = client
     }
 
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
-
     @discardableResult
-    public func period(
+    func period(
         period: String,
         completion: @escaping (Result<[Period], Error>) -> Void
     ) -> Cancellable? {

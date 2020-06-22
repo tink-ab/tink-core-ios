@@ -1,18 +1,15 @@
 import Foundation
 
-public final class RESTAuthenticationService: AuthenticationService {
+final class RESTAuthenticationService: AuthenticationService {
 
     private let client: RESTClient
-
-    public init(tink: Tink) {
-        self.client = tink.client
-    }
 
     init(client: RESTClient) {
         self.client = client
     }
 
-    public func clientDescription(clientID: String, scopes: [Scope], redirectURI: URL, completion: @escaping (Result<ClientDescription, Error>) -> Void) -> RetryCancellable? {
+    @discardableResult
+    func clientDescription(clientID: String, scopes: [Scope], redirectURI: URL, completion: @escaping (Result<ClientDescription, Error>) -> Void) -> RetryCancellable? {
 
         let body = RESTDescribeOAuth2ClientRequest(clientId: clientID, redirectUri: redirectURI.absoluteString, scope: scopes.scopeDescription)
 
@@ -23,7 +20,8 @@ public final class RESTAuthenticationService: AuthenticationService {
         return client.performRequest(request)
     }
 
-    public func authorize(clientID: String, redirectURI: URL, scopes: [Scope], completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
+    @discardableResult
+    func authorize(clientID: String, redirectURI: URL, scopes: [Scope], completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
 
         let body = [
             "clientId": clientID,
