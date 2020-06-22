@@ -11,7 +11,7 @@ class RESTActionableInsightService {
     @discardableResult
     public func insights(
         completion: @escaping (Result<[ActionableInsight], Error>) -> Void
-    ) -> Cancellable? {
+    ) -> RetryCancellable? {
         let request = RESTResourceRequest<[RESTActionableInsight]>(path: "/api/v1/insights", method: .get, contentType: .json) { result in
             completion(result.map { $0.compactMap(ActionableInsight.init) })
         }
@@ -24,7 +24,7 @@ class RESTActionableInsightService {
     @discardableResult
     public func archivedInsights(
         completion: @escaping (Result<[ActionableInsight], Error>) -> Void
-    ) -> Cancellable? {
+    ) -> RetryCancellable? {
         let request = RESTResourceRequest<[RESTArchivedInsight]>(path: "/api/v1/insights/archived", method: .get, contentType: .json) { result in
             completion(result.map { $0.compactMap(ActionableInsight.init) })
         }
@@ -32,7 +32,11 @@ class RESTActionableInsightService {
     }
 
     @discardableResult
-    public func selectInsightAction(insightAction: String, insightID: String, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    public func selectInsightAction(
+        insightAction: String,
+        insightID: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) -> RetryCancellable? {
 
         let body = [
             "insightAction": insightAction,
@@ -58,7 +62,7 @@ class RESTActionableInsightService {
     public func archiveInsight(
         id: String,
         completion: @escaping (Result<Void, Error>) -> Void
-    ) -> Cancellable? {
+    ) -> RetryCancellable? {
         let request = RESTSimpleRequest(path: "/api/v1/insights/\(id)/archive", method: .put, contentType: .json, completion: { result in
             let mapped = result.map { (response) -> Void in
                 return ()
