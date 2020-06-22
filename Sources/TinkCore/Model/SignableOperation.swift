@@ -2,18 +2,9 @@ import Foundation
 
 /// SignableOperation object with the status of the transfer.
 public struct SignableOperation {
+
     /// A unique identifier of a `SignableOperation`.
-    public struct ID: Hashable, ExpressibleByStringLiteral {
-        public init(stringLiteral value: String) {
-            self.value = value
-        }
-
-        public init(_ value: String) {
-            self.value = value
-        }
-
-        public let value: String
-    }
+    public typealias ID = Identifier<SignableOperation>
 
     public enum Status {
         case awaitingCredentials
