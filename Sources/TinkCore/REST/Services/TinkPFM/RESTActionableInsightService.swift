@@ -1,6 +1,6 @@
 import Foundation
 
-class RESTActionableInsightService {
+class RESTActionableInsightService: ActionableInsightService {
 
     private let client: RESTClient
 
@@ -32,7 +32,7 @@ class RESTActionableInsightService {
     }
 
     @discardableResult
-    public func selectInsightAction(
+    public func selectAction(
         insightAction: String,
         insightID: String,
         completion: @escaping (Result<Void, Error>) -> Void
@@ -61,7 +61,7 @@ class RESTActionableInsightService {
     }
 
     @discardableResult
-    public func archiveInsight(
+    public func archive(
         id: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
