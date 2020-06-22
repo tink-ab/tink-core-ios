@@ -5,6 +5,9 @@ endif
 ifeq ($(strip $(shell command -v xcodegen 2> /dev/null)),)
 	brew install xcodegen
 endif
+ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
+	brew install swiftformat
+endif
 
 generate-carthage-project:
 	xcodegen generate
