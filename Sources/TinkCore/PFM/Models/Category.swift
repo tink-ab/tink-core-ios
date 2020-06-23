@@ -8,7 +8,7 @@ public struct Category: Equatable {
 }
 
 extension Category {
-    public struct Code: Hashable, ExpressibleByStringLiteral, Codable {
+    public struct Code: Hashable, ExpressibleByStringLiteral {
         public let value: String
 
         public init(_ value: String) {
@@ -17,16 +17,6 @@ extension Category {
 
         public init(stringLiteral value: String) {
             self.value = value
-        }
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            self.value = try container.decode(String.self)
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.singleValueContainer()
-            try container.encode(value)
         }
     }
 }
@@ -56,7 +46,7 @@ extension Category.Code {
 
 extension Category {
     /// A type of category.
-    public enum Kind: String, Hashable, Codable {
+    public enum Kind: String, Hashable {
         /// The expenses category type.
         case expenses
         /// The income category type.
