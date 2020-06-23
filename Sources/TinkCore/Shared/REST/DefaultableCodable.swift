@@ -1,7 +1,7 @@
 import Foundation
 
 protocol DefaultableDecodable: Decodable, RawRepresentable where RawValue: Decodable {
-    static var decodeFallbackValue: Self { get set }
+    static var decodeFallbackValue: Self { get }
 }
 
 extension DefaultableDecodable {
