@@ -71,7 +71,7 @@ public extension ActionableInsight {
         public let period: String
     }
 
-    struct LargeExpense: Decodable {
+    struct LargeExpense {
         public let transactionID: Transaction.ID
         public let amount: CurrencyDenominatedAmount
     }
