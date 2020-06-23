@@ -5,6 +5,7 @@ public struct Category: Equatable {
     public let id: ID
     public let code: Category.Code
     public let name: String
+    public let sortOrder: Int
 }
 
 extension Category {
