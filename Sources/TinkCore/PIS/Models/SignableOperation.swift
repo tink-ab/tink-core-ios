@@ -2,7 +2,6 @@ import Foundation
 
 /// SignableOperation object with the status of the transfer.
 public struct SignableOperation {
-
     /// A unique identifier of a `SignableOperation`.
     public typealias ID = Identifier<SignableOperation>
 

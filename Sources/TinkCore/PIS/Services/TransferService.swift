@@ -14,6 +14,7 @@ public protocol TransferService {
         dueDate: Date?,
         redirectURI: URL,
         completion: @escaping (Result<SignableOperation, Error>
-    ) -> Void) -> RetryCancellable?
+        ) -> Void
+    ) -> RetryCancellable?
     func transferStatus(id: Transfer.ID, completion: @escaping (Result<SignableOperation, Error>) -> Void) -> RetryCancellable?
 }

@@ -1,7 +1,6 @@
 import Foundation
 
 final class RESTAccountService: AccountService {
-
     private let client: RESTClient
 
     init(client: RESTClient) {

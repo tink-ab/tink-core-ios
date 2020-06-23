@@ -1,6 +1,6 @@
 import Foundation
 #if os(iOS)
-import UIKit
+    import UIKit
 #endif
 
 /// The `Tink` class encapsulates a connection to the Tink API.
@@ -92,6 +92,7 @@ public class Tink {
     public let configuration: Configuration
 
     // MARK: - Services
+
     public private(set) lazy var services = ServiceContainer(client: client)
 }
 

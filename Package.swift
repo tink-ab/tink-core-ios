@@ -12,7 +12,8 @@ let package = Package(
     products: [
         .library(
             name: "TinkCore",
-            targets: ["TinkCore"]),
+            targets: ["TinkCore"]
+        ),
     ],
     targets: [
         .target(

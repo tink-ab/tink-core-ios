@@ -32,7 +32,6 @@ struct RESTActionableInsight: Decodable {
 
 // Mapping from type string to enum. Values defined on backend here: https://github.com/tink-ab/tink-backend/blob/master/src/insights/lib/src/main/java/se/tink/backend/insights/core/valueobjects/InsightType.java
 enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
-
     static var decodeFallbackValue: RESTActionableInsightType = .unknown
 
     case unknown

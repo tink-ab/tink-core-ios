@@ -1,7 +1,6 @@
 import Foundation
 
 final class RESTTransactionService: TransactionService {
-
     private let client: RESTClient
 
     init(client: RESTClient) {
@@ -29,15 +28,15 @@ final class RESTTransactionService: TransactionService {
         searchQuery.sort = RESTSortType(transactionQuerySort: query.sort)
 
         let bodyEncoder = JSONEncoder()
-        bodyEncoder.dateEncodingStrategy = .custom({ (date, encoder) in
+        bodyEncoder.dateEncodingStrategy = .custom { date, encoder in
             var container = encoder.singleValueContainer()
             try container.encode(Int(date.timeIntervalSince1970 * 1000))
-        })
+        }
         let body = try! bodyEncoder.encode(searchQuery)
 
         let request = RESTResourceRequest<RESTSearchResponse>(path: "/api/v1/search", method: .post, body: body, contentType: .json) { result in
             let mapped = result.map { transactionsResponse -> ([Transaction], Bool) in
-                let transactions = transactionsResponse.results.compactMap({$0.transaction.flatMap(Transaction.init)})
+                let transactions = transactionsResponse.results.compactMap { $0.transaction.flatMap(Transaction.init) }
                 let hasMore = transactions.count >= (query.limit ?? 50)
                 return (transactions, hasMore)
             }
@@ -53,7 +52,6 @@ final class RESTTransactionService: TransactionService {
         as newCategoryID: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> Cancellable? {
-
         let listRequest = RESTCategorizeTransactionsListRequest(
             categorizationList: [
                 RESTCategorizeTransactionsRequest(
@@ -65,7 +63,6 @@ final class RESTTransactionService: TransactionService {
 
         let request = RESTSimpleRequest(path: "/api/v1/transactions/categorize-multiple", method: .put, body: listRequest, contentType: .json) { result in
             let mapped = result.map { (_) -> Void in
-                return
             }
             completion(mapped)
         }
@@ -79,7 +76,6 @@ final class RESTTransactionService: TransactionService {
         ifCategorizedAs categoryID: String,
         completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable? {
-
         let request = RESTResourceRequest<RESTSimilarTransactionsResponse>(path: "/api/v1/transactions/\(transactionID)/similar", method: .get, contentType: nil, parameters: [.init(name: "categoryId", value: categoryID)]) { result in
             let mapped = result.map { $0.transactions.compactMap(Transaction.init) }
             completion(mapped)

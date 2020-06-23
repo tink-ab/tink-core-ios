@@ -5,7 +5,7 @@ import Foundation
 /// The source account must belong to the authenticated user. Source and destination accounts are sent in a special URI format.
 public struct Transfer {
     /// A unique identifier of a `Transfer`.
-    public typealias ID = Identifier<Transfer> 
+    public typealias ID = Identifier<Transfer>
 
     /// The amount that will be transferred. Should be positive.
     let amount: Decimal

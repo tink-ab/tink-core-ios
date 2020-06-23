@@ -10,7 +10,7 @@ extension ActionableInsight {
             let title = restInsight.title,
             let description = restInsight.description,
             let created = restInsight.createdTime else {
-                return nil
+            return nil
         }
 
         let state = State.active(actions.map { InsightAction(label: $0.label, data: $0.data.flatMap(InsightActionData.init)) })
@@ -26,17 +26,16 @@ extension ActionableInsight {
             let description = restArchivedInsight.description,
             let archivedDate = restArchivedInsight.dateArchived,
             let created = restArchivedInsight.dateInsightCreated else {
-                return nil
+            return nil
         }
 
-       let state = State.archived(archivedDate)
-       self = .init(id: ID(id), kind: kind, state: state, title: title, description: description, created: created)
+        let state = State.archived(archivedDate)
+        self = .init(id: ID(id), kind: kind, state: state, title: title, description: description, created: created)
     }
 }
 
 extension ActionableInsight.Kind {
     init?(restType: RESTActionableInsightType, restInsightData: RESTInsightData) {
-
         switch (restType, restInsightData) {
         case (.unknown, _): return nil // TODO: Do we want to expose an "unknown" type?
 
@@ -74,7 +73,8 @@ extension ActionableInsight.Kind {
             let summary = ActionableInsight.BudgetPeriodSummary(
                 achievedBudgets: summary.achievedBudgets.map(ActionableInsight.BudgetSummary.init),
                 overspentBudgets: summary.overspentBudgets.map(ActionableInsight.BudgetSummary.init),
-                period: summary.periodUnit)
+                period: summary.periodUnit
+            )
             self = .budgetSummaryOverspent(summary)
 
         case (.largeExpense, .largeExpense(let largeExpense)):
@@ -94,23 +94,25 @@ extension ActionableInsight.Kind {
                 week: .init(year: weeklyExpenses.week.year, week: weeklyExpenses.week.week),
                 expensesByCategory: weeklyExpenses.expensesByCategory.map {
                     ActionableInsight.CategorySpending(categoryCode: Category.Code($0.categoryCode), spentAmount: .init(restAIAmount: $0.spentAmount))
-            })
+                }
+            )
             self = .weeklySummaryExpensesByCategory(expensesByCategory)
 
         case (.weeklyExpensesByDay, .weeklySummaryExpensesByDay(let weeklyExpenses)):
 
             let expensesByDay = ActionableInsight.WeeklyExpensesByDay(
                 week: .init(year: weeklyExpenses.week.year, week: weeklyExpenses.week.week),
-                expenseStatisticsByDay: weeklyExpenses.expenseStatisticsByDay.map { ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay(date: $0.date, expenseStatistics: .init(totalAmount: .init(restAIAmount: $0.expenseStatistics.totalAmount), averageAmount: .init(restAIAmount: $0.expenseStatistics.averageAmount))) })
+                expenseStatisticsByDay: weeklyExpenses.expenseStatisticsByDay.map { ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay(date: $0.date, expenseStatistics: .init(totalAmount: .init(restAIAmount: $0.expenseStatistics.totalAmount), averageAmount: .init(restAIAmount: $0.expenseStatistics.averageAmount))) }
+            )
             self = .weeklySummaryExpensesByDay(expensesByDay)
 
         case (.weeklySummaryExpenseTransactions, .weeklySummaryExpenseTransactions(let data)):
-            let transactionSummary = ActionableInsight.TransactionSummary.init(restSummary: data.transactionSummary)
+            let transactionSummary = ActionableInsight.TransactionSummary(restSummary: data.transactionSummary)
             let summary = ActionableInsight.WeeklyTransactionsSummary(week: .init(year: data.week.year, week: data.week.week), summary: transactionSummary)
             self = .weeklySummaryExpenseTransactions(summary)
 
         case (.monthlySummaryExpenseTransactions, .monthlySummaryExpenseTransactions(let data)):
-            let transactionSummary = ActionableInsight.TransactionSummary.init(restSummary: data.transactionSummary)
+            let transactionSummary = ActionableInsight.TransactionSummary(restSummary: data.transactionSummary)
             let summary = ActionableInsight.MonthlyTransactionsSummary(month: .init(year: data.month.year, month: data.month.month), summary: transactionSummary)
             self = .monthlySummaryExpenseTransactions(summary)
 
@@ -121,12 +123,12 @@ extension ActionableInsight.Kind {
             let data = ActionableInsight.SuggestSetUpSavingsAccount(
                 balance: .init(restAIAmount: data.balance),
                 savingsAccount: .init(id: .init(data.savingsAccount.accountId), name: data.savingsAccount.accountName),
-                currentAccount: .init(id: .init(data.currentAccount.accountId), name: data.currentAccount.accountName))
+                currentAccount: .init(id: .init(data.currentAccount.accountId), name: data.currentAccount.accountName)
+            )
 
             self = .suggestSetUpSavingsAccount(data)
         default:
             self = .unknown
-
         }
     }
 }
@@ -150,12 +152,14 @@ extension ActionableInsight.TransactionSummary {
             commonTransactionsOverview: .init(
                 totalCount: restSummary.commonTransactionsOverview.totalNumberOfTransactions,
                 mostCommonDescription: restSummary.commonTransactionsOverview.mostCommonTransactionDescription,
-                mostCommonCount: restSummary.commonTransactionsOverview.mostCommonTransactionCount),
+                mostCommonCount: restSummary.commonTransactionsOverview.mostCommonTransactionCount
+            ),
             largestExpense: .init(
                 id: .init(restSummary.largestExpense.id),
                 date: restSummary.largestExpense.date,
                 amount: .init(restAIAmount: restSummary.largestExpense.amount),
-                description: restSummary.largestExpense.description)
+                description: restSummary.largestExpense.description
+            )
         )
     }
 }
@@ -183,7 +187,7 @@ extension InsightActionData {
             self = .categorizeTransactions(categorizeTransactions.transactionIds.map(Transaction.ID.init(_:)))
         case .viewTransactionsByCategory(let transactionsByCategory):
             var categoryDict: [Category.Code: [Transaction.ID]] = [:]
-            transactionsByCategory.transactionIdsByCategory.forEach({ categoryDict[Category.Code($0.key)] = $0.value.transactionIds.map(Transaction.ID.init(_:)) })
+            transactionsByCategory.transactionIdsByCategory.forEach { categoryDict[Category.Code($0.key)] = $0.value.transactionIds.map(Transaction.ID.init(_:)) }
             self = .viewTransactionsByCategory(categoryDict)
         }
     }

@@ -1,7 +1,6 @@
 import Foundation
 
 final class RESTUserService: UserService {
-
     private let client: RESTClient
 
     init(client: RESTClient) {
