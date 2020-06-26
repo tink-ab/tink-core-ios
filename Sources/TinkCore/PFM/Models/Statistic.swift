@@ -29,7 +29,7 @@ public struct Statistic {
     let userID: String
 }
 
-public enum StatisticPeriod: Equatable {
+public enum StatisticPeriod: Hashable {
     case year(Int)
     case week(year: Int, week: Int)
     case month(year: Int, month: Int)
