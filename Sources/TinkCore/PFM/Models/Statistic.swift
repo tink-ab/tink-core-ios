@@ -36,7 +36,7 @@ public enum StatisticPeriod: Hashable {
     case day(year: Int, month: Int, day: Int)
 
     /// Will map to the proper backend string representation of the reaspective periods.
-    var stringRepresentation: String {
+    public var stringRepresentation: String {
         switch self {
         case .year(let year): return "\(year)"
         case .month(year: let year, month: let month): return String(format: "%d-%02d", year, month)
