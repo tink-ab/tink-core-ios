@@ -2,9 +2,9 @@ import Foundation
 
 struct RESTUser: Decodable {
     /// The date when the user was created.
-    var created: Date?
+    var created: Date
     /// The user-specific feature flags assigned to the user.
-    var flags: [String]
+    var flags: [String]?
     /// The internal identifier of the user.
     var id: String
     /// Detected national identification number of the end-user.
@@ -13,4 +13,6 @@ struct RESTUser: Decodable {
     var profile: RESTUserProfile
     /// The username (usually email) of the user.
     var username: String?
+    /// The internal identifier of the app that the user belongs to.
+    var appId: String
 }
