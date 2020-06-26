@@ -10,3 +10,14 @@ public struct Period {
     public let name: String
     public let resolution: Resolution
 }
+
+public extension Period.Resolution {
+    var statisticResolution: Statistic.Resolution {
+        switch self {
+        case .monthly:
+            return .monthly
+        case .monthlyAdjusted:
+            return .monthlyAdjusted
+        }
+    }
+}
