@@ -18,6 +18,7 @@ public final class ServiceContainer {
     public private(set) lazy var actionableInsightService: ActionableInsightService = RESTActionableInsightService(client: client)
     public private(set) lazy var budgetService: BudgetService = RESTBudgetService(client: client)
     public private(set) lazy var calendarService: CalendarService = RESTCalendarService(client: client)
+    public private(set) lazy var categoryService: CategoryService = RESTCategoryService(client: client)
     public private(set) lazy var statisticService: StatisticService = RESTStatisticService(client: client)
     public private(set) lazy var transactionService: TransactionService = RESTTransactionService(client: client)
 }
