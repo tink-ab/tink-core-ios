@@ -114,3 +114,6 @@ public struct Account {
     /// A unique identifier to group accounts belonging the same financial institution. Available for aggregated accounts only.
     public let financialInstitutionID: Provider.FinancialInstitution.ID?
 }
+
+// TODO: We need to look over this conformance
+extension Account: Hashable {}

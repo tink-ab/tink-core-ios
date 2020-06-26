@@ -33,3 +33,6 @@ struct TransferDestination: Equatable {
     /// If true, the uri will be a regular expression, for instance "se-pg://" meaning that the source account can make PG payments.
     let isMatchingMultipleDestinations: Bool?
 }
+
+// TODO: We need to look over this conformance
+extension TransferDestination: Hashable {}
