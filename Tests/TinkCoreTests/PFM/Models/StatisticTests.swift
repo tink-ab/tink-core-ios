@@ -32,5 +32,14 @@ class StatisticTests: XCTestCase {
         XCTAssertEqual(dayPeriod.stringRepresentation, "2020-01-05")
         XCTAssertEqual(dayPeriod2.stringRepresentation, "2020-10-15")
     }
+
+    func testStatisticTypeStringInitializer() {
+
+        XCTAssertEqual(StatisticPeriod(string: "abc"), nil)
+        XCTAssertEqual(StatisticPeriod(string: "2000"), StatisticPeriod.year(2000))
+        XCTAssertEqual(StatisticPeriod(string: "2000:01"), StatisticPeriod.week(year: 2000, week: 1))
+        XCTAssertEqual(StatisticPeriod(string: "2000-01"), StatisticPeriod.month(year: 2000, month: 1))
+        XCTAssertEqual(StatisticPeriod(string: "2000-10-02"), StatisticPeriod.day(year: 2000, month: 10, day: 2))
+    }
 }
 
