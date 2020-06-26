@@ -1,9 +1,12 @@
 import Foundation
 
 extension Statistic {
-    init(restStatistic: RESTStatistic) {
+    init?(restStatistic: RESTStatistic) {
+        guard let period = StatisticPeriod(string: restStatistic.period) else {
+            return nil
+        }
         self =
-            .init(description: restStatistic.description, payload: restStatistic.payload, period: restStatistic.period, resoultion: .init(restStatisticResolution: restStatistic.resolution), kind: .init(restType: restStatistic.type), value: restStatistic.value, userID: restStatistic.userId)
+            .init(description: restStatistic.description, payload: restStatistic.payload, period: period, resoultion: .init(restStatisticResolution: restStatistic.resolution), kind: .init(restType: restStatistic.type), value: restStatistic.value, userID: restStatistic.userId)
     }
 }
 

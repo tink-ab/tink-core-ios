@@ -33,7 +33,7 @@ final class RESTStatisticService: StatisticService {
         let body = try! bodyEncoder.encode(query)
 
         let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: body, contentType: .json) { result -> Void in
-            completion(result.map { $0.map(Statistic.init) })
+            completion(result.map { $0.compactMap(Statistic.init) })
         }
 
         return client.performRequest(request)
