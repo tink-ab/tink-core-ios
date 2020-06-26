@@ -1,10 +1,10 @@
 import Foundation
 
 public struct UserProfile {
-//    let currency: CurrencyCode
+    public let currency: CurrencyCode
     public let locale: Locale
     public let market: Market
-//    let periodAdjustedDay: Int
-//    let periodMode: PeriodMode
-    let timeZone: TimeZone?
+    public let periodAdjustedDay: Int
+    public let periodMode: Period.Resolution
+    public let timeZone: TimeZone?
 }
