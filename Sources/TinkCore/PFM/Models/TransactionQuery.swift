@@ -64,12 +64,12 @@ public struct TransactionsQuery: Equatable {
     }
 }
 
-enum TransactionsQueryError: Error {
+public enum TransactionsQueryError: Error {
     /// We are unable to reliably match queries with a search string, so only update transactions with matching ids
     case notMatchable
 }
 
-extension Collection where Element == Transaction {
+public extension Collection where Element == Transaction {
     func filter(with query: TransactionsQuery) throws -> [Transaction] {
         if let queryString = query.query, !queryString.isEmpty { throw TransactionsQueryError.notMatchable }
 

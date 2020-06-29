@@ -3,7 +3,7 @@ import Foundation
 struct RESTStatisticQuery: Encodable {
     let description: String?
     let padResultUntilToday: Bool?
-    let periods: [Date]?
+    let periods: [String]?
     let resolution: RESTStatisticQueryResolution?
     let types: [RESTStatisticQueryType]?
 }

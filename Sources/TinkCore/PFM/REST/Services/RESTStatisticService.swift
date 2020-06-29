@@ -10,13 +10,13 @@ final class RESTStatisticService: StatisticService {
     @discardableResult
     func statistics(
         description: String?,
-        periods: [DateComponents] = [],
+        periods: [StatisticPeriod] = [],
         types: [Statistic.Kind] = [],
         resolution: Statistic.Resolution,
         padResultsUntilToday: Bool = false,
         completion: @escaping (Result<[Statistic], Error>) -> Void
     ) -> Cancellable? {
-        let dates = periods.isEmpty ? nil : periods.compactMap { Calendar.current.date(from: $0) }
+        let dates = periods.isEmpty ? nil : periods.compactMap { $0.stringRepresentation }
 
         let query = RESTStatisticQuery(
             description: description,
@@ -26,14 +26,8 @@ final class RESTStatisticService: StatisticService {
             types: types.map(RESTStatisticQueryType.init)
         )
 
-        let bodyEncoder = JSONEncoder()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM"
-        bodyEncoder.dateEncodingStrategy = .formatted(dateFormatter)
-        let body = try! bodyEncoder.encode(query)
-
-        let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: body, contentType: .json) { result -> Void in
-            completion(result.map { $0.map(Statistic.init) })
+        let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: query, contentType: .json) { result -> Void in
+            completion(result.map { $0.compactMap(Statistic.init) })
         }
 
         return client.performRequest(request)

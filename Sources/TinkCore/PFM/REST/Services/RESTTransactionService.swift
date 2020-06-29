@@ -27,14 +27,7 @@ final class RESTTransactionService: TransactionService {
         searchQuery.order = RESTOrderType(transactionQueryOrder: query.order)
         searchQuery.sort = RESTSortType(transactionQuerySort: query.sort)
 
-        let bodyEncoder = JSONEncoder()
-        bodyEncoder.dateEncodingStrategy = .custom { date, encoder in
-            var container = encoder.singleValueContainer()
-            try container.encode(Int(date.timeIntervalSince1970 * 1000))
-        }
-        let body = try! bodyEncoder.encode(searchQuery)
-
-        let request = RESTResourceRequest<RESTSearchResponse>(path: "/api/v1/search", method: .post, body: body, contentType: .json) { result in
+        let request = RESTResourceRequest<RESTSearchResponse>(path: "/api/v1/search", method: .post, body: searchQuery, contentType: .json) { result in
             let mapped = result.map { transactionsResponse -> ([Transaction], Bool) in
                 let transactions = transactionsResponse.results.compactMap { $0.transaction.flatMap(Transaction.init) }
                 let hasMore = transactions.count >= (query.limit ?? 50)

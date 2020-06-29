@@ -25,3 +25,6 @@ struct AccountDetails {
     /// A timestamp of the next day of terms change of the account. Applicable for loans.
     let nextDayOfTermsChange: Date?
 }
+
+// TODO: We need to look over this conformance
+extension AccountDetails: Hashable {}
