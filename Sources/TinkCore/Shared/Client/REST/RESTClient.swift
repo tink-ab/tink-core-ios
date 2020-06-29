@@ -6,6 +6,15 @@ final class RESTClient {
     private let session: URLSession
     private let sessionDelegate: URLSessionDelegate?
 
+    private let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .custom { date, encoder in
+            var container = encoder.singleValueContainer()
+            try container.encode(Int(date.timeIntervalSince1970 * 1000))
+        }
+        return encoder
+    }()
+
     init(restURL: URL, certificates: String? = nil, behavior: ClientBehavior = EmptyClientBehavior()) {
         self.restURL = restURL
         self.behavior = behavior
@@ -79,7 +88,7 @@ final class RESTClient {
         }
 
         if let body = request.body {
-            urlRequest.httpBody = try JSONEncoder().encode(body)
+            urlRequest.httpBody = try encoder.encode(body)
         } else {
             urlRequest.httpBody = nil
         }
