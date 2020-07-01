@@ -14,14 +14,15 @@
 		01FE10AEFAA276EACD547CB1 /* RESTAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43632497EEF7C97FE78311F /* RESTAuthenticationService.swift */; };
 		027347BF5CDB6908FDC5910A /* RESTTransactionsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A84EFFB3CFAAE2A2BF419F /* RESTTransactionsResult.swift */; };
 		028CBDA2188F80E6D91D9169 /* RESTThirdPartyAppAuthenticationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD0617A133051557E77FB2 /* RESTThirdPartyAppAuthenticationPayload.swift */; };
+		043C55706DBA66CF11BAAD27 /* StatisticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5119ED073C1FF67BF2D2B /* StatisticTests.swift */; };
 		0653733F48522507A92C1B29 /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62A081B4B197F9C0F16B7D /* CertificatePinningDelegate.swift */; };
 		0AD68A421D6D32C9E3EFD8A8 /* CredentialRESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0836D5167F87874F569C80AE /* CredentialRESTTests.swift */; };
-		0B4DB576FD3217F366526E19 /* CategoryNode+RESTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F05442C09BE3A705087E2 /* CategoryNode+RESTCategory.swift */; };
 		0C892D49DA7C14B37BBF769C /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AC13A0EC5667797708C98F /* ProviderService.swift */; };
 		0CD11CC046604572F3885A7C /* RESTPeriodMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB18DE78736928612AC97A /* RESTPeriodMode.swift */; };
 		0D306722F6B1B9D2E5B0C35D /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723FFFD86F03FAD2DCFA9812 /* TransactionService.swift */; };
 		0DE086CC7694A45679280274 /* TransferDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D1F7DD3B40E8E5792E70AF /* TransferDestination.swift */; };
 		0E99CF855E3B7D8CD1E1A811 /* RESTTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB41AA9327D5AF4E28B87C3 /* RESTTransferService.swift */; };
+		0F02CFB0FA4BACEEDE46EF8D /* URLSessionRequestRetryCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75E1E343FA1BA375E37B6 /* URLSessionRequestRetryCancellable.swift */; };
 		1013A24F900A5D09D6A1FD9E /* UserProfile+RESTUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEEB6A142DDE8C783FE3A7 /* UserProfile+RESTUserProfile.swift */; };
 		1141A66BA7D4AF7834C835C5 /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856E3F7838ECE736B678896 /* RESTClient.swift */; };
 		1235BA0C15C849E822168E74 /* RESTAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A615950D60A798A731D2CB /* RESTAccountService.swift */; };
@@ -37,7 +38,6 @@
 		172F44881344475AF5622A09 /* Provider+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E90D8D21DCE28C59877B9B /* Provider+REST.swift */; };
 		1778B6AE1DA661EFFBF6AA68 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9458B82FF6E6B75B028059 /* UserSession.swift */; };
 		177AB4069A5B5F864B262097 /* RESTActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3889C64C778DC8268272702A /* RESTActionableInsightService.swift */; };
-		1888F08BE28435D2DB659946 /* URLSessionRequestRetryCancellabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA092EE7EEB19306AB4617 /* URLSessionRequestRetryCancellabel.swift */; };
 		19FB5AA10614D580DD1E6BE7 /* RESTCreateCredentialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781D8F8F0826B741657A06A8 /* RESTCreateCredentialsRequest.swift */; };
 		1D6E7279603E9FE6A652A946 /* RESTTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831640C4808CEF75A59C179 /* RESTTransactionService.swift */; };
 		1E6D2FCA230C34B4FAAAD921 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627C6CD0F5AC1F6D39A9996 /* Market.swift */; };
@@ -97,6 +97,7 @@
 		41BE34DB267F1160B9629412 /* SecCertificate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA347F456551D28025858A9 /* SecCertificate+Swift.swift */; };
 		421DC871BBC66D3947F9DC0A /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B953BF2082691C237C480 /* ServiceContainer.swift */; };
 		42BEDE012E17BFFFDD289CA7 /* RESTStatisticQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA4F26DDB83DD2EFC08D66 /* RESTStatisticQuery.swift */; };
+		42C80AB0B9F23199F9CD5959 /* Category+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B6123C643AB2D6ACF9014 /* Category+REST.swift */; };
 		4408F22BC1F6A74546104007 /* BeneficiaryRESTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0ECC92402A5369EA98DEB /* BeneficiaryRESTTest.swift */; };
 		4415C4DCAEBC24ED2E1AD93B /* Retriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC24BD77279CCFFC5D33742 /* Retriable.swift */; };
 		4468CA99202BD4D11FAA84BF /* RESTCreateCredentialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781D8F8F0826B741657A06A8 /* RESTCreateCredentialsRequest.swift */; };
@@ -135,6 +136,7 @@
 		5B146F69CAF032003E538485 /* RESTBeneficiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A00EEC1A0481789B71C3C6 /* RESTBeneficiaryListResponse.swift */; };
 		5B355DC64C317C574C8FB21E /* TransferRESTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F88CBE75725BDFD21A1CC6A /* TransferRESTTest.swift */; };
 		5B6C8E7525AF7227B3E06040 /* SignableOperation+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1864B28698E8EA99365551E /* SignableOperation+REST.swift */; };
+		5B8D016CA167248DA643E95B /* URLSessionRequestRetryCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75E1E343FA1BA375E37B6 /* URLSessionRequestRetryCancellable.swift */; };
 		5C80A5727739A87BB21F44BC /* RESTSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35658473C0304A45D5184A8 /* RESTSearchQuery.swift */; };
 		5CAB94D42B881A772082DAC9 /* RESTAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B41BBFC3E44F20228147B6 /* RESTAuthorizationResponse.swift */; };
 		5DE1C55457953A4F75BF286D /* Transaction+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6A058B7F8E117B3429BB9B /* Transaction+REST.swift */; };
@@ -142,14 +144,12 @@
 		5E3D74B288A1775B0CDC5831 /* RESTCurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C584C1B1C6A4771FF62BA82F /* RESTCurrencyDenominatedAmount.swift */; };
 		5E6325C0055121F5AD564474 /* BeneficiaryRESTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0ECC92402A5369EA98DEB /* BeneficiaryRESTTest.swift */; };
 		61353384EB80AFF71420A8D9 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3E155EE7205F6D9A91D532 /* ServiceError.swift */; };
-		61BCF5D231F83B6E25CA4E91 /* CategoryTree+RESTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEE82EFCD83B556147AA024 /* CategoryTree+RESTCategory.swift */; };
 		621E4F6FFB0B3C2D8D6FC187 /* RESTCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD70EC629E3B17D0BE0FD73B /* RESTCalendarService.swift */; };
 		62E51640410F353E92D223A2 /* RESTDescribeOAuth2ClientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA3711B3031177E0D5A25D /* RESTDescribeOAuth2ClientRequest.swift */; };
 		645E9566BF68698C5DFB2FC4 /* EmptyClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D50F2D6CACE18D15F1E5F1 /* EmptyClientBehavior.swift */; };
 		66FDD3DAC6341269472DF2F3 /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62A081B4B197F9C0F16B7D /* CertificatePinningDelegate.swift */; };
 		676D53772C4F648DE5A77968 /* RESTStatisticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CBE403086326F5EB0ACB9 /* RESTStatisticService.swift */; };
 		6B19F00950D64907F2CB048E /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C64B4809FBD76F39CAFCE6 /* Provider.swift */; };
-		6BCFAD879161A6FCA6DBAFEF /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ADB1FA5D8B0412E53473B4 /* Client.swift */; };
 		6C6D72036C042E723097FB6A /* RESTCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8125AC63D8F2408F25872B39 /* RESTCategoryType.swift */; };
 		6C9B88CEF91A6C954D01BA0F /* FinancialInstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C136045F7CA52D7F778ED7 /* FinancialInstitution.swift */; };
 		6D266C8EBC3775FA8C650852 /* CurrencyDenominatedAmountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C427DD6A2D51E600FD51A9 /* CurrencyDenominatedAmountTests.swift */; };
@@ -218,7 +218,6 @@
 		9F96C0713D035A673C283709 /* ActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008EC0EB0DF24282841C1210 /* ActionableInsightService.swift */; };
 		9FA59F7C9510C66241258728 /* BudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34A4D89E1DD0E9979692F6 /* BudgetService.swift */; };
 		A05ED007BA5E09D2DC2D83BB /* RESTCredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A453A70AC302CCB2F8C2BE /* RESTCredentialService.swift */; };
-		A17EBCD2D6BEF5FB5E654331 /* CategoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE092D3E1C2F452C9BB8398 /* CategoryNode.swift */; };
 		A331A892B33C26FB6ABB9AC8 /* RESTBeneficiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B0F53592E26BF3624E1A0B /* RESTBeneficiaryService.swift */; };
 		A401D9CF0CDD248C9A58B784 /* RESTArchivedInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD199591115E668FE6D485AF /* RESTArchivedInsight.swift */; };
 		A4A0C9BAF411AA7B855E5437 /* RESTBudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9B136358036C7503C6A71 /* RESTBudgetService.swift */; };
@@ -256,8 +255,6 @@
 		BAD7CA6198893E7B396448B1 /* TinkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13169F65264A8589570857C5 /* TinkCore.framework */; };
 		BB26A6D3F5AE05AA2FA38735 /* User+RESTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6C96670BE57A4F26DA53C /* User+RESTUser.swift */; };
 		BBF8063DCA8B64A627E0A3D3 /* RESTAccountListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0548BAE9DA13B55E7BA8985 /* RESTAccountListResponse.swift */; };
-		BC52BEB20010FEF742E1C421 /* CategoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE092D3E1C2F452C9BB8398 /* CategoryNode.swift */; };
-		BDFDB9EDC364A376E5805B4B /* URLSessionRequestRetryCancellabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA092EE7EEB19306AB4617 /* URLSessionRequestRetryCancellabel.swift */; };
 		BEAA94A50877A14C6F7D33F5 /* RESTTransferRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092BD49603FC86FB3D589E08 /* RESTTransferRequest.swift */; };
 		C289E4D079F8C59BA5BD58F0 /* AuthorizationHeaderClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EA8347F8DAEE0E4D1B2EFE /* AuthorizationHeaderClientBehavior.swift */; };
 		C3742EB6D8CFEB495F39834B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96775C277EB4A4441597D863 /* Configuration.swift */; };
@@ -270,7 +267,6 @@
 		C75DD2504936131E86E2122D /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E4326986BB7595645538F6 /* SessionUser.swift */; };
 		C7FBBC9A412D6A1EAF792572 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9458B82FF6E6B75B028059 /* UserSession.swift */; };
 		C928A6E8AC55B23AEDF73784 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742F0972A6F64AFF8BBC7DE /* Environment.swift */; };
-		C9E07CF9E5A3741571E6935D /* CategoryNode+RESTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F05442C09BE3A705087E2 /* CategoryNode+RESTCategory.swift */; };
 		CA0B8D896EA13D0F01DD1FE4 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4A1F5C5793C2907CF2699 /* Budget.swift */; };
 		CAA8CC9EAB001DF1484DAF1A /* RESTBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB89C4F223D978C767A57EB5 /* RESTBudget.swift */; };
 		CB7EEE9785AA7AB70233AA36 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753013E937468E888E7EA85 /* Locale+Extensions.swift */; };
@@ -315,26 +311,24 @@
 		E7E7AA580E41323AF4CD27D6 /* RESTArchivedInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD199591115E668FE6D485AF /* RESTArchivedInsight.swift */; };
 		E85B80354836CA57C624C06A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ABFF87187EFF4669698338 /* User.swift */; };
 		E99D4EC444BF8F27D4EBFCB8 /* AccountNumberKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAE6A9058ED482DB7CD8A5 /* AccountNumberKind.swift */; };
-		EAE2681B1001ECE3B45CADF2 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ADB1FA5D8B0412E53473B4 /* Client.swift */; };
+		EA391E84CD986E66CA677F45 /* StatisticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5119ED073C1FF67BF2D2B /* StatisticTests.swift */; };
 		EAF0D3D0F65350021E61FCB7 /* RESTProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E3986C0809410DA7AE3504 /* RESTProviderService.swift */; };
 		EBC7AADC74314258B0ECA046 /* SecTrust+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F341989108D25898C0644B9 /* SecTrust+Swift.swift */; };
 		ED9731C6B91DC0F469171EE1 /* User+RESTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6C96670BE57A4F26DA53C /* User+RESTUser.swift */; };
 		EE93C695723EDC2428E191BC /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8037EDBBCE7C3F7BD4D126 /* ProcessInfo+TinkEnvironmentVariables.swift */; };
 		EEC16BF2B67CF72A4D653E32 /* ActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008EC0EB0DF24282841C1210 /* ActionableInsightService.swift */; };
 		EF1B4A0DA9D3676F1EB8FCF9 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627C6CD0F5AC1F6D39A9996 /* Market.swift */; };
+		EF940D3736AD433CD6E559D4 /* Category+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B6123C643AB2D6ACF9014 /* Category+REST.swift */; };
 		F052D270A626DA1A9F163351 /* RESTActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3889C64C778DC8268272702A /* RESTActionableInsightService.swift */; };
 		F28FAFB6DA71A03D47BDD988 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17225CDA6DC879B52FB2D8A4 /* Calendar+Extensions.swift */; };
 		F2B066818649CC32849E8051 /* SDKHeaderClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC99E6E5A186B2283D456CF7 /* SDKHeaderClientBehavior.swift */; };
 		F2B83FC432A2BE155919C09C /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1789ACF317A72FD3A9B4B3E6 /* OAuthService.swift */; };
 		F2D3277BCD8EDB9636E96A2E /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856E3F7838ECE736B678896 /* RESTClient.swift */; };
 		F44897B2F70969EE95595816 /* RESTBudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9B136358036C7503C6A71 /* RESTBudgetService.swift */; };
-		F750F9603533AE8131BF837E /* CategoryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18554263C1315424CD3C3123 /* CategoryTree.swift */; };
-		F86DD85BD16372EE893FC3AA /* CategoryTree+RESTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEE82EFCD83B556147AA024 /* CategoryTree+RESTCategory.swift */; };
 		F893E75318C61B34725541EF /* TransferRESTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F88CBE75725BDFD21A1CC6A /* TransferRESTTest.swift */; };
 		F8C60C2CBAE57428EB7E51E4 /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1789ACF317A72FD3A9B4B3E6 /* OAuthService.swift */; };
 		F93A076E558B9E84E59E7C6E /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1993B742F46293612FF187CE /* Credentials.swift */; };
 		FB494A543E8AA5D73BA8EF05 /* RESTAuthenticateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA68A86BA4AD1555925033D /* RESTAuthenticateResponse.swift */; };
-		FC5ED0AECE478F496E2A6276 /* CategoryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18554263C1315424CD3C3123 /* CategoryTree.swift */; };
 		FC746D21739285DC5682DD20 /* DeviceIdHeaderClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED6FC8BF4F1C5357BF4DD0F /* DeviceIdHeaderClientBehavior.swift */; };
 		FD1E2BF29E2F0C444BB0F3B2 /* RESTCategorizeTransactionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28B99A85892EDA15B4702B /* RESTCategorizeTransactionsRequest.swift */; };
 		FE47D768E002FD64EF448C22 /* AnyCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2BCEC39EF5931F8471F013 /* AnyCanceller.swift */; };
@@ -409,7 +403,6 @@
 		13A84EFFB3CFAAE2A2BF419F /* RESTTransactionsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTransactionsResult.swift; sourceTree = "<group>"; };
 		17225CDA6DC879B52FB2D8A4 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		1789ACF317A72FD3A9B4B3E6 /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
-		18554263C1315424CD3C3123 /* CategoryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTree.swift; sourceTree = "<group>"; };
 		18F2BF1960A04307950CEBA4 /* RESTMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTMethod.swift; sourceTree = "<group>"; };
 		1993B742F46293612FF187CE /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		1C4F79E16D279C27728AC185 /* AccountDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetail.swift; sourceTree = "<group>"; };
@@ -421,6 +414,7 @@
 		2038A01AB94ACCEDB252E349 /* RESTPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTPeriod.swift; sourceTree = "<group>"; };
 		20E62D5ABD7EDD1E20C3686A /* SignableOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignableOperation.swift; sourceTree = "<group>"; };
 		218C08AEA8C73CBF79156484 /* RESTTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTransaction.swift; sourceTree = "<group>"; };
+		25F5119ED073C1FF67BF2D2B /* StatisticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTests.swift; sourceTree = "<group>"; };
 		28C2E5CFA985B31914D059A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2C9458B82FF6E6B75B028059 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		2D97EF3BBEDD31ED5DFC4CAD /* RetryCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryCancellable.swift; sourceTree = "<group>"; };
@@ -428,7 +422,6 @@
 		334FF62F2C2D8FE8E379C825 /* CredentialsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsService.swift; sourceTree = "<group>"; };
 		374B288668BD6EDF7A0C2091 /* RESTCallbackRelayedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCallbackRelayedRequest.swift; sourceTree = "<group>"; };
 		3889C64C778DC8268272702A /* RESTActionableInsightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTActionableInsightService.swift; sourceTree = "<group>"; };
-		3B8F05442C09BE3A705087E2 /* CategoryNode+RESTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryNode+RESTCategory.swift"; sourceTree = "<group>"; };
 		3BE01D8C0F447F42CD09CEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3D29360CA80FB6CD206AC0F8 /* ClientDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDescription.swift; sourceTree = "<group>"; };
 		3DAAB8DDFDA7DA901EF94B39 /* RefreshableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableItem.swift; sourceTree = "<group>"; };
@@ -447,8 +440,7 @@
 		57246EE45E3DB62B0A221EAF /* TransactionQuery+REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionQuery+REST.swift"; sourceTree = "<group>"; };
 		57FAAD1F6811623111562FC7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5B819247541DDF531DDB55C1 /* RESTSupplementalInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTSupplementalInformation.swift; sourceTree = "<group>"; };
-		5EDA092EE7EEB19306AB4617 /* URLSessionRequestRetryCancellabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequestRetryCancellabel.swift; sourceTree = "<group>"; };
-		5EE092D3E1C2F452C9BB8398 /* CategoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNode.swift; sourceTree = "<group>"; };
+		5FF75E1E343FA1BA375E37B6 /* URLSessionRequestRetryCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequestRetryCancellable.swift; sourceTree = "<group>"; };
 		60C0EB3483BD520DB6C76B09 /* RESTOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTOAuthService.swift; sourceTree = "<group>"; };
 		60E9B136358036C7503C6A71 /* RESTBudgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTBudgetService.swift; sourceTree = "<group>"; };
 		619756FCD97B3B6A0339C0C4 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -482,9 +474,7 @@
 		96775C277EB4A4441597D863 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		96DA150D3A4A2D6908984DC5 /* RESTCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCategoryService.swift; sourceTree = "<group>"; };
 		97E5816544D908CB1DF3E638 /* Beneficiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beneficiary.swift; sourceTree = "<group>"; };
-		98ADB1FA5D8B0412E53473B4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		9AA6C96670BE57A4F26DA53C /* User+RESTUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RESTUser.swift"; sourceTree = "<group>"; };
-		9AEE82EFCD83B556147AA024 /* CategoryTree+RESTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTree+RESTCategory.swift"; sourceTree = "<group>"; };
 		9C8EF7A67D02A7E521FC9715 /* SessionManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManaging.swift; sourceTree = "<group>"; };
 		9E3E155EE7205F6D9A91D532 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		9EF967DAD2178A3FC4B71733 /* TransactionQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionQuery.swift; sourceTree = "<group>"; };
@@ -521,6 +511,7 @@
 		C9F9F273B5DECD5128C47D03 /* TinkCoreTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TinkCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2BCEC39EF5931F8471F013 /* AnyCanceller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCanceller.swift; sourceTree = "<group>"; };
 		CC542CFF3B5619EF89FCAAE1 /* Amount+REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Amount+REST.swift"; sourceTree = "<group>"; };
+		CC6B6123C643AB2D6ACF9014 /* Category+REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+REST.swift"; sourceTree = "<group>"; };
 		CD199591115E668FE6D485AF /* RESTArchivedInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTArchivedInsight.swift; sourceTree = "<group>"; };
 		CD58CD212B5B3160CD9FAF95 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 		CD70EC629E3B17D0BE0FD73B /* RESTCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCalendarService.swift; sourceTree = "<group>"; };
@@ -624,6 +615,14 @@
 			path = REST;
 			sourceTree = "<group>";
 		};
+		1088109223DAFB29C0990E1D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				25F5119ED073C1FF67BF2D2B /* StatisticTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		142BBC27DC9D0BFB368A2831 /* REST */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,7 +641,6 @@
 			children = (
 				CC2BCEC39EF5931F8471F013 /* AnyCanceller.swift */,
 				0AAF4F808F56E955A2BDFBDE /* AnyEncodable.swift */,
-				98ADB1FA5D8B0412E53473B4 /* Client.swift */,
 				AC393985819709E1C709881C /* HTTPStatusCodeError.swift */,
 				5F343513305998B7138C923E /* Behaviors */,
 				D5CA249D23367F8C0C1FC2C7 /* REST */,
@@ -833,6 +831,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7AE13962959A5605E91D4499 /* PFM */ = {
+			isa = PBXGroup;
+			children = (
+				1088109223DAFB29C0990E1D /* Models */,
+			);
+			path = PFM;
+			sourceTree = "<group>";
+		};
 		7D2CA62F1A45C46C5E02213E /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,8 +942,7 @@
 				E054CE4F577BD2F385713F44 /* ActionableInsight+REST.swift */,
 				CC542CFF3B5619EF89FCAAE1 /* Amount+REST.swift */,
 				1ECCA95B71666128C5113298 /* Budget+REST.swift */,
-				3B8F05442C09BE3A705087E2 /* CategoryNode+RESTCategory.swift */,
-				9AEE82EFCD83B556147AA024 /* CategoryTree+RESTCategory.swift */,
+				CC6B6123C643AB2D6ACF9014 /* Category+REST.swift */,
 				3F40F06644DB26D446B67D61 /* Period+REST.swift */,
 				A01CEFA707449A63C3E6D8EF /* Statistic+REST.swift */,
 				DF6A058B7F8E117B3429BB9B /* Transaction+REST.swift */,
@@ -963,8 +968,6 @@
 				DB24E894B8EEAFED5E4AB5EE /* ActionableInsight.swift */,
 				E0C4A1F5C5793C2907CF2699 /* Budget.swift */,
 				57FAAD1F6811623111562FC7 /* Category.swift */,
-				5EE092D3E1C2F452C9BB8398 /* CategoryNode.swift */,
-				18554263C1315424CD3C3123 /* CategoryTree.swift */,
 				683969F38E4DB9C0A929ABBD /* Period.swift */,
 				BBB2E4212A3D6BD0F956445B /* Statistic.swift */,
 				619756FCD97B3B6A0339C0C4 /* Transaction.swift */,
@@ -993,6 +996,7 @@
 				A63613333F00478EECAB0EE3 /* ConfigurationTests.swift */,
 				12C427DD6A2D51E600FD51A9 /* CurrencyDenominatedAmountTests.swift */,
 				28C2E5CFA985B31914D059A3 /* Info.plist */,
+				7AE13962959A5605E91D4499 /* PFM */,
 				142BBC27DC9D0BFB368A2831 /* REST */,
 			);
 			name = TinkCoreTests;
@@ -1004,7 +1008,7 @@
 			children = (
 				FA62A081B4B197F9C0F16B7D /* CertificatePinningDelegate.swift */,
 				6A2CE22DD7EB616F07B76748 /* DefaultableCodable.swift */,
-				5EDA092EE7EEB19306AB4617 /* URLSessionRequestRetryCancellabel.swift */,
+				5FF75E1E343FA1BA375E37B6 /* URLSessionRequestRetryCancellable.swift */,
 				6E934CB3C787CC1E008FDB35 /* Models */,
 				805E077A41F213E98FB6F788 /* Services */,
 			);
@@ -1176,6 +1180,7 @@
 				0AD68A421D6D32C9E3EFD8A8 /* CredentialRESTTests.swift in Sources */,
 				724758260927C4D0F09C1BA0 /* CurrencyDenominatedAmountTests.swift in Sources */,
 				908E184CA6BE68602E23A1C6 /* ProviderRESTTests.swift in Sources */,
+				043C55706DBA66CF11BAAD27 /* StatisticTests.swift in Sources */,
 				F893E75318C61B34725541EF /* TransferRESTTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1191,6 +1196,7 @@
 				4CE999B586815A7485010837 /* CredentialRESTTests.swift in Sources */,
 				6D266C8EBC3775FA8C650852 /* CurrencyDenominatedAmountTests.swift in Sources */,
 				38FD71D7B0CA521F7EBE02A3 /* ProviderRESTTests.swift in Sources */,
+				EA391E84CD986E66CA677F45 /* StatisticTests.swift in Sources */,
 				5B355DC64C317C574C8FB21E /* TransferRESTTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1224,14 +1230,10 @@
 				F28FAFB6DA71A03D47BDD988 /* Calendar+Extensions.swift in Sources */,
 				1F15DA159A07EED36C0DB9EE /* CalendarService.swift in Sources */,
 				B7567717A63357B4C5D4BA01 /* Cancellable.swift in Sources */,
+				EF940D3736AD433CD6E559D4 /* Category+REST.swift in Sources */,
 				B82E67D60E132B2D1778E14B /* Category.swift in Sources */,
-				C9E07CF9E5A3741571E6935D /* CategoryNode+RESTCategory.swift in Sources */,
-				BC52BEB20010FEF742E1C421 /* CategoryNode.swift in Sources */,
 				E559F5C4457CBCB966686B27 /* CategoryService.swift in Sources */,
-				F86DD85BD16372EE893FC3AA /* CategoryTree+RESTCategory.swift in Sources */,
-				FC5ED0AECE478F496E2A6276 /* CategoryTree.swift in Sources */,
 				66FDD3DAC6341269472DF2F3 /* CertificatePinningDelegate.swift in Sources */,
-				EAE2681B1001ECE3B45CADF2 /* Client.swift in Sources */,
 				D14DA0E8522CC9F95302F472 /* ClientBehavior.swift in Sources */,
 				AAAE356276DA8DEF4CA25592 /* ClientDescription+REST.swift in Sources */,
 				26A2681B4C3293FF59975CCC /* ClientDescription.swift in Sources */,
@@ -1348,7 +1350,7 @@
 				2CDCF097B8631C717EB8622A /* TransferDestination+REST.swift in Sources */,
 				39A2BBDBC70062E8E7A101AE /* TransferDestination.swift in Sources */,
 				7BAF632A5CB5E66C1F755A55 /* TransferService.swift in Sources */,
-				BDFDB9EDC364A376E5805B4B /* URLSessionRequestRetryCancellabel.swift in Sources */,
+				0F02CFB0FA4BACEEDE46EF8D /* URLSessionRequestRetryCancellable.swift in Sources */,
 				BB26A6D3F5AE05AA2FA38735 /* User+RESTUser.swift in Sources */,
 				E38926DE369D423CE7803427 /* User.swift in Sources */,
 				1013A24F900A5D09D6A1FD9E /* UserProfile+RESTUserProfile.swift in Sources */,
@@ -1387,14 +1389,10 @@
 				375D1FCFBE325A0899244519 /* Calendar+Extensions.swift in Sources */,
 				6F446321614D154D38D55705 /* CalendarService.swift in Sources */,
 				1FE129E7A57E85ABEFE153D7 /* Cancellable.swift in Sources */,
+				42C80AB0B9F23199F9CD5959 /* Category+REST.swift in Sources */,
 				2CB8CE1C5C1FCC744B3D9AF6 /* Category.swift in Sources */,
-				0B4DB576FD3217F366526E19 /* CategoryNode+RESTCategory.swift in Sources */,
-				A17EBCD2D6BEF5FB5E654331 /* CategoryNode.swift in Sources */,
 				C529D03939C29A613A257EB6 /* CategoryService.swift in Sources */,
-				61BCF5D231F83B6E25CA4E91 /* CategoryTree+RESTCategory.swift in Sources */,
-				F750F9603533AE8131BF837E /* CategoryTree.swift in Sources */,
 				0653733F48522507A92C1B29 /* CertificatePinningDelegate.swift in Sources */,
-				6BCFAD879161A6FCA6DBAFEF /* Client.swift in Sources */,
 				E39109F70014DB358C61AD9C /* ClientBehavior.swift in Sources */,
 				DB6B6B1142182C407AA6F253 /* ClientDescription+REST.swift in Sources */,
 				7D1DD827B1B0ADF4F76B213D /* ClientDescription.swift in Sources */,
@@ -1511,7 +1509,7 @@
 				280091DE4B88F55C8EA6E323 /* TransferDestination+REST.swift in Sources */,
 				0DE086CC7694A45679280274 /* TransferDestination.swift in Sources */,
 				972D411239CBB2DB72F2FF72 /* TransferService.swift in Sources */,
-				1888F08BE28435D2DB659946 /* URLSessionRequestRetryCancellabel.swift in Sources */,
+				5B8D016CA167248DA643E95B /* URLSessionRequestRetryCancellable.swift in Sources */,
 				ED9731C6B91DC0F469171EE1 /* User+RESTUser.swift in Sources */,
 				E85B80354836CA57C624C06A /* User.swift in Sources */,
 				7856CC9D2C8EBA8FCD2B1115 /* UserProfile+RESTUserProfile.swift in Sources */,
