@@ -1,1 +1,2 @@
-# tink-core-ios-private
+# tink-core-ios
+Tink SDK Core iOS
