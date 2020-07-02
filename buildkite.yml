@@ -1,0 +1,5 @@
+steps:
+  - name: ':pipeline: Test'
+    command: 'swift test'
+    agents:
+      queue: 'macos'
