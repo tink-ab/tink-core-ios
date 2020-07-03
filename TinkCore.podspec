@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.authors      = { "Tink AB" => "mobile@tink.se" }
   spec.homepage     = "https://tink.com"
-  spec.source       = { :git => "https://github.com/tink-ab/tink-core-ios-private.git", :tag => spec.version }
+  spec.source       = { :git => "https://github.com/tink-ab/tink-core-ios.git", :tag => spec.version }
 
   spec.platform     = :ios, "11.0"
 
