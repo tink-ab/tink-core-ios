@@ -11,6 +11,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/tink-ab/tink-core-ios.git", :tag => spec.version }
 
   spec.platform     = :ios, "11.0"
+  spec.swift_version = '5.1'
 
   spec.source_files = "Sources/TinkCore/**/*.swift"
 end
