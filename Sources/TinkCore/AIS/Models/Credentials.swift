@@ -12,7 +12,7 @@ public struct Credentials: Identifiable {
     public let providerID: Provider.ID
 
     /// Indicates how Tink authenticates the user to a financial institution.
-    public enum Kind: CustomStringConvertible {
+    public enum Kind {
         /// An unknown kind of credentials.
         case unknown
 
@@ -30,23 +30,6 @@ public struct Credentials: Identifiable {
 
         /// The user will authenticate the credentials with a third party app.
         case thirdPartyAuthentication
-
-        public var description: String {
-            switch self {
-            case .unknown:
-                return "Unknown"
-            case .password:
-                return "Password"
-            case .mobileBankID:
-                return "Mobile BankID"
-            case .keyfob:
-                return "Key Fob"
-            case .fraud:
-                return "Fraud"
-            case .thirdPartyAuthentication:
-                return "Third Party Authentication"
-            }
-        }
 
         public var sortOrder: Int {
             switch self {
