@@ -9,7 +9,7 @@ import Foundation
 /// instance and use that instead. This allows you to use multiple `Tink` instances at the
 /// same time.
 public class Tink {
-    static private var _shared: Tink?
+    private static var _shared: Tink?
 
     // MARK: - Using the Shared Instance
 

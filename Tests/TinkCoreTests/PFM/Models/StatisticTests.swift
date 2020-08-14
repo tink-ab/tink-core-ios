@@ -3,7 +3,6 @@ import Foundation
 import XCTest
 
 class StatisticTests: XCTestCase {
-
     func testStatisticPeriodYearStringMapping() {
         let yearPeriod = StatisticPeriod.year(2002)
         XCTAssertEqual(yearPeriod.stringRepresentation, "2002")
@@ -34,7 +33,6 @@ class StatisticTests: XCTestCase {
     }
 
     func testStatisticTypeStringInitializer() {
-
         XCTAssertEqual(StatisticPeriod(string: "abc"), nil)
         XCTAssertEqual(StatisticPeriod(string: "2000"), StatisticPeriod.year(2000))
         XCTAssertEqual(StatisticPeriod(string: "2000:01"), StatisticPeriod.week(year: 2000, week: 1))
@@ -42,4 +40,3 @@ class StatisticTests: XCTestCase {
         XCTAssertEqual(StatisticPeriod(string: "2000-10-02"), StatisticPeriod.day(year: 2000, month: 10, day: 2))
     }
 }
-
