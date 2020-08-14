@@ -57,7 +57,7 @@ public enum StatisticPeriod: Hashable {
             let dayExpression = try NSRegularExpression(pattern: #"^(\d+)-(\d{2})-(\d{2})$"#, options: [])
 
             let range = NSRange(string.startIndex..<string.endIndex,
-            in: string)
+                                in: string)
 
             for match in monthExpression.matches(in: string, options: [], range: range) {
                 if match.numberOfRanges == 3,
@@ -99,4 +99,3 @@ public enum StatisticPeriod: Hashable {
         }
     }
 }
-

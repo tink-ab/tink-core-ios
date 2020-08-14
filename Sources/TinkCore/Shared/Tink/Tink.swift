@@ -9,7 +9,7 @@ import Foundation
 /// instance and use that instead. This allows you to use multiple `Tink` instances at the
 /// same time.
 public class Tink {
-    static private var _shared: Tink?
+    private static var _shared: Tink?
 
     // MARK: - Using the Shared Instance
 
@@ -119,7 +119,7 @@ extension Tink {
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        return services.oAuthService.authenticate(code: authorizationCode, completion: { [weak self] result in
+        return services.oAuthService.authenticate(clientID: configuration.clientID, code: authorizationCode, completion: { [weak self] result in
             do {
                 let accessToken = try result.get()
                 self?.userSession = .accessToken(accessToken.rawValue)

@@ -12,6 +12,15 @@ public struct Provider: Identifiable {
     /// The display name of the provider.
     public let displayName: String
 
+    public enum AuthenticationUserType {
+        case unknown
+        case business
+        case personal
+    }
+    
+    /// Indicates if a user authenticates toward the bank as a person or a business.
+    public let authenticationUserType: AuthenticationUserType
+
     /// Indicates what kind of financial institution the provider represents.
     public enum Kind {
         /// The kind of the provider is unknown.
@@ -165,32 +174,10 @@ public struct Provider: Identifiable {
     public let capabilities: Capabilities
 
     /// What Tink uses to access data.
-    public enum AccessType: CustomStringConvertible, Hashable, Comparable {
-        public static func < (lhs: AccessType, rhs: AccessType) -> Bool {
-            switch (lhs, rhs) {
-            case (.openBanking, _):
-                return true
-            case (_, .unknown):
-                return true
-            default:
-                return false
-            }
-        }
-
+    public enum AccessType: Hashable {
         case unknown
         case openBanking
         case other
-
-        public var description: String {
-            switch self {
-            case .unknown:
-                return "Unknown"
-            case .openBanking:
-                return "Open Banking"
-            case .other:
-                return "Other"
-            }
-        }
 
         /// A set of all access types.
         public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
