@@ -165,21 +165,10 @@ public struct Provider: Identifiable {
     public let capabilities: Capabilities
 
     /// What Tink uses to access data.
-    public enum AccessType: CustomStringConvertible, Hashable {
+    public enum AccessType: Hashable {
         case unknown
         case openBanking
         case other
-
-        public var description: String {
-            switch self {
-            case .unknown:
-                return "Unknown"
-            case .openBanking:
-                return "Open Banking"
-            case .other:
-                return "Other"
-            }
-        }
 
         /// A set of all access types.
         public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
