@@ -132,8 +132,6 @@ extension Tink {
 
     /// Create a user for a specific market and locale.
     ///
-    /// :nodoc:
-    ///
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in Tink if nothing is provided.
     /// - Parameter completion: A result representing either a success or an error.
@@ -166,7 +164,6 @@ extension Tink {
 }
 
 extension Tink {
-    /// :nodoc:
     public var _sdkName: String {
         get { sdkHeaderBehavior.sdkName }
         set { sdkHeaderBehavior.sdkName = newValue }
