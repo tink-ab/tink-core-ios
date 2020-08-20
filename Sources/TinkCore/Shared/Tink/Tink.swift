@@ -24,7 +24,7 @@ public class Tink {
         return shared
     }
 
-    private let sdkHeaderBehavior: SDKHeaderClientBehavior
+    let sdkHeaderBehavior: SDKHeaderClientBehavior
     private var authorizationBehavior = AuthorizationHeaderClientBehavior(userSession: nil)
     let client: RESTClient
     public var sessionManagers: [SessionManager] = []
@@ -129,20 +129,6 @@ extension Tink {
             }
         })
     }
-
-    @discardableResult
-    public func _createTemporaryUser(for market: Market, locale: Locale = Tink.defaultLocale, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        return services.oAuthService.createAnonymous(market: market, locale: locale, origin: nil) { [weak self] result in
-            let mappedResult = result.mapError { UserError(createTemporaryUserError: $0) ?? $0 }
-            do {
-                let accessToken = try mappedResult.get()
-                self?.userSession = .accessToken(accessToken.rawValue)
-                completion(.success)
-            } catch {
-                completion(.failure(error))
-            }
-        }
-    }
 }
 
 extension Tink {
@@ -155,12 +141,5 @@ extension Tink {
     @available(*, deprecated, message: "Set the userSession property directly instead.")
     public func setCredential(_ credential: SessionCredential?) {
         authorizationBehavior.userSession = credential
-    }
-}
-
-extension Tink {
-    public var _sdkName: String {
-        get { sdkHeaderBehavior.sdkName }
-        set { sdkHeaderBehavior.sdkName = newValue }
     }
 }
