@@ -12,8 +12,8 @@ struct RESTBudget: Decodable {
         case recurring = "RECURRING"
     }
 
-    struct RecurringPeriodicity: Decodable {
-        enum PeriodUnit: String, Decodable {
+    struct RecurringPeriodicity: Codable {
+        enum PeriodUnit: String, Codable {
             case week = "WEEK"
             case month = "MONTH"
             case year = "YEAR"
@@ -23,25 +23,25 @@ struct RESTBudget: Decodable {
         let periodUnit: PeriodUnit
     }
 
-    struct OneOffPeriodicity: Decodable {
+    struct OneOffPeriodicity: Codable {
         /// Budget start expressed as UTC epoch timestamp in milliseconds.
         let start: Date
         /// Budget end expressed as UTC epoch timestamp in milliseconds.
         let end: Date
     }
 
-    struct Filter: Decodable {
-        struct Account: Decodable {
+    struct Filter: Codable {
+        struct Account: Codable {
             /// The account ID.
             let id: String?
         }
 
-        struct Category: Decodable {
+        struct Category: Codable {
             /// The category code.
             let code: String?
         }
 
-        struct Tag: Decodable {
+        struct Tag: Codable {
             /// The tag key.
             let key: String?
         }
