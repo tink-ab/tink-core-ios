@@ -2,11 +2,11 @@ import Foundation
 
 public struct UpdateBudgetRequest {
     /// The name of the Budget.
-    public var name: String
+    public let name: String
     /// The target amount for the budget. The currency must match the user profile currency setting.
-    public var amount: CurrencyDenominatedAmount
+    public let amount: CurrencyDenominatedAmount
     /// The filter defining the budget and which transactions that is included in it. The configured fields of the filter are applied as logical and operator (intersection).
-    public var filter: [Budget.Filter]
+    public let filter: [Budget.Filter]
     /// Periodicity configuration for the budget.
-    public var periodicity: Budget.Periodicity
+    public let periodicity: Budget.Periodicity
 }

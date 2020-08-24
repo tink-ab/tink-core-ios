@@ -2,9 +2,9 @@ import Foundation
 
 public struct BudgetPeriod: Equatable {
     /// Period start expressed as UTC epoch timestamp in milliseconds.
-    public var start: Date
+    public let start: Date
     /// Period end expressed as UTC epoch timestamp in milliseconds.
-    public var end: Date
+    public let end: Date
     /// Period spent amount.
-    public var spentAmount: CurrencyDenominatedAmount?
+    public let spentAmount: CurrencyDenominatedAmount?
 }

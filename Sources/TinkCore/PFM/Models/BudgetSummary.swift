@@ -1,6 +1,6 @@
 public struct BudgetSummary {
     /// The budget.
-    public var budget: Budget?
+    public let budget: Budget?
     /// The current running period.
-    public var budgetPeriod: BudgetPeriod?
+    public let budgetPeriod: BudgetPeriod?
 }

@@ -2,16 +2,16 @@ import Foundation
 
 public struct BudgetPeriodOverview {
     /// The budget.
-    public var budgetSpecification: Budget
+    public let budgetSpecification: Budget
     /// List of budget periods.
-    public var budgetPeriods: [BudgetPeriod]
+    public let budgetPeriods: [BudgetPeriod]
     /// First period start expressed as UTC epoch timestamp in milliseconds.
-    public var start: Date
+    public let start: Date
     /// Last period end expressed as UTC epoch timestamp in milliseconds.
-    public var end: Date
+    public let end: Date
     /// Total amount spent within the listed periods.
-    public var totalSpentAmount: CurrencyDenominatedAmount?
+    public let totalSpentAmount: CurrencyDenominatedAmount?
     /// Average period spending for the listed periods.
-    public var averageSpentAmount: CurrencyDenominatedAmount?
+    public let averageSpentAmount: CurrencyDenominatedAmount?
 }
 
