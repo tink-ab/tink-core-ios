@@ -57,9 +57,9 @@ struct RESTBudget: Decodable {
     }
 
     /// The ID of the Budget.
-    let id: String?
+    let id: String
     /// The name of the budget.
-    let name: String?
+    let name: String
     let amount: RESTCurrencyDenominatedAmount?
     /// Tells whether the budget is recurring or one off type. Using this field it's possible to see which of the field `recurringPeriodicity` or `oneOffPeriodicity` is set.
     let periodicityType: PeriodicityType?

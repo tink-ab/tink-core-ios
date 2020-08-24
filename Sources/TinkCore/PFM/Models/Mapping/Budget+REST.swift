@@ -1,10 +1,9 @@
 import Foundation
 
 extension Budget {
-    init?(restBudget: RESTBudget) {
-        guard let id = restBudget.id else { return nil }
-        self.id = .init(id)
-        self.name = restBudget.name ?? ""
+    init(restBudget: RESTBudget) {
+        self.id = .init(restBudget.id)
+        self.name = restBudget.name
         self.amount = restBudget.amount.flatMap(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
 
         switch restBudget.periodicityType {
