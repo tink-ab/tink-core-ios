@@ -73,3 +73,16 @@ struct RESTBudget: Decodable {
 struct RESTListBudgetSpecificationsResponse: Decodable {
     let budgetSpecifications: [RESTBudget]?
 }
+
+extension RESTBudget.RecurringPeriodicity {
+    init(recurringPeriodicity: Budget.RecurringPeriodicity) {
+        switch recurringPeriodicity.periodUnit {
+        case .week:
+            self.periodUnit = .week
+        case .month:
+            self.periodUnit = .month
+        case .year:
+            self.periodUnit = .year
+        }
+    }
+}

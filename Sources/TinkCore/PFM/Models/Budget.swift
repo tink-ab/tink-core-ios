@@ -44,7 +44,7 @@ public struct Budget {
 extension Budget {
     public struct Transaction {
         /// The ID of the transaction.
-        public let id: TinkPFMUI.Transaction.ID
+        public let id: TinkCore.Transaction.ID
         /// The transaction amount.
         public let amount: CurrencyDenominatedAmount
         /// The dispensable amount. This amount will e.g. be reduced if the account it belongs to has ownership set to 50%.
