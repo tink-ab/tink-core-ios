@@ -1,10 +1,10 @@
 import Foundation
 
 struct RESTBudgetPeriod: Decodable {
-    /** Period start expressed as UTC epoch timestamp in milliseconds. */
+    /// Period start expressed as UTC epoch timestamp in milliseconds.
     let start: Date?
-    /** Period end expressed as UTC epoch timestamp in milliseconds. */
+    /// Period end expressed as UTC epoch timestamp in milliseconds.
     let end: Date?
-    /** Period spent amount. */
+    /// Period spent amount.
     let spentAmount: RESTCurrencyDenominatedAmount?
 }

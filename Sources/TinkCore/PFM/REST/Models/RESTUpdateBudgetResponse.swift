@@ -1,7 +1,7 @@
 import Foundation
 
 struct RESTUpdateBudgetResponse: Decodable {
-    /** The created budget. */
+    /// The created budget.
     let budgetSpecification: RESTBudget
 }
 

@@ -1,6 +1,6 @@
 public struct BudgetSummary {
-    /** The budget. */
+    /// The budget.
     public var budget: Budget?
-    /** The current running period. */
+    /// The current running period.
     public var budgetPeriod: BudgetPeriod?
 }
