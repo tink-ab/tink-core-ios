@@ -10,7 +10,7 @@ struct RESTBudgetDetailsResponse: Decodable {
     /// Last period end expressed as UTC epoch timestamp in milliseconds.
     let end: Date
     /// Total amount spent within the listed periods.
-    let totalSpentAmount: RESTCurreFncyDenominatedAmount?
+    let totalSpentAmount: RESTCurrencyDenominatedAmount?
     /// Average period spending for the listed periods.
     let averageSpentAmount: RESTCurrencyDenominatedAmount?
 }
