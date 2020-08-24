@@ -10,7 +10,7 @@ final class RESTBudgetService: BudgetService {
     @discardableResult
     func createBudget(
         request: UpdateBudgetRequest,
-        completion: @escaping (Result<RESTUpdateBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         var accountIDs = [Account.ID]()
         var categoryCodes = [Category.Code]()
@@ -56,7 +56,7 @@ final class RESTBudgetService: BudgetService {
     func editBudget(
         id: Budget.ID,
         request: UpdateBudgetRequest,
-        completion: @escaping (Result<RESTUpdateBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         var accountIDs = [Account.ID]()
         var categoryCodes = [Category.Code]()
@@ -103,7 +103,7 @@ final class RESTBudgetService: BudgetService {
         _ id: Budget.ID,
         start: Date,
         end: Date,
-        completion: @escaping (Result<RESTBudgetTransactionsResponse, Error>) -> Void) -> Cancellable? {
+        completion: @escaping (Result<[Budget.Transaction], Error>) -> Void) -> Cancellable? {
         let id = id.value
         let startString = String(Int(start.timeIntervalSince1970 * 1000))
         let endString = String(Int(end.timeIntervalSince1970 * 1000))
@@ -112,35 +112,67 @@ final class RESTBudgetService: BudgetService {
         urlQueryItems.append(URLQueryItem(name: "start", value: startString))
         urlQueryItems.append(URLQueryItem(name: "end", value: endString))
 
-        let request = RESTResourceRequest(path: "/api/v1/budgets/\(id)/transactions", method: .get, contentType: .json, parameters: urlQueryItems, completion: completion)
+        let request = RESTResourceRequest<RESTBudgetTransactionsResponse>(
+            path: "/api/v1/budgets/\(id)/transactions",
+            method: .get,
+            contentType: .json,
+            parameters: urlQueryItems) { result in
+                let newResult = result.map { $0.transactions.compactMap(
+                    Budget.Transaction.init(restBudgetTransaction: )
+                    )
+                }
+                completion(newResult)
+        }
         return client.performRequest(request)
     }
 
     private func createOneOffBudget(
         request: RESTCreateOneOffBudgetRequest,
-        completion: @escaping (Result<RESTUpdateBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest(path: "/api/v1/budgets/one-off", method: .post, body: body, contentType: .json, completion: completion)
+
+        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+            path: "/api/v1/budgets/one-off",
+            method: .post,
+            body: body,
+            contentType: .json) { result in
+                let newResult = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                completion(newResult)
+        }
         return client.performRequest(request)
     }
 
     private func createRecurringBudget(
         request: RESTCreateRecurringBudgetRequest,
-        completion: @escaping (Result<RESTUpdateBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest(path: "/api/v1/budgets/recurring", method: .post, body: body, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+            path: "/api/v1/budgets/recurring",
+            method: .post,
+            body: body,
+            contentType: .json) { result in
+                let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                completion(result)
+        }
         return client.performRequest(request)
     }
 
     private func editBudget<Request: Encodable>(
         id: Budget.ID,
         request: Request,
-        completion: @escaping (Result<RESTUpdateBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest(path: "/api/v1/budgets/\(id.value)", method: .put, body: body, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+            path: "/api/v1/budgets/\(id.value)",
+            method: .put,
+            body: body,
+            contentType: .json) { result in
+                let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                completion(result)
+        }
         return client.performRequest(request)
     }
 
@@ -159,7 +191,10 @@ final class RESTBudgetService: BudgetService {
         includeArchived: Bool,
         completion: @escaping (Result<[Budget], Error>) -> Void
     ) -> Cancellable? {
-        let request = RESTResourceRequest<RESTListBudgetSpecificationsResponse>(path: "/api/v1/budgets", method: .get, contentType: .json) { result in
+        let request = RESTResourceRequest<RESTListBudgetSpecificationsResponse>(
+        path: "/api/v1/budgets",
+        method: .get,
+        contentType: .json) { result in
             let newResult = result.map { ($0.budgetSpecifications ?? []).compactMap(Budget.init(restBudget:)) }
             completion(newResult)
         }
@@ -169,9 +204,15 @@ final class RESTBudgetService: BudgetService {
     @discardableResult
     func budgetSummaries(
         includeArchived: Bool = false,
-        completion: @escaping (Result<RESTListBudgetSummariesResponse, Error>) -> Void
+        completion: @escaping (Result<[BudgetSummary], Error>) -> Void
     ) -> Cancellable? {
-        let request = RESTResourceRequest(path: "/api/v1/budgets/summaries", method: .get, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<RESTListBudgetSummariesResponse>(
+            path: "/api/v1/budgets/summaries",
+            method: .get,
+            contentType: .json) { result in
+                let newResult = result.map { ($0.budgetSummaries ?? []).compactMap(BudgetSummary.init(restBudgetSummary: )) }
+                completion(newResult)
+        }
         return client.performRequest(request)
     }
 
@@ -180,7 +221,7 @@ final class RESTBudgetService: BudgetService {
         _ budgetID: Budget.ID,
         start: Date,
         end: Date,
-        completion: @escaping (Result<RESTBudgetDetailsResponse, Error>) -> Void
+        completion: @escaping (Result<BudgetPeriodOverview, Error>) -> Void
     ) -> Cancellable? {
         let id = budgetID.value
         let startString = String(Int(start.timeIntervalSince1970 * 1000))
@@ -190,17 +231,30 @@ final class RESTBudgetService: BudgetService {
         urlQueryItems.append(URLQueryItem(name: "start", value: startString))
         urlQueryItems.append(URLQueryItem(name: "end", value: endString))
 
-        let request = RESTResourceRequest(path: "/api/v1/budgets/\(id)/details", method: .get, contentType: .json, parameters: urlQueryItems, completion: completion)
+        let request = RESTResourceRequest<RESTBudgetDetailsResponse>(
+            path: "/api/v1/budgets/\(id)/details",
+            method: .get,
+            contentType: .json,
+            parameters: urlQueryItems) { result in
+                let newResult = result.map { BudgetPeriodOverview.init(restBudgetDetailsResponse: $0) }
+                completion(newResult)
+        }
         return client.performRequest(request)
     }
 
     @discardableResult
     func archiveBudget(
         _ budgetID: Budget.ID,
-        completion: @escaping (Result<RESTArchiveBudgetResponse, Error>) -> Void
+        completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let id = budgetID.value
-        let request = RESTResourceRequest(path: "/api/v1/budgets/\(id)/archive", method: .put, contentType: .json, completion: completion)
+        let request = RESTResourceRequest<RESTArchiveBudgetResponse>(
+            path: "/api/v1/budgets/\(id)/archive",
+            method: .put,
+            contentType: .json)  { result in
+                let newResult = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                completion(newResult)
+        }
         return client.performRequest(request)
     }
 }
