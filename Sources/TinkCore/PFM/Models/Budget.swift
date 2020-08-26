@@ -9,21 +9,21 @@ public struct Budget {
     }
 
     public struct RecurringPeriodicity: Equatable {
-        enum PeriodUnit {
+        public enum PeriodUnit {
             case week
             case month
             case year
         }
 
         /// Recurring periodicity unit.
-        let periodUnit: PeriodUnit
+        public let periodUnit: PeriodUnit
     }
 
     public struct OneOffPeriodicity: Equatable {
         /// Budget start expressed as UTC epoch timestamp in milliseconds.
-        let start: Date
+        public let start: Date
         /// Budget end expressed as UTC epoch timestamp in milliseconds.
-        let end: Date
+        public let end: Date
     }
 
     public enum Filter {
