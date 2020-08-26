@@ -17,6 +17,10 @@ public struct Budget {
 
         /// Recurring periodicity unit.
         public let periodUnit: PeriodUnit
+
+        public init(periodUnit: PeriodUnit) {
+            self.periodUnit = periodUnit
+        }
     }
 
     public struct OneOffPeriodicity: Equatable {
@@ -24,6 +28,11 @@ public struct Budget {
         public let start: Date
         /// Budget end expressed as UTC epoch timestamp in milliseconds.
         public let end: Date
+
+        public init(start: Date, end: Date) {
+            self.start = start
+            self.end = end
+        }
     }
 
     public enum Filter {

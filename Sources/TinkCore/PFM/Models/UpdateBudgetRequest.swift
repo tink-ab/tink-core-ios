@@ -9,4 +9,11 @@ public struct UpdateBudgetRequest {
     public let filter: [Budget.Filter]
     /// Periodicity configuration for the budget.
     public let periodicity: Budget.Periodicity
+
+    public init(name: String, amount: CurrencyDenominatedAmount, filter: [Budget.Filter], periodicity: Budget.Periodicity) {
+        self.name = name
+        self.amount = amount
+        self.filter = filter
+        self.periodicity = periodicity
+    }
 }
