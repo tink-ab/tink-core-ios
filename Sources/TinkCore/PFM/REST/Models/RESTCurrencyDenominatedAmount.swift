@@ -14,7 +14,7 @@ extension RESTCurrencyDenominatedAmount {
 }
 
 fileprivate extension CurrencyDenominatedAmount {
-    func toScaledValue() ->(Int, Int) {
+    func toScaledValue() -> (Int, Int) {
         var value = self.value
         var normalizedSignificand: Int64?
 
