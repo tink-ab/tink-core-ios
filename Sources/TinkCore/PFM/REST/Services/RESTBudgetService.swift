@@ -139,8 +139,7 @@ final class RESTBudgetService: BudgetService {
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let body = makeBudgetRequestBody(request)
-
-        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+        let request = RESTResourceRequest<RESTCreateBudgetResponse>(
             path: "/api/v1/budgets/one-off",
             method: .post,
             body: body,
@@ -156,7 +155,7 @@ final class RESTBudgetService: BudgetService {
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+        let request = RESTResourceRequest<RESTCreateBudgetResponse>(
             path: "/api/v1/budgets/recurring",
             method: .post,
             body: body,
