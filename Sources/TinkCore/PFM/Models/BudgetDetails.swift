@@ -1,6 +1,6 @@
 import Foundation
 
-public struct BudgetPeriodOverview {
+public struct BudgetDetails {
     /// The budget.
     public let budgetSpecification: Budget
     /// List of budget periods.

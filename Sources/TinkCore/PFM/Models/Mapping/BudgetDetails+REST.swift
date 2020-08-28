@@ -1,6 +1,6 @@
 import Foundation
 
-extension BudgetPeriodOverview {
+extension BudgetDetails {
     init(restBudgetDetailsResponse: RESTBudgetDetailsResponse) {
         let budgetSpecification = Budget.init(restBudget: restBudgetDetailsResponse.budgetSpecification)
 

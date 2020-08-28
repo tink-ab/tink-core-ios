@@ -11,7 +11,7 @@ public protocol BudgetService {
 
     func budgetSummaries(includeArchived: Bool, completion: @escaping (Result<[BudgetSummary], Error>) -> Void) -> Cancellable?
 
-    func budgetDetails(id: Budget.ID, start: Date, end: Date, completion: @escaping (Result<BudgetPeriodOverview, Error>) -> Void) -> Cancellable?
+    func budgetDetails(id: Budget.ID, start: Date, end: Date, completion: @escaping (Result<BudgetDetails, Error>) -> Void) -> Cancellable?
 
     func archive(id: Budget.ID, completion: @escaping (Result<Budget, Error>) -> Void) -> Cancellable?
 }

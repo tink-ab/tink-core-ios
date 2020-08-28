@@ -228,7 +228,7 @@ final class RESTBudgetService: BudgetService {
         id: Budget.ID,
         start: Date,
         end: Date,
-        completion: @escaping (Result<BudgetPeriodOverview, Error>) -> Void
+        completion: @escaping (Result<BudgetDetails, Error>) -> Void
     ) -> Cancellable? {
         let id = id.value
         let startString = String(Int(start.timeIntervalSince1970 * 1000))
@@ -243,7 +243,7 @@ final class RESTBudgetService: BudgetService {
             method: .get,
             contentType: .json,
             parameters: urlQueryItems) { result in
-                let newResult = result.map { BudgetPeriodOverview.init(restBudgetDetailsResponse: $0) }
+                let newResult = result.map { BudgetDetails.init(restBudgetDetailsResponse: $0) }
                 completion(newResult)
         }
         return client.performRequest(request)
