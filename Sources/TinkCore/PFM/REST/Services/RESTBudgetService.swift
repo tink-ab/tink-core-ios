@@ -138,32 +138,44 @@ final class RESTBudgetService: BudgetService {
         request: RESTCreateOneOffBudgetRequest,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
-        let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest<RESTCreateBudgetResponse>(
-            path: "/api/v1/budgets/one-off",
-            method: .post,
-            body: body,
-            contentType: .json) { result in
-                let newResult = result.map { Budget.init(restBudget: $0.budgetSpecification) }
-                completion(newResult)
+        do {
+            let body = try makeBudgetRequestBody(request)
+
+            let request = RESTResourceRequest<RESTCreateBudgetResponse>(
+                path: "/api/v1/budgets/one-off",
+                method: .post,
+                body: body,
+                contentType: .json) { result in
+                    let newResult = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                    completion(newResult)
+            }
+            return client.performRequest(request)
+        } catch {
+            completion(.failure(error))
+            return nil
         }
-        return client.performRequest(request)
+
     }
 
     private func createRecurringBudget(
         request: RESTCreateRecurringBudgetRequest,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
-        let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest<RESTCreateBudgetResponse>(
-            path: "/api/v1/budgets/recurring",
-            method: .post,
-            body: body,
-            contentType: .json) { result in
-                let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
-                completion(result)
+        do {
+            let body = try makeBudgetRequestBody(request)
+            let request = RESTResourceRequest<RESTCreateBudgetResponse>(
+                path: "/api/v1/budgets/recurring",
+                method: .post,
+                body: body,
+                contentType: .json) { result in
+                    let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                    completion(result)
+            }
+            return client.performRequest(request)
+        } catch {
+            completion(.failure(error))
+            return nil
         }
-        return client.performRequest(request)
     }
 
     private func update<Request: Encodable>(
@@ -171,25 +183,30 @@ final class RESTBudgetService: BudgetService {
         request: Request,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
-        let body = makeBudgetRequestBody(request)
-        let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
-            path: "/api/v1/budgets/\(id.value)",
-            method: .put,
-            body: body,
-            contentType: .json) { result in
-                let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
-                completion(result)
+        do {
+            let body = try makeBudgetRequestBody(request)
+            let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
+                path: "/api/v1/budgets/\(id.value)",
+                method: .put,
+                body: body,
+                contentType: .json) { result in
+                    let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
+                    completion(result)
+            }
+            return client.performRequest(request)
+        } catch {
+            completion(.failure(error))
+            return nil
         }
-        return client.performRequest(request)
     }
 
-    private func makeBudgetRequestBody<Request: Encodable>(_ request: Request) -> Data {
+    private func makeBudgetRequestBody<Request: Encodable>(_ request: Request) throws -> Data {
         let bodyEncoder = JSONEncoder()
         bodyEncoder.dateEncodingStrategy = .custom { date, encoder in
             var container = encoder.singleValueContainer()
             try container.encode(Int(date.timeIntervalSince1970 * 1000))
         }
-        let body = try! bodyEncoder.encode(request)
+        let body = try bodyEncoder.encode(request)
         return body
     }
 
