@@ -4,7 +4,7 @@ public struct BudgetDetails {
     /// The budget.
     public let budgetSpecification: Budget
     /// List of budget periods.
-    public let budgetPeriods: [BudgetPeriod]
+    public let budgetPeriods: [Budget.Period]
     /// Period date interval
     public let dateInterval: DateInterval
     /// Total amount spent within the listed periods.

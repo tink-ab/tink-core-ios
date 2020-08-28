@@ -4,7 +4,7 @@ extension BudgetDetails {
     init(restBudgetDetailsResponse: RESTBudgetDetailsResponse) {
         let budgetSpecification = Budget.init(restBudget: restBudgetDetailsResponse.budgetSpecification)
 
-        let budgetPeriods = restBudgetDetailsResponse.budgetPeriods.compactMap(BudgetPeriod.init(restBudgetPeriod:))
+        let budgetPeriods = restBudgetDetailsResponse.budgetPeriods.compactMap(Budget.Period.init(restBudgetPeriod:))
 
         self.averageSpentAmount = restBudgetDetailsResponse.averageSpentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount: ))
         self.totalSpentAmount = restBudgetDetailsResponse.totalSpentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount: ))

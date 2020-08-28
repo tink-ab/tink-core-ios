@@ -1,6 +1,6 @@
 import Foundation
 
-extension BudgetPeriod {
+extension Budget.Period {
     init?(restBudgetPeriod: RESTBudgetPeriod) {
         guard let start = restBudgetPeriod.start,
             let end = restBudgetPeriod.end else {
@@ -14,6 +14,6 @@ extension BudgetPeriod {
 extension BudgetSummary {
     init(restBudgetSummary: RESTBudgetSummary) {
         budget = restBudgetSummary.budgetSpecification.flatMap(Budget.init(restBudget:))
-        budgetPeriod = restBudgetSummary.budgetPeriod.flatMap(BudgetPeriod.init(restBudgetPeriod:))
+        budgetPeriod = restBudgetSummary.budgetPeriod.flatMap(Budget.Period.init(restBudgetPeriod:))
     }
 }
