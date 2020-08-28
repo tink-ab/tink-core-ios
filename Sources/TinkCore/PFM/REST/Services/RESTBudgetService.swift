@@ -111,12 +111,11 @@ final class RESTBudgetService: BudgetService {
     @discardableResult
     func transactionsForBudget(
         id: Budget.ID,
-        start: Date,
-        end: Date,
+        dateInterval: DateInterval,
         completion: @escaping (Result<[Budget.Transaction], Error>) -> Void) -> Cancellable? {
         let id = id.value
-        let startString = String(Int(start.timeIntervalSince1970 * 1000))
-        let endString = String(Int(end.timeIntervalSince1970 * 1000))
+        let startString = String(Int(dateInterval.start.timeIntervalSince1970 * 1000))
+        let endString = String(Int(dateInterval.end.timeIntervalSince1970 * 1000))
 
         var urlQueryItems = [URLQueryItem]()
         urlQueryItems.append(URLQueryItem(name: "start", value: startString))
@@ -245,13 +244,12 @@ final class RESTBudgetService: BudgetService {
     @discardableResult
     func budgetDetails(
         id: Budget.ID,
-        start: Date,
-        end: Date,
+        dateInterval: DateInterval,
         completion: @escaping (Result<BudgetDetails, Error>) -> Void
     ) -> Cancellable? {
         let id = id.value
-        let startString = String(Int(start.timeIntervalSince1970 * 1000))
-        let endString = String(Int(end.timeIntervalSince1970 * 1000))
+        let startString = String(Int(dateInterval.start.timeIntervalSince1970 * 1000))
+        let endString = String(Int(dateInterval.end.timeIntervalSince1970 * 1000))
 
         var urlQueryItems = [URLQueryItem]()
         urlQueryItems.append(URLQueryItem(name: "start", value: startString))
