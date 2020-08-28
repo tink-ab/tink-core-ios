@@ -1,16 +1,21 @@
 import Foundation
 
 extension Budget {
-    init?(restBudget: RESTBudget) {
-        guard let id = restBudget.id else { return nil }
-        self.id = .init(id)
-        self.name = restBudget.name ?? ""
-        if let amount = restBudget.amount {
-            self.amount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: amount)
-        } else {
-            self.amount = nil
-        }
+    init(restBudget: RESTBudget) {
+        self.id = .init(restBudget.id)
+        self.name = restBudget.name
+        self.amount = restBudget.amount.flatMap(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
 
+        switch restBudget.periodicityType {
+        case .oneOff:
+            let oneOffPeriodicity = restBudget.oneOffPeriodicity.map ({ OneOffPeriodicity(restOneOffPeriodicity: $0) })
+            periodicity = oneOffPeriodicity.flatMap { Periodicity.oneOff($0) }
+        case .recurring:
+            let recurringPeriodicity = restBudget.recurringPeriodicity.map ({ RecurringPeriodicity(restRecurringPeriodicity: $0) })
+            periodicity = recurringPeriodicity.flatMap { Periodicity.recurring($0) }
+        default:
+            periodicity = nil
+        }
         var newFilter = [Filter]()
 
         newFilter += restBudget.filter?.accounts?
@@ -35,5 +40,24 @@ extension Budget {
         }
 
         self.filter = newFilter
+    }
+}
+
+extension Budget.RecurringPeriodicity {
+    init(restRecurringPeriodicity: RESTBudget.RecurringPeriodicity) {
+        switch restRecurringPeriodicity.periodUnit {
+        case .month:
+            self = .init(periodUnit: .month)
+        case .week:
+            self = .init(periodUnit: .week)
+        case .year:
+            self = .init(periodUnit: .year)
+        }
+    }
+}
+
+extension Budget.OneOffPeriodicity {
+    init(restOneOffPeriodicity: RESTBudget.OneOffPeriodicity) {
+        self = .init(start: restOneOffPeriodicity.start, end: restOneOffPeriodicity.end)
     }
 }

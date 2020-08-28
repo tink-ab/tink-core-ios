@@ -14,6 +14,17 @@ public struct Transaction {
     public let id: ID
     public let inserted: Date?
     public let isUpcomingOrInFuture: Bool
+
+    public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount?, categoryID: Category.ID, description: String, date: Date?, inserted: Date?, isUpcomingOrInFuture: Bool) {
+        self.id = id
+        self.accountID = accountID
+        self.amount = amount
+        self.categoryID = categoryID
+        self.description = description
+        self.date = date
+        self.inserted = inserted
+        self.isUpcomingOrInFuture = isUpcomingOrInFuture
+    }
 }
 
 extension Transaction: Hashable {}
