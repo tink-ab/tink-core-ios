@@ -8,8 +8,11 @@ final class RESTBudgetService: BudgetService {
     }
 
     @discardableResult
-    func createBudget(
-        request: UpdateBudgetRequest,
+    func create(
+        name: String,
+        amount: CurrencyDenominatedAmount,
+        filter: [Budget.Filter],
+        periodicity: Budget.Periodicity,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         var accountIDs = [Account.ID]()
@@ -17,7 +20,7 @@ final class RESTBudgetService: BudgetService {
         var tags = [String]()
         var searchQuery = String()
 
-        request.filter.forEach { budgetFilter in
+        filter.forEach { budgetFilter in
             switch budgetFilter {
             case .account(let accountID): accountIDs.append(accountID)
             case .category(let categoryCode): categoryCodes.append(categoryCode)
@@ -30,12 +33,12 @@ final class RESTBudgetService: BudgetService {
         let category = categoryCodes.map { RESTBudget.Filter.Category.init(code: $0.value) }
         let filterTags = tags.map(RESTBudget.Filter.Tag.init(key:))
 
-        switch request.periodicity {
+        switch periodicity {
         case .oneOff(let oneOffPeriodicity):
             let restOneOffPeriodicity = RESTBudget.OneOffPeriodicity.init(start: oneOffPeriodicity.start, end: oneOffPeriodicity.end)
             let oneOffRequest = RESTCreateOneOffBudgetRequest(
-                name: request.name,
-                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: request.amount),
+                name: name,
+                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
                 oneOffPeriodicity: restOneOffPeriodicity)
 
@@ -43,8 +46,8 @@ final class RESTBudgetService: BudgetService {
         case .recurring(let recurringPeriodicity):
             let restRecurringPeriodicity = RESTBudget.RecurringPeriodicity(recurringPeriodicity: recurringPeriodicity)
             let recurringRequest = RESTCreateRecurringBudgetRequest(
-                name: request.name,
-                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: request.amount),
+                name: name,
+                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
                 recurringPeriodicity: restRecurringPeriodicity)
 
@@ -53,9 +56,12 @@ final class RESTBudgetService: BudgetService {
     }
 
     @discardableResult
-    func editBudget(
+    func update(
         id: Budget.ID,
-        request: UpdateBudgetRequest,
+        name: String,
+        amount: CurrencyDenominatedAmount,
+        filter: [Budget.Filter],
+        periodicity: Budget.Periodicity,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         var accountIDs = [Account.ID]()
@@ -63,7 +69,7 @@ final class RESTBudgetService: BudgetService {
         var tags = [String]()
         var searchQuery = String()
 
-        request.filter.forEach { budgetFilter in
+        filter.forEach { budgetFilter in
             switch budgetFilter {
             case .account(let accountID): accountIDs.append(accountID)
             case .category(let categoryCode): categoryCodes.append(categoryCode)
@@ -76,31 +82,33 @@ final class RESTBudgetService: BudgetService {
         let category = categoryCodes.map { RESTBudget.Filter.Category.init(code: $0.value) }
         let filterTags = tags.map(RESTBudget.Filter.Tag.init(key:))
 
-        switch request.periodicity {
+        switch periodicity {
         case .oneOff(let oneOffPeriodicity):
             let restOneOffPeriodicity = RESTBudget.OneOffPeriodicity.init(start: oneOffPeriodicity.start, end: oneOffPeriodicity.end)
-            let oneOffRequest = RESTCreateOneOffBudgetRequest(
-                name: request.name,
-                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: request.amount),
+            let oneOffRequest = RESTUpdateBudgetRequest(
+                name: name,
+                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
-                oneOffPeriodicity: restOneOffPeriodicity)
-
-            return editBudget(id: id, request: oneOffRequest, completion: completion)
+                recurringPeriodicity: nil,
+                oneOffPeriodicity: restOneOffPeriodicity
+            )
+            return update(id: id, request: oneOffRequest, completion: completion)
         case .recurring(let recurringPeriodicity):
             let restRecurringPeriodicity = RESTBudget.RecurringPeriodicity(recurringPeriodicity: recurringPeriodicity)
-            let recurringRequest = RESTCreateRecurringBudgetRequest(
-                name: request.name,
-                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: request.amount),
+            let recurringRequest = RESTUpdateBudgetRequest(
+                name: name,
+                amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
-                recurringPeriodicity: restRecurringPeriodicity)
-
-            return editBudget(id: id, request: recurringRequest, completion: completion)
+                recurringPeriodicity: restRecurringPeriodicity,
+                oneOffPeriodicity: nil
+            )
+            return update(id: id, request: recurringRequest, completion: completion)
         }
     }
 
     @discardableResult
-    func budgetTransactionByID(
-        _ id: Budget.ID,
+    func transactionsForBudget(
+        id: Budget.ID,
         start: Date,
         end: Date,
         completion: @escaping (Result<[Budget.Transaction], Error>) -> Void) -> Cancellable? {
@@ -159,7 +167,7 @@ final class RESTBudgetService: BudgetService {
         return client.performRequest(request)
     }
 
-    private func editBudget<Request: Encodable>(
+    private func update<Request: Encodable>(
         id: Budget.ID,
         request: Request,
         completion: @escaping (Result<Budget, Error>) -> Void
@@ -217,13 +225,13 @@ final class RESTBudgetService: BudgetService {
     }
 
     @discardableResult
-    func budgetDetailsByID(
-        _ budgetID: Budget.ID,
+    func budgetDetails(
+        id: Budget.ID,
         start: Date,
         end: Date,
         completion: @escaping (Result<BudgetPeriodOverview, Error>) -> Void
     ) -> Cancellable? {
-        let id = budgetID.value
+        let id = id.value
         let startString = String(Int(start.timeIntervalSince1970 * 1000))
         let endString = String(Int(end.timeIntervalSince1970 * 1000))
 
@@ -243,11 +251,11 @@ final class RESTBudgetService: BudgetService {
     }
 
     @discardableResult
-    func archiveBudget(
-        _ budgetID: Budget.ID,
+    func archive(
+        id: Budget.ID,
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
-        let id = budgetID.value
+        let id = id.value
         let request = RESTResourceRequest<RESTArchiveBudgetResponse>(
             path: "/api/v1/budgets/\(id)/archive",
             method: .put,
