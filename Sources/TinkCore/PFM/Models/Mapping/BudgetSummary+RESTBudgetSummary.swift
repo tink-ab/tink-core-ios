@@ -6,8 +6,7 @@ extension BudgetPeriod {
             let end = restBudgetPeriod.end else {
                 return nil
         }
-        self.start = start
-        self.end = end
+        self.dateInterval = DateInterval(start: start, end: end)
         spentAmount = restBudgetPeriod.spentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
     }
 }

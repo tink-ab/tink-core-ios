@@ -8,8 +8,7 @@ extension BudgetDetails {
 
         self.averageSpentAmount = restBudgetDetailsResponse.averageSpentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount: ))
         self.totalSpentAmount = restBudgetDetailsResponse.totalSpentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount: ))
-        self.start = restBudgetDetailsResponse.start
-        self.end = restBudgetDetailsResponse.end
+        self.dateInterval = DateInterval(start: restBudgetDetailsResponse.start, end: restBudgetDetailsResponse.end)
         self.budgetSpecification = budgetSpecification
         self.budgetPeriods = budgetPeriods
     }
