@@ -40,7 +40,8 @@ final class RESTBudgetService: BudgetService {
                 name: name,
                 amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
-                oneOffPeriodicity: restOneOffPeriodicity)
+                oneOffPeriodicity: restOneOffPeriodicity,
+                recurringPeriodicity: nil)
 
             return createOneOffBudget(request: oneOffRequest, completion: completion)
         case .recurring(let recurringPeriodicity):
@@ -49,6 +50,7 @@ final class RESTBudgetService: BudgetService {
                 name: name,
                 amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
+                oneOffPeriodicity: nil,
                 recurringPeriodicity: restRecurringPeriodicity)
 
             return createRecurringBudget(request: recurringRequest, completion: completion)
@@ -89,8 +91,8 @@ final class RESTBudgetService: BudgetService {
                 name: name,
                 amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
-                recurringPeriodicity: nil,
-                oneOffPeriodicity: restOneOffPeriodicity
+                oneOffPeriodicity: restOneOffPeriodicity,
+                recurringPeriodicity: nil
             )
             return update(id: id, request: oneOffRequest, completion: completion)
         case .recurring(let recurringPeriodicity):
@@ -99,8 +101,8 @@ final class RESTBudgetService: BudgetService {
                 name: name,
                 amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount),
                 filter: RESTBudget.Filter(accounts: accounts, categories: category, tags: filterTags, freeTextQuery: searchQuery),
-                recurringPeriodicity: restRecurringPeriodicity,
-                oneOffPeriodicity: nil
+                oneOffPeriodicity: nil,
+                recurringPeriodicity: restRecurringPeriodicity
             )
             return update(id: id, request: recurringRequest, completion: completion)
         }
