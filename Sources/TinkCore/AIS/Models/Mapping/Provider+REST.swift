@@ -31,6 +31,8 @@ extension Provider.AuthenticationUserType {
             self = .business
         case .personal:
             self = .personal
+        case .corporate:
+            self = .corporate
         case .unknown:
             self = .unknown
         }
