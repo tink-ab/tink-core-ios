@@ -12,8 +12,8 @@ struct RESTBudget: Decodable {
         case recurring = "RECURRING"
     }
 
-    struct RecurringPeriodicity: Decodable {
-        enum PeriodUnit: String, Decodable {
+    struct RecurringPeriodicity: Codable {
+        enum PeriodUnit: String, Codable {
             case week = "WEEK"
             case month = "MONTH"
             case year = "YEAR"
@@ -23,25 +23,25 @@ struct RESTBudget: Decodable {
         let periodUnit: PeriodUnit
     }
 
-    struct OneOffPeriodicity: Decodable {
+    struct OneOffPeriodicity: Codable {
         /// Budget start expressed as UTC epoch timestamp in milliseconds.
         let start: Date
         /// Budget end expressed as UTC epoch timestamp in milliseconds.
         let end: Date
     }
 
-    struct Filter: Decodable {
-        struct Account: Decodable {
+    struct Filter: Codable {
+        struct Account: Codable {
             /// The account ID.
             let id: String?
         }
 
-        struct Category: Decodable {
+        struct Category: Codable {
             /// The category code.
             let code: String?
         }
 
-        struct Tag: Decodable {
+        struct Tag: Codable {
             /// The tag key.
             let key: String?
         }
@@ -57,9 +57,9 @@ struct RESTBudget: Decodable {
     }
 
     /// The ID of the Budget.
-    let id: String?
+    let id: String
     /// The name of the budget.
-    let name: String?
+    let name: String
     let amount: RESTCurrencyDenominatedAmount?
     /// Tells whether the budget is recurring or one off type. Using this field it's possible to see which of the field `recurringPeriodicity` or `oneOffPeriodicity` is set.
     let periodicityType: PeriodicityType?
@@ -72,4 +72,17 @@ struct RESTBudget: Decodable {
 
 struct RESTListBudgetSpecificationsResponse: Decodable {
     let budgetSpecifications: [RESTBudget]?
+}
+
+extension RESTBudget.RecurringPeriodicity {
+    init(recurringPeriodicity: Budget.RecurringPeriodicity) {
+        switch recurringPeriodicity.periodUnit {
+        case .week:
+            self.periodUnit = .week
+        case .month:
+            self.periodUnit = .month
+        case .year:
+            self.periodUnit = .year
+        }
+    }
 }

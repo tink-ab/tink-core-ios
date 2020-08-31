@@ -77,6 +77,7 @@ struct RESTProvider: Decodable {
     enum AuthenticationUserType: String, DefaultableDecodable {
         case business = "BUSINESS"
         case personal = "PERSONAL"
+        case corporate = "CORPORATE"
         case unknown = "UNKNOWN"
 
         static var decodeFallbackValue: RESTProvider.AuthenticationUserType = .unknown
