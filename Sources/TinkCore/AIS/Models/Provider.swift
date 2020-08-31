@@ -16,6 +16,7 @@ public struct Provider: Identifiable {
         case unknown
         case business
         case personal
+        case corporate
     }
     
     /// Indicates if a user authenticates toward the bank as a person or a business.
