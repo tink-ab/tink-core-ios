@@ -205,7 +205,7 @@ final class RESTBudgetService: BudgetService {
             path: "/api/v1/budgets/summaries",
             method: .get,
             contentType: .json) { result in
-                let newResult = result.map { ($0.budgetSummaries ?? []).compactMap(BudgetSummary.init(restBudgetSummary: )) }
+                let newResult = result.map { $0.budgetSummaries.compactMap(BudgetSummary.init(restBudgetSummary: )) }
                 completion(newResult)
         }
         return client.performRequest(request)
