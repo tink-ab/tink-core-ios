@@ -197,16 +197,6 @@ final class RESTBudgetService: BudgetService {
         }
     }
 
-    private func makeBudgetRequestBody<Request: Encodable>(_ request: Request) throws -> Data {
-        let bodyEncoder = JSONEncoder()
-        bodyEncoder.dateEncodingStrategy = .custom { date, encoder in
-            var container = encoder.singleValueContainer()
-            try container.encode(Int(date.timeIntervalSince1970 * 1000))
-        }
-        let body = try bodyEncoder.encode(request)
-        return body
-    }
-
     @discardableResult
     func budgets(
         includeArchived: Bool,
