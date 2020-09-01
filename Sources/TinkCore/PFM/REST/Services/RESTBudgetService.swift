@@ -140,12 +140,10 @@ final class RESTBudgetService: BudgetService {
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         do {
-            let body = try makeBudgetRequestBody(request)
-
             let request = RESTResourceRequest<RESTCreateBudgetResponse>(
                 path: "/api/v1/budgets/one-off",
                 method: .post,
-                body: body,
+                body: request,
                 contentType: .json) { result in
                     let newResult = result.map { Budget.init(restBudget: $0.budgetSpecification) }
                     completion(newResult)
@@ -163,11 +161,10 @@ final class RESTBudgetService: BudgetService {
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         do {
-            let body = try makeBudgetRequestBody(request)
             let request = RESTResourceRequest<RESTCreateBudgetResponse>(
                 path: "/api/v1/budgets/recurring",
                 method: .post,
-                body: body,
+                body: request,
                 contentType: .json) { result in
                     let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
                     completion(result)
@@ -185,11 +182,10 @@ final class RESTBudgetService: BudgetService {
         completion: @escaping (Result<Budget, Error>) -> Void
     ) -> Cancellable? {
         do {
-            let body = try makeBudgetRequestBody(request)
             let request = RESTResourceRequest<RESTUpdateBudgetResponse>(
                 path: "/api/v1/budgets/\(id.value)",
                 method: .put,
-                body: body,
+                body: request,
                 contentType: .json) { result in
                     let result = result.map { Budget.init(restBudget: $0.budgetSpecification) }
                     completion(result)
