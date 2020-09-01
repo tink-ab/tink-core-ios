@@ -1,19 +1,15 @@
 import Foundation
 
 extension Budget.Period {
-    init?(restBudgetPeriod: RESTBudgetPeriod) {
-        guard let start = restBudgetPeriod.start,
-            let end = restBudgetPeriod.end else {
-                return nil
-        }
-        self.dateInterval = DateInterval(start: start, end: end)
-        spentAmount = restBudgetPeriod.spentAmount.map(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
+    init(restBudgetPeriod: RESTBudgetPeriod) {
+        self.dateInterval = DateInterval(start: restBudgetPeriod.start, end: restBudgetPeriod.end)
+        spentAmount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: restBudgetPeriod.spentAmount)
     }
 }
 
 extension BudgetSummary {
     init(restBudgetSummary: RESTBudgetSummary) {
-        budget = restBudgetSummary.budgetSpecification.flatMap(Budget.init(restBudget:))
-        budgetPeriod = restBudgetSummary.budgetPeriod.flatMap(Budget.Period.init(restBudgetPeriod:))
+        budget = Budget(restBudget: restBudgetSummary.budgetSpecification)
+        budgetPeriod = Budget.Period(restBudgetPeriod: restBudgetSummary.budgetPeriod)
     }
 }
