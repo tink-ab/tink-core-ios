@@ -1214,8 +1214,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E46FAD30DFB951E62059B2D2 /* Build configuration list for PBXProject "TinkCore" */;
 			compatibilityVersion = "Xcode 10.0";
