@@ -8,7 +8,7 @@ struct RESTArchivedInsight: Decodable {
     let userId: String
 
     /// The type of the archived insight.
-    let type: RESTActionableInsightType?
+    let insightType: RESTActionableInsightType?
 
     /// The title of the archived insight.
     let title: String?
