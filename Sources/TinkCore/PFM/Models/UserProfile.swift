@@ -7,4 +7,13 @@ public struct UserProfile {
     public let periodAdjustedDay: Int
     public let periodMode: Period.Resolution
     public let timeZone: TimeZone?
+
+    public init(currency: CurrencyCode, locale: Locale, market: Market, periodAdjustedDay: Int, periodMode: Period.Resolution, timeZone: TimeZone?) {
+        self.currency = currency
+        self.locale = locale
+        self.market = market
+        self.periodAdjustedDay = periodAdjustedDay
+        self.periodMode = periodMode
+        self.timeZone = timeZone
+    }
 }
