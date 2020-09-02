@@ -17,6 +17,8 @@ format:
 
 framework:
 	rm -rf ./build
+	echo 'Creating Xcode project...'
+	xcodegen generate
 
 	# Archive with xcodebuild
 	echo 'Build iOS Framework...'
