@@ -8,10 +8,10 @@ extension Budget {
 
         switch restBudget.periodicityType {
         case .oneOff:
-            let oneOffPeriodicity = restBudget.oneOffPeriodicity.map ({ OneOffPeriodicity(restOneOffPeriodicity: $0) })
+            let oneOffPeriodicity = restBudget.oneOffPeriodicity.map { OneOffPeriodicity(restOneOffPeriodicity: $0) }
             periodicity = oneOffPeriodicity.flatMap { Periodicity.oneOff($0) }
         case .recurring:
-            let recurringPeriodicity = restBudget.recurringPeriodicity.map ({ RecurringPeriodicity(restRecurringPeriodicity: $0) })
+            let recurringPeriodicity = restBudget.recurringPeriodicity.map { RecurringPeriodicity(restRecurringPeriodicity: $0) }
             periodicity = recurringPeriodicity.flatMap { Periodicity.recurring($0) }
         default:
             periodicity = nil

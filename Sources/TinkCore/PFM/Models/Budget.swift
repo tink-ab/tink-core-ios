@@ -50,6 +50,7 @@ public struct Budget {
 }
 
 // MARK: Budget Transaction
+
 extension Budget {
     public struct Transaction {
         /// The ID of the transaction.

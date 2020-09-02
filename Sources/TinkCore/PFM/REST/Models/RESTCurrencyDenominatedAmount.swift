@@ -8,12 +8,12 @@ struct RESTCurrencyDenominatedAmount: Codable {
 
 extension RESTCurrencyDenominatedAmount {
     init(currencyDenominatedAmount: CurrencyDenominatedAmount) {
-        (scale, unscaledValue) = currencyDenominatedAmount.toScaledValue()
-        currencyCode = currencyDenominatedAmount.currencyCode.value
+        (self.scale, self.unscaledValue) = currencyDenominatedAmount.toScaledValue()
+        self.currencyCode = currencyDenominatedAmount.currencyCode.value
     }
 }
 
-fileprivate extension CurrencyDenominatedAmount {
+private extension CurrencyDenominatedAmount {
     func toScaledValue() -> (Int, Int) {
         var value = self.value
         var normalizedSignificand: Int64?

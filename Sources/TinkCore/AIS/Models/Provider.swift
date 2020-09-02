@@ -18,7 +18,7 @@ public struct Provider: Identifiable {
         case personal
         case corporate
     }
-    
+
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public let authenticationUserType: AuthenticationUserType
 

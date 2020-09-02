@@ -16,4 +16,3 @@ struct RESTBudgetTransaction: Decodable {
     /// The ID of the account this transaction belongs to.
     let accountId: String?
 }
-
