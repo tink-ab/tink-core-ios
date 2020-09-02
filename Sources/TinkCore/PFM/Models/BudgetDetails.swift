@@ -12,4 +12,3 @@ public struct BudgetDetails {
     /// Average period spending for the listed periods.
     public let averageSpentAmount: CurrencyDenominatedAmount?
 }
-

@@ -7,4 +7,3 @@ struct RESTBudgetResponse: Decodable {
     /// The created budget.
     let budgetSpecification: RESTBudget
 }
-

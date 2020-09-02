@@ -8,4 +8,3 @@ extension Budget {
         public let spentAmount: CurrencyDenominatedAmount?
     }
 }
-
