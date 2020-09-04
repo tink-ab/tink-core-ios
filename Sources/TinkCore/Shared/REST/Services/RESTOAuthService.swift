@@ -9,7 +9,12 @@ final class RESTOAuthService: OAuthService {
 
     @discardableResult
     func createAnonymous(market: Market?, locale: Locale, origin: String?, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTAnonymousUserRequest(market: market?.code ?? "", origin: origin, locale: locale.identifier)
+        var localeIdentifier = locale.identifier
+        if let languageCode = locale.languageCode, languageCode == "nb" || languageCode == "nn" {
+            localeIdentifier = "no_NO"
+        }
+
+        let body = RESTAnonymousUserRequest(market: market?.code ?? "", origin: origin, locale: localeIdentifier)
 
         let request = RESTResourceRequest<RESTAnonymousUserResponse>(path: "/api/v1/user/anonymous", method: .post, body: body, contentType: .json) { result in
 
