@@ -13,5 +13,5 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "11.0"
   spec.swift_version = '5.1'
 
-  spec.source_files = "Sources/TinkCore/**/*.swift"
+  spec.vendored_frameworks = 'TinkCore.xcframework'
 end
