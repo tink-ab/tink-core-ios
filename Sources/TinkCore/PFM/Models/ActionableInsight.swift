@@ -133,7 +133,6 @@ public extension ActionableInsight {
     }
 
     struct TransactionSummary {
-
         public struct TransactionsOverview {
             public let totalCount: Int
             public let mostCommonDescription: String
@@ -351,7 +350,7 @@ public enum InsightActionData {
     public struct ViewTransactionsByCategory {
         public let transactionIdsByCategory: [Category.Code: [Transaction.ID]]
 
-        public init(transactionIdsByCategory: [Category.Code : [Transaction.ID]]) {
+        public init(transactionIdsByCategory: [Category.Code: [Transaction.ID]]) {
             self.transactionIdsByCategory = transactionIdsByCategory
         }
     }
