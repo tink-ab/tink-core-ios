@@ -9,7 +9,7 @@ ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
 	brew install swiftformat
 endif
 
-generate-carthage-project:
+carthage-project:
 	xcodegen generate
 
 format:
