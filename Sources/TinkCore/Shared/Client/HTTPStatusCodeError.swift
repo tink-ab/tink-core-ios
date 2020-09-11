@@ -19,6 +19,9 @@ public enum HTTPStatusCodeError: Error {
     /// Status code: 412
     case preconditionFailed
 
+    /// Status code: 451
+    case unavailableForLegalReasons
+
     /// Status code: 500
     case internalServerError
 
