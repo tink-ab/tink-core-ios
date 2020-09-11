@@ -637,6 +637,9 @@ public enum HTTPStatusCodeError : Swift.Error {
   case unauthorized
   case forbidden
   case notFound
+  case conflict
+  case preconditionFailed
+  case unavailableForLegalReasons
   case internalServerError
   case serverError(Swift.Int)
   case clientError(Swift.Int)
@@ -1014,6 +1017,7 @@ public enum ServiceError : Swift.Error {
   case unauthenticated(Swift.String)
   case resourceExhausted(Swift.String)
   case failedPrecondition(Swift.String)
+  case unavailableForLegalReasons(Swift.String)
   case aborted(Swift.String)
   case outOfRange(Swift.String)
   case unimplemented(Swift.String)
