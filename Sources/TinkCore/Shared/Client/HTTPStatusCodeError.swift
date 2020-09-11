@@ -16,6 +16,9 @@ public enum HTTPStatusCodeError: Error {
     /// Status code: 409
     case conflict
 
+    /// Status code: 412
+    case preconditionFailed
+
     /// Status code: 500
     case internalServerError
 
