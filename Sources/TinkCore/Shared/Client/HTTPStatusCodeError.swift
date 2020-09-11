@@ -37,7 +37,6 @@ public enum HTTPStatusCodeError: Error {
         case 401: self = .unauthorized
         case 403: self = .forbidden
         case 404: self = .notFound
-        case 404: self = .notFound
         case 409: self = .conflict
         case 412: self = .preconditionFailed
         case 451: self = .unavailableForLegalReasons
