@@ -20,6 +20,8 @@ public enum ServiceError: Error {
     case resourceExhausted(String)
     /// Precondition failed
     case failedPrecondition(String)
+    /// The request cannot be fulfilled because of legal/contractual reasons.
+    case unavailableForLegalReasons(String)
     /// The request is aborted
     case aborted(String)
     /// Out of range
@@ -46,6 +48,12 @@ public enum ServiceError: Error {
                 self = .permissionDenied(restError.errorMessage ?? "")
             case .notFound:
                 self = .notFound(restError.errorMessage ?? "")
+            case .conflict:
+                self = .alreadyExists(restError.errorMessage ?? "")
+            case .preconditionFailed:
+                self = .failedPrecondition(restError.errorMessage ?? "")
+            case .unavailableForLegalReasons:
+                self = .unavailableForLegalReasons(restError.errorMessage ?? "")
             case .internalServerError:
                 self = .internalError(restError.errorMessage ?? "Internal server error")
             case .serverError(let code):

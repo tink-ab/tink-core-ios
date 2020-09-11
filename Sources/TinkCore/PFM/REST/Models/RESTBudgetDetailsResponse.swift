@@ -14,4 +14,3 @@ struct RESTBudgetDetailsResponse: Decodable {
     /// Average period spending for the listed periods.
     let averageSpentAmount: RESTCurrencyDenominatedAmount?
 }
-

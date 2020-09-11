@@ -20,7 +20,7 @@ extension ActionableInsight {
     init?(restArchivedInsight: RESTArchivedInsight) {
         guard let id = restArchivedInsight.id,
             let data = restArchivedInsight.data,
-            let type = restArchivedInsight.type,
+            let type = restArchivedInsight.insightType,
             let kind = Kind(restType: type, restInsightData: data),
             let title = restArchivedInsight.title,
             let description = restArchivedInsight.description,

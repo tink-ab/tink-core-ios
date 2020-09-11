@@ -4,14 +4,14 @@ Pod::Spec.new do |spec|
   spec.description  = <<-DESC
                     Core library for Tink SDKs.
                     DESC
-  spec.version      = "0.1.3"
+  spec.version      = "0.1.4"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.authors      = { "Tink AB" => "mobile@tink.se" }
   spec.homepage     = "https://tink.com"
   spec.source       = { :git => "https://github.com/tink-ab/tink-core-ios.git", :tag => spec.version }
 
   spec.platform     = :ios, "11.0"
-  spec.swift_version = '5.1'
+  spec.swift_version = ["5.1", "5.2"]
 
-  spec.source_files = "Sources/TinkCore/**/*.swift"
+  spec.vendored_frameworks = 'TinkCore.xcframework'
 end
