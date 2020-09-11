@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Budget {
-
     public typealias ID = Identifier<Budget>
 
     public enum Periodicity: Equatable {

@@ -1214,6 +1214,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = E46FAD30DFB951E62059B2D2 /* Build configuration list for PBXProject "TinkCore" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1648,6 +1650,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1783,6 +1786,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
@@ -1846,6 +1850,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1873,6 +1878,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
