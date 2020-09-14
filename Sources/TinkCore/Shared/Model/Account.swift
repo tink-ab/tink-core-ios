@@ -81,7 +81,7 @@ public struct Account {
     /// All banks do not offer detail information about their loan and mortgages therefore will details not be present on all accounts of the types loan and mortgages.
     let details: AccountDetails?
 
-    /// The name of the account holder
+    /// The name of the account holder.
     public let holderName: String?
 
     /// A closed account indicates that it was no longer available from the connected financial institution, most likely due to it having been closed by the user.
