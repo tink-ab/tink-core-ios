@@ -122,6 +122,7 @@ public struct Provider: Identifiable {
         }
     }
 
+    /// List of fields which need to be provided when creating a credential connected to the provider.
     public let fields: [FieldSpecification]
 
     /// A display name for providers which are branches of a bigger group.
