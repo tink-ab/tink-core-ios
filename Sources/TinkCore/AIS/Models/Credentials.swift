@@ -155,6 +155,33 @@ public struct Credentials: Identifiable {
         public var hasAutoStartToken: Bool {
             deepLinkURL?.query?.contains("autostartToken") ?? false
         }
+
+        /// Creates a ThirdPartyAppAuthentication model.
+        /// - Parameters:
+        ///   - downloadTitle: Title of the app to be downloaded.
+        ///   - downloadMessage: Detailed message about app to be downloaded.
+        ///   - upgradeTitle: Title of the app to be upgraded.
+        ///   - upgradeMessage: Detailed message about app to be upgraded.
+        ///   - appStoreURL: URL to AppStore where the app can be downloaded on iOS.
+        ///   - scheme: Base scheme of the app on iOS.
+        ///   - deepLinkURL: URL that the app should open on iOS. Can be of another scheme than app scheme.
+        public init(
+            downloadTitle: String?,
+            downloadMessage: String?,
+            upgradeTitle: String?,
+            upgradeMessage: String?,
+            appStoreURL: URL?,
+            scheme: String?,
+            deepLinkURL: URL?
+        ) {
+            self.downloadTitle = downloadTitle
+            self.downloadMessage = downloadMessage
+            self.upgradeTitle = upgradeTitle
+            self.upgradeMessage = upgradeMessage
+            self.appStoreURL = appStoreURL
+            self.scheme = scheme
+            self.deepLinkURL = deepLinkURL
+        }
     }
 
     /// Information about the third party authentication flow.
