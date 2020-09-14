@@ -38,4 +38,26 @@ public struct SignableOperation {
     public let updated: Date?
     /// The ID of the user making the operation.
     let userID: User.ID?
+
+    public init(
+        created: Date?,
+        credentialsID: Credentials.ID?,
+        id: SignableOperation.ID?,
+        status: SignableOperation.Status,
+        statusMessage: String?,
+        kind: SignableOperation.Kind,
+        transferID: Transfer.ID?,
+        updated: Date?,
+        userID: User.ID?
+    ) {
+        self.created = created
+        self.credentialsID = credentialsID
+        self.id = id
+        self.status = status
+        self.statusMessage = statusMessage
+        self.kind = kind
+        self.transferID = transferID
+        self.updated = updated
+        self.userID = userID
+    }
 }

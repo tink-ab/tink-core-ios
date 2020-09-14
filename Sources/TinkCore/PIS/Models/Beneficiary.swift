@@ -17,4 +17,16 @@ public struct Beneficiary: Equatable {
     public let name: String
     /// The identifier of the account that this beneficiary belongs to.
     public let ownerAccountID: Account.ID
+
+    public init(
+        accountNumberKind: AccountNumberKind,
+        accountNumber: String,
+        name: String,
+        ownerAccountID: Account.ID
+    ) {
+        self.accountNumberKind = accountNumberKind
+        self.accountNumber = accountNumber
+        self.name = name
+        self.ownerAccountID = ownerAccountID
+    }
 }
