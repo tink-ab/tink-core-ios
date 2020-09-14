@@ -139,7 +139,7 @@ public struct Credentials: Identifiable {
         /// Title of the app to be upgraded.
         public let upgradeTitle: String?
 
-        /// Detailed message about app to be upgraded
+        /// Detailed message about app to be upgraded.
         public let upgradeMessage: String?
 
         /// URL to AppStore where the app can be downloaded on iOS.
