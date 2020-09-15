@@ -11,5 +11,14 @@ extension Provider {
 
         /// The name of the financial institution.
         public let name: String
+
+        /// Creates a FinancialInstitution model.
+        /// - Parameters:
+        ///   - id: A unique identifier.
+        ///   - name: The name of the financial institution.
+        public init(id: Provider.FinancialInstitution.ID, name: String) {
+            self.id = id
+            self.name = name
+        }
     }
 }
