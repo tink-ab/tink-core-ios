@@ -42,6 +42,7 @@ public struct Account {
   public let currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?
   public let refreshed: Foundation.Date?
   public let financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?
+  public init(id: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, name: Swift.String, accountNumber: Swift.String, kind: TinkCore.Account.Kind, transferSourceIdentifiers: [Foundation.URL]?, holderName: Swift.String?, isClosed: Swift.Bool?, currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?, refreshed: Foundation.Date?, financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?)
 }
 extension Account : Swift.Hashable {
   public var hashValue: Swift.Int {
@@ -301,6 +302,7 @@ public struct Beneficiary : Swift.Equatable {
   public let accountNumber: Swift.String
   public let name: Swift.String
   public let ownerAccountID: TinkCore.Account.ID
+  public init(accountNumberKind: TinkCore.AccountNumberKind, accountNumber: Swift.String, name: Swift.String, ownerAccountID: TinkCore.Account.ID)
   public static func == (a: TinkCore.Beneficiary, b: TinkCore.Beneficiary) -> Swift.Bool
 }
 public protocol BeneficiaryService {
@@ -559,9 +561,11 @@ public struct Credentials : Swift.Identifiable {
     public var hasAutoStartToken: Swift.Bool {
       get
     }
+    public init(downloadTitle: Swift.String?, downloadMessage: Swift.String?, upgradeTitle: Swift.String?, upgradeMessage: Swift.String?, appStoreURL: Foundation.URL?, scheme: Swift.String?, deepLinkURL: Foundation.URL?)
   }
   public let thirdPartyAppAuthentication: TinkCore.Credentials.ThirdPartyAppAuthentication?
   public let sessionExpiryDate: Foundation.Date?
+  public init(id: TinkCore.Credentials.ID, providerID: TinkCore.Provider.ID, kind: TinkCore.Credentials.Kind, status: TinkCore.Credentials.Status, statusPayload: Swift.String, statusUpdated: Foundation.Date?, updated: Foundation.Date?, fields: [Swift.String : Swift.String], supplementalInformationFields: [TinkCore.Provider.FieldSpecification], thirdPartyAppAuthentication: TinkCore.Credentials.ThirdPartyAppAuthentication?, sessionExpiryDate: Foundation.Date?)
 }
 public protocol CredentialsService {
   func credentialsList(completion: @escaping (Swift.Result<[TinkCore.Credentials], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -625,6 +629,7 @@ extension Provider {
     public typealias ID = TinkCore.Identifier<TinkCore.Provider.FinancialInstitution>
     public let id: TinkCore.Provider.FinancialInstitution.ID
     public let name: Swift.String
+    public init(id: TinkCore.Provider.FinancialInstitution.ID, name: Swift.String)
     public var hashValue: Swift.Int {
       get
     }
@@ -777,6 +782,7 @@ public struct Provider : Swift.Identifiable {
     public let pattern: Swift.String
     public let patternError: Swift.String
     public let helpText: Swift.String
+    public init(fieldDescription: Swift.String, hint: Swift.String, maxLength: Swift.Int?, minLength: Swift.Int?, isMasked: Swift.Bool, isNumeric: Swift.Bool, isImmutable: Swift.Bool, isOptional: Swift.Bool, name: Swift.String, initialValue: Swift.String, pattern: Swift.String, patternError: Swift.String, helpText: Swift.String)
     public mutating func setImmutable(initialValue newValue: Swift.String)
   }
   public let fields: [TinkCore.Provider.FieldSpecification]
@@ -819,6 +825,7 @@ public struct Provider : Swift.Identifiable {
   public let accessType: TinkCore.Provider.AccessType
   public let marketCode: Swift.String
   public let financialInstitution: TinkCore.Provider.FinancialInstitution
+  public init(id: TinkCore.Provider.ID, displayName: Swift.String, authenticationUserType: TinkCore.Provider.AuthenticationUserType, kind: TinkCore.Provider.Kind, status: TinkCore.Provider.Status, credentialsKind: TinkCore.Credentials.Kind, helpText: Swift.String?, isPopular: Swift.Bool, fields: [TinkCore.Provider.FieldSpecification], groupDisplayName: Swift.String, image: Foundation.URL?, displayDescription: Swift.String, capabilities: TinkCore.Provider.Capabilities, accessType: TinkCore.Provider.AccessType, marketCode: Swift.String, financialInstitution: TinkCore.Provider.FinancialInstitution)
 }
 extension Set where Element == TinkCore.Provider.Kind {
   public static var all: Swift.Set<TinkCore.Provider.Kind> {
@@ -1066,6 +1073,7 @@ public struct SignableOperation {
   public let kind: TinkCore.SignableOperation.Kind
   public let transferID: TinkCore.Transfer.ID?
   public let updated: Foundation.Date?
+  public init(created: Foundation.Date?, credentialsID: TinkCore.Credentials.ID?, id: TinkCore.SignableOperation.ID?, status: TinkCore.SignableOperation.Status, statusMessage: Swift.String?, kind: TinkCore.SignableOperation.Kind, transferID: TinkCore.Transfer.ID?, updated: Foundation.Date?, userID: TinkCore.User.ID?)
 }
 public struct Statistic {
   public enum Resolution {
