@@ -18,6 +18,12 @@ public struct Beneficiary: Equatable {
     /// The identifier of the account that this beneficiary belongs to.
     public let ownerAccountID: Account.ID
 
+    /// Creates a beneficiary model.
+    /// - Parameters:
+    ///   - accountNumberKind: The kind of the `accountNumber` that this beneficiary has.
+    ///   - accountNumber: The account number for the beneficiary.
+    ///   - name: The name chosen by the user for this beneficiary.
+    ///   - ownerAccountID: The identifier of the account that this beneficiary belongs to.
     public init(
         accountNumberKind: AccountNumberKind,
         accountNumber: String,
