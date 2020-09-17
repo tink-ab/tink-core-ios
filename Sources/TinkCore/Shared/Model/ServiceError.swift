@@ -1,13 +1,7 @@
 /// An error returned by Tink service requests when something went wrong.
 public enum ServiceError: Error {
-    /// Request is cancelled
-    case cancelled
-    /// Unknown error
-    case unknown(String)
     /// Invalid argurment
     case invalidArgument(String)
-    /// Deadline exceeded
-    case deadlineExceeded(String)
     /// Not found
     case notFound(String)
     /// The resource already exists
@@ -16,26 +10,12 @@ public enum ServiceError: Error {
     case permissionDenied(String)
     /// The user has not authenticated
     case unauthenticated(String)
-    /// Resource exhausted
-    case resourceExhausted(String)
     /// Precondition failed
     case failedPrecondition(String)
     /// The request cannot be fulfilled because of legal/contractual reasons.
     case unavailableForLegalReasons(String)
-    /// The request is aborted
-    case aborted(String)
-    /// Out of range
-    case outOfRange(String)
-    /// Not implemented
-    case unimplemented(String)
     /// Internal error
     case internalError(String)
-    /// The server is not available
-    case unavailable(String)
-    /// Data loss
-    case dataLoss(String)
-    /// The internet connection is missing
-    case missingInternetConnection
 
     init?(_ error: Swift.Error) {
         if let restError = error as? RESTError, let statusCodeError = restError.statusCodeError {
