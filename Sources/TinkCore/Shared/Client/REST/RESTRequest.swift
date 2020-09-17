@@ -42,12 +42,7 @@ struct RESTSimpleRequest: RESTRequest {
     func onResponse(_ result: Result<(data: Data, urlResponse: URLResponse), Error>) {
         do {
             let response = try result.get()
-            if let errorResponse = try? JSONDecoder().decode(RESTError.self, from: response.data),
-                let serviceError = ServiceError(errorResponse) {
-                completion(.failure(serviceError))
-            } else {
-                completion(.success(response.urlResponse))
-            }
+            completion(.success(response.urlResponse))
         } catch {
             completion(.failure(ServiceError(error) ?? error))
         }
