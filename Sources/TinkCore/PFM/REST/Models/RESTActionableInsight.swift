@@ -53,6 +53,8 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case monthlySummaryExpenseTransactions = "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS"
     case newIncomeTransaction = "NEW_INCOME_TRANSACTION"
     case suggestSetUpSavingsAccount = "SUGGEST_SET_UP_SAVINGS_ACCOUNT"
+    case creditCardLimitClose = "CREDIT_CARD_LIMIT_CLOSE"
+    case creditCardLimitReached = "CREDIT_CARD_LIMIT_REACHED"
 }
 
 enum RESTInsightData: Decodable {
@@ -198,6 +200,25 @@ enum RESTInsightData: Decodable {
         let currentAccount: Account
     }
 
+    struct CreditCardLimitClose: Decodable {
+        struct Account: Decodable {
+            let accountId: String
+            let accountName: String
+        }
+
+        let account: CreditCardLimitClose.Account
+        let availableCredit: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct CreditCardLimitReached: Decodable {
+        struct Account: Decodable {
+            let accountId: String
+            let accountName: String
+        }
+
+        let account: Account
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -217,6 +238,8 @@ enum RESTInsightData: Decodable {
     case monthlySummaryExpenseTransactions(MonthlySummaryExpenseTransactions)
     case newIncomeTransaction(NewIncomeTransaction)
     case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
+    case creditCardLimitClose(CreditCardLimitClose)
+    case creditCardLimitReached(CreditCardLimitReached)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -283,6 +306,12 @@ enum RESTInsightData: Decodable {
             case .suggestSetUpSavingsAccount:
                 let data = try SuggestSetUpSavingsAccount(from: decoder)
                 self = .suggestSetUpSavingsAccount(data)
+            case .creditCardLimitClose:
+                let data = try CreditCardLimitClose(from: decoder)
+                self = .creditCardLimitClose(data)
+            case .creditCardLimitReached:
+                let data = try CreditCardLimitReached(from: decoder)
+                self = .creditCardLimitReached(data)
             case .unknown:
                 self = .unknown
             }
