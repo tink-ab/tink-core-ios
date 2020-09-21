@@ -64,6 +64,8 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
     case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
     case spendingByCategoryIncreased = "SPENDING_BY_CATEGORY_INCREASED"
+    case leftToSpendPositiveSummarySavingsAccount = "LEFT_TO_SPEND_POSITIVE_SUMMARY_SAVINGS_ACCOUNT"
+    case leftToSpendPositiveFinalWeek = "LEFT_TO_SPEND_POSITIVE_FINAL_WEEK"
 }
 
 enum RESTInsightData: Decodable {
@@ -286,6 +288,18 @@ enum RESTInsightData: Decodable {
         let percentage: Double
     }
 
+    struct LeftToSpendPositiveSummarySavingsAccount: Decodable {
+        let month: RESTInsightData.Month
+        let leftAmount: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendPositiveFinalWeek: Decodable {
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+        let leftToSpendPerDay: RESTInsightData.CurrencyDenominatedAmount
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -316,6 +330,8 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegative(LeftToSpendNegative)
     case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+    case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
+    case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -414,6 +430,12 @@ enum RESTInsightData: Decodable {
             case .spendingByCategoryIncreased:
                 let data = try SpendingByCategoryIncreased(from: decoder)
                 self = .spendingByCategoryIncreased(data)
+            case .leftToSpendPositiveSummarySavingsAccount:
+                let data = try LeftToSpendPositiveSummarySavingsAccount(from: decoder)
+                self = .leftToSpendPositiveSummarySavingsAccount(data)
+            case .leftToSpendPositiveFinalWeek:
+                let data = try LeftToSpendPositiveFinalWeek(from: decoder)
+                self = .leftToSpendPositiveFinalWeek(data)
             case .unknown:
                 self = .unknown
             }
