@@ -355,6 +355,12 @@ public enum InsightActionData {
         }
     }
 
+    public struct BudgetSuggestion {
+        public let filters: [Budget.Filter]
+        public let amount: CurrencyDenominatedAmount?
+        public let periodicity: Budget.Periodicity?
+    }
+
     case unknown
     case acknowledge
     case dismiss
@@ -367,4 +373,5 @@ public enum InsightActionData {
     case viewTransactionsByCategory([Category.Code: [Transaction.ID]])
     case viewAccount(Account.ID)
     case viewLeftToSpend(ActionableInsight.Month)
+    case createBudget(BudgetSuggestion)
 }

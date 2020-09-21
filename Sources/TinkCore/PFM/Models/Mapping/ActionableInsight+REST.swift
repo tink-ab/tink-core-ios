@@ -193,6 +193,11 @@ extension InsightActionData {
             self = .viewAccount(Account.ID(account.accountId))
         case .viewLeftToSpend(let leftToSpend):
             self = .viewLeftToSpend(ActionableInsight.Month(year: leftToSpend.month.year, month: leftToSpend.month.month))
+        case .createBudget(let createBudget):
+            let filters = Budget.Filter.makeFilters(restFilter: createBudget.budgetSuggestion.filter)
+            let amount = createBudget.budgetSuggestion.amount.flatMap(CurrencyDenominatedAmount.init(restAIAmount:))
+            let periodicity = Budget.Periodicity(restPeriodicityType: createBudget.budgetSuggestion.periodicityType, restOneOffPeriodicity: createBudget.budgetSuggestion.oneOffPeriodicityData, restRecurringPeriodicity: createBudget.budgetSuggestion.recurringPeriodicityData)
+            self = .createBudget(BudgetSuggestion(filters: filters, amount: amount, periodicity: periodicity))
         }
     }
 }
