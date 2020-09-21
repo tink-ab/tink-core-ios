@@ -374,4 +374,5 @@ public enum InsightActionData {
     case viewAccount(Account.ID)
     case viewLeftToSpend(ActionableInsight.Month)
     case createBudget(BudgetSuggestion)
+    case refreshCredentials(Credentials.ID)
 }

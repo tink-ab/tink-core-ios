@@ -198,6 +198,8 @@ extension InsightActionData {
             let amount = createBudget.budgetSuggestion.amount.flatMap(CurrencyDenominatedAmount.init(restAIAmount:))
             let periodicity = Budget.Periodicity(restPeriodicityType: createBudget.budgetSuggestion.periodicityType, restOneOffPeriodicity: createBudget.budgetSuggestion.oneOffPeriodicityData, restRecurringPeriodicity: createBudget.budgetSuggestion.recurringPeriodicityData)
             self = .createBudget(BudgetSuggestion(filters: filters, amount: amount, periodicity: periodicity))
+        case .refreshCredentials(let refreshCredentials):
+            self = .refreshCredentials(Credentials.ID(refreshCredentials.credentialId))
         }
     }
 }
