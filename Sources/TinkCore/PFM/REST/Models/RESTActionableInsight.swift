@@ -314,6 +314,7 @@ enum RESTInsightActionDataType: String, Decodable {
     case viewAccount = "VIEW_ACCOUNT"
     case viewLeftToSpend = "VIEW_LEFT_TO_SPEND"
     case createBudget = "CREATE_BUDGET"
+    case refreshCredentials = "REFRESH_CREDENTIAL"
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -372,6 +373,10 @@ enum RESTInsightActionData: Decodable {
         let budgetSuggestion: BudgetSuggestion
     }
 
+    struct RefreshCredentials: Decodable {
+        let credentialId: String
+    }
+
     case unknown
     case acknowledge
     case dismiss
@@ -385,6 +390,7 @@ enum RESTInsightActionData: Decodable {
     case viewAccount(ViewAccount)
     case viewLeftToSpend(ViewLeftToSpend)
     case createBudget(CreateBudget)
+    case refreshCredentials(RefreshCredentials)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -433,6 +439,9 @@ enum RESTInsightActionData: Decodable {
             case .createBudget:
                 let data = try CreateBudget(from: decoder)
                 self = .createBudget(data)
+            case .refreshCredentials:
+                let data = try RefreshCredentials(from: decoder)
+                self = .refreshCredentials(data)
             }
         } catch {
             self = .unknown
