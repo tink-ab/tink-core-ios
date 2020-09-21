@@ -366,7 +366,7 @@ enum RESTInsightActionData: Decodable {
     struct CreateBudget: Decodable {
         struct BudgetSuggestion: Decodable {
             let filter: RESTBudget.Filter?
-            let amount: RESTCurrencyDenominatedAmount?
+            let amount: RESTInsightData.CurrencyDenominatedAmount?
             let periodicityType: RESTBudget.PeriodicityType?
             let recurringPeriodicityData: RESTBudget.RecurringPeriodicity?
         }
