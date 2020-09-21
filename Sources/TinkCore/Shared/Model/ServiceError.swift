@@ -1,6 +1,6 @@
 /// An error returned by Tink service requests when something went wrong.
 public enum ServiceError: Error {
-    /// Invalid argurment
+    /// Invalid argument
     case invalidArgument(String)
     /// Not found
     case notFound(String)
