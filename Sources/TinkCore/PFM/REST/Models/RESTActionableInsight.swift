@@ -55,6 +55,8 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case suggestSetUpSavingsAccount = "SUGGEST_SET_UP_SAVINGS_ACCOUNT"
     case creditCardLimitClose = "CREDIT_CARD_LIMIT_CLOSE"
     case creditCardLimitReached = "CREDIT_CARD_LIMIT_REACHED"
+    case leftToSpendPositiveMidMonth = "LEFT_TO_SPEND_POSITIVE_MID_MONTH"
+    case leftToSpendNegativeMidMonth = "LEFT_TO_SPEND_NEGATIVE_MID_MONTH"
 }
 
 enum RESTInsightData: Decodable {
@@ -219,6 +221,18 @@ enum RESTInsightData: Decodable {
         let account: Account
     }
 
+    struct LeftToSpendStatistics: Decodable {
+        let createdAt: Date
+        let currentLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+        let averageLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendMidMonth: Decodable {
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -240,6 +254,8 @@ enum RESTInsightData: Decodable {
     case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
     case creditCardLimitClose(CreditCardLimitClose)
     case creditCardLimitReached(CreditCardLimitReached)
+    case leftToSpendPositiveMidMonth(LeftToSpendMidMonth)
+    case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -312,6 +328,12 @@ enum RESTInsightData: Decodable {
             case .creditCardLimitReached:
                 let data = try CreditCardLimitReached(from: decoder)
                 self = .creditCardLimitReached(data)
+            case .leftToSpendPositiveMidMonth:
+                let data = try LeftToSpendMidMonth(from: decoder)
+                self = .leftToSpendPositiveMidMonth(data)
+            case .leftToSpendNegativeMidMonth:
+                let data = try LeftToSpendMidMonth(from: decoder)
+                self = .leftToSpendNegativeMidMonth(data)
             case .unknown:
                 self = .unknown
             }
