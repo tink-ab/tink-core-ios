@@ -66,6 +66,7 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case spendingByCategoryIncreased = "SPENDING_BY_CATEGORY_INCREASED"
     case leftToSpendPositiveSummarySavingsAccount = "LEFT_TO_SPEND_POSITIVE_SUMMARY_SAVINGS_ACCOUNT"
     case leftToSpendPositiveFinalWeek = "LEFT_TO_SPEND_POSITIVE_FINAL_WEEK"
+    case aggregationRefreshPSD2Credentials = "AGGREGATION_REFRESH_PSD2_CREDENTIAL"
 }
 
 enum RESTInsightData: Decodable {
@@ -300,6 +301,20 @@ enum RESTInsightData: Decodable {
         let leftToSpendPerDay: RESTInsightData.CurrencyDenominatedAmount
     }
 
+    struct AggregationRefreshPSD2Credentials: Decodable {
+        struct Provider: Decodable {
+            let name: String
+            let displayName: String
+        }
+
+        struct Credentials: Decodable {
+            let id: String
+            let provider: AggregationRefreshPSD2Credentials.Provider
+        }
+        let credential: Credentials
+        let sessionExpiryDate: Date
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -332,6 +347,7 @@ enum RESTInsightData: Decodable {
     case spendingByCategoryIncreased(SpendingByCategoryIncreased)
     case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
     case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
+    case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -436,6 +452,9 @@ enum RESTInsightData: Decodable {
             case .leftToSpendPositiveFinalWeek:
                 let data = try LeftToSpendPositiveFinalWeek(from: decoder)
                 self = .leftToSpendPositiveFinalWeek(data)
+            case .aggregationRefreshPSD2Credentials:
+                let data = try AggregationRefreshPSD2Credentials(from: decoder)
+                self = .aggregationRefreshPSD2Credentials(data)
             case .unknown:
                 self = .unknown
             }
