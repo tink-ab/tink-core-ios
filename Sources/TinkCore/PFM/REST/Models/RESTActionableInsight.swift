@@ -58,6 +58,8 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendPositiveMidMonth = "LEFT_TO_SPEND_POSITIVE_MID_MONTH"
     case leftToSpendNegativeMidMonth = "LEFT_TO_SPEND_NEGATIVE_MID_MONTH"
     case leftToSpendNegativeSummary = "LEFT_TO_SPEND_NEGATIVE_SUMMARY"
+    case budgetSuggestCreateTopCategory = "BUDGET_SUGGEST_CREATE_TOP_CATEGORY"
+    case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
 }
 
 enum RESTInsightData: Decodable {
@@ -239,6 +241,15 @@ enum RESTInsightData: Decodable {
         let leftToSpend: RESTInsightData.CurrencyDenominatedAmount
     }
 
+    struct BudgetSuggestCreateTopCategory: Decodable {
+        struct CategorySpending: Decodable {
+            let categoryCode: String
+            let spentAmount: RESTInsightData.CurrencyDenominatedAmount
+        }
+        let categorySpending: CategorySpending
+        let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -263,6 +274,8 @@ enum RESTInsightData: Decodable {
     case leftToSpendPositiveMidMonth(LeftToSpendMidMonth)
     case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
+    case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateFirst
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -344,6 +357,11 @@ enum RESTInsightData: Decodable {
             case .leftToSpendNegativeSummary:
                 let data = try LeftToSpendNegativeSummary(from: decoder)
                 self = .leftToSpendNegativeSummary(data)
+            case .budgetSuggestCreateTopCategory:
+                let data = try BudgetSuggestCreateTopCategory(from: decoder)
+                self = .budgetSuggestCreateTopCategory(data)
+            case .budgetSuggestCreateFirst:
+                self = .budgetSuggestCreateFirst
             case .unknown:
                 self = .unknown
             }
