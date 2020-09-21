@@ -60,6 +60,8 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendNegativeSummary = "LEFT_TO_SPEND_NEGATIVE_SUMMARY"
     case budgetSuggestCreateTopCategory = "BUDGET_SUGGEST_CREATE_TOP_CATEGORY"
     case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
+    case leftToSpendPositiveBeginningMonth = "LEFT_TO_SPEND_POSITIVE_BEGINNING_MONTH"
+    case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
 }
 
 enum RESTInsightData: Decodable {
@@ -250,6 +252,19 @@ enum RESTInsightData: Decodable {
         let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
     }
 
+    struct LeftToSpendBeginningMonth: Decodable {
+        struct LeftToSpendStatistics: Decodable {
+            let createdAt: Date
+            let currentLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+            let averageLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+        }
+
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let totalExpense: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -276,6 +291,8 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
+    case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
+    case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -362,6 +379,12 @@ enum RESTInsightData: Decodable {
                 self = .budgetSuggestCreateTopCategory(data)
             case .budgetSuggestCreateFirst:
                 self = .budgetSuggestCreateFirst
+            case .leftToSpendPositiveBeginningMonth:
+                let data = try LeftToSpendBeginningMonth(from: decoder)
+                self = .leftToSpendPositiveBeginningMonth(data)
+            case .leftToSpendNegativeBeginningMonth:
+                let data = try LeftToSpendBeginningMonth(from: decoder)
+                self = .leftToSpendNegativeBeginningMonth(data)
             case .unknown:
                 self = .unknown
             }
