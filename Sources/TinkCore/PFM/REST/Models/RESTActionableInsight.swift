@@ -540,6 +540,7 @@ enum RESTInsightActionData: Decodable {
             let filter: RESTBudget.Filter?
             let amount: RESTInsightData.CurrencyDenominatedAmount?
             let periodicityType: RESTBudget.PeriodicityType?
+            let oneOffPeriodicityData: RESTBudget.OneOffPeriodicity?
             let recurringPeriodicityData: RESTBudget.RecurringPeriodicity?
         }
         let budgetSuggestion: BudgetSuggestion
