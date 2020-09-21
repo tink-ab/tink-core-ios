@@ -366,4 +366,5 @@ public enum InsightActionData {
     case categorizeTransactions([Transaction.ID])
     case viewTransactionsByCategory([Category.Code: [Transaction.ID]])
     case viewAccount(Account.ID)
+    case viewLeftToSpend(ActionableInsight.Month)
 }

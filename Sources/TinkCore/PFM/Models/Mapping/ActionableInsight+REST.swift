@@ -191,6 +191,8 @@ extension InsightActionData {
             self = .viewTransactionsByCategory(categoryDict)
         case .viewAccount(let account):
             self = .viewAccount(Account.ID(account.accountId))
+        case .viewLeftToSpend(let leftToSpend):
+            self = .viewLeftToSpend(ActionableInsight.Month(year: leftToSpend.month.year, month: leftToSpend.month.month))
         }
     }
 }
