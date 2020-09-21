@@ -6,16 +6,7 @@ extension Budget {
         self.name = restBudget.name
         self.amount = restBudget.amount.flatMap(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
 
-        switch restBudget.periodicityType {
-        case .oneOff:
-            let oneOffPeriodicity = restBudget.oneOffPeriodicity.map { OneOffPeriodicity(restOneOffPeriodicity: $0) }
-            periodicity = oneOffPeriodicity.flatMap { Periodicity.oneOff($0) }
-        case .recurring:
-            let recurringPeriodicity = restBudget.recurringPeriodicity.map { RecurringPeriodicity(restRecurringPeriodicity: $0) }
-            periodicity = recurringPeriodicity.flatMap { Periodicity.recurring($0) }
-        default:
-            periodicity = nil
-        }
+        self.periodicity = Periodicity(restPeriodicityType: restBudget.periodicityType, restOneOffPeriodicity: restBudget.oneOffPeriodicity, restRecurringPeriodicity: restBudget.recurringPeriodicity)
 
         self.filter = Budget.Filter.makeFilters(restFilter: restBudget.filter)
     }
@@ -66,5 +57,24 @@ extension Budget.Filter {
         }
 
         return filters
+    }
+}
+
+extension Budget.Periodicity {
+    init?(restPeriodicityType: RESTBudget.PeriodicityType?, restOneOffPeriodicity: RESTBudget.OneOffPeriodicity?, restRecurringPeriodicity: RESTBudget.RecurringPeriodicity?) {
+        switch restPeriodicityType {
+        case .oneOff:
+            guard let oneOffPeriodicity = restOneOffPeriodicity
+                    .map(Budget.OneOffPeriodicity.init(restOneOffPeriodicity:))
+            else { return nil }
+            self = .oneOff(oneOffPeriodicity)
+        case .recurring:
+            guard let recurringPeriodicity = restRecurringPeriodicity
+                    .map(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
+            else { return nil }
+            self = .recurring(recurringPeriodicity)
+        default:
+            return nil
+        }
     }
 }
