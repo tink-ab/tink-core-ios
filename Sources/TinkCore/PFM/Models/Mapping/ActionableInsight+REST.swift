@@ -189,6 +189,8 @@ extension InsightActionData {
             var categoryDict: [Category.Code: [Transaction.ID]] = [:]
             transactionsByCategory.transactionIdsByCategory.forEach { categoryDict[Category.Code($0.key)] = $0.value.transactionIds.map(Transaction.ID.init(_:)) }
             self = .viewTransactionsByCategory(categoryDict)
+        case .viewAccount(let account):
+            self = .viewAccount(Account.ID(account.accountId))
         }
     }
 }

@@ -365,4 +365,5 @@ public enum InsightActionData {
     case viewTransactions([Transaction.ID])
     case categorizeTransactions([Transaction.ID])
     case viewTransactionsByCategory([Category.Code: [Transaction.ID]])
+    case viewAccount(Account.ID)
 }
