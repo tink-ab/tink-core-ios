@@ -8,7 +8,7 @@ public enum ServiceError: Error {
     case alreadyExists(String)
     /// The user has no permission
     case permissionDenied(String)
-    /// The user has not authenticated
+    /// The user is not authenticated
     case unauthenticated(String)
     /// Precondition failed
     case failedPrecondition(String)
