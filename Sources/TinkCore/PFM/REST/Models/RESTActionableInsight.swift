@@ -62,6 +62,7 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
     case leftToSpendPositiveBeginningMonth = "LEFT_TO_SPEND_POSITIVE_BEGINNING_MONTH"
     case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
+    case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
 }
 
 enum RESTInsightData: Decodable {
@@ -265,6 +266,12 @@ enum RESTInsightData: Decodable {
         let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
     }
 
+    struct LeftToSpendNegative: Decodable {
+        let month: RESTInsightData.Month
+        let createdAt: Date
+        let leftToSpend: RESTInsightData.CurrencyDenominatedAmount
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -293,6 +300,7 @@ enum RESTInsightData: Decodable {
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
+    case leftToSpendNegative(LeftToSpendNegative)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -385,6 +393,9 @@ enum RESTInsightData: Decodable {
             case .leftToSpendNegativeBeginningMonth:
                 let data = try LeftToSpendBeginningMonth(from: decoder)
                 self = .leftToSpendNegativeBeginningMonth(data)
+            case .leftToSpendNegative:
+                let data = try LeftToSpendNegative(from: decoder)
+                self = .leftToSpendNegative(data)
             case .unknown:
                 self = .unknown
             }
