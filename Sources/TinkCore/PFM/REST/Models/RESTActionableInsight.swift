@@ -313,6 +313,7 @@ enum RESTInsightActionDataType: String, Decodable {
     case viewTransactionsByCategory = "VIEW_TRANSACTIONS_BY_CATEGORY"
     case viewAccount = "VIEW_ACCOUNT"
     case viewLeftToSpend = "VIEW_LEFT_TO_SPEND"
+    case createBudget = "CREATE_BUDGET"
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -361,6 +362,16 @@ enum RESTInsightActionData: Decodable {
         let month: RESTInsightData.Month
     }
 
+    struct CreateBudget: Decodable {
+        struct BudgetSuggestion: Decodable {
+            let filter: RESTBudget.Filter?
+            let amount: RESTCurrencyDenominatedAmount?
+            let periodicityType: RESTBudget.PeriodicityType?
+            let recurringPeriodicityData: RESTBudget.RecurringPeriodicity?
+        }
+        let budgetSuggestion: BudgetSuggestion
+    }
+
     case unknown
     case acknowledge
     case dismiss
@@ -373,6 +384,7 @@ enum RESTInsightActionData: Decodable {
     case viewTransactionsByCategory(ViewTransactionsByCategory)
     case viewAccount(ViewAccount)
     case viewLeftToSpend(ViewLeftToSpend)
+    case createBudget(CreateBudget)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -418,6 +430,9 @@ enum RESTInsightActionData: Decodable {
             case .viewLeftToSpend:
                 let data = try ViewLeftToSpend(from: decoder)
                 self = .viewLeftToSpend(data)
+            case .createBudget:
+                let data = try CreateBudget(from: decoder)
+                self = .createBudget(data)
             }
         } catch {
             self = .unknown
