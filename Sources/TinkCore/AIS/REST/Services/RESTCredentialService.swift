@@ -65,12 +65,16 @@ final class RESTCredentialsService: CredentialsService {
     }
 
     @discardableResult
-    func refresh(id: Credentials.ID, refreshableItems: RefreshableItems, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+    func refresh(id: Credentials.ID, forceAuthenticate: Bool = false, refreshableItems: RefreshableItems, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         var parameters: [URLQueryItem]
         if refreshableItems != .all {
             parameters = refreshableItems.strings.map { .init(name: "items", value: $0) }
         } else {
             parameters = []
+        }
+
+        if forceAuthenticate {
+            parameters.append(.init(name: "authenticate", value: "true"))
         }
 
         if optIn {
