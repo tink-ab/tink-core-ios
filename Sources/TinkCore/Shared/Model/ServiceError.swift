@@ -1,5 +1,7 @@
 /// An error returned by Tink service requests when something went wrong.
 public enum ServiceError: Error {
+    /// Cancelled
+    case cancelled
     /// Invalid argument
     case invalidArgument(String)
     /// Not found
