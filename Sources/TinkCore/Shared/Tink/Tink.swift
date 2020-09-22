@@ -130,16 +130,3 @@ extension Tink {
         })
     }
 }
-
-extension Tink {
-    /// Sets the credential to be used for this Tink Context.
-    ///
-    /// The credential is associated with a specific user which has been
-    /// created and authenticated through the Tink API.
-    ///
-    /// - Parameter credential: The credential to use.
-    @available(*, deprecated, message: "Set the userSession property directly instead.")
-    public func setCredential(_ credential: SessionCredential?) {
-        authorizationBehavior.userSession = credential
-    }
-}
