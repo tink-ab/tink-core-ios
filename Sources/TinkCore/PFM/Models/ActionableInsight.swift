@@ -306,89 +306,89 @@ public extension ActionableInsight {
     }
 
     struct CreditCardLimit {
-        struct AccountInfo {
-            let id: TinkCore.Account.ID
-            let name: String
+        public struct AccountInfo {
+            public let id: TinkCore.Account.ID
+            public let name: String
         }
 
-        let account: AccountInfo
-        let availableCredit: CurrencyDenominatedAmount?
+        public let account: AccountInfo
+        public let availableCredit: CurrencyDenominatedAmount?
     }
 
     struct LeftToSpendStatistics {
-        let createdAt: Date
-        let currentLeftToSpend: CurrencyDenominatedAmount
-        let averageLeftToSpend: CurrencyDenominatedAmount
+        public let createdAt: Date
+        public let currentLeftToSpend: CurrencyDenominatedAmount
+        public let averageLeftToSpend: CurrencyDenominatedAmount
     }
 
     struct LeftToSpendMidMonth {
-        let month: Month
-        let amountDifference: CurrencyDenominatedAmount
-        let leftToSpendStatistics: LeftToSpendStatistics
+        public let month: Month
+        public let amountDifference: CurrencyDenominatedAmount
+        public let leftToSpendStatistics: LeftToSpendStatistics
     }
 
     struct LeftToSpendNegativeSummary {
-        let month: Month
-        let leftToSpend: CurrencyDenominatedAmount
+        public let month: Month
+        public let leftToSpend: CurrencyDenominatedAmount
     }
 
     struct BudgetSuggestCreateTopCategory {
-        struct CategorySpending {
-            let categoryCode: Category.Code
-            let spentAmount: CurrencyDenominatedAmount
+        public struct CategorySpending {
+            public let categoryCode: Category.Code
+            public let spentAmount: CurrencyDenominatedAmount
         }
-        let categorySpending: CategorySpending
-        let suggestedBudgetAmount: CurrencyDenominatedAmount
+        public let categorySpending: CategorySpending
+        public let suggestedBudgetAmount: CurrencyDenominatedAmount
     }
 
     struct LeftToSpendBeginningMonth {
-        let month: Month
-        let amountDifference: CurrencyDenominatedAmount
-        let totalExpense: CurrencyDenominatedAmount
-        let leftToSpendStatistics: LeftToSpendStatistics
+        public let month: Month
+        public let amountDifference: CurrencyDenominatedAmount
+        public let totalExpense: CurrencyDenominatedAmount
+        public let leftToSpendStatistics: LeftToSpendStatistics
     }
 
     struct LeftToSpendNegative {
-        let month: Month
-        let createdAt: Date
-        let leftToSpend: CurrencyDenominatedAmount
+        public let month: Month
+        public let createdAt: Date
+        public let leftToSpend: CurrencyDenominatedAmount
     }
 
     struct SpendingByCategoryIncreased {
-        struct Category {
-            let id: TinkCore.Category.ID
-            let code: TinkCore.Category.Code
-            let name: String
+        public struct Category {
+            public let id: TinkCore.Category.ID
+            public let code: TinkCore.Category.Code
+            public let name: String
         }
 
-        let category: Category
-        let lastMonth: Month
-        let lastMonthSpending: CurrencyDenominatedAmount
-        let twoMonthsAgoSpending: CurrencyDenominatedAmount
-        let percentage: Double
+        public let category: Category
+        public let lastMonth: Month
+        public let lastMonthSpending: CurrencyDenominatedAmount
+        public let twoMonthsAgoSpending: CurrencyDenominatedAmount
+        public let percentage: Double
     }
 
     struct LeftToSpendPositiveSummarySavingsAccount {
-        let month: Month
-        let leftAmount: CurrencyDenominatedAmount
+        public let month: Month
+        public let leftAmount: CurrencyDenominatedAmount
     }
 
     struct LeftToSpendPositiveFinalWeek {
-        let month: Month
-        let amountDifference: CurrencyDenominatedAmount
-        let leftToSpendStatistics: LeftToSpendStatistics
-        let leftToSpendPerDay: CurrencyDenominatedAmount
+        public let month: Month
+        public let amountDifference: CurrencyDenominatedAmount
+        public let leftToSpendStatistics: LeftToSpendStatistics
+        public let leftToSpendPerDay: CurrencyDenominatedAmount
     }
 
     struct AggregationRefreshPSD2Credentials {
-        struct ProviderInfo {
-            let id: Provider.ID
-            let displayName: String
+        public struct ProviderInfo {
+            public let id: Provider.ID
+            public let displayName: String
         }
 
-        let credentialsID: Credentials.ID
-        let provider: ProviderInfo
-        let sessionExpiryDate: Date
+        public let credentialsID: Credentials.ID
+        public let provider: ProviderInfo
+        public let sessionExpiryDate: Date
     }
 }
 
