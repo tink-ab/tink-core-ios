@@ -180,7 +180,7 @@ extension ActionableInsight.Kind {
             self = .budgetSuggestCreateTopCategory(
                 .init(
                     categorySpending: .init(
-                        categoryCode: data.categorySpending.categoryCode,
+                        categoryCode: Category.Code(data.categorySpending.categoryCode),
                         spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
                     ),
                     suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
