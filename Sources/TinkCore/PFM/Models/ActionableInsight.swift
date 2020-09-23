@@ -360,6 +360,7 @@ public extension ActionableInsight {
             let code: TinkCore.Category.Code
             let displayName: String
         }
+
         let category: Category
         let lastMonth: Month
         let lastMonthSpending: CurrencyDenominatedAmount
