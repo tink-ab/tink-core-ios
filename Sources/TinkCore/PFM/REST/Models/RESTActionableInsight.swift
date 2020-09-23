@@ -258,12 +258,6 @@ enum RESTInsightData: Decodable {
     }
 
     struct LeftToSpendBeginningMonth: Decodable {
-        struct LeftToSpendStatistics: Decodable {
-            let createdAt: Date
-            let currentLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
-            let averageLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
-        }
-
         let month: RESTInsightData.Month
         let amountDifference: RESTInsightData.CurrencyDenominatedAmount
         let totalExpense: RESTInsightData.CurrencyDenominatedAmount
