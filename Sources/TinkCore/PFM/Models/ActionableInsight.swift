@@ -35,6 +35,20 @@ public struct ActionableInsight {
         case monthlySummaryExpenseTransactions(MonthlyTransactionsSummary)
         case newIncomeTransaction(NewIncomeTransaction)
         case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
+        case creditCardLimitClose(CreditCardLimitClose)
+        case creditCardLimitReached(CreditCardLimitReached)
+        case leftToSpendPositiveMidMonth(LeftToSpendMidMonth)
+        case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
+        case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
+        case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+        case budgetSuggestCreateFirst
+        case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
+        case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
+        case leftToSpendNegative(LeftToSpendNegative)
+        case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+        case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
+        case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
+        case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
         case unknown
     }
 
@@ -289,6 +303,103 @@ public extension ActionableInsight {
             self.savingsAccount = savingsAccount
             self.currentAccount = currentAccount
         }
+    }
+
+    struct CreditCardLimitClose {
+        struct AccountInfo {
+            let id: TinkCore.Account.ID
+            let name: String
+        }
+
+        let account: AccountInfo
+        let availableCredit: CurrencyDenominatedAmount
+    }
+
+    struct CreditCardLimitReached {
+        struct AccountInfo {
+            let id: TinkCore.Account.ID
+            let name: String
+        }
+
+        let account: AccountInfo
+    }
+
+    struct LeftToSpendStatistics {
+        let createdAt: Date
+        let currentLeftToSpend: CurrencyDenominatedAmount
+        let averageLeftToSpend: CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendMidMonth {
+        let month: Month
+        let amountDifference: CurrencyDenominatedAmount
+        let leftToSpendStatistics: LeftToSpendStatistics
+    }
+
+    struct LeftToSpendNegativeSummary {
+        let month: Month
+        let leftToSpend: CurrencyDenominatedAmount
+    }
+
+    struct BudgetSuggestCreateTopCategory {
+        struct CategorySpending {
+            let categoryCode: String
+            let spentAmount: CurrencyDenominatedAmount
+        }
+        let categorySpending: CategorySpending
+        let suggestedBudgetAmount: CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendBeginningMonth {
+        let month: Month
+        let amountDifference: CurrencyDenominatedAmount
+        let totalExpense: CurrencyDenominatedAmount
+        let leftToSpendStatistics: LeftToSpendStatistics
+    }
+
+    struct LeftToSpendNegative {
+        let month: Month
+        let createdAt: Date
+        let leftToSpend: CurrencyDenominatedAmount
+    }
+
+    struct SpendingByCategoryIncreased {
+        struct Category {
+            let id: TinkCore.Category.ID
+            let code: TinkCore.Category.Code
+            let displayName: String
+        }
+        let category: Category
+        let lastMonth: Month
+        let lastMonthSpending: CurrencyDenominatedAmount
+        let twoMonthsAgoSpending: CurrencyDenominatedAmount
+        let percentage: Double
+    }
+
+    struct LeftToSpendPositiveSummarySavingsAccount {
+        let month: Month
+        let leftAmount: CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendPositiveFinalWeek {
+        let month: Month
+        let amountDifference: CurrencyDenominatedAmount
+        let leftToSpendStatistics: LeftToSpendStatistics
+        let leftToSpendPerDay: CurrencyDenominatedAmount
+    }
+
+    struct AggregationRefreshPSD2Credentials {
+        struct ProviderInfo {
+            let id: Provider.ID
+            let displayName: String
+        }
+
+        struct CredentialsInfo {
+            let id: Credentials.ID
+            let provider: AggregationRefreshPSD2Credentials.ProviderInfo
+        }
+        let credentials: CredentialsInfo
+        let sessionExpiryDate: Date
     }
 }
 
