@@ -127,6 +127,140 @@ extension ActionableInsight.Kind {
             )
 
             self = .suggestSetUpSavingsAccount(data)
+        case (.creditCardLimitClose, .creditCardLimitClose(let data)):
+            self = .creditCardLimitClose(
+                .init(
+                    account: .init(
+                        id: .init(data.account.accountId),
+                        name: data.account.accountName
+                    ),
+                    availableCredit: CurrencyDenominatedAmount(restAIAmount: data.availableCredit))
+            )
+        case (.creditCardLimitReached, .creditCardLimitReached(let data)):
+            self = .creditCardLimitReached(
+                .init(
+                    account: .init(
+                        id: .init(data.account.accountId),
+                        name: data.account.accountName)
+                )
+            )
+        case (.leftToSpendPositiveMidMonth, .leftToSpendPositiveMidMonth(let data)):
+            self = .leftToSpendPositiveMidMonth(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    amountDifference: CurrencyDenominatedAmount(restAIAmount: data.amountDifference),
+                    leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics(
+                        createdAt: data.leftToSpendStatistics.createdAt,
+                        currentLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.currentLeftToSpend),
+                        averageLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.averageLeftToSpend)
+                    )
+                )
+            )
+        case (.leftToSpendNegativeMidMonth, .leftToSpendNegativeMidMonth(let data)):
+            self = .leftToSpendNegativeMidMonth(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    amountDifference: CurrencyDenominatedAmount(restAIAmount: data.amountDifference),
+                    leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics(
+                        createdAt: data.leftToSpendStatistics.createdAt,
+                        currentLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.currentLeftToSpend),
+                        averageLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.averageLeftToSpend)
+                    )
+                )
+            )
+        case (.leftToSpendNegativeSummary, .leftToSpendNegativeSummary(let data)):
+            self = .leftToSpendNegativeSummary(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    leftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpend))
+            )
+        case (.budgetSuggestCreateTopCategory, .budgetSuggestCreateTopCategory(let data)):
+            self = .budgetSuggestCreateTopCategory(
+                .init(
+                    categorySpending: .init(
+                        categoryCode: data.categorySpending.categoryCode,
+                        spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
+                    ),
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
+                )
+            )
+        case (.budgetSuggestCreateFirst, .budgetSuggestCreateFirst):
+            self = .budgetSuggestCreateFirst
+        case (.leftToSpendPositiveBeginningMonth, .leftToSpendPositiveBeginningMonth(let data)):
+            self = .leftToSpendPositiveBeginningMonth(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    amountDifference: CurrencyDenominatedAmount(restAIAmount: data.amountDifference),
+                    totalExpense: CurrencyDenominatedAmount(restAIAmount: data.totalExpense),
+                    leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics(
+                        createdAt: data.leftToSpendStatistics.createdAt,
+                        currentLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.currentLeftToSpend),
+                        averageLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.averageLeftToSpend)
+                    )
+                )
+            )
+        case (.leftToSpendNegativeBeginningMonth, .leftToSpendNegativeBeginningMonth(let data)):
+            self = .leftToSpendNegativeBeginningMonth(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    amountDifference: CurrencyDenominatedAmount(restAIAmount: data.amountDifference),
+                    totalExpense: CurrencyDenominatedAmount(restAIAmount: data.totalExpense),
+                    leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics(
+                        createdAt: data.leftToSpendStatistics.createdAt,
+                        currentLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.currentLeftToSpend),
+                        averageLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.averageLeftToSpend)
+                    )
+                )
+            )
+        case (.leftToSpendNegative, .leftToSpendNegative(let data)):
+            self = .leftToSpendNegative(
+                .init(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    createdAt: data.createdAt,
+                    leftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpend)
+                )
+            )
+        case (.spendingByCategoryIncreased, .spendingByCategoryIncreased(let data)):
+            self = .spendingByCategoryIncreased(
+                .init(
+                    category: .init(id: .init(data.category.id), code: .init(data.category.code), displayName: data.category.displayName),
+                    lastMonth: ActionableInsight.Month(year: data.lastMonth.year, month: data.lastMonth.month),
+                    lastMonthSpending: CurrencyDenominatedAmount(restAIAmount: data.lastMonthSpending),
+                    twoMonthsAgoSpending: CurrencyDenominatedAmount(restAIAmount: data.twoMonthsAgoSpending),
+                    percentage: data.percentage
+                )
+            )
+        case (.leftToSpendPositiveSummarySavingsAccount, .leftToSpendPositiveSummarySavingsAccount(let data)):
+            self = .leftToSpendPositiveSummarySavingsAccount(
+                ActionableInsight.LeftToSpendPositiveSummarySavingsAccount(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    leftAmount: CurrencyDenominatedAmount(restAIAmount: data.leftAmount)
+                )
+            )
+        case (.leftToSpendPositiveFinalWeek, .leftToSpendPositiveFinalWeek(let data)):
+            self = .leftToSpendPositiveFinalWeek(
+                ActionableInsight.LeftToSpendPositiveFinalWeek(
+                    month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
+                    amountDifference: CurrencyDenominatedAmount(restAIAmount: data.amountDifference),
+                    leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics(
+                        createdAt: data.leftToSpendStatistics.createdAt,
+                        currentLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.currentLeftToSpend),
+                        averageLeftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendStatistics.averageLeftToSpend)
+                    ),
+                    leftToSpendPerDay: CurrencyDenominatedAmount(restAIAmount: data.leftToSpendPerDay)
+                )
+            )
+        case (.aggregationRefreshPSD2Credentials, .aggregationRefreshPSD2Credentials(let data)):
+            self = .aggregationRefreshPSD2Credentials(
+                ActionableInsight.AggregationRefreshPSD2Credentials(
+                    credentials: .init(
+                        id: .init(data.credential.id),
+                        provider: .init(
+                            id: .init(data.credential.provider.name),
+                            displayName: data.credential.provider.displayName)),
+                    sessionExpiryDate: data.sessionExpiryDate
+                )
+            )
         default:
             self = .unknown
         }
