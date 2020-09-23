@@ -6,8 +6,8 @@ git checkout master
 git pull
 git checkout -b rc-$newVersion
 
-sed -i "" "s/[0-9]\.[0-9]\.[0-9]/$newVersion/g" TinkCore.podspec
-sed -i "" "s/[0-9]\.[0-9]\.[0-9]/$newVersion/g" project.yml
+sed -i "" 's/  spec.version      = "[0-9]\.[0-9]\.[0-9]"/  spec.version      = "'$newVersion'"/' TinkCore.podspec
+sed -i "" 's/      MARKETING_VERSION: [0-9]\.[0-9]\.[0-9]/      MARKETING_VERSION: '$newVersion'/' project.yml
 
 git commit -am"Update version"
 
