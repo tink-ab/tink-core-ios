@@ -211,7 +211,7 @@ public struct Credentials: Identifiable {
         statusPayload: String,
         statusUpdated: Date?,
         updated: Date?,
-        fields: [String : String],
+        fields: [String: String],
         supplementalInformationFields: [Provider.FieldSpecification],
         thirdPartyAppAuthentication: Credentials.ThirdPartyAppAuthentication?,
         sessionExpiryDate: Date?
