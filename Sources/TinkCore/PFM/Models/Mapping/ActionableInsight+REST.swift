@@ -225,7 +225,7 @@ extension ActionableInsight.Kind {
         case (.spendingByCategoryIncreased, .spendingByCategoryIncreased(let data)):
             self = .spendingByCategoryIncreased(
                 .init(
-                    category: .init(id: .init(data.category.id), code: .init(data.category.code), displayName: data.category.displayName),
+                    category: .init(id: .init(data.category.id), code: .init(data.category.code), name: data.category.displayName),
                     lastMonth: ActionableInsight.Month(year: data.lastMonth.year, month: data.lastMonth.month),
                     lastMonthSpending: CurrencyDenominatedAmount(restAIAmount: data.lastMonthSpending),
                     twoMonthsAgoSpending: CurrencyDenominatedAmount(restAIAmount: data.twoMonthsAgoSpending),

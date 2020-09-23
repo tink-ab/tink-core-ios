@@ -358,7 +358,7 @@ public extension ActionableInsight {
         struct Category {
             let id: TinkCore.Category.ID
             let code: TinkCore.Category.Code
-            let displayName: String
+            let name: String
         }
 
         let category: Category
