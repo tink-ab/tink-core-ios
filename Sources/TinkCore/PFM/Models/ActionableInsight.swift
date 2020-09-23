@@ -269,6 +269,18 @@ public extension ActionableInsight {
         }
     }
 
+    struct Day {
+        public let year: Int
+        public let month: Int
+        public let day: Int
+
+        public init(year: Int, month: Int, day: Int) {
+            self.year = year
+            self.month = month
+            self.day = day
+        }
+    }
+
     struct SuggestSetUpSavingsAccount {
         public struct AccountInfo {
             public let id: Account.ID
