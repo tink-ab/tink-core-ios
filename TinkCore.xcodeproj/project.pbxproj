@@ -1650,7 +1650,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1786,7 +1786,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
@@ -1850,7 +1850,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1878,7 +1878,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
