@@ -255,11 +255,11 @@ extension ActionableInsight.Kind {
         case (.aggregationRefreshPSD2Credentials, .aggregationRefreshPSD2Credentials(let data)):
             self = .aggregationRefreshPSD2Credentials(
                 ActionableInsight.AggregationRefreshPSD2Credentials(
-                    credentials: .init(
-                        id: .init(data.credential.id),
-                        provider: .init(
-                            id: .init(data.credential.provider.name),
-                            displayName: data.credential.provider.displayName)),
+                    credentialsID: .init(data.credential.id),
+                    provider: .init(
+                        id: .init(data.credential.provider.name),
+                        displayName: data.credential.provider.displayName
+                    ),
                     sessionExpiryDate: data.sessionExpiryDate
                 )
             )

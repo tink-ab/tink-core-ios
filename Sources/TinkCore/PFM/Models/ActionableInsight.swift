@@ -385,11 +385,8 @@ public extension ActionableInsight {
             let displayName: String
         }
 
-        struct CredentialsInfo {
-            let id: Credentials.ID
-            let provider: AggregationRefreshPSD2Credentials.ProviderInfo
-        }
-        let credentials: CredentialsInfo
+        let credentialsID: Credentials.ID
+        let provider: ProviderInfo
         let sessionExpiryDate: Date
     }
 }
