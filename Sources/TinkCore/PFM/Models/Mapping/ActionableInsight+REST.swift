@@ -141,7 +141,9 @@ extension ActionableInsight.Kind {
                 .init(
                     account: .init(
                         id: .init(data.account.accountId),
-                        name: data.account.accountName)
+                        name: data.account.accountName
+                    ),
+                    availableCredit: nil
                 )
             )
         case (.leftToSpendPositiveMidMonth, .leftToSpendPositiveMidMonth(let data)):

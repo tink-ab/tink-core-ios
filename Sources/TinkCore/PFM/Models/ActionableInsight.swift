@@ -35,8 +35,8 @@ public struct ActionableInsight {
         case monthlySummaryExpenseTransactions(MonthlyTransactionsSummary)
         case newIncomeTransaction(NewIncomeTransaction)
         case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
-        case creditCardLimitClose(CreditCardLimitClose)
-        case creditCardLimitReached(CreditCardLimitReached)
+        case creditCardLimitClose(CreditCardLimit)
+        case creditCardLimitReached(CreditCardLimit)
         case leftToSpendPositiveMidMonth(LeftToSpendMidMonth)
         case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
         case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
@@ -305,23 +305,14 @@ public extension ActionableInsight {
         }
     }
 
-    struct CreditCardLimitClose {
+    struct CreditCardLimit {
         struct AccountInfo {
             let id: TinkCore.Account.ID
             let name: String
         }
 
         let account: AccountInfo
-        let availableCredit: CurrencyDenominatedAmount
-    }
-
-    struct CreditCardLimitReached {
-        struct AccountInfo {
-            let id: TinkCore.Account.ID
-            let name: String
-        }
-
-        let account: AccountInfo
+        let availableCredit: CurrencyDenominatedAmount?
     }
 
     struct LeftToSpendStatistics {
