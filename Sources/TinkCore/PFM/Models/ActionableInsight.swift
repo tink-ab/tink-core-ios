@@ -309,11 +309,6 @@ public extension ActionableInsight {
     }
 
     struct CreditCardLimit {
-        public struct AccountInfo {
-            public let id: TinkCore.Account.ID
-            public let name: String
-        }
-
         public let account: AccountInfo
         public let availableCredit: CurrencyDenominatedAmount?
     }
