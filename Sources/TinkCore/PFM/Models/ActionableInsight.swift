@@ -184,12 +184,8 @@ public extension ActionableInsight {
             public let day: Day
             public let expenseStatistics: ExpenseStatistics
 
-            public init(date: [Int], expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
-                if date.count == 3 {
-                    self.day = Day(year: date[0], month: date[1], day: date[2])
-                } else {
-                    self.day = Day(year: 0, month: 0, day: 0)
-                }
+            public init(day: ActionableInsight.Day, expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+                self.day = day
                 self.expenseStatistics = expenseStatistics
             }
         }
