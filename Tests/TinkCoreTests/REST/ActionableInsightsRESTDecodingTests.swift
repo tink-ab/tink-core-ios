@@ -1,7 +1,7 @@
 import XCTest
 @testable import TinkCore
 
-class RESTActionableInsightsDecodingTests: XCTestCase {
+class ActionableInsightsRESTDecodingTests: XCTestCase {
     let decoder = JSONDecoder()
 
     override func setUp() {
