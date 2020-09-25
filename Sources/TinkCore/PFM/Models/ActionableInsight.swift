@@ -311,28 +311,55 @@ public extension ActionableInsight {
     struct CreditCardLimit {
         public let account: AccountInfo
         public let availableCredit: CurrencyDenominatedAmount?
+
+        public init(account: ActionableInsight.AccountInfo, availableCredit: CurrencyDenominatedAmount?) {
+            self.account = account
+            self.availableCredit = availableCredit
+        }
     }
 
     struct LeftToSpendStatistics {
         public let createdAt: Date
         public let currentLeftToSpend: CurrencyDenominatedAmount
         public let averageLeftToSpend: CurrencyDenominatedAmount
+
+        public init(createdAt: Date, currentLeftToSpend: CurrencyDenominatedAmount, averageLeftToSpend: CurrencyDenominatedAmount) {
+            self.createdAt = createdAt
+            self.currentLeftToSpend = currentLeftToSpend
+            self.averageLeftToSpend = averageLeftToSpend
+        }
     }
 
     struct LeftToSpendMidMonth {
         public let month: Month
         public let amountDifference: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
+
+        public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics) {
+            self.month = month
+            self.amountDifference = amountDifference
+            self.leftToSpendStatistics = leftToSpendStatistics
+        }
     }
 
     struct LeftToSpendNegativeSummary {
         public let month: Month
         public let leftToSpend: CurrencyDenominatedAmount
+
+        public init(month: ActionableInsight.Month, leftToSpend: CurrencyDenominatedAmount) {
+            self.month = month
+            self.leftToSpend = leftToSpend
+        }
     }
 
     struct BudgetSuggestCreateTopCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
+
+        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount) {
+            self.categorySpending = categorySpending
+            self.suggestedBudgetAmount = suggestedBudgetAmount
+        }
     }
 
     struct LeftToSpendBeginningMonth {
@@ -340,18 +367,37 @@ public extension ActionableInsight {
         public let amountDifference: CurrencyDenominatedAmount
         public let totalExpense: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
+
+        public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, totalExpense: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics) {
+            self.month = month
+            self.amountDifference = amountDifference
+            self.totalExpense = totalExpense
+            self.leftToSpendStatistics = leftToSpendStatistics
+        }
     }
 
     struct LeftToSpendNegative {
         public let month: Month
         public let createdAt: Date
         public let leftToSpend: CurrencyDenominatedAmount
+
+        public init(month: ActionableInsight.Month, createdAt: Date, leftToSpend: CurrencyDenominatedAmount) {
+            self.month = month
+            self.createdAt = createdAt
+            self.leftToSpend = leftToSpend
+        }
     }
 
     struct CategoryInfo {
         public let id: TinkCore.Category.ID
         public let code: TinkCore.Category.Code
         public let name: String
+
+        public init(id: Category.ID, code: Category.Code, name: String) {
+            self.id = id
+            self.code = code
+            self.name = name
+        }
     }
 
     struct SpendingByCategoryIncreased {
@@ -360,11 +406,24 @@ public extension ActionableInsight {
         public let lastMonthSpending: CurrencyDenominatedAmount
         public let twoMonthsAgoSpending: CurrencyDenominatedAmount
         public let percentage: Double
+
+        public init(category: ActionableInsight.CategoryInfo, lastMonth: ActionableInsight.Month, lastMonthSpending: CurrencyDenominatedAmount, twoMonthsAgoSpending: CurrencyDenominatedAmount, percentage: Double) {
+            self.category = category
+            self.lastMonth = lastMonth
+            self.lastMonthSpending = lastMonthSpending
+            self.twoMonthsAgoSpending = twoMonthsAgoSpending
+            self.percentage = percentage
+        }
     }
 
     struct LeftToSpendPositiveSummarySavingsAccount {
         public let month: Month
         public let leftAmount: CurrencyDenominatedAmount
+
+        public init(month: ActionableInsight.Month, leftAmount: CurrencyDenominatedAmount) {
+            self.month = month
+            self.leftAmount = leftAmount
+        }
     }
 
     struct LeftToSpendPositiveFinalWeek {
@@ -372,17 +431,35 @@ public extension ActionableInsight {
         public let amountDifference: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
         public let leftToSpendPerDay: CurrencyDenominatedAmount
+
+        public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics, leftToSpendPerDay: CurrencyDenominatedAmount) {
+            self.month = month
+            self.amountDifference = amountDifference
+            self.leftToSpendStatistics = leftToSpendStatistics
+            self.leftToSpendPerDay = leftToSpendPerDay
+        }
     }
 
     struct ProviderInfo {
         public let id: Provider.ID
         public let displayName: String
+
+        public init(id: Provider.ID, displayName: String) {
+            self.id = id
+            self.displayName = displayName
+        }
     }
 
     struct AggregationRefreshPSD2Credentials {
         public let credentialsID: Credentials.ID
         public let provider: ProviderInfo
         public let sessionExpiryDate: Date
+
+        public init(credentialsID: Credentials.ID, provider: ActionableInsight.ProviderInfo, sessionExpiryDate: Date) {
+            self.credentialsID = credentialsID
+            self.provider = provider
+            self.sessionExpiryDate = sessionExpiryDate
+        }
     }
 }
 
@@ -453,6 +530,12 @@ public enum InsightActionData {
         public let filters: [Budget.Filter]
         public let amount: CurrencyDenominatedAmount?
         public let periodicity: Budget.Periodicity?
+
+        public init(filters: [Budget.Filter], amount: CurrencyDenominatedAmount?, periodicity: Budget.Periodicity?) {
+            self.filters = filters
+            self.amount = amount
+            self.periodicity = periodicity
+        }
     }
 
     case unknown
