@@ -333,10 +333,6 @@ public extension ActionableInsight {
     }
 
     struct BudgetSuggestCreateTopCategory {
-        public struct CategorySpending {
-            public let categoryCode: Category.Code
-            public let spentAmount: CurrencyDenominatedAmount
-        }
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
     }
