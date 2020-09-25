@@ -283,7 +283,7 @@ public extension ActionableInsight {
         }
     }
 
-    public struct AccountInfo {
+    struct AccountInfo {
         public let id: Account.ID
         public let name: String
 
@@ -348,7 +348,7 @@ public extension ActionableInsight {
         public let leftToSpend: CurrencyDenominatedAmount
     }
 
-    public struct Category {
+    struct Category {
         public let id: TinkCore.Category.ID
         public let code: TinkCore.Category.Code
         public let name: String
@@ -374,7 +374,7 @@ public extension ActionableInsight {
         public let leftToSpendPerDay: CurrencyDenominatedAmount
     }
 
-    public struct ProviderInfo {
+    struct ProviderInfo {
         public let id: Provider.ID
         public let displayName: String
     }
