@@ -295,7 +295,7 @@ public extension ActionableInsight {
 
     struct SuggestSetUpSavingsAccount {
         @available(*, deprecated, message: "Use ActionableInsight.AccountInfo instead.")
-        typealias AccountInfo = ActionableInsight.AccountInfo
+        public typealias AccountInfo = ActionableInsight.AccountInfo
 
         public let balance: CurrencyDenominatedAmount
         public let savingsAccount: AccountInfo
