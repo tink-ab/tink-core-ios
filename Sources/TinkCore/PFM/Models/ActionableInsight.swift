@@ -374,12 +374,12 @@ public extension ActionableInsight {
         public let leftToSpendPerDay: CurrencyDenominatedAmount
     }
 
-    struct AggregationRefreshPSD2Credentials {
-        public struct ProviderInfo {
-            public let id: Provider.ID
-            public let displayName: String
-        }
+    public struct ProviderInfo {
+        public let id: Provider.ID
+        public let displayName: String
+    }
 
+    struct AggregationRefreshPSD2Credentials {
         public let credentialsID: Credentials.ID
         public let provider: ProviderInfo
         public let sessionExpiryDate: Date
