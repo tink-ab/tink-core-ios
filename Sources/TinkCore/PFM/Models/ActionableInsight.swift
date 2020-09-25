@@ -298,10 +298,10 @@ public extension ActionableInsight {
         public typealias AccountInfo = ActionableInsight.AccountInfo
 
         public let balance: CurrencyDenominatedAmount
-        public let savingsAccount: AccountInfo
-        public let currentAccount: AccountInfo
+        public let savingsAccount: ActionableInsight.AccountInfo
+        public let currentAccount: ActionableInsight.AccountInfo
 
-        public init(balance: CurrencyDenominatedAmount, savingsAccount: AccountInfo, currentAccount: AccountInfo) {
+        public init(balance: CurrencyDenominatedAmount, savingsAccount: ActionableInsight.AccountInfo, currentAccount: ActionableInsight.AccountInfo) {
             self.balance = balance
             self.savingsAccount = savingsAccount
             self.currentAccount = currentAccount
