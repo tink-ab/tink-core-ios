@@ -283,22 +283,22 @@ public extension ActionableInsight {
         }
     }
 
-    struct SuggestSetUpSavingsAccount {
-        public struct AccountInfo {
-            public let id: Account.ID
-            public let name: String
+    public struct AccountInfo {
+        public let id: Account.ID
+        public let name: String
 
-            public init(id: Account.ID, name: String) {
-                self.id = id
-                self.name = name
-            }
+        public init(id: Account.ID, name: String) {
+            self.id = id
+            self.name = name
         }
+    }
 
+    struct SuggestSetUpSavingsAccount {
         public let balance: CurrencyDenominatedAmount
         public let savingsAccount: AccountInfo
         public let currentAccount: AccountInfo
 
-        public init(balance: CurrencyDenominatedAmount, savingsAccount: ActionableInsight.SuggestSetUpSavingsAccount.AccountInfo, currentAccount: ActionableInsight.SuggestSetUpSavingsAccount.AccountInfo) {
+        public init(balance: CurrencyDenominatedAmount, savingsAccount: AccountInfo, currentAccount: AccountInfo) {
             self.balance = balance
             self.savingsAccount = savingsAccount
             self.currentAccount = currentAccount
