@@ -188,6 +188,15 @@ public extension ActionableInsight {
                 self.day = day
                 self.expenseStatistics = expenseStatistics
             }
+
+            init(date: [Int], expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+                if date.count == 3 {
+                    self.day = Day(year: date[0], month: date[1], day: date[2])
+                } else {
+                    self.day = Day(year: 0, month: 0, day: 0)
+                }
+                self.expenseStatistics = expenseStatistics
+            }
         }
 
         public struct ExpenseStatistics {

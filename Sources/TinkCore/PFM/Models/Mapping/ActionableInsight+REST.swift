@@ -102,21 +102,7 @@ extension ActionableInsight.Kind {
 
             let expensesByDay = ActionableInsight.WeeklyExpensesByDay(
                 week: .init(year: weeklyExpenses.week.year, week: weeklyExpenses.week.week),
-                expenseStatisticsByDay: weeklyExpenses.expenseStatisticsByDay.map { expenseStatisticsByDay in
-                    let day: ActionableInsight.Day
-                    if expenseStatisticsByDay.date.count == 3 {
-                        day = ActionableInsight.Day(year: expenseStatisticsByDay.date[0], month: expenseStatisticsByDay.date[1], day: expenseStatisticsByDay.date[2])
-                    } else {
-                        day = ActionableInsight.Day(year: 0, month: 0, day: 0)
-                    }
-                    return ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay(
-                        day: day,
-                        expenseStatistics: .init(
-                            totalAmount: .init(restAIAmount: expenseStatisticsByDay.expenseStatistics.totalAmount),
-                            averageAmount: .init(restAIAmount: expenseStatisticsByDay.expenseStatistics.averageAmount)
-                        )
-                    )
-                }
+                expenseStatisticsByDay: weeklyExpenses.expenseStatisticsByDay.map { ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay(date: $0.date, expenseStatistics: .init(totalAmount: .init(restAIAmount: $0.expenseStatistics.totalAmount), averageAmount: .init(restAIAmount: $0.expenseStatistics.averageAmount))) }
             )
             self = .weeklySummaryExpensesByDay(expensesByDay)
 
