@@ -339,7 +339,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
             },
             "expenseStatisticsByDay" : [
               {
-                "date": "2020-01-26",
+                "date": [2020, 1, 26],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -352,7 +352,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-25",
+                "date": [2020, 1, 25],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -365,7 +365,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-24",
+                "date": [2020, 1, 24],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -378,7 +378,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-23",
+                "date": [2020, 1, 23],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -391,7 +391,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-22",
+                "date": [2020, 1, 22],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -404,7 +404,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-21",
+                "date": [2020, 1, 21],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -417,7 +417,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
                 }
               },
               {
-                "date": "2020-01-20",
+                "date": [2020, 1, 20],
                 "expenseStatistics": {
                   "totalAmount" : {
                     "currencyCode" : "SEK",
@@ -453,7 +453,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
             XCTAssertEqual(data.week.week, 4)
             XCTAssertEqual(data.expenseStatisticsByDay.count, 7)
             if let day = data.expenseStatisticsByDay.first {
-                XCTAssertEqual(day.date, "2020-01-26")
+                XCTAssertEqual(day.date, [2020, 01, 26])
                 XCTAssertEqual(day.expenseStatistics.totalAmount.amount, 123_846.48)
                 XCTAssertEqual(day.expenseStatistics.totalAmount.currencyCode, "SEK")
                 XCTAssertEqual(day.expenseStatistics.averageAmount.amount, 33983.49)
