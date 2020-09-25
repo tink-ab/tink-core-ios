@@ -197,6 +197,15 @@ public extension ActionableInsight {
                 }
                 self.expenseStatistics = expenseStatistics
             }
+
+            @available(*, deprecated, message: "Use day property instead.")
+            public var date: String {
+                let dateFormatter = ISO8601DateFormatter()
+                dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+                let dateComponents = DateComponents(year: day.year, month: day.month, day: day.day)
+                guard let date = Calendar.current.date(from: dateComponents) else { return "" }
+                return dateFormatter.string(from: date)
+            }
         }
 
         public struct ExpenseStatistics {
