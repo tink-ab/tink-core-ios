@@ -348,13 +348,13 @@ public extension ActionableInsight {
         public let leftToSpend: CurrencyDenominatedAmount
     }
 
-    struct SpendingByCategoryIncreased {
-        public struct Category {
-            public let id: TinkCore.Category.ID
-            public let code: TinkCore.Category.Code
-            public let name: String
-        }
+    public struct Category {
+        public let id: TinkCore.Category.ID
+        public let code: TinkCore.Category.Code
+        public let name: String
+    }
 
+    struct SpendingByCategoryIncreased {
         public let category: Category
         public let lastMonth: Month
         public let lastMonthSpending: CurrencyDenominatedAmount
