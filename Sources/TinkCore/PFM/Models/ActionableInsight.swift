@@ -198,6 +198,19 @@ public extension ActionableInsight {
                 self.expenseStatistics = expenseStatistics
             }
 
+            @available(*, deprecated, message: "Use init(day:expenseStatistics:) instead.")
+            public init(date: String, expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+                let dateFormatter = ISO8601DateFormatter()
+                dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+                if let parsedDate = dateFormatter.date(from: date) {
+                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: parsedDate)
+                    self.day = Day(year: dateComponents.year ?? 0, month: dateComponents.month ?? 0, day: dateComponents.day ?? 0)
+                } else {
+                    self.day = Day(year: 0, month: 0, day: 0)
+                }
+                self.expenseStatistics = expenseStatistics
+            }
+
             @available(*, deprecated, message: "Use day property instead.")
             public var date: String {
                 let dateFormatter = ISO8601DateFormatter()
