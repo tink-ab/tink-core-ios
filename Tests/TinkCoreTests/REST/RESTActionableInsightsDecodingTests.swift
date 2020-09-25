@@ -15,7 +15,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
           "userId" : "af90cb2fa63d48fab3642ef4c0620bde",
           "type" : "ACCOUNT_BALANCE_LOW",
           "title" : "Your balance on Checking Account tink is low",
-          "description" : "The balance on your Checking Account tink is low. \nDo you want to transfer money to this account?",
+          "description" : "The balance on your Checking Account tink is low. Do you want to transfer money to this account?",
           "data" : {
             "accountId" : "99ebf04084cf40d9ac768092bee6a7d2",
             "balance" : {
@@ -50,7 +50,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
         XCTAssertEqual(insight.userId, "af90cb2fa63d48fab3642ef4c0620bde")
         XCTAssertEqual(insight.type, .accountBalanceLow)
         XCTAssertEqual(insight.title, "Your balance on Checking Account tink is low")
-        XCTAssertEqual(insight.description, "The balance on your Checking Account tink is low. \nDo you want to transfer money to this account?")
+        XCTAssertEqual(insight.description, "The balance on your Checking Account tink is low. Do you want to transfer money to this account?")
         if case .accountBalanceLow(let data) = insight.data {
             XCTAssertEqual(data.accountId, "99ebf04084cf40d9ac768092bee6a7d2")
             XCTAssertEqual(data.balance.amount, 925.96)
@@ -91,7 +91,7 @@ class RESTActionableInsightsDecodingTests: XCTestCase {
             "userId" : "af90cb2fa63d48fab3642ef4c0620bde",
             "type" : "ACCOUNT_BALANCE_LOW",
             "title" : "Your balance on Checking Account tink is low",
-            "description" : "The balance on your Checking Account tink is low. \nDo you want to transfer money to this account?",
+            "description" : "The balance on your Checking Account tink is low. Do you want to transfer money to this account?",
             "data" : {
               "accountId" : "99ebf04084cf40d9ac768092bee6a7d2",
               "balance" : {
