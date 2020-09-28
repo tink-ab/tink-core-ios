@@ -9,6 +9,11 @@ public struct ActionableInsight {
 
         /// The data that describes the action.
         public let data: InsightActionData?
+
+        public init(label: String?, data: InsightActionData?) {
+            self.label = label
+            self.data = data
+        }
     }
 
     public enum State {
