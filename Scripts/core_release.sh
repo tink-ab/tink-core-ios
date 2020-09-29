@@ -30,4 +30,6 @@ mv ./build/TinkCore.xcframework ./
 git add .
 git commit -m"Update framework"
 
-echo Done! Push this your private fork of Tink Core
+gh pr create --repo tink-ab/tink-core-ios-private -t "rc:$newVersion" -b "Release candidate for Tink Core pre release." -r tink-ab/ios-maintainer
+
+echo Preview of PR created. Open it on Github.com
