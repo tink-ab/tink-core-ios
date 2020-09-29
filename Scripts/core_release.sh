@@ -32,4 +32,4 @@ git commit -m"Update framework"
 
 gh pr create --repo tink-ab/tink-core-ios-private -t "rc:$newVersion" -b "Release candidate for Tink Core pre release." -r tink-ab/ios-maintainer
 
-echo Preview of PR created. Open it on Github.com
+echo Release candidate PR has been created! 🎉

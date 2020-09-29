@@ -47,3 +47,6 @@ framework:
 		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-output ./build/TinkCore.xcframework
+
+prerelease:
+	Scripts/core_release.sh
