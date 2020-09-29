@@ -189,13 +189,40 @@ public extension ActionableInsight {
             public let day: Day
             public let expenseStatistics: ExpenseStatistics
 
-            public init(date: [Int], expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+            public init(day: ActionableInsight.Day, expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+                self.day = day
+                self.expenseStatistics = expenseStatistics
+            }
+
+            init(date: [Int], expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
                 if date.count == 3 {
                     self.day = Day(year: date[0], month: date[1], day: date[2])
                 } else {
                     self.day = Day(year: 0, month: 0, day: 0)
                 }
                 self.expenseStatistics = expenseStatistics
+            }
+
+            @available(*, deprecated, message: "Use init(day:expenseStatistics:) instead.")
+            public init(date: String, expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
+                let dateFormatter = ISO8601DateFormatter()
+                dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+                if let parsedDate = dateFormatter.date(from: date) {
+                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: parsedDate)
+                    self.day = Day(year: dateComponents.year ?? 0, month: dateComponents.month ?? 0, day: dateComponents.day ?? 0)
+                } else {
+                    self.day = Day(year: 0, month: 0, day: 0)
+                }
+                self.expenseStatistics = expenseStatistics
+            }
+
+            @available(*, deprecated, message: "Use day property instead.")
+            public var date: String {
+                let dateFormatter = ISO8601DateFormatter()
+                dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+                let dateComponents = DateComponents(year: day.year, month: day.month, day: day.day)
+                guard let date = Calendar.current.date(from: dateComponents) else { return "" }
+                return dateFormatter.string(from: date)
             }
         }
 
