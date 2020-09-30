@@ -42,12 +42,7 @@ struct RESTSimpleRequest: RESTRequest {
     func onResponse(_ result: Result<(data: Data, urlResponse: URLResponse), Error>) {
         do {
             let response = try result.get()
-            if let errorResponse = try? JSONDecoder().decode(RESTError.self, from: response.data),
-                let serviceError = ServiceError(errorResponse) {
-                completion(.failure(serviceError))
-            } else {
-                completion(.success(response.urlResponse))
-            }
+            completion(.success(response.urlResponse))
         } catch {
             completion(.failure(ServiceError(error) ?? error))
         }
@@ -90,13 +85,8 @@ struct RESTResourceRequest<T: Decodable>: RESTRequest {
             }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .millisecondsSince1970
-            do {
-                let model = try decoder.decode(T.self, from: response.data)
-                completion(.success(model))
-            } catch {
-                let errorResponse = try decoder.decode(RESTError.self, from: response.data)
-                completion(.failure(ServiceError(errorResponse) ?? error))
-            }
+            let model = try decoder.decode(T.self, from: response.data)
+            completion(.success(model))
         } catch {
             completion(.failure(ServiceError(error) ?? error))
         }
