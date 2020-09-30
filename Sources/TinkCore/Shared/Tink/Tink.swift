@@ -118,15 +118,7 @@ extension Tink {
     /// - Parameter authorizationCode: Authenticate with a `AuthorizationCode` that delegated from Tink to exchanged for a user object.
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
-    public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        return services.oAuthService.authenticate(clientID: configuration.clientID, code: authorizationCode, completion: { [weak self] result in
-            do {
-                let accessToken = try result.get()
-                self?.userSession = .accessToken(accessToken.rawValue)
-                completion(.success)
-            } catch {
-                completion(.failure(error))
-            }
-        })
+    public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<AccessToken, Swift.Error>) -> Void) -> RetryCancellable? {
+        return services.oAuthService.authenticate(clientID: configuration.clientID, code: authorizationCode, completion: completion)
     }
 }
