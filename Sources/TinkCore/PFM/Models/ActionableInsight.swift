@@ -74,9 +74,18 @@ public extension ActionableInsight {
     }
 
     struct BudgetSummary {
-        public let budgetId: Budget.ID
+        public let budgetID: Budget.ID
         public let budgetPeriod: BudgetPeriod
 
+        public init(budgetID: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
+            self.budgetID = budgetID
+            self.budgetPeriod = budgetPeriod
+        }
+
+        @available(*, deprecated, renamed: "budgetID")
+        public var budgetId: Budget.ID { budgetID }
+
+        @available(*, deprecated, renamed: "init(budgetID:budgtePeriod:)")
         public init(budgetId: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
             self.budgetId = budgetId
             self.budgetPeriod = budgetPeriod
