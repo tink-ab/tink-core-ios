@@ -1,27 +1,37 @@
 import Foundation
 
 extension Credentials {
+
+    enum Error: Swift.Error {
+        case supplementalInformationMissing
+    }
+
     init(restCredentials: RESTCredentials) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
         self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
-        self.status = .init(restCredentialsStatus: status)
-        self.statusPayload = restCredentials.statusPayload ?? ""
+        self.status = .init(restCredentialsStatus: status, id: id, payload: restCredentials.statusPayload, supplementalInformation: restCredentials.supplementalInformation)
         self.statusUpdated = restCredentials.statusUpdated
         self.updated = restCredentials.updated
         self.fields = restCredentials.fields
-        self.supplementalInformationFields = Self.makeFieldSpecifications(from: restCredentials.supplementalInformation)
-        self.thirdPartyAppAuthentication = Self.makeThirdPartyAppAuthentication(from: restCredentials.supplementalInformation, id: id, status: restCredentials.status)
         self.sessionExpiryDate = restCredentials.sessionExpiryDate
     }
 
-    static func makeFieldSpecifications(from string: String?) -> [Provider.FieldSpecification] {
-        if let stringData = string?.data(using: .utf8),
-            let fields = try? JSONDecoder().decode([RESTField].self, from: stringData) {
-            return fields.map(Provider.FieldSpecification.init)
+    static func makeFieldSpecifications(from string: String?) throws -> [Provider.FieldSpecification] {
+        guard let string = string else {
+            throw Error.supplementalInformationMissing
         }
-        return []
+
+        if let stringData = string.data(using: .utf8) {
+            let fields = try JSONDecoder().decode([RESTField].self, from: stringData)
+            if fields.isEmpty {
+                throw Error.supplementalInformationMissing
+            }
+            return fields.map(Provider.FieldSpecification.init)
+        } else {
+            throw Error.supplementalInformationMissing
+        }
     }
 
     static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?) -> Credentials.ThirdPartyAppAuthentication? {
@@ -122,7 +132,7 @@ extension Credentials.Kind {
 }
 
 extension Credentials.Status {
-    init(restCredentialsStatus: RESTCredentials.Status) {
+    init(restCredentialsStatus: RESTCredentials.Status, id: String, payload: String?, supplementalInformation: String?) {
         switch restCredentialsStatus {
         case .created:
             self = .created
@@ -133,17 +143,33 @@ extension Credentials.Status {
         case .updated:
             self = .updated
         case .temporaryError:
-            self = .temporaryError
+            self = .temporaryError(payload)
         case .authenticationError:
-            self = .authenticationError
+            self = .authenticationError(payload)
         case .permanentError:
-            self = .permanentError
+            self = .permanentError(payload)
         case .awaitingMobileBankidAuthentication:
-            self = .awaitingMobileBankIDAuthentication
-        case .awaitingSupplementalInformation:
-            self = .awaitingSupplementalInformation
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
+                self = .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication)
+            } else {
+                assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
+                self = .authenticationError("Failed to parse third party app information.")
+            }
         case .awaitingThirdPartyAppAuthentication:
-            self = .awaitingThirdPartyAppAuthentication
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
+                self = .awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication)
+            } else {
+                assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
+                self = .authenticationError("Failed to parse third party app information.")
+            }
+        case .awaitingSupplementalInformation:
+            do {
+                let fields = try Credentials.makeFieldSpecifications(from: supplementalInformation)
+                self = .awaitingSupplementalInformation(fields)
+            } catch {
+                assertionFailure("Failed to parse supplemental information. You may need to update your version of TinkCore. Underlying error: \(error)")
+                self = .authenticationError("Failed to parse supplemental information.")
+            }
         case .sessionExpired:
             self = .sessionExpired
         case .deleted:

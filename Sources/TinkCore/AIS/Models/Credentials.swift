@@ -53,7 +53,7 @@ public struct Credentials: Identifiable {
     public let kind: Credentials.Kind
 
     /// The status indicates the state of a credentials.
-    public enum Status {
+    public enum Status: Equatable {
         /// An unknown credentials status.
         case unknown
 
@@ -70,17 +70,17 @@ public struct Credentials: Identifiable {
         case updated
 
         /// There was a temporary error, see `statusPayload` for text describing the error.
-        case temporaryError
+        case temporaryError(String?)
 
         /// There was an authentication error, see `statusPayload` for text describing the error.
-        case authenticationError
+        case authenticationError(String?)
 
         /// There was a permanent error, see `statusPayload` for text describing the error.
-        case permanentError
+        case permanentError(String?)
 
         /// The credentials is awaiting authentication with Mobile BankID.
         /// - Note: Will be deprecated and replaced with `awaitingThirdPartyAppAuthentication`
-        case awaitingMobileBankIDAuthentication
+        case awaitingMobileBankIDAuthentication(ThirdPartyAppAuthentication)
 
         /// The credentials is awaiting supplemental information.
         ///
@@ -88,7 +88,7 @@ public struct Credentials: Identifiable {
         /// the client should expect the `awaitingSupplementalInformation` status on the credential.
         ///
         /// Create a `Form` with this credentials to let the user supplement the required information.
-        case awaitingSupplementalInformation
+        case awaitingSupplementalInformation([Provider.FieldSpecification])
 
         /// The credentials has been disabled.
         case disabled
@@ -102,7 +102,7 @@ public struct Credentials: Identifiable {
         ///
         /// To handle this status, check `thirdPartyAppAuthentication` to get a deeplink url to the third party app and open it so the user can authenticate.
         /// If the app can't open the deeplink, ask the user to to download or upgrade the app from the AppStore.
-        case awaitingThirdPartyAppAuthentication
+        case awaitingThirdPartyAppAuthentication(ThirdPartyAppAuthentication)
 
         /// The credentials' session has expired, check `sessionExpiryDate` to see when it expired.
         case sessionExpired
@@ -110,9 +110,6 @@ public struct Credentials: Identifiable {
 
     /// The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
     public let status: Status
-
-    /// A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
-    public let statusPayload: String
 
     /// A timestamp of when the credentials' status was last modified.
     public let statusUpdated: Date?
@@ -123,13 +120,10 @@ public struct Credentials: Identifiable {
     /// This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
     public let fields: [String: String]
 
-    /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    public let supplementalInformationFields: [Provider.FieldSpecification]
-
     /// Information about the third party authentication app.
     ///
     /// The ThirdPartyAppAuthentication contains specific deeplink urls and configuration for the third party app.
-    public struct ThirdPartyAppAuthentication {
+    public struct ThirdPartyAppAuthentication: Equatable {
         /// Title of the app to be downloaded.
         public let downloadTitle: String?
 
@@ -184,9 +178,6 @@ public struct Credentials: Identifiable {
         }
     }
 
-    /// Information about the third party authentication flow.
-    public let thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
-
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public let sessionExpiryDate: Date?
 
@@ -196,36 +187,27 @@ public struct Credentials: Identifiable {
     ///   - providerName: The provider (financial institution) that the credentials is connected to.
     ///   - kind: Indicates how Tink authenticates the user to the financial institution.
     ///   - status: The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
-    ///   - statusPayload: A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
     ///   - statusUpdated: A timestamp of when the credentials' status was last modified.
     ///   - updated: A timestamp of when the credentials was the last time in status `.updated`.
     ///   - fields: This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
-    ///   - supplementalInformationFields: A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    ///   - thirdPartyAppAuthentication: Information about the third party authentication flow.
     ///   - sessionExpiryDate: Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public init(
         id: Credentials.ID,
         providerName: Provider.Name,
         kind: Credentials.Kind,
         status: Credentials.Status,
-        statusPayload: String,
         statusUpdated: Date?,
         updated: Date?,
         fields: [String: String],
-        supplementalInformationFields: [Provider.FieldSpecification],
-        thirdPartyAppAuthentication: Credentials.ThirdPartyAppAuthentication?,
         sessionExpiryDate: Date?
     ) {
         self.id = id
         self.providerName = providerName
         self.kind = kind
         self.status = status
-        self.statusPayload = statusPayload
         self.statusUpdated = statusUpdated
         self.updated = updated
         self.fields = fields
-        self.supplementalInformationFields = supplementalInformationFields
-        self.thirdPartyAppAuthentication = thirdPartyAppAuthentication
         self.sessionExpiryDate = sessionExpiryDate
     }
 }
