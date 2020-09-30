@@ -14,6 +14,6 @@ xcodebuild -project TinkCore.xcodeproj -target "TinkCore_iOS" build | xcpretty
 swift test
 
 git checkout -b rc:$version
-gh pr create --repo tink-ab/tink-core-ios -t "Tink Core: $version" -b "Release candidate for Tink Core public release." -r tink-ab/ios-maintainer
+gh pr create --repo tink-ab/tink-core-ios -t "Tink Core $version" -b "Release candidate for Tink Core public release." -r tink-ab/ios-maintainer
 
 echo PR created, wait for approval and draft a new release changelog! 🎉
