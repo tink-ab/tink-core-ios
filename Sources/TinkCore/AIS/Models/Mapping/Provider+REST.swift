@@ -2,7 +2,7 @@ import Foundation
 
 extension Provider {
     init(restProvider: RESTProvider) {
-        self.id = .init(restProvider.name)
+        self.name = .init(restProvider.name)
         self.displayName = restProvider.displayName
         self.authenticationUserType = .init(restType: restProvider.authenticationUserType)
         self.kind = .init(restType: restProvider.type)

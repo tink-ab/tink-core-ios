@@ -8,14 +8,14 @@ final class RESTProviderService: ProviderService {
     }
 
     @discardableResult
-    func providers(id: Provider.ID?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, excludeNonTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
+    func providers(name: Provider.Name?, capabilities: Provider.Capabilities?, includeTestProviders: Bool, excludeNonTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
         var parameters = [
             URLQueryItem(name: "includeTestProviders", value: includeTestProviders ? "true" : "false"),
             URLQueryItem(name: "excludeNonTestProviders", value: excludeNonTestProviders ? "true" : "false")
         ]
 
-        if let id = id {
-            parameters.append(.init(name: "name", value: id.value))
+        if let name = name {
+            parameters.append(.init(name: "name", value: name.value))
         }
 
         if let restCapabilities = capabilities?.restCapabilities, restCapabilities.count == 1 {
