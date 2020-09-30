@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
@@ -77,6 +77,7 @@ public struct ActionableInsight {
   public struct InsightAction {
     public let label: Swift.String?
     public let data: TinkCore.InsightActionData?
+    public init(label: Swift.String?, data: TinkCore.InsightActionData?)
   }
   public enum State {
     case active([TinkCore.ActionableInsight.InsightAction])
@@ -175,9 +176,15 @@ extension ActionableInsight {
   }
   public struct WeeklyExpensesByDay {
     public struct ExpenseStatisticsByDay {
-      public let date: Swift.String
+      public let day: TinkCore.ActionableInsight.Day
       public let expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics
+      public init(day: TinkCore.ActionableInsight.Day, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
+      @available(*, deprecated, message: "Use init(day:expenseStatistics:) instead.")
       public init(date: Swift.String, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
+      @available(*, deprecated, message: "Use day property instead.")
+      public var date: Swift.String {
+        get
+      }
     }
     public struct ExpenseStatistics {
       public let totalAmount: TinkCore.CurrencyDenominatedAmount
@@ -217,6 +224,12 @@ extension ActionableInsight {
     public let year: Swift.Int
     public let week: Swift.Int
     public init(year: Swift.Int, week: Swift.Int)
+  }
+  public struct Day {
+    public let year: Swift.Int
+    public let month: Swift.Int
+    public let day: Swift.Int
+    public init(year: Swift.Int, month: Swift.Int, day: Swift.Int)
   }
   public struct SuggestSetUpSavingsAccount {
     public struct AccountInfo {
