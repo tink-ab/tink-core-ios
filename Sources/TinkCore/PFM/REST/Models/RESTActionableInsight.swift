@@ -90,13 +90,13 @@ enum RESTInsightData: Decodable {
     struct BudgetSummaryArchived: Decodable {
         let achievedBudgets: [RESTInsightData.BudgetSummary]
         let overspentBudgets: [RESTInsightData.BudgetSummary]
-        let periodUnit: String
+        let periodUnit: RESTInsightData.BudgetPeriodUnit
     }
 
     struct BudgetSummaryOverspent: Decodable {
         let achievedBudgets: [RESTInsightData.BudgetSummary]
         let overspentBudgets: [RESTInsightData.BudgetSummary]
-        let periodUnit: String
+        let periodUnit: RESTInsightData.BudgetPeriodUnit
     }
 
     struct LargeExpense: Decodable {
