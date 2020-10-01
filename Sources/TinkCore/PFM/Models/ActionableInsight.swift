@@ -114,7 +114,7 @@ public extension ActionableInsight {
         }
 
         @available(*, deprecated, message: "Use periodUnit instead.")
-        var period: String {
+        public var period: String {
             switch periodUnit {
             case .year: return "YEAR"
             case .month: return "MONTH"
