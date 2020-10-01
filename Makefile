@@ -53,4 +53,7 @@ framework:
 		-output ./build/TinkCore.xcframework
 
 prerelease:	
-	Scripts/core_prerelease.sh 
+	Scripts/core_prerelease.sh
+
+release:
+	Scripts/core_release.sh
