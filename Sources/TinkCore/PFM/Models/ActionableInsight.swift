@@ -113,7 +113,7 @@ public extension ActionableInsight {
             self.periodUnit = periodUnit
         }
 
-        @available(*, deprecated, message: "Use periodUnit instead.")
+        @available(*, deprecated, message: "Use `periodUnit` instead.")
         public var period: String {
             switch periodUnit {
             case .year: return "YEAR"
@@ -123,7 +123,7 @@ public extension ActionableInsight {
             }
         }
 
-        @available(*, deprecated, message: "Use init(achievedBudgets:overspentBudgets:period:)")
+        @available(*, deprecated, message: "Use `init(achievedBudgets:overspentBudgets:period:)` instead")
         public init(achievedBudgets: [ActionableInsight.BudgetSummary], overspentBudgets: [ActionableInsight.BudgetSummary], period: String) {
             self.achievedBudgets = achievedBudgets
             self.overspentBudgets = overspentBudgets
