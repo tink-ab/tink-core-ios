@@ -95,6 +95,13 @@ public extension ActionableInsight {
         }
     }
 
+    enum BudgetPeriodUnit {
+        case year
+        case month
+        case week
+        case unspecified
+    }
+
     struct BudgetPeriodSummary {
         public let achievedBudgets: [BudgetSummary]
         public let overspentBudgets: [BudgetSummary]
