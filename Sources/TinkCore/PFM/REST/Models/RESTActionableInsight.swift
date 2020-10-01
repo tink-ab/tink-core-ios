@@ -78,6 +78,15 @@ enum RESTInsightData: Decodable {
         let budgetAmount: RESTInsightData.CurrencyDenominatedAmount
     }
 
+    enum BudgetPeriodUnit: String, Decodable, DefaultableDecodable {
+        case week = "WEEK"
+        case month = "MONTH"
+        case year = "YEAR"
+        case unspecified = "UNSPECIFIED"
+
+        static var decodeFallbackValue: BudgetPeriodUnit = .unspecified
+    }
+
     struct BudgetSummaryArchived: Decodable {
         let achievedBudgets: [RESTInsightData.BudgetSummary]
         let overspentBudgets: [RESTInsightData.BudgetSummary]
