@@ -8,6 +8,10 @@ endif
 ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
 	brew install swiftformat
 endif
+ifeq ($(strip $(shell command -v gh 2> /dev/null)),)
+	brew install gh
+endif
+
 
 carthage-project:
 	xcodegen generate
@@ -47,3 +51,6 @@ framework:
 		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-output ./build/TinkCore.xcframework
+
+prerelease:	
+	Scripts/core_prerelease.sh 

@@ -130,7 +130,7 @@ enum RESTInsightData: Decodable {
 
     struct WeeklyExpensesByDay: Decodable {
         struct ExpenseStatisticsByDay: Decodable {
-            let date: String
+            let date: [Int]
             let expenseStatistics: ExpenseStatistics
         }
 
