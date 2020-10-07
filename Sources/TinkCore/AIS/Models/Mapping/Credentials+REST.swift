@@ -1,7 +1,7 @@
 import Foundation
 
 extension Credentials {
-    init(restCredentials: RESTCredentials) {
+    init(restCredentials: RESTCredentials, appUri: URL) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
         self.providerID = .init(restCredentials.providerName)
@@ -12,7 +12,7 @@ extension Credentials {
         self.updated = restCredentials.updated
         self.fields = restCredentials.fields
         self.supplementalInformationFields = Self.makeFieldSpecifications(from: restCredentials.supplementalInformation)
-        self.thirdPartyAppAuthentication = Self.makeThirdPartyAppAuthentication(from: restCredentials.supplementalInformation, id: id, status: restCredentials.status)
+        self.thirdPartyAppAuthentication = Self.makeThirdPartyAppAuthentication(from: restCredentials.supplementalInformation, id: id, status: restCredentials.status, appUri: appUri)
         self.sessionExpiryDate = restCredentials.sessionExpiryDate
     }
 
@@ -24,21 +24,27 @@ extension Credentials {
         return []
     }
 
-    static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?) -> Credentials.ThirdPartyAppAuthentication? {
+    static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?, appUri: URL) -> Credentials.ThirdPartyAppAuthentication? {
         guard let status = status else {
             return nil
         }
 
         switch status {
         case .awaitingMobileBankidAuthentication:
-            // Uses the same conversion as tink-backend: See https://github.com/tink-ab/tink-backend/blob/master/src/main/grpc-v1-lib/src/main/java/se/tink/backend/grpc/v1/converter/MobileBankIdAuthenticationPayload.java
 
-            let deepLinkURL: URL?
-            if let autostartToken = string {
-                deepLinkURL = URL(string: "bankid:///?autostartToken=\(autostartToken)&redirect=tink://bankid/credentials/\(id)")
-            } else {
-                deepLinkURL = URL(string: "bankid:///?redirect=tink://bankid/credentials/\(id)")
+            guard let url = URL(string: "bankid:///"), var bankIDComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+                return nil
             }
+
+            let redirectQueryItem = URLQueryItem(name: "redirect", value: appUri.appendingPathComponent("/bankid/credentials/\(id)").absoluteString)
+
+            if let autostartToken = string {
+                let autostartTokenQueryItem = URLQueryItem(name: "autostartToken", value: autostartToken)
+                bankIDComponents.queryItems = [autostartTokenQueryItem, redirectQueryItem]
+            } else {
+                bankIDComponents.queryItems = [redirectQueryItem]
+            }
+            let deepLinkURL = bankIDComponents.url
 
             return ThirdPartyAppAuthentication(
                 downloadTitle: "Download Mobile BankID",

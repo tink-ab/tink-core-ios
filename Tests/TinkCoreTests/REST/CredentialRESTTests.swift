@@ -17,7 +17,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
@@ -48,7 +48,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
@@ -77,7 +77,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
@@ -115,7 +115,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
@@ -127,7 +127,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
         XCTAssertNotNil(credential.thirdPartyAppAuthentication)
 
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink://bankid/credentials/6e68cc6287704273984567b3300c5822")
+        XCTAssertEqual(credential.thirdPartyAppAuthentication?.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
         XCTAssertEqual(credential.thirdPartyAppAuthentication?.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
 
         XCTAssertNil(credential.sessionExpiryDate)
