@@ -36,7 +36,7 @@ extension Credentials {
                 return nil
             }
 
-            let redirectQueryItem = URLQueryItem(name: "redirect", value: appUri.appendingPathComponent("/bankid/credentials/\(id)").absoluteString)
+            let redirectQueryItem = URLQueryItem(name: "redirect", value: appUri.appendingPathComponent("bankid/credentials/\(id)").absoluteString)
 
             if let autostartToken = string {
                 let autostartTokenQueryItem = URLQueryItem(name: "autostartToken", value: autostartToken)
