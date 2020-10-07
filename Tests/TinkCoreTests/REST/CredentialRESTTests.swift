@@ -20,7 +20,7 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .created)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
@@ -51,7 +51,7 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .updated)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
@@ -80,7 +80,7 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .thirdPartyAuthentication)
         XCTAssertEqual(credential.status, .awaitingThirdPartyAppAuthentication)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
@@ -118,7 +118,7 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .awaitingMobileBankIDAuthentication)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
