@@ -47,6 +47,7 @@
 		19FB5AA10614D580DD1E6BE7 /* RESTCreateCredentialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781D8F8F0826B741657A06A8 /* RESTCreateCredentialsRequest.swift */; };
 		1D6E7279603E9FE6A652A946 /* RESTTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831640C4808CEF75A59C179 /* RESTTransactionService.swift */; };
 		1E6D2FCA230C34B4FAAAD921 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627C6CD0F5AC1F6D39A9996 /* Market.swift */; };
+		1EB9B3B33814019EDE22F515 /* ActionableInsightsRESTDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34FC553D995E292BB9E854B /* ActionableInsightsRESTDecodingTests.swift */; };
 		1ED510D822F74EC78813EE6D /* Beneficiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5816544D908CB1DF3E638 /* Beneficiary.swift */; };
 		1F15DA159A07EED36C0DB9EE /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C74BA93A07BF3025C9585 /* CalendarService.swift */; };
 		1F3AA944615728CFF2AFCD74 /* ComposableClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BDE3BCB27494B3CB6E0CC /* ComposableClientBehavior.swift */; };
@@ -56,6 +57,7 @@
 		21E382F746A884F35266902D /* RESTCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA150D3A4A2D6908984DC5 /* RESTCategoryService.swift */; };
 		228865C46F095F7211E37FAD /* RESTCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD70EC629E3B17D0BE0FD73B /* RESTCalendarService.swift */; };
 		2355D22A4AF6CC039A94619E /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEACF4767A2726C11672AA /* RESTRequest.swift */; };
+		237030B3626DAF3DA19708CF /* ActionableInsightsRESTDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34FC553D995E292BB9E854B /* ActionableInsightsRESTDecodingTests.swift */; };
 		24B9AE18F211DF476B98CA4C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F4FF741D1B1ACDFE85F1D /* Account.swift */; };
 		25293F6C45E43C6926CD2643 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683969F38E4DB9C0A929ABBD /* Period.swift */; };
 		25AA8D92FC4B8ADB32ED66AE /* SignableOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E62D5ABD7EDD1E20C3686A /* SignableOperation.swift */; };
@@ -570,6 +572,7 @@
 		E0C4A1F5C5793C2907CF2699 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		E1FAE6A9058ED482DB7CD8A5 /* AccountNumberKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNumberKind.swift; sourceTree = "<group>"; };
 		E2C136045F7CA52D7F778ED7 /* FinancialInstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitution.swift; sourceTree = "<group>"; };
+		E34FC553D995E292BB9E854B /* ActionableInsightsRESTDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableInsightsRESTDecodingTests.swift; sourceTree = "<group>"; };
 		E41E3346B38D6F0EC70A5919 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E4C64B4809FBD76F39CAFCE6 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		E66EA2570BE4727EDAC52636 /* AccountRESTTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRESTTest.swift; sourceTree = "<group>"; };
@@ -673,6 +676,7 @@
 			children = (
 				E66EA2570BE4727EDAC52636 /* AccountRESTTest.swift */,
 				2F6737742C4BFE5F8B104D0B /* AccountRESTTests.swift */,
+				E34FC553D995E292BB9E854B /* ActionableInsightsRESTDecodingTests.swift */,
 				0CD0ECC92402A5369EA98DEB /* BeneficiaryRESTTest.swift */,
 				0836D5167F87874F569C80AE /* CredentialRESTTests.swift */,
 				C96426A32436AD940A777692 /* ProviderRESTTests.swift */,
@@ -1243,6 +1247,7 @@
 			files = (
 				2980EB5E43196D9AA7286CEA /* AccountRESTTest.swift in Sources */,
 				D41C86191CC36469E9A9DE48 /* AccountRESTTests.swift in Sources */,
+				237030B3626DAF3DA19708CF /* ActionableInsightsRESTDecodingTests.swift in Sources */,
 				4408F22BC1F6A74546104007 /* BeneficiaryRESTTest.swift in Sources */,
 				86D46F7A8AE4CCAA82DEEC83 /* ConfigurationTests.swift in Sources */,
 				0AD68A421D6D32C9E3EFD8A8 /* CredentialRESTTests.swift in Sources */,
@@ -1259,6 +1264,7 @@
 			files = (
 				754FD24ACD374289AC78DE5A /* AccountRESTTest.swift in Sources */,
 				48DCA99BC662C7428A80CAB1 /* AccountRESTTests.swift in Sources */,
+				1EB9B3B33814019EDE22F515 /* ActionableInsightsRESTDecodingTests.swift in Sources */,
 				5E6325C0055121F5AD564474 /* BeneficiaryRESTTest.swift in Sources */,
 				3F26CD442740649C966E500C /* ConfigurationTests.swift in Sources */,
 				4CE999B586815A7485010837 /* CredentialRESTTests.swift in Sources */,
@@ -1637,7 +1643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1650,7 +1656,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1773,7 +1779,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1786,7 +1792,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
@@ -1837,7 +1843,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1850,7 +1856,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1865,7 +1871,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1878,7 +1884,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.5;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;

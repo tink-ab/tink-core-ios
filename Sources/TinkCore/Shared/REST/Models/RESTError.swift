@@ -12,13 +12,3 @@ struct RESTError: Error, LocalizedError, Decodable {
         return errorMessage
     }
 }
-
-extension RESTError {
-    init?(statusCode: Int) {
-        if 200..<300 ~= statusCode {
-            return nil
-        } else {
-            self = .init(errorMessage: nil, errorCode: String(statusCode))
-        }
-    }
-}

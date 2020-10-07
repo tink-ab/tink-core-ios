@@ -77,6 +77,7 @@ public struct ActionableInsight {
   public struct InsightAction {
     public let label: Swift.String?
     public let data: TinkCore.InsightActionData?
+    public init(label: Swift.String?, data: TinkCore.InsightActionData?)
   }
   public enum State {
     case active([TinkCore.ActionableInsight.InsightAction])
@@ -175,9 +176,15 @@ extension ActionableInsight {
   }
   public struct WeeklyExpensesByDay {
     public struct ExpenseStatisticsByDay {
-      public let date: Swift.String
+      public let day: TinkCore.ActionableInsight.Day
       public let expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics
+      public init(day: TinkCore.ActionableInsight.Day, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
+      @available(*, deprecated, message: "Use init(day:expenseStatistics:) instead.")
       public init(date: Swift.String, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
+      @available(*, deprecated, message: "Use day property instead.")
+      public var date: Swift.String {
+        get
+      }
     }
     public struct ExpenseStatistics {
       public let totalAmount: TinkCore.CurrencyDenominatedAmount
@@ -217,6 +224,12 @@ extension ActionableInsight {
     public let year: Swift.Int
     public let week: Swift.Int
     public init(year: Swift.Int, week: Swift.Int)
+  }
+  public struct Day {
+    public let year: Swift.Int
+    public let month: Swift.Int
+    public let day: Swift.Int
+    public init(year: Swift.Int, month: Swift.Int, day: Swift.Int)
   }
   public struct SuggestSetUpSavingsAccount {
     public struct AccountInfo {
@@ -573,7 +586,7 @@ public protocol CredentialsService {
   func create(providerID: TinkCore.Provider.ID, refreshableItems: TinkCore.RefreshableItems, fields: [Swift.String : Swift.String], appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func delete(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func update(id: TinkCore.Credentials.ID, providerID: TinkCore.Provider.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func refresh(id: TinkCore.Credentials.ID, refreshableItems: TinkCore.RefreshableItems, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func addSupplementalInformation(id: TinkCore.Credentials.ID, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func cancelSupplementalInformation(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func enable(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -1015,23 +1028,14 @@ public struct ScopeDescription {
 }
 public enum ServiceError : Swift.Error {
   case cancelled
-  case unknown(Swift.String)
   case invalidArgument(Swift.String)
-  case deadlineExceeded(Swift.String)
   case notFound(Swift.String)
   case alreadyExists(Swift.String)
   case permissionDenied(Swift.String)
   case unauthenticated(Swift.String)
-  case resourceExhausted(Swift.String)
   case failedPrecondition(Swift.String)
   case unavailableForLegalReasons(Swift.String)
-  case aborted(Swift.String)
-  case outOfRange(Swift.String)
-  case unimplemented(Swift.String)
   case internalError(Swift.String)
-  case unavailable(Swift.String)
-  case dataLoss(Swift.String)
-  case missingInternetConnection
 }
 public protocol SessionManager {
 }
