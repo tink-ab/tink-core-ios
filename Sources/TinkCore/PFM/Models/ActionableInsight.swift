@@ -104,15 +104,45 @@ public extension ActionableInsight {
         }
     }
 
+    enum BudgetPeriodUnit {
+        case year
+        case month
+        case week
+        case unspecified
+    }
+
     struct BudgetPeriodSummary {
         public let achievedBudgets: [BudgetSummary]
         public let overspentBudgets: [BudgetSummary]
-        public let period: String
+        public let periodUnit: BudgetPeriodUnit
 
+        public init(achievedBudgets: [ActionableInsight.BudgetSummary], overspentBudgets: [ActionableInsight.BudgetSummary], periodUnit: ActionableInsight.BudgetPeriodUnit) {
+            self.achievedBudgets = achievedBudgets
+            self.overspentBudgets = overspentBudgets
+            self.periodUnit = periodUnit
+        }
+
+        @available(*, deprecated, message: "Use `periodUnit` instead.")
+        public var period: String {
+            switch periodUnit {
+            case .year: return "YEAR"
+            case .month: return "MONTH"
+            case .week: return "WEEK"
+            case .unspecified: return "UNSPECIFIED"
+            }
+        }
+
+        @available(*, deprecated, message: "Use `init(achievedBudgets:overspentBudgets:period:)` instead")
         public init(achievedBudgets: [ActionableInsight.BudgetSummary], overspentBudgets: [ActionableInsight.BudgetSummary], period: String) {
             self.achievedBudgets = achievedBudgets
             self.overspentBudgets = overspentBudgets
-            self.period = period
+            switch period {
+            case "YEAR":        self.periodUnit = .year
+            case "MONTH":       self.periodUnit = .month
+            case "WEEK":        self.periodUnit = .week
+            case "UNSPECIFIED": self.periodUnit = .unspecified
+            default:            self.periodUnit = .unspecified
+            }
         }
     }
 

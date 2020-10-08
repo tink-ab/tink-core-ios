@@ -66,14 +66,14 @@ extension ActionableInsight.Kind {
             self = .budgetSuccess(.init(budgetId: id, budgetPeriod: period))
 
         case (.budgetSummaryAchieved, .budgetSummaryAchieved(let summary)):
-            let summary = ActionableInsight.BudgetPeriodSummary(achievedBudgets: summary.achievedBudgets.map(ActionableInsight.BudgetSummary.init), overspentBudgets: summary.overspentBudgets.map(ActionableInsight.BudgetSummary.init), period: summary.periodUnit)
+            let summary = ActionableInsight.BudgetPeriodSummary(achievedBudgets: summary.achievedBudgets.map(ActionableInsight.BudgetSummary.init), overspentBudgets: summary.overspentBudgets.map(ActionableInsight.BudgetSummary.init), periodUnit: ActionableInsight.BudgetPeriodUnit(restBudgetPeriodUnit: summary.periodUnit))
             self = .budgetSummaryAchieved(summary)
 
         case (.budgetSummaryOverspent, .budgetSummaryOverspent(let summary)):
             let summary = ActionableInsight.BudgetPeriodSummary(
                 achievedBudgets: summary.achievedBudgets.map(ActionableInsight.BudgetSummary.init),
                 overspentBudgets: summary.overspentBudgets.map(ActionableInsight.BudgetSummary.init),
-                period: summary.periodUnit
+                periodUnit: ActionableInsight.BudgetPeriodUnit(restBudgetPeriodUnit: summary.periodUnit)
             )
             self = .budgetSummaryOverspent(summary)
 
@@ -142,6 +142,21 @@ extension ActionableInsight.BudgetPeriod {
 extension ActionableInsight.BudgetSummary {
     init(restSummary: RESTInsightData.BudgetSummary) {
         self = .init(budgetId: Budget.ID(restSummary.budgetId), budgetPeriod: .init(restBudgetPeriod: restSummary.budgetPeriod))
+    }
+}
+
+extension ActionableInsight.BudgetPeriodUnit {
+    init(restBudgetPeriodUnit: RESTInsightData.BudgetPeriodUnit) {
+        switch restBudgetPeriodUnit {
+        case .year:
+            self = .year
+        case .month:
+            self = .month
+        case .week:
+            self = .week
+        case .unspecified:
+            self = .unspecified
+        }
     }
 }
 
