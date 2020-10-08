@@ -4,7 +4,7 @@ extension Credentials {
     init(restCredentials: RESTCredentials) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
-        self.providerID = .init(restCredentials.providerName)
+        self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
         self.status = .init(restCredentialsStatus: status)
         self.statusPayload = restCredentials.statusPayload ?? ""

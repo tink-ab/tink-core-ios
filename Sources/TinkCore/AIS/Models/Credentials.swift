@@ -9,7 +9,7 @@ public struct Credentials: Identifiable {
     public let id: ID
 
     /// The provider (financial institution) that the credentials is connected to.
-    public let providerID: Provider.ID
+    public let providerName: Provider.Name
 
     /// Indicates how Tink authenticates the user to a financial institution.
     public enum Kind {
@@ -193,7 +193,7 @@ public struct Credentials: Identifiable {
     /// Creates a credentials model.
     /// - Parameters:
     ///   - id: The unique identifier of the credentials.
-    ///   - providerID: The provider (financial institution) that the credentials is connected to.
+    ///   - providerName: The provider (financial institution) that the credentials is connected to.
     ///   - kind: Indicates how Tink authenticates the user to the financial institution.
     ///   - status: The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
     ///   - statusPayload: A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
@@ -205,7 +205,7 @@ public struct Credentials: Identifiable {
     ///   - sessionExpiryDate: Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public init(
         id: Credentials.ID,
-        providerID: Provider.ID,
+        providerName: Provider.Name,
         kind: Credentials.Kind,
         status: Credentials.Status,
         statusPayload: String,
@@ -217,7 +217,7 @@ public struct Credentials: Identifiable {
         sessionExpiryDate: Date?
     ) {
         self.id = id
-        self.providerID = providerID
+        self.providerName = providerName
         self.kind = kind
         self.status = status
         self.statusPayload = statusPayload
