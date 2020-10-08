@@ -40,18 +40,13 @@ public struct Provider: Identifiable {
 
         /// Indicates a test provider.
         case test
-        case fraud
-
-        /// The provider is a business bank.
-        case businessBank
-        case firstParty
 
         public static var `default`: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
         /// A set for the test providers kind.
         public static var onlyTest: Set<Provider.Kind> = [.test]
 
         /// A set of all providers kinds. Note that this also includes test providers.
-        public static var all: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
+        public static var all: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .test]
     }
 
     /// Indicates what kind of financial institution the provider represents.

@@ -67,7 +67,6 @@ struct RESTProvider: Decodable {
         case creditCard = "CREDIT_CARD"
         case broker = "BROKER"
         case test = "TEST"
-        case fraud = "FRAUD"
         case other = "OTHER"
         case unknown = "UNKNOWN"
 
