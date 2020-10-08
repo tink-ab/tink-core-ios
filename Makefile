@@ -19,7 +19,7 @@ carthage-project:
 format:
 	swiftformat . 2> /dev/null
 
-framework:
+generate-frameworks:
 	rm -rf ./build
 	echo 'Creating Xcode project...'
 	xcodegen generate
@@ -44,6 +44,20 @@ framework:
 		-sdk iphonesimulator \
 		SKIP_INSTALL=NO \
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
+internal-distribution-framework:
+	make generate-frameworks
+
+	# Create debug mode XCFramework
+	echo 'Assemble Frameworks...'
+	xcodebuild -create-xcframework \
+		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkCore.framework \
+		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkCore.framework \
+		-allow-internal-distribution \
+		-output ./build/TinkCore-internal.xcframework
+
+framework:
+	make generate-frameworks
 
 	# Create XCFramework
 	echo 'Assemble Frameworks...'
