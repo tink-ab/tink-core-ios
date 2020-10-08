@@ -19,7 +19,7 @@ carthage-project:
 format:
 	swiftformat . 2> /dev/null
 
-generate-frameowkrs:
+generate-frameworks:
 	rm -rf ./build
 	echo 'Creating Xcode project...'
 	xcodegen generate
@@ -46,7 +46,7 @@ generate-frameowkrs:
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 internal-distribution-framework:
-	make generate-frameowkrs
+	make generate-frameworks
 
 	# Create debug mode XCFramework
 	echo 'Assemble Frameworks...'
@@ -57,7 +57,7 @@ internal-distribution-framework:
 		-output ./build/TinkCore-internal.xcframework
 
 framework:
-	make generate-frameowkrs
+	make generate-frameworks
 
 	# Create XCFramework
 	echo 'Assemble Frameworks...'
