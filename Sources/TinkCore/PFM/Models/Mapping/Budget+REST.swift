@@ -6,40 +6,9 @@ extension Budget {
         self.name = restBudget.name
         self.amount = restBudget.amount.flatMap(CurrencyDenominatedAmount.init(restCurrencyDenominatedAmount:))
 
-        switch restBudget.periodicityType {
-        case .oneOff:
-            let oneOffPeriodicity = restBudget.oneOffPeriodicity.map { OneOffPeriodicity(restOneOffPeriodicity: $0) }
-            periodicity = oneOffPeriodicity.flatMap { Periodicity.oneOff($0) }
-        case .recurring:
-            let recurringPeriodicity = restBudget.recurringPeriodicity.map { RecurringPeriodicity(restRecurringPeriodicity: $0) }
-            periodicity = recurringPeriodicity.flatMap { Periodicity.recurring($0) }
-        default:
-            periodicity = nil
-        }
-        var newFilter = [Filter]()
+        self.periodicity = Periodicity(restPeriodicityType: restBudget.periodicityType, restOneOffPeriodicity: restBudget.oneOffPeriodicity, restRecurringPeriodicity: restBudget.recurringPeriodicity)
 
-        newFilter += restBudget.filter?.accounts?
-            .compactMap { $0.id }
-            .map(Account.ID.init(_:))
-            .map(Filter.account)
-            ?? []
-
-        newFilter += restBudget.filter?.categories?
-            .compactMap { $0.code }
-            .map(Category.Code.init(_:))
-            .map(Filter.category)
-            ?? []
-
-        newFilter += restBudget.filter?.tags?
-            .compactMap { $0.key }
-            .map(Filter.tag)
-            ?? []
-
-        if let query = restBudget.filter?.freeTextQuery {
-            newFilter.append(.search(query))
-        }
-
-        self.filter = newFilter
+        self.filter = Budget.Filter.makeFilters(restFilter: restBudget.filter)
     }
 }
 
@@ -59,5 +28,53 @@ extension Budget.RecurringPeriodicity {
 extension Budget.OneOffPeriodicity {
     init(restOneOffPeriodicity: RESTBudget.OneOffPeriodicity) {
         self = .init(start: restOneOffPeriodicity.start, end: restOneOffPeriodicity.end)
+    }
+}
+
+extension Budget.Filter {
+    static func makeFilters(restFilter: RESTBudget.Filter?) -> [Budget.Filter] {
+        var filters: [Budget.Filter] = []
+
+        filters += restFilter?.accounts?
+            .compactMap { $0.id }
+            .map(Account.ID.init(_:))
+            .map(Budget.Filter.account)
+            ?? []
+
+        filters += restFilter?.categories?
+            .compactMap { $0.code }
+            .map(Category.Code.init(_:))
+            .map(Budget.Filter.category)
+            ?? []
+
+        filters += restFilter?.tags?
+            .compactMap { $0.key }
+            .map(Budget.Filter.tag)
+            ?? []
+
+        if let query = restFilter?.freeTextQuery {
+            filters.append(.search(query))
+        }
+
+        return filters
+    }
+}
+
+extension Budget.Periodicity {
+    init?(restPeriodicityType: RESTBudget.PeriodicityType?, restOneOffPeriodicity: RESTBudget.OneOffPeriodicity?, restRecurringPeriodicity: RESTBudget.RecurringPeriodicity?) {
+        switch restPeriodicityType {
+        case .oneOff:
+            guard let oneOffPeriodicity = restOneOffPeriodicity
+                    .map(Budget.OneOffPeriodicity.init(restOneOffPeriodicity:))
+            else { return nil }
+            self = .oneOff(oneOffPeriodicity)
+        case .recurring:
+            guard let recurringPeriodicity = restRecurringPeriodicity
+                    .map(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
+            else { return nil }
+            self = .recurring(recurringPeriodicity)
+        default:
+            return nil
+        }
     }
 }
