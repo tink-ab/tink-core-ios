@@ -134,7 +134,8 @@ extension ActionableInsight.Kind {
                         id: .init(data.account.accountId),
                         name: data.account.accountName
                     ),
-                    availableCredit: CurrencyDenominatedAmount(restAIAmount: data.availableCredit))
+                    availableCredit: CurrencyDenominatedAmount(restAIAmount: data.availableCredit)
+                )
             )
         case (.creditCardLimitReached, .creditCardLimitReached(let data)):
             self = .creditCardLimitReached(
@@ -174,7 +175,8 @@ extension ActionableInsight.Kind {
             self = .leftToSpendNegativeSummary(
                 .init(
                     month: ActionableInsight.Month(year: data.month.year, month: data.month.month),
-                    leftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpend))
+                    leftToSpend: CurrencyDenominatedAmount(restAIAmount: data.leftToSpend)
+                )
             )
         case (.budgetSuggestCreateTopCategory, .budgetSuggestCreateTopCategory(let data)):
             self = .budgetSuggestCreateTopCategory(

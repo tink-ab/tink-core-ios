@@ -132,6 +132,7 @@ class CredentialRESTTests: XCTestCase {
 
         XCTAssertNil(credential.sessionExpiryDate)
     }
+
     func testAwaitingBankIDCredentialMappingWithUniversalLink() {
         let restCredentials = RESTCredentials(
             id: "6e68cc6287704273984567b3300c5822",
@@ -165,5 +166,3 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertNil(credential.sessionExpiryDate)
     }
 }
-
-

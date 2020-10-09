@@ -151,11 +151,11 @@ public extension ActionableInsight {
             self.achievedBudgets = achievedBudgets
             self.overspentBudgets = overspentBudgets
             switch period {
-            case "YEAR":        self.periodUnit = .year
-            case "MONTH":       self.periodUnit = .month
-            case "WEEK":        self.periodUnit = .week
+            case "YEAR": self.periodUnit = .year
+            case "MONTH": self.periodUnit = .month
+            case "WEEK": self.periodUnit = .week
             case "UNSPECIFIED": self.periodUnit = .unspecified
-            default:            self.periodUnit = .unspecified
+            default: self.periodUnit = .unspecified
             }
         }
     }
@@ -358,7 +358,6 @@ public extension ActionableInsight {
         }
     }
 
-
     struct Day {
         public let year: Int
         public let month: Int
@@ -374,7 +373,7 @@ public extension ActionableInsight {
     struct AccountInfo {
         public let id: Account.ID
         public let name: String
-      
+
         public init(id: Account.ID, name: String) {
             self.id = id
             self.name = name

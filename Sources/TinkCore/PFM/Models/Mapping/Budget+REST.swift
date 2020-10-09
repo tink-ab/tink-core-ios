@@ -65,12 +65,12 @@ extension Budget.Periodicity {
         switch restPeriodicityType {
         case .oneOff:
             guard let oneOffPeriodicity = restOneOffPeriodicity
-                    .map(Budget.OneOffPeriodicity.init(restOneOffPeriodicity:))
+                .map(Budget.OneOffPeriodicity.init(restOneOffPeriodicity:))
             else { return nil }
             self = .oneOff(oneOffPeriodicity)
         case .recurring:
             guard let recurringPeriodicity = restRecurringPeriodicity
-                    .map(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
+                .map(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
             else { return nil }
             self = .recurring(recurringPeriodicity)
         default:

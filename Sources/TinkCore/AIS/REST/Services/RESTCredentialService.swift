@@ -12,7 +12,7 @@ final class RESTCredentialsService: CredentialsService {
     @discardableResult
     func credentialsList(completion: @escaping (Result<[Credentials], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTCredentialsList>(path: "/api/v1/credentials/list", method: .get, contentType: .json) { result in
-            let result = result.map { $0.credentials.map( { Credentials(restCredentials: $0, appUri: self.appUri) } ) }
+            let result = result.map { $0.credentials.map { Credentials(restCredentials: $0, appUri: self.appUri) } }
             completion(result)
         }
 
