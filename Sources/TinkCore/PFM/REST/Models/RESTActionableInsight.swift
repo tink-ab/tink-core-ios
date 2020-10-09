@@ -262,6 +262,7 @@ enum RESTInsightData: Decodable {
             let categoryCode: String
             let spentAmount: RESTInsightData.CurrencyDenominatedAmount
         }
+
         let categorySpending: CategorySpending
         let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
     }
@@ -285,6 +286,7 @@ enum RESTInsightData: Decodable {
             let code: String
             let displayName: String
         }
+
         let category: Category
         let lastMonth: RESTInsightData.Month
         let lastMonthSpending: RESTInsightData.CurrencyDenominatedAmount
@@ -314,6 +316,7 @@ enum RESTInsightData: Decodable {
             let id: String
             let provider: AggregationRefreshPSD2Credentials.Provider
         }
+
         let credential: Credentials
         let sessionExpiryDate: Date
     }
@@ -546,6 +549,7 @@ enum RESTInsightActionData: Decodable {
             let oneOffPeriodicityData: RESTBudget.OneOffPeriodicity?
             let recurringPeriodicityData: RESTBudget.RecurringPeriodicity?
         }
+
         let budgetSuggestion: BudgetSuggestion
     }
 
