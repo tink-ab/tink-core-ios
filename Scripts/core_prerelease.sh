@@ -22,7 +22,7 @@ git commit -am"Format project"
 rm -rf ./build
 rm -rf ./TinkCore.xcframework
 
-make cartage-project
+make carthage-project
 
 xcodebuild -project TinkCore.xcodeproj -target "TinkCore_iOS" build | xcpretty
 swift test
