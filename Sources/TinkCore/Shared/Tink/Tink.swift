@@ -93,7 +93,7 @@ public class Tink {
 
     // MARK: - Services
 
-    public private(set) lazy var services = ServiceContainer(client: client)
+    public private(set) lazy var services = ServiceContainer(client: client, appUri: self.configuration.redirectURI)
 }
 
 extension Tink {
