@@ -35,6 +35,7 @@ public struct TransactionsQuery: Equatable {
     }
 
     /// A type that determines the order of the transactions.
+    @frozen
     public enum Order: String {
         /// Display transactions in an ascending order.
         case ascending
