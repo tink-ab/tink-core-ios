@@ -79,7 +79,7 @@ final class RESTTransactionService: TransactionService {
     }
 
     func transaction(id: Transaction.ID, completion: @escaping (Result<Transaction, Error>) -> Void) -> Cancellable? {
-        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(id)", method: .get, contentType: nil) { result in
+        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(id.value)", method: .get, contentType: nil) { result in
             let mapped = result.map(Transaction.init)
             completion(mapped)
         }
