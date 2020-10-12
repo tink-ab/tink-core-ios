@@ -16,6 +16,7 @@ public struct ActionableInsight {
         }
     }
 
+    @frozen
     public enum State {
         case active([InsightAction])
         case archived(Date)
