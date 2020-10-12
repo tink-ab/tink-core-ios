@@ -30,6 +30,7 @@ enum RESTTransactionType: String, DefaultableDecodable {
     case transfer = "TRANSFER"
     case payment = "PAYMENT"
     case withdrawal = "WITHDRAWAL"
+    case unknown = "UNKNOWN"
 
-    static var decodeFallbackValue: RESTTransactionType = .default
+    static var decodeFallbackValue: RESTTransactionType = .unknown
 }
