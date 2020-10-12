@@ -12,7 +12,7 @@ struct RESTTransaction: Decodable {
     let dispensableAmount: Double?
     let id: String
     let lastModified: Date
-    let notes: String
+    let notes: String?
     let originalAmount: Double
     let originalDate: Date
     let originalDescription: String
