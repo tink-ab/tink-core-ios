@@ -16,7 +16,6 @@ struct RESTTransaction: Decodable {
     let originalAmount: Double
     let originalDate: Date
     let originalDescription: String
-    let inserted: Date?
     let timestamp: Date
     let type: RESTTransactionType
     let upcoming: Bool
