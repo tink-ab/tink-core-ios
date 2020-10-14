@@ -113,62 +113,6 @@ public struct Account {
 
     /// A unique identifier to group accounts belonging the same financial institution. Available for aggregated accounts only.
     public let financialInstitutionID: Provider.FinancialInstitution.ID?
-
-    /// Creates an Account model.
-    /// - Parameters:
-    ///   - id: The internal identifier of account.
-    ///   - credentialsID: The internal identifier of the credentials that the account belongs to.
-    ///   - name: The display name of the account. This property can be updated in a update account request.
-    ///   - accountNumber: The account number of the account.
-    ///   - kind: The type of the account.
-    ///   - transferSourceIdentifiers: All possible ways to uniquely identify this `Account`.
-    ///   - holderName: The name of the account holder.
-    ///   - isClosed: A closed account indicates that it was no longer available from the connected financial institution.
-    ///   - currencyDenominatedBalance: The current balance of the account.
-    ///   - refreshed: Timestamp of when the account was last refreshed.
-    ///   - financialInstitutionID: A unique identifier to group accounts belonging the same financial institution.
-    public init(
-        id: Account.ID,
-        credentialsID: Credentials.ID,
-        name: String,
-        accountNumber: String,
-        kind: Account.Kind,
-        transferSourceIdentifiers: [URL]?,
-        holderName: String?,
-        isClosed: Bool?,
-        currencyDenominatedBalance: CurrencyDenominatedAmount?,
-        refreshed: Date?,
-        financialInstitutionID: Provider.FinancialInstitution.ID?
-    ) {
-        self.accountNumber = accountNumber
-        self.balance = currencyDenominatedBalance?.doubleValue ?? 0.0
-        self.credentialsID = credentialsID
-        self.isFavored = false
-        self.id = id
-        self.name = name
-        self.ownership = 1.0
-        self.kind = kind
-        self.transferSourceIdentifiers = transferSourceIdentifiers
-        self.transferDestinations = transferSourceIdentifiers?.map { url in
-            TransferDestination(
-                balance: nil,
-                displayBankName: nil,
-                displayAccountNumber: nil,
-                uri: url,
-                name: nil,
-                kind: .unknown,
-                isMatchingMultipleDestinations: nil
-            )
-        }
-        self.details = nil
-        self.holderName = holderName
-        self.isClosed = isClosed
-        self.flags = []
-        self.accountExclusion = .unknown
-        self.currencyDenominatedBalance = currencyDenominatedBalance
-        self.refreshed = refreshed
-        self.financialInstitutionID = financialInstitutionID
-    }
 }
 
 // TODO: We need to look over this conformance
