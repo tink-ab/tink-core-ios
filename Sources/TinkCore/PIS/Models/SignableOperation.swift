@@ -39,17 +39,6 @@ public struct SignableOperation {
     /// The ID of the user making the operation.
     let userID: User.ID?
 
-    /// Creates a signable operation model.
-    /// - Parameters:
-    ///   - created: The timestamp of the creation of the operation.
-    ///   - credentialsID: The ID of the Credentials used to make the operation.
-    ///   - id: The unique identifier of this operation.
-    ///   - status: The transfer status.
-    ///   - statusMessage: A message with additional information regarding the current status of the transfer.
-    ///   - kind: The type of operation.
-    ///   - transferID: The ID of the actual transfer.
-    ///   - updated: The timestamp of the last update of the operation.
-    ///   - userID: The ID of the user making the operation.
     public init(
         created: Date?,
         credentialsID: Credentials.ID?,
