@@ -21,7 +21,8 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "TinkCore"
+            name: "TinkCore",
+            exclude: ["Info.plist"]
         ),
         .binaryTarget(
             name: "TinkCoreXCFramework",
@@ -29,7 +30,8 @@ let package = Package(
         ),
         .testTarget(
             name: "TinkCoreTests",
-            dependencies: ["TinkCore"]
+            dependencies: ["TinkCore"],
+            exclude: ["Info.plist"]
         ),
     ]
 )
