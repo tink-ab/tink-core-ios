@@ -11,7 +11,8 @@ extension Credentials {
         self.id = .init(id)
         self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
-        self.status = .init(restCredentialsStatus: status, id: id, payload: restCredentials.statusPayload, supplementalInformation: restCredentials.supplementalInformation)
+        self.status = .init(restCredentialsStatus: status, id: id, supplementalInformation: restCredentials.supplementalInformation)
+        self.statusPayload = restCredentials.statusPayload
         self.statusUpdated = restCredentials.statusUpdated
         self.updated = restCredentials.updated
         self.fields = restCredentials.fields
@@ -132,7 +133,7 @@ extension Credentials.Kind {
 }
 
 extension Credentials.Status {
-    init(restCredentialsStatus: RESTCredentials.Status, id: String, payload: String?, supplementalInformation: String?) {
+    init(restCredentialsStatus: RESTCredentials.Status, id: String, supplementalInformation: String?) {
         switch restCredentialsStatus {
         case .created:
             self = .created
@@ -143,24 +144,24 @@ extension Credentials.Status {
         case .updated:
             self = .updated
         case .temporaryError:
-            self = .temporaryError(payload)
+            self = .temporaryError
         case .authenticationError:
-            self = .authenticationError(payload)
+            self = .authenticationError
         case .permanentError:
-            self = .permanentError(payload)
+            self = .permanentError
         case .awaitingMobileBankidAuthentication:
             if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
                 self = .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication)
             } else {
                 assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
-                self = .authenticationError("Failed to parse third party app information.")
+                self = .authenticationError
             }
         case .awaitingThirdPartyAppAuthentication:
             if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
                 self = .awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication)
             } else {
                 assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
-                self = .authenticationError("Failed to parse third party app information.")
+                self = .authenticationError
             }
         case .awaitingSupplementalInformation:
             do {
@@ -168,7 +169,7 @@ extension Credentials.Status {
                 self = .awaitingSupplementalInformation(fields)
             } catch {
                 assertionFailure("Failed to parse supplemental information. You may need to update your version of TinkCore. Underlying error: \(error)")
-                self = .authenticationError("Failed to parse supplemental information.")
+                self = .authenticationError
             }
         case .sessionExpired:
             self = .sessionExpired

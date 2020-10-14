@@ -70,13 +70,13 @@ public struct Credentials: Identifiable {
         case updated
 
         /// There was a temporary error, see `statusPayload` for text describing the error.
-        case temporaryError(String?)
+        case temporaryError
 
         /// There was an authentication error, see `statusPayload` for text describing the error.
-        case authenticationError(String?)
+        case authenticationError
 
         /// There was a permanent error, see `statusPayload` for text describing the error.
-        case permanentError(String?)
+        case permanentError
 
         /// The credentials is awaiting authentication with Mobile BankID.
         /// - Note: Will be deprecated and replaced with `awaitingThirdPartyAppAuthentication`
@@ -110,6 +110,9 @@ public struct Credentials: Identifiable {
 
     /// The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
     public let status: Status
+
+    /// A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
+    public let statusPayload: String?
 
     /// A timestamp of when the credentials' status was last modified.
     public let statusUpdated: Date?
@@ -187,6 +190,7 @@ public struct Credentials: Identifiable {
     ///   - providerName: The provider (financial institution) that the credentials is connected to.
     ///   - kind: Indicates how Tink authenticates the user to the financial institution.
     ///   - status: The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
+    ///   - statusPayload: A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
     ///   - statusUpdated: A timestamp of when the credentials' status was last modified.
     ///   - updated: A timestamp of when the credentials was the last time in status `.updated`.
     ///   - fields: This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
@@ -196,6 +200,7 @@ public struct Credentials: Identifiable {
         providerName: Provider.Name,
         kind: Credentials.Kind,
         status: Credentials.Status,
+        statusPayload: String,
         statusUpdated: Date?,
         updated: Date?,
         fields: [String: String],
@@ -205,6 +210,7 @@ public struct Credentials: Identifiable {
         self.providerName = providerName
         self.kind = kind
         self.status = status
+        self.statusPayload = statusPayload
         self.statusUpdated = statusUpdated
         self.updated = updated
         self.fields = fields
