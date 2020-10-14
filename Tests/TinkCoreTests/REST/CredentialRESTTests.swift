@@ -23,6 +23,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .created)
+        XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
         XCTAssertNil(credential.sessionExpiryDate)
@@ -51,6 +52,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .updated)
+        XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertEqual(credential.updated, updatedAt)
         XCTAssertEqual(credential.fields, restCredentials.fields)
         XCTAssertNil(credential.sessionExpiryDate)
@@ -114,6 +116,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
+        XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
 
