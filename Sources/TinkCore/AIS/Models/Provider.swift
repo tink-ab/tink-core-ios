@@ -194,60 +194,6 @@ public struct Provider: Identifiable {
 
     /// The financial institution.
     public let financialInstitution: FinancialInstitution
-
-    /// Creates a provider model.
-    /// - Parameters:
-    ///   - id: A unique identifier of a `Provider`.
-    ///   - displayName: The display name of the provider.
-    ///   - authenticationUserType: The display name of the provider.
-    ///   - kind: Indicates what kind of financial institution the provider represents.
-    ///   - status: Indicates the current status of the provider.
-    ///   - credentialsKind: When creating a new credentials connected to the provider this will be the credential's kind.
-    ///   - helpText: Short description of how to authenticate when creating a new credentials for connected to the provider.
-    ///   - isPopular: Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
-    ///   - fields: List of fields which need to be provided when creating a credential connected to the provider.
-    ///   - groupDisplayName: A display name for providers which are branches of a bigger group.
-    ///   - image: A `URL` to an image representing the provider.
-    ///   - displayDescription: Short displayable description of the authentication type used.
-    ///   - capabilities: Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
-    ///   - accessType: What Tink uses to access the data.
-    ///   - marketCode: The market of the provider.
-    ///   - financialInstitution: The financial institution.
-    public init(
-        id: Provider.ID,
-        displayName: String,
-        authenticationUserType: Provider.AuthenticationUserType,
-        kind: Provider.Kind,
-        status: Provider.Status,
-        credentialsKind: Credentials.Kind,
-        helpText: String?,
-        isPopular: Bool,
-        fields: [Provider.FieldSpecification],
-        groupDisplayName: String,
-        image: URL?,
-        displayDescription: String,
-        capabilities: Provider.Capabilities,
-        accessType: Provider.AccessType,
-        marketCode: String,
-        financialInstitution: Provider.FinancialInstitution
-    ) {
-        self.id = id
-        self.displayName = displayName
-        self.authenticationUserType = authenticationUserType
-        self.kind = kind
-        self.status = status
-        self.credentialsKind = credentialsKind
-        self.helpText = helpText
-        self.isPopular = isPopular
-        self.fields = fields
-        self.groupDisplayName = groupDisplayName
-        self.image = image
-        self.displayDescription = displayDescription
-        self.capabilities = capabilities
-        self.accessType = accessType
-        self.marketCode = marketCode
-        self.financialInstitution = financialInstitution
-    }
 }
 
 public extension Set where Element == Provider.Kind {
