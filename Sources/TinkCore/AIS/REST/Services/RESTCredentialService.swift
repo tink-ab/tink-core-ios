@@ -2,15 +2,17 @@ import Foundation
 
 final class RESTCredentialsService: CredentialsService {
     private let client: RESTClient
+    private let appUri: URL
 
-    init(client: RESTClient) {
+    init(client: RESTClient, appUri: URL) {
         self.client = client
+        self.appUri = appUri
     }
 
     @discardableResult
     func credentialsList(completion: @escaping (Result<[Credentials], Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTCredentialsList>(path: "/api/v1/credentials/list", method: .get, contentType: .json) { result in
-            let result = result.map { $0.credentials.map(Credentials.init) }
+            let result = result.map { $0.credentials.map { Credentials(restCredentials: $0, appUri: self.appUri) } }
             completion(result)
         }
 
@@ -20,8 +22,7 @@ final class RESTCredentialsService: CredentialsService {
     @discardableResult
     func credentials(id: Credentials.ID, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials/\(id.value)", method: .get, contentType: .json) { result in
-            let result = result.map(Credentials.init)
-            completion(result)
+            completion(result.map { Credentials(restCredentials: $0, appUri: self.appUri) })
         }
 
         return client.performRequest(request)
@@ -39,7 +40,7 @@ final class RESTCredentialsService: CredentialsService {
         }
 
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials", method: .post, body: body, contentType: .json, parameters: parameters) { result in
-            completion(result.map(Credentials.init))
+            completion(result.map { Credentials(restCredentials: $0, appUri: self.appUri) })
         }
 
         return client.performRequest(request)
@@ -58,7 +59,7 @@ final class RESTCredentialsService: CredentialsService {
     func update(id: Credentials.ID, providerID: Provider.ID, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
         let body = RESTUpdateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString)
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials/\(id.value)", method: .put, body: body, contentType: .json) { result in
-            completion(result.map(Credentials.init))
+            completion(result.map { Credentials(restCredentials: $0, appUri: self.appUri) })
         }
 
         return client.performRequest(request)

@@ -53,6 +53,20 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case monthlySummaryExpenseTransactions = "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS"
     case newIncomeTransaction = "NEW_INCOME_TRANSACTION"
     case suggestSetUpSavingsAccount = "SUGGEST_SET_UP_SAVINGS_ACCOUNT"
+    case creditCardLimitClose = "CREDIT_CARD_LIMIT_CLOSE"
+    case creditCardLimitReached = "CREDIT_CARD_LIMIT_REACHED"
+    case leftToSpendPositiveMidMonth = "LEFT_TO_SPEND_POSITIVE_MID_MONTH"
+    case leftToSpendNegativeMidMonth = "LEFT_TO_SPEND_NEGATIVE_MID_MONTH"
+    case leftToSpendNegativeSummary = "LEFT_TO_SPEND_NEGATIVE_SUMMARY"
+    case budgetSuggestCreateTopCategory = "BUDGET_SUGGEST_CREATE_TOP_CATEGORY"
+    case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
+    case leftToSpendPositiveBeginningMonth = "LEFT_TO_SPEND_POSITIVE_BEGINNING_MONTH"
+    case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
+    case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
+    case spendingByCategoryIncreased = "SPENDING_BY_CATEGORY_INCREASED"
+    case leftToSpendPositiveSummarySavingsAccount = "LEFT_TO_SPEND_POSITIVE_SUMMARY_SAVINGS_ACCOUNT"
+    case leftToSpendPositiveFinalWeek = "LEFT_TO_SPEND_POSITIVE_FINAL_WEEK"
+    case aggregationRefreshPSD2Credentials = "AGGREGATION_REFRESH_PSD2_CREDENTIAL"
 }
 
 enum RESTInsightData: Decodable {
@@ -78,16 +92,25 @@ enum RESTInsightData: Decodable {
         let budgetAmount: RESTInsightData.CurrencyDenominatedAmount
     }
 
+    enum BudgetPeriodUnit: String, Decodable, DefaultableDecodable {
+        case week = "WEEK"
+        case month = "MONTH"
+        case year = "YEAR"
+        case unspecified = "UNSPECIFIED"
+
+        static var decodeFallbackValue: BudgetPeriodUnit = .unspecified
+    }
+
     struct BudgetSummaryArchived: Decodable {
         let achievedBudgets: [RESTInsightData.BudgetSummary]
         let overspentBudgets: [RESTInsightData.BudgetSummary]
-        let periodUnit: String
+        let periodUnit: RESTInsightData.BudgetPeriodUnit
     }
 
     struct BudgetSummaryOverspent: Decodable {
         let achievedBudgets: [RESTInsightData.BudgetSummary]
         let overspentBudgets: [RESTInsightData.BudgetSummary]
-        let periodUnit: String
+        let periodUnit: RESTInsightData.BudgetPeriodUnit
     }
 
     struct LargeExpense: Decodable {
@@ -198,6 +221,106 @@ enum RESTInsightData: Decodable {
         let currentAccount: Account
     }
 
+    struct CreditCardLimitClose: Decodable {
+        struct Account: Decodable {
+            let accountId: String
+            let accountName: String
+        }
+
+        let account: CreditCardLimitClose.Account
+        let availableCredit: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct CreditCardLimitReached: Decodable {
+        struct Account: Decodable {
+            let accountId: String
+            let accountName: String
+        }
+
+        let account: Account
+    }
+
+    struct LeftToSpendStatistics: Decodable {
+        let createdAt: Date
+        let currentLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+        let averageLeftToSpend: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendMidMonth: Decodable {
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+    }
+
+    struct LeftToSpendNegativeSummary: Decodable {
+        let month: RESTInsightData.Month
+        let leftToSpend: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct BudgetSuggestCreateTopCategory: Decodable {
+        struct CategorySpending: Decodable {
+            let categoryCode: String
+            let spentAmount: RESTInsightData.CurrencyDenominatedAmount
+        }
+
+        let categorySpending: CategorySpending
+        let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendBeginningMonth: Decodable {
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let totalExpense: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+    }
+
+    struct LeftToSpendNegative: Decodable {
+        let month: RESTInsightData.Month
+        let createdAt: Date
+        let leftToSpend: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct SpendingByCategoryIncreased: Decodable {
+        struct Category: Decodable {
+            let id: String
+            let code: String
+            let displayName: String
+        }
+
+        let category: Category
+        let lastMonth: RESTInsightData.Month
+        let lastMonthSpending: RESTInsightData.CurrencyDenominatedAmount
+        let twoMonthsAgoSpending: RESTInsightData.CurrencyDenominatedAmount
+        let percentage: Double
+    }
+
+    struct LeftToSpendPositiveSummarySavingsAccount: Decodable {
+        let month: RESTInsightData.Month
+        let leftAmount: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct LeftToSpendPositiveFinalWeek: Decodable {
+        let month: RESTInsightData.Month
+        let amountDifference: RESTInsightData.CurrencyDenominatedAmount
+        let leftToSpendStatistics: RESTInsightData.LeftToSpendStatistics
+        let leftToSpendPerDay: RESTInsightData.CurrencyDenominatedAmount
+    }
+
+    struct AggregationRefreshPSD2Credentials: Decodable {
+        struct Provider: Decodable {
+            let name: String
+            let displayName: String
+        }
+
+        struct Credentials: Decodable {
+            let id: String
+            let provider: AggregationRefreshPSD2Credentials.Provider
+        }
+
+        let credential: Credentials
+        let sessionExpiryDate: Date
+    }
+
     case unknown
     case accountBalanceLow(AccountBalanceLow)
     case budgetOverspent(BudgetSummary)
@@ -217,6 +340,20 @@ enum RESTInsightData: Decodable {
     case monthlySummaryExpenseTransactions(MonthlySummaryExpenseTransactions)
     case newIncomeTransaction(NewIncomeTransaction)
     case suggestSetUpSavingsAccount(SuggestSetUpSavingsAccount)
+    case creditCardLimitClose(CreditCardLimitClose)
+    case creditCardLimitReached(CreditCardLimitReached)
+    case leftToSpendPositiveMidMonth(LeftToSpendMidMonth)
+    case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
+    case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
+    case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateFirst
+    case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
+    case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
+    case leftToSpendNegative(LeftToSpendNegative)
+    case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+    case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
+    case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
+    case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -283,6 +420,47 @@ enum RESTInsightData: Decodable {
             case .suggestSetUpSavingsAccount:
                 let data = try SuggestSetUpSavingsAccount(from: decoder)
                 self = .suggestSetUpSavingsAccount(data)
+            case .creditCardLimitClose:
+                let data = try CreditCardLimitClose(from: decoder)
+                self = .creditCardLimitClose(data)
+            case .creditCardLimitReached:
+                let data = try CreditCardLimitReached(from: decoder)
+                self = .creditCardLimitReached(data)
+            case .leftToSpendPositiveMidMonth:
+                let data = try LeftToSpendMidMonth(from: decoder)
+                self = .leftToSpendPositiveMidMonth(data)
+            case .leftToSpendNegativeMidMonth:
+                let data = try LeftToSpendMidMonth(from: decoder)
+                self = .leftToSpendNegativeMidMonth(data)
+            case .leftToSpendNegativeSummary:
+                let data = try LeftToSpendNegativeSummary(from: decoder)
+                self = .leftToSpendNegativeSummary(data)
+            case .budgetSuggestCreateTopCategory:
+                let data = try BudgetSuggestCreateTopCategory(from: decoder)
+                self = .budgetSuggestCreateTopCategory(data)
+            case .budgetSuggestCreateFirst:
+                self = .budgetSuggestCreateFirst
+            case .leftToSpendPositiveBeginningMonth:
+                let data = try LeftToSpendBeginningMonth(from: decoder)
+                self = .leftToSpendPositiveBeginningMonth(data)
+            case .leftToSpendNegativeBeginningMonth:
+                let data = try LeftToSpendBeginningMonth(from: decoder)
+                self = .leftToSpendNegativeBeginningMonth(data)
+            case .leftToSpendNegative:
+                let data = try LeftToSpendNegative(from: decoder)
+                self = .leftToSpendNegative(data)
+            case .spendingByCategoryIncreased:
+                let data = try SpendingByCategoryIncreased(from: decoder)
+                self = .spendingByCategoryIncreased(data)
+            case .leftToSpendPositiveSummarySavingsAccount:
+                let data = try LeftToSpendPositiveSummarySavingsAccount(from: decoder)
+                self = .leftToSpendPositiveSummarySavingsAccount(data)
+            case .leftToSpendPositiveFinalWeek:
+                let data = try LeftToSpendPositiveFinalWeek(from: decoder)
+                self = .leftToSpendPositiveFinalWeek(data)
+            case .aggregationRefreshPSD2Credentials:
+                let data = try AggregationRefreshPSD2Credentials(from: decoder)
+                self = .aggregationRefreshPSD2Credentials(data)
             case .unknown:
                 self = .unknown
             }
@@ -311,6 +489,10 @@ enum RESTInsightActionDataType: String, Decodable {
     case viewTransactions = "VIEW_TRANSACTIONS"
     case categorizeTransactions = "CATEGORIZE_TRANSACTIONS"
     case viewTransactionsByCategory = "VIEW_TRANSACTIONS_BY_CATEGORY"
+    case viewAccount = "VIEW_ACCOUNT"
+    case viewLeftToSpend = "VIEW_LEFT_TO_SPEND"
+    case createBudget = "CREATE_BUDGET"
+    case refreshCredentials = "REFRESH_CREDENTIAL"
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -351,6 +533,30 @@ enum RESTInsightActionData: Decodable {
         let transactionIdsByCategory: [String: RESTInsightActionData.ViewTransactions]
     }
 
+    struct ViewAccount: Decodable {
+        let accountId: String
+    }
+
+    struct ViewLeftToSpend: Decodable {
+        let month: RESTInsightData.Month
+    }
+
+    struct CreateBudget: Decodable {
+        struct BudgetSuggestion: Decodable {
+            let filter: RESTBudget.Filter?
+            let amount: RESTInsightData.CurrencyDenominatedAmount?
+            let periodicityType: RESTBudget.PeriodicityType?
+            let oneOffPeriodicityData: RESTBudget.OneOffPeriodicity?
+            let recurringPeriodicityData: RESTBudget.RecurringPeriodicity?
+        }
+
+        let budgetSuggestion: BudgetSuggestion
+    }
+
+    struct RefreshCredentials: Decodable {
+        let credentialId: String
+    }
+
     case unknown
     case acknowledge
     case dismiss
@@ -361,6 +567,10 @@ enum RESTInsightActionData: Decodable {
     case viewTransactions(ViewTransactions)
     case categorizeTransactions(CategorizeTransactions)
     case viewTransactionsByCategory(ViewTransactionsByCategory)
+    case viewAccount(ViewAccount)
+    case viewLeftToSpend(ViewLeftToSpend)
+    case createBudget(CreateBudget)
+    case refreshCredentials(RefreshCredentials)
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -400,6 +610,18 @@ enum RESTInsightActionData: Decodable {
             case .viewTransactionsByCategory:
                 let data = try ViewTransactionsByCategory(from: decoder)
                 self = .viewTransactionsByCategory(data)
+            case .viewAccount:
+                let data = try ViewAccount(from: decoder)
+                self = .viewAccount(data)
+            case .viewLeftToSpend:
+                let data = try ViewLeftToSpend(from: decoder)
+                self = .viewLeftToSpend(data)
+            case .createBudget:
+                let data = try CreateBudget(from: decoder)
+                self = .createBudget(data)
+            case .refreshCredentials:
+                let data = try RefreshCredentials(from: decoder)
+                self = .refreshCredentials(data)
             }
         } catch {
             self = .unknown
