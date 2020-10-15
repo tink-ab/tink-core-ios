@@ -10,6 +10,10 @@ extension Transaction {
         self.date = restTransaction.date
         self.inserted = restTransaction.timestamp
 
+        self.originalAmount = CurrencyDenominatedAmount(restCurrencyDenominatedAmount: restTransaction.currencyDenominatedOriginalAmount)
+        self.originalDate = restTransaction.originalDate
+        self.originalDescription = restTransaction.originalDescription
+        
         let now = Date()
         if let endOfDay = Calendar.current.endOfDay(for: now) {
             self.isUpcomingOrInFuture = restTransaction.upcoming || restTransaction.date > endOfDay

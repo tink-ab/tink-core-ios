@@ -21,6 +21,12 @@ public struct Transaction {
     public let inserted: Date
     /// Indicates if this is an upcoming transaction not booked yet.
     public let isUpcomingOrInFuture: Bool
+    /// The orginal description of the transaction. This will not change even if the owner of the transaction has changed the description.
+    public let originalDescription: String
+    /// The orginal date of the transaction. This will not change even if the owner of the transaction has changed the date.
+    public let originalDate: Date
+    /// The orginal amount of the transaction. This will not change even if the owner of the transaction has changed the amount.
+    public let originalAmount: CurrencyDenominatedAmount
 
     public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool) {
         self.id = id
@@ -31,6 +37,9 @@ public struct Transaction {
         self.date = date
         self.inserted = inserted
         self.isUpcomingOrInFuture = isUpcomingOrInFuture
+        self.originalDescription = description
+        self.originalDate = date
+        self.originalAmount = amount
     }
 }
 
