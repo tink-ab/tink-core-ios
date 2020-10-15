@@ -93,3 +93,6 @@ prerelease:
 
 release:
 	Scripts/core_release.sh
+
+postrelease:	
+	Scripts/core_postrelease.sh
