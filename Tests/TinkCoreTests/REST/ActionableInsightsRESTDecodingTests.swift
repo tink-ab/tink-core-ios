@@ -628,6 +628,8 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTAssertNil(createBudget.budgetSuggestion.filter?.tags)
             XCTAssertNil(createBudget.budgetSuggestion.filter?.freeTextQuery)
             XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
+            XCTAssertNil(createBudget.budgetSuggestion.oneOffPeriodicityData)
+            XCTAssertEqual(createBudget.budgetSuggestion.recurringPeriodicityData?.periodUnit, .month)
         } else {
             XCTFail("Expected create budget")
         }
