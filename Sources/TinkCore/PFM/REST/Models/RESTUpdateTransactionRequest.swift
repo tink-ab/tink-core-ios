@@ -1,6 +1,6 @@
 import Foundation
 
-public struct RESTUpdateTransactionRequest: Encodable {
+struct RESTUpdateTransactionRequest: Encodable {
     let currencyDenominatedAmount: RESTCurrencyDenominatedAmount
     let categoryId: String
     let date: Date
