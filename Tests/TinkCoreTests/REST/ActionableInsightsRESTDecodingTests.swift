@@ -621,5 +621,11 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         let data = json.data(using: .utf8)!
 
         let insight = try decoder.decode(RESTInsightProposedAction.self, from: data)
+
+        if case .createBudget(let createBudget) = insight.data {
+            XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
+        } else {
+            XCTFail("Expected create budget")
+        }
     }
 }
