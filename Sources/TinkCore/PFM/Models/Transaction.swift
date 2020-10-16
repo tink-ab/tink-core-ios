@@ -21,6 +21,8 @@ public struct Transaction {
     public let inserted: Date
     /// Indicates if this is an upcoming transaction not booked yet.
     public let isUpcomingOrInFuture: Bool
+    /// A free-text field modifiable by the user. Any 'word' (whitespace separated), prefixed with a #, is considered a tag. These tags become searchable.
+    public let notes: String?
     /// The orginal description of the transaction. This will not change even if the owner of the transaction has changed the description.
     public let originalDescription: String
     /// The orginal date of the transaction. This will not change even if the owner of the transaction has changed the date.
@@ -40,6 +42,7 @@ public struct Transaction {
         self.originalDescription = description
         self.originalDate = date
         self.originalAmount = amount
+        self.notes = nil 
     }
 }
 
