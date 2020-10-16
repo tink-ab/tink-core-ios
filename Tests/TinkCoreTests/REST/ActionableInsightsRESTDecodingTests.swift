@@ -630,6 +630,8 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
             XCTAssertNil(createBudget.budgetSuggestion.oneOffPeriodicityData)
             XCTAssertEqual(createBudget.budgetSuggestion.recurringPeriodicityData?.periodUnit, .month)
+            XCTAssertEqual(createBudget.budgetSuggestion.amount?.amount, 12210.3)
+            XCTAssertEqual(createBudget.budgetSuggestion.amount?.currencyCode, "SEK")
         } else {
             XCTFail("Expected create budget")
         }
