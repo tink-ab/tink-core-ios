@@ -543,7 +543,14 @@ enum RESTInsightActionData: Decodable {
 
     struct CreateBudget: Decodable {
         struct BudgetSuggestion: Decodable {
-            let filter: RESTBudget.Filter?
+            struct Filter: Decodable {
+                var accounts: [String]?
+                var categories: [String]?
+                var tags: [String]?
+                var freeTextQuery: String?
+            }
+
+            let filter: Filter?
             let amount: RESTInsightData.CurrencyDenominatedAmount?
 
             enum PeriodicityType: String, Decodable {
