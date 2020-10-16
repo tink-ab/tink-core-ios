@@ -79,7 +79,7 @@ public struct Provider: Identifiable {
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
 
-    public struct FieldSpecification {
+    public struct FieldSpecification: Equatable {
         // description
         public let fieldDescription: String
         /// Gray text in the input view (Similar to a placeholder)
