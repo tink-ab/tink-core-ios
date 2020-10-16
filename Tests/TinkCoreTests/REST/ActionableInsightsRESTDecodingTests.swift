@@ -623,6 +623,10 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         let insight = try decoder.decode(RESTInsightProposedAction.self, from: data)
 
         if case .createBudget(let createBudget) = insight.data {
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.accounts)
+            XCTAssertEqual(createBudget.budgetSuggestion.filter?.categories?.first, "expenses:food.restaurants")
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.tags)
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.freeTextQuery)
             XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
         } else {
             XCTFail("Expected create budget")
