@@ -25,11 +25,11 @@ public protocol TransactionService {
     ) -> Cancellable?
 
     func update(
-        transactionId: Transaction.ID,
-        amount: CurrencyDenominatedAmount?,
-        categoryId: Category.ID?,
-        date: Date?,
-        description: String?,
+        transactionID: Transaction.ID,
+        amount: CurrencyDenominatedAmount,
+        categoryID: Category.ID,
+        date: Date,
+        description: String,
         notes: String?,
         completion: @escaping (Result<Transaction, Error>) -> Void
     ) -> Cancellable?

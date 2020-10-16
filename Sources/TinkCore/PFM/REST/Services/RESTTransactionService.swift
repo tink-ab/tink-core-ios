@@ -87,32 +87,11 @@ final class RESTTransactionService: TransactionService {
         return client.performRequest(request)
     }
 
-    func update(transactionId: Transaction.ID, amount: CurrencyDenominatedAmount?, categoryId: Category.ID?, date: Date?, description: String?, notes: String?, completion: @escaping (Result<Transaction, Error>) -> Void) -> Cancellable? {
+    func update(transactionID: Transaction.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, date: Date, description: String, notes: String?, completion: @escaping (Result<Transaction, Error>) -> Void) -> Cancellable? {
 
-        var body: [String: AnyEncodable] = [:]
+        let body = RESTUpdateTransactionRequest(amount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount), categoryId: categoryID.value, date: date, description: description, notes: notes)
 
-        if let amount = amount {
-            let restAmount = RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount)
-            body["amount"] = AnyEncodable(restAmount)
-        }
-
-        if let categoryId = categoryId {
-            body["categoryId"] = AnyEncodable(categoryId.value)
-        }
-
-        if let date = date {
-            body["date"] = AnyEncodable(date)
-        }
-
-        if let description = description {
-            body["description"] = AnyEncodable(description)
-        }
-
-        if let notes = notes {
-            body["notes"] = AnyEncodable(notes)
-        }
-
-        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(transactionId)", method: .put, body: body, contentType: .json) { result in
+        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(transactionID.value)", method: .put, body: body, contentType: .json) { result in
             let mapped = result.map(Transaction.init)
             completion(mapped)
         }
