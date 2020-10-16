@@ -592,4 +592,34 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTFail("No monthly summary data")
         }
     }
+
+    func testDecodingCreateBudgetSuggestionAction() throws {
+        let json = """
+        {
+          "label" : "Create Budget",
+          "data" : {
+            "budgetSuggestion" : {
+              "filter" : {
+                "accounts" : null,
+                "categories" : [ "expenses:food.restaurants" ]
+              },
+              "periodicityType" : "BUDGET_PERIODICITY_TYPE_RECURRING",
+              "oneOffPeriodicityData" : null,
+              "recurringPeriodicityData" : {
+                "periodUnit" : "MONTH"
+              },
+              "amount" : {
+                "currencyCode" : "SEK",
+                "amount" : 12210.3
+              }
+            },
+            "type" : "CREATE_BUDGET"
+          }
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let insight = try decoder.decode(RESTInsightProposedAction.self, from: data)
+    }
 }
