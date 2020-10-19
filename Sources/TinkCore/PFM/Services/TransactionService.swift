@@ -18,4 +18,19 @@ public protocol TransactionService {
         ifCategorizedAs categoryID: String,
         completion: @escaping (Result<[Transaction], Error>) -> Void
     ) -> Cancellable?
+
+    func transaction(
+        id: Transaction.ID,
+        completion: @escaping (Result<Transaction, Error>) -> Void
+    ) -> Cancellable?
+
+    func update(
+        transactionID: Transaction.ID,
+        amount: CurrencyDenominatedAmount,
+        categoryID: Category.ID,
+        date: Date,
+        description: String,
+        notes: String?,
+        completion: @escaping (Result<Transaction, Error>) -> Void
+    ) -> Cancellable?
 }

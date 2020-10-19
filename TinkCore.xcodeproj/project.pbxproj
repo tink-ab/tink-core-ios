@@ -59,6 +59,7 @@
 		2355D22A4AF6CC039A94619E /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEACF4767A2726C11672AA /* RESTRequest.swift */; };
 		237030B3626DAF3DA19708CF /* ActionableInsightsRESTDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34FC553D995E292BB9E854B /* ActionableInsightsRESTDecodingTests.swift */; };
 		24B9AE18F211DF476B98CA4C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F4FF741D1B1ACDFE85F1D /* Account.swift */; };
+		24D139CE21122E63B8F87F34 /* RESTUpdateTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDCB300F886C10509CFF2D /* RESTUpdateTransactionRequest.swift */; };
 		25293F6C45E43C6926CD2643 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683969F38E4DB9C0A929ABBD /* Period.swift */; };
 		25AA8D92FC4B8ADB32ED66AE /* SignableOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E62D5ABD7EDD1E20C3686A /* SignableOperation.swift */; };
 		26A2681B4C3293FF59975CCC /* ClientDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D29360CA80FB6CD206AC0F8 /* ClientDescription.swift */; };
@@ -332,6 +333,7 @@
 		E39109F70014DB358C61AD9C /* ClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4ADA840BD7F77A0FDBBFC /* ClientBehavior.swift */; };
 		E459CAF680FAA6730EC6BEC2 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619756FCD97B3B6A0339C0C4 /* Transaction.swift */; };
 		E4A66C4AB8B00CCAA34A90C8 /* RESTTransferDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0536986B82E489D3E33D89AB /* RESTTransferDestination.swift */; };
+		E516DAA83B5024AE7AA54E35 /* RESTUpdateTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDCB300F886C10509CFF2D /* RESTUpdateTransactionRequest.swift */; };
 		E52B8D22CBA4E9D709844462 /* AuthorizationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF095A74DAE65A39D4BBDBF7 /* AuthorizationCode.swift */; };
 		E553A107771817E4ECE5B919 /* RESTAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22560845FE502019384B4E /* RESTAccount.swift */; };
 		E559F5C4457CBCB966686B27 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41280517113727881273C2 /* CategoryService.swift */; };
@@ -470,6 +472,7 @@
 		44A453A70AC302CCB2F8C2BE /* RESTCredentialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCredentialService.swift; sourceTree = "<group>"; };
 		46EA8347F8DAEE0E4D1B2EFE /* AuthorizationHeaderClientBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationHeaderClientBehavior.swift; sourceTree = "<group>"; };
 		4F88CBE75725BDFD21A1CC6A /* TransferRESTTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRESTTest.swift; sourceTree = "<group>"; };
+		4FBDCB300F886C10509CFF2D /* RESTUpdateTransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTUpdateTransactionRequest.swift; sourceTree = "<group>"; };
 		51D79F640B18022F1F8636FE /* ScopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeTests.swift; sourceTree = "<group>"; };
 		52A57895D441F7AC91ED8828 /* RESTActionableInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTActionableInsight.swift; sourceTree = "<group>"; };
 		53C18DC3DCB29A8E267F354E /* RESTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
@@ -763,6 +766,7 @@
 				218C08AEA8C73CBF79156484 /* RESTTransaction.swift */,
 				13A84EFFB3CFAAE2A2BF419F /* RESTTransactionsResult.swift */,
 				F015074D05184E16B18759CD /* RESTUpdateBudgetResponse.swift */,
+				4FBDCB300F886C10509CFF2D /* RESTUpdateTransactionRequest.swift */,
 				F4690687D6039D505B194CA5 /* RESTUser.swift */,
 				C1457044D879CBFA56D8CB7C /* RESTUserProfile.swift */,
 			);
@@ -1411,6 +1415,7 @@
 				0E99CF855E3B7D8CD1E1A811 /* RESTTransferService.swift in Sources */,
 				366C8859A7981174DAAC81AD /* RESTUpdateBudgetResponse.swift in Sources */,
 				7AFC71669579610619BFD538 /* RESTUpdateCredentialsRequest.swift in Sources */,
+				24D139CE21122E63B8F87F34 /* RESTUpdateTransactionRequest.swift in Sources */,
 				3D3C742620BE6A2000CC29E5 /* RESTUser.swift in Sources */,
 				51D035517914A9CA57C42801 /* RESTUserProfile.swift in Sources */,
 				4132E1CB88C228B9D3F455E3 /* RESTUserService.swift in Sources */,
@@ -1585,6 +1590,7 @@
 				3B080CA951FB0FA2FA9B4FEB /* RESTTransferService.swift in Sources */,
 				C009EA8A4FE4020813716248 /* RESTUpdateBudgetResponse.swift in Sources */,
 				87F35397CBCCFFF591C66E24 /* RESTUpdateCredentialsRequest.swift in Sources */,
+				E516DAA83B5024AE7AA54E35 /* RESTUpdateTransactionRequest.swift in Sources */,
 				75560F7644C8D2460636F3CA /* RESTUser.swift in Sources */,
 				96D26EF643A5DEE915B52034 /* RESTUserProfile.swift in Sources */,
 				130B5E46A8E648876C62CDDA /* RESTUserService.swift in Sources */,
