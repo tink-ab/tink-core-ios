@@ -42,7 +42,7 @@ class ProviderRESTTests: XCTestCase {
         XCTAssertEqual(provider.fields.count, 1)
         if let field = provider.fields.first {
             XCTAssertEqual(field.name, "username")
-            XCTAssertEqual(field.fieldDescription, "Username")
+            XCTAssertEqual(field.description, "Username")
             XCTAssertEqual(field.isImmutable, true)
         }
         XCTAssertEqual(provider.displayDescription, restProvider.displayDescription)

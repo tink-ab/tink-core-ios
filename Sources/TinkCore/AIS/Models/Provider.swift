@@ -11,15 +11,21 @@ public struct Provider: Identifiable {
         return name
     }
 
+    /// The unique identifier of the provider.
+    /// - Note: This is used when creating new credentials.
     public let name: Name
 
     /// The display name of the provider.
     public let displayName: String
 
+    /// Indicates if a user authenticates towards the provider as a person or business.
     public enum AuthenticationUserType {
         case unknown
+        /// The user is authenticating as a business.
         case business
+        /// The user is authenticating as a person.
         case personal
+        /// The user is authenticating as a coorparation.
         case corporate
     }
 
@@ -62,8 +68,6 @@ public struct Provider: Identifiable {
         case disabled
         /// The provider is temporarily disabled.
         case temporaryDisabled
-        /// The provider is obsolute.
-        case obsolete
     }
 
     /// Indicates the current status of the provider.
@@ -79,48 +83,41 @@ public struct Provider: Identifiable {
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
 
-    public struct FieldSpecification: Equatable {
-        // description
-        public let fieldDescription: String
+    /// A `Field` is a representation of a specfic user input field that the user will need to fill out.
+    public struct Field: Equatable {
+        /// A short description of what the field is used for.
+        public let description: String?
         /// Gray text in the input view (Similar to a placeholder)
-        public let hint: String
+        public let hint: String?
+        /// Maximum amount of characters accepted.
         public let maxLength: Int?
+        /// Minimum amount of characters accepted.
         public let minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
         public let isMasked: Bool
+        /// Determnies if the field should only accept numeric input.
         public let isNumeric: Bool
+        /// Determnies if the field is immutable.
         public let isImmutable: Bool
+        /// Determnies if the field is optional.
         public let isOptional: Bool
-        public let name: String
-        public let initialValue: String
-        public let pattern: String
-        public let patternError: String
-        /// Text displayed next to the input field
-        public let helpText: String
-
-        public mutating func setImmutable(initialValue newValue: String) {
-            self = .init(
-                fieldDescription: fieldDescription,
-                hint: hint,
-                maxLength: maxLength,
-                minLength: minLength,
-                isMasked: isMasked,
-                isNumeric: isNumeric,
-                isImmutable: true,
-                isOptional: isOptional,
-                name: name,
-                initialValue: newValue,
-                pattern: pattern,
-                patternError: patternError,
-                helpText: helpText
-            )
-        }
+        /// The name of the input field.
+        public let name: String?
+        /// The initial value of the field, if present.
+        public let initialValue: String?
+        /// A regex pattern that can be evaluated of the input.
+        public let pattern: String?
+        /// An error message that can be displayed if the provided pattern does not validate.
+        public let patternError: String?
+        /// Text displayed next to the input field.
+        public let helpText: String?
     }
 
     /// List of fields which need to be provided when creating a credential connected to the provider.
-    public let fields: [FieldSpecification]
+    public let fields: [Field]
 
-    /// A display name for providers which are branches of a bigger group.
+    /// The name of the group that several providers of the same bank can be placed in. Usually when a
+    /// bank has branches and subsidiaries they are grouped under a single name.
     public let groupDisplayName: String
 
     /// A `URL` to an image representing the provider.
@@ -187,7 +184,7 @@ public struct Provider: Identifiable {
     /// - Note: Each provider is unique per market.
     public let marketCode: String
 
-    /// The financial institution.
+    /// The financial institution this provider belongs to.
     public let financialInstitution: FinancialInstitution
 }
 

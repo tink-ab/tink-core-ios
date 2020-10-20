@@ -1,6 +1,6 @@
 import Foundation
 
-/// The credentials model represents users connected providers from where financial data is accessed.
+/// The credentials model represents a user's connection to a specific provider from where financial data is accessed.
 public struct Credentials: Identifiable {
     /// A unique identifier of a `Credentials`.
     public typealias ID = Identifier<Credentials>
@@ -52,9 +52,9 @@ public struct Credentials: Identifiable {
     /// Indicates how Tink authenticates the user to the financial institution.
     public let kind: Credentials.Kind
 
-    /// The status indicates the state of a credentials.
+    /// The status indicates the current state of a `Credentials`.
     public enum Status: Equatable {
-        /// An unknown credentials status.
+        /// The credentials status could not be recognized.
         case unknown
 
         /// The credentials was just created.
@@ -63,19 +63,27 @@ public struct Credentials: Identifiable {
         /// The credentials is in the process of authenticating.
         case authenticating
 
-        /// The credentials is done authenticating and is updating accounts and transactions.
+        /// The credentials is done authenticating and is now fetching data.
         case updating
 
-        /// The credentials has finished authenticating and updating accounts and transactions.
+        /// The credentials has finished updating data from the provider.
+        ///
+        /// - Note: This is a final state and the status of the credentials will not change automatically.
         case updated
 
         /// There was a temporary error, see `statusPayload` for text describing the error.
+        ///
+        /// - Note: This is a final state and the status of the credentials will not change automatically.
         case temporaryError
 
         /// There was an authentication error, see `statusPayload` for text describing the error.
+        ///
+        /// - Note: This is a final state and the status of the credentials will not change automatically.
         case authenticationError
 
         /// There was a permanent error, see `statusPayload` for text describing the error.
+        ///
+        /// - Note: This is a final state and the status of the credentials will not change automatically.
         case permanentError
 
         /// The credentials is awaiting authentication with Mobile BankID.
@@ -88,10 +96,12 @@ public struct Credentials: Identifiable {
         /// the client should expect the `awaitingSupplementalInformation` status on the credential.
         ///
         /// Create a `Form` with this credentials to let the user supplement the required information.
-        case awaitingSupplementalInformation([Provider.FieldSpecification])
+        case awaitingSupplementalInformation([Provider.Field])
 
-        /// The credentials has been disabled.
-        case disabled
+        /// The credentials have been deleted. it will not be possible to perform a refresh on this credentials.
+        ///
+        /// - Note: This is a final state and the status of the credentials will not change automatically.
+        case deleted
 
         /// The credentials is awaiting authentication with a third party app.
         ///
