@@ -25,9 +25,6 @@ public struct Credentials: Identifiable {
         /// The user will authenticate the credentials with a Key Fob.
         case keyfob
 
-        /// Fraud
-        case fraud
-
         /// The user will authenticate the credentials with a third party app.
         case thirdPartyAuthentication
 
@@ -41,10 +38,8 @@ public struct Credentials: Identifiable {
                 return 3
             case .keyfob:
                 return 4
-            case .fraud:
-                return 5
             case .unknown:
-                return 6
+                return 5
             }
         }
     }

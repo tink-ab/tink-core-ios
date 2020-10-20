@@ -47,7 +47,6 @@ struct RESTProvider: Decodable {
         case mobileBankid = "MOBILE_BANKID"
         case keyfob = "KEYFOB"
         case thirdPartyApp = "THIRD_PARTY_APP"
-        case fraud = "FRAUD"
         case unknown = "UNKNOWN"
 
         static var decodeFallbackValue: RESTProvider.CredentialsType = .unknown
