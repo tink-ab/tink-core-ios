@@ -6,12 +6,12 @@ extension Credentials {
         case supplementalInformationMissing
     }
 
-    init(restCredentials: RESTCredentials) {
+    init(restCredentials: RESTCredentials, appUri: URL) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
         self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
-        self.status = .init(restCredentialsStatus: status, id: id, supplementalInformation: restCredentials.supplementalInformation)
+        self.status = .init(restCredentialsStatus: status, id: id, supplementalInformation: restCredentials.supplementalInformation, appUri: appUri)
         self.statusPayload = restCredentials.statusPayload
         self.statusUpdated = restCredentials.statusUpdated
         self.updated = restCredentials.updated
@@ -35,21 +35,27 @@ extension Credentials {
         }
     }
 
-    static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?) -> Credentials.ThirdPartyAppAuthentication? {
+    static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?, appUri: URL) -> Credentials.ThirdPartyAppAuthentication? {
         guard let status = status else {
             return nil
         }
 
         switch status {
         case .awaitingMobileBankidAuthentication:
-            // Uses the same conversion as tink-backend: See https://github.com/tink-ab/tink-backend/blob/master/src/main/grpc-v1-lib/src/main/java/se/tink/backend/grpc/v1/converter/MobileBankIdAuthenticationPayload.java
 
-            let deepLinkURL: URL?
-            if let autostartToken = string {
-                deepLinkURL = URL(string: "bankid:///?autostartToken=\(autostartToken)&redirect=tink://bankid/credentials/\(id)")
-            } else {
-                deepLinkURL = URL(string: "bankid:///?redirect=tink://bankid/credentials/\(id)")
+            guard let url = URL(string: "bankid:///"), var bankIDComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+                return nil
             }
+
+            let redirectQueryItem = URLQueryItem(name: "redirect", value: appUri.appendingPathComponent("bankid/credentials/\(id)").absoluteString)
+
+            if let autostartToken = string {
+                let autostartTokenQueryItem = URLQueryItem(name: "autostartToken", value: autostartToken)
+                bankIDComponents.queryItems = [autostartTokenQueryItem, redirectQueryItem]
+            } else {
+                bankIDComponents.queryItems = [redirectQueryItem]
+            }
+            let deepLinkURL = bankIDComponents.url
 
             return ThirdPartyAppAuthentication(
                 downloadTitle: "Download Mobile BankID",
@@ -133,7 +139,7 @@ extension Credentials.Kind {
 }
 
 extension Credentials.Status {
-    init(restCredentialsStatus: RESTCredentials.Status, id: String, supplementalInformation: String?) {
+    init(restCredentialsStatus: RESTCredentials.Status, id: String, supplementalInformation: String?, appUri: URL) {
         switch restCredentialsStatus {
         case .created:
             self = .created
@@ -150,14 +156,14 @@ extension Credentials.Status {
         case .permanentError:
             self = .permanentError
         case .awaitingMobileBankidAuthentication:
-            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus, appUri: appUri) {
                 self = .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication)
             } else {
                 assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
                 self = .authenticationError
             }
         case .awaitingThirdPartyAppAuthentication:
-            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus) {
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus, appUri: appUri) {
                 self = .awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication)
             } else {
                 assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")

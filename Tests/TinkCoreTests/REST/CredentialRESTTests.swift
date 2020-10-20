@@ -17,7 +17,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
@@ -46,7 +46,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
@@ -73,7 +73,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
@@ -111,7 +111,7 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
         XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
@@ -121,12 +121,44 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.fields, restCredentials.fields)
 
         if case let .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication) = credential.status {
-            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink://bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
         } else {
             XCTFail("Wrong status")
         }
 
         XCTAssertNil(credential.sessionExpiryDate)
+    }
+
+    func testAwaitingBankIDCredentialMappingWithUniversalLink() {
+        let restCredentials = RESTCredentials(
+            id: "6e68cc6287704273984567b3300c5822",
+            providerName: "handelsbanken-bankid",
+            type: .mobileBankid,
+            status: .awaitingMobileBankidAuthentication,
+            statusUpdated: nil,
+            statusPayload: "Analyzed 1,200 out of 1,200 transactions",
+            updated: nil,
+            fields: ["username": "180012121234"],
+            supplementalInformation: "TOKEN",
+            sessionExpiryDate: nil,
+            userId: nil
+        )
+
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "https://facebook.com/cool_redirect/")!)
+
+        XCTAssertEqual(credential.id.value, restCredentials.id)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
+        XCTAssertEqual(credential.kind, .mobileBankID)
+        XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
+        XCTAssertNil(credential.updated)
+        XCTAssertEqual(credential.fields, restCredentials.fields)
+        XCTAssertNil(credential.sessionExpiryDate)
+
+        if case let .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication) = credential.status {
+
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
+        }
     }
 }
