@@ -9,7 +9,8 @@ extension ActionableInsight {
             let actions = restInsight.insightActions,
             let title = restInsight.title,
             let description = restInsight.description,
-            let created = restInsight.createdTime else {
+            let created = restInsight.createdTime
+        else {
             return nil
         }
 
@@ -25,7 +26,8 @@ extension ActionableInsight {
             let title = restArchivedInsight.title,
             let description = restArchivedInsight.description,
             let archivedDate = restArchivedInsight.dateArchived,
-            let created = restArchivedInsight.dateInsightCreated else {
+            let created = restArchivedInsight.dateInsightCreated
+        else {
             return nil
         }
 

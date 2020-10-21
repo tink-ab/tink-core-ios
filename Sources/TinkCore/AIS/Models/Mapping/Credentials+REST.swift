@@ -18,7 +18,8 @@ extension Credentials {
 
     static func makeFieldSpecifications(from string: String?) -> [Provider.FieldSpecification] {
         if let stringData = string?.data(using: .utf8),
-            let fields = try? JSONDecoder().decode([RESTField].self, from: stringData) {
+            let fields = try? JSONDecoder().decode([RESTField].self, from: stringData)
+        {
             return fields.map(Provider.FieldSpecification.init)
         }
         return []
