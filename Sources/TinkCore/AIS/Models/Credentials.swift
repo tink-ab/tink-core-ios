@@ -52,7 +52,7 @@ public struct Credentials: Identifiable {
     /// Indicates how Tink authenticates the user to the financial institution.
     public let kind: Credentials.Kind
 
-    /// The status indicates the current state of a `Credentials`.
+    /// The status indicates the current state of the `Credentials`.
     public enum Status: Equatable {
         /// The credentials status could not be recognized.
         case unknown
