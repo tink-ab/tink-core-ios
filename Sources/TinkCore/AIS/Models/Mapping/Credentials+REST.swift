@@ -113,8 +113,6 @@ extension Credentials.Kind {
             self = .mobileBankID
         case .keyfob:
             self = .keyfob
-        case .fraud:
-            self = .fraud
         case .unknown:
             self = .unknown
         }
@@ -130,8 +128,6 @@ extension Credentials.Kind {
             return .mobileBankid
         case .keyfob:
             return .keyfob
-        case .fraud:
-            return nil
         case .thirdPartyAuthentication:
             return .thirdPartyApp
         }
