@@ -3,7 +3,7 @@ import Foundation
 extension Budget.Transaction {
     init?(restBudgetTransaction: RESTBudgetTransaction) {
         guard let transactionID = restBudgetTransaction.id,
-            let amount = restBudgetTransaction.amount
+              let amount = restBudgetTransaction.amount
         else {
             return nil
         }

@@ -71,11 +71,10 @@ public enum StatisticPeriod: Hashable {
 
             for match in monthExpression.matches(in: string, options: [], range: range) {
                 if match.numberOfRanges == 3,
-                    let firstCaptureRange = Range(match.range(at: 1), in: string),
-                    let secondCaptureRange = Range(match.range(at: 2), in: string),
-                    let year = Int(string[firstCaptureRange]),
-                    let month = Int(string[secondCaptureRange])
-                {
+                   let firstCaptureRange = Range(match.range(at: 1), in: string),
+                   let secondCaptureRange = Range(match.range(at: 2), in: string),
+                   let year = Int(string[firstCaptureRange]),
+                   let month = Int(string[secondCaptureRange]) {
                     self = .month(year: year, month: month)
                     return
                 }
@@ -83,11 +82,10 @@ public enum StatisticPeriod: Hashable {
 
             for match in weekExpression.matches(in: string, options: [], range: range) {
                 if match.numberOfRanges == 3,
-                    let firstCaptureRange = Range(match.range(at: 1), in: string),
-                    let secondCaptureRange = Range(match.range(at: 2), in: string),
-                    let year = Int(string[firstCaptureRange]),
-                    let week = Int(string[secondCaptureRange])
-                {
+                   let firstCaptureRange = Range(match.range(at: 1), in: string),
+                   let secondCaptureRange = Range(match.range(at: 2), in: string),
+                   let year = Int(string[firstCaptureRange]),
+                   let week = Int(string[secondCaptureRange]) {
                     self = .week(year: year, week: week)
                     return
                 }
@@ -95,13 +93,12 @@ public enum StatisticPeriod: Hashable {
 
             for match in dayExpression.matches(in: string, options: [], range: range) {
                 if match.numberOfRanges == 4,
-                    let firstRange = Range(match.range(at: 1), in: string),
-                    let secondRange = Range(match.range(at: 2), in: string),
-                    let thirdRange = Range(match.range(at: 3), in: string),
-                    let year = Int(string[firstRange]),
-                    let month = Int(string[secondRange]),
-                    let day = Int(string[thirdRange])
-                {
+                   let firstRange = Range(match.range(at: 1), in: string),
+                   let secondRange = Range(match.range(at: 2), in: string),
+                   let thirdRange = Range(match.range(at: 3), in: string),
+                   let year = Int(string[firstRange]),
+                   let month = Int(string[secondRange]),
+                   let day = Int(string[thirdRange]) {
                     self = .day(year: year, month: month, day: day)
                     return
                 }
