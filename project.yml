@@ -7,7 +7,7 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: "com.tink.Core"
       IPHONEOS_DEPLOYMENT_TARGET: 11.0
       MACOSX_DEPLOYMENT_TARGET: 10.13
-      MARKETING_VERSION: 0.2.0
+      MARKETING_VERSION: 0.3.0
       CURRENT_PROJECT_VERSION: 3
     scheme:
       testTargets:

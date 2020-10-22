@@ -76,4 +76,24 @@ final class RESTTransactionService: TransactionService {
 
         return client.performRequest(request)
     }
+
+    func transaction(id: Transaction.ID, completion: @escaping (Result<Transaction, Error>) -> Void) -> Cancellable? {
+        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(id.value)", method: .get, contentType: nil) { result in
+            let mapped = result.map(Transaction.init)
+            completion(mapped)
+        }
+
+        return client.performRequest(request)
+    }
+
+    func update(transactionID: Transaction.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, date: Date, description: String, notes: String?, completion: @escaping (Result<Transaction, Error>) -> Void) -> Cancellable? {
+        let body = RESTUpdateTransactionRequest(currencyDenominatedAmount: RESTCurrencyDenominatedAmount(currencyDenominatedAmount: amount), categoryId: categoryID.value, date: date, description: description, notes: notes)
+
+        let request = RESTResourceRequest<RESTTransaction>(path: "/api/v1/transactions/\(transactionID.value)", method: .put, body: body, contentType: .json) { result in
+            let mapped = result.map(Transaction.init)
+            completion(mapped)
+        }
+
+        return client.performRequest(request)
+    }
 }

@@ -18,7 +18,7 @@ extension Credentials {
 
     static func makeFieldSpecifications(from string: String?) -> [Provider.FieldSpecification] {
         if let stringData = string?.data(using: .utf8),
-            let fields = try? JSONDecoder().decode([RESTField].self, from: stringData) {
+           let fields = try? JSONDecoder().decode([RESTField].self, from: stringData) {
             return fields.map(Provider.FieldSpecification.init)
         }
         return []
@@ -58,7 +58,7 @@ extension Credentials {
 
         case .awaitingThirdPartyAppAuthentication:
             guard let payloadData = string?.data(using: .utf8),
-                let payload = try? JSONDecoder().decode(RESTThirdPartyAppAuthenticationPayload.self, from: payloadData)
+                  let payload = try? JSONDecoder().decode(RESTThirdPartyAppAuthenticationPayload.self, from: payloadData)
             else { return nil }
 
             return ThirdPartyAppAuthentication(

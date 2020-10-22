@@ -155,33 +155,6 @@ public struct Credentials: Identifiable {
         public var hasAutoStartToken: Bool {
             deepLinkURL?.query?.contains("autostartToken") ?? false
         }
-
-        /// Creates a ThirdPartyAppAuthentication model.
-        /// - Parameters:
-        ///   - downloadTitle: Title of the app to be downloaded.
-        ///   - downloadMessage: Detailed message about app to be downloaded.
-        ///   - upgradeTitle: Title of the app to be upgraded.
-        ///   - upgradeMessage: Detailed message about app to be upgraded.
-        ///   - appStoreURL: URL to AppStore where the app can be downloaded on iOS.
-        ///   - scheme: Base scheme of the app on iOS.
-        ///   - deepLinkURL: URL that the app should open on iOS. Can be of another scheme than app scheme.
-        public init(
-            downloadTitle: String?,
-            downloadMessage: String?,
-            upgradeTitle: String?,
-            upgradeMessage: String?,
-            appStoreURL: URL?,
-            scheme: String?,
-            deepLinkURL: URL?
-        ) {
-            self.downloadTitle = downloadTitle
-            self.downloadMessage = downloadMessage
-            self.upgradeTitle = upgradeTitle
-            self.upgradeMessage = upgradeMessage
-            self.appStoreURL = appStoreURL
-            self.scheme = scheme
-            self.deepLinkURL = deepLinkURL
-        }
     }
 
     /// Information about the third party authentication flow.
@@ -189,43 +162,4 @@ public struct Credentials: Identifiable {
 
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public let sessionExpiryDate: Date?
-
-    /// Creates a credentials model.
-    /// - Parameters:
-    ///   - id: The unique identifier of the credentials.
-    ///   - providerID: The provider (financial institution) that the credentials is connected to.
-    ///   - kind: Indicates how Tink authenticates the user to the financial institution.
-    ///   - status: The status indicates the state of a credentials. For some states there are actions which need to be performed on the credentials.
-    ///   - statusPayload: A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
-    ///   - statusUpdated: A timestamp of when the credentials' status was last modified.
-    ///   - updated: A timestamp of when the credentials was the last time in status `.updated`.
-    ///   - fields: This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
-    ///   - supplementalInformationFields: A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    ///   - thirdPartyAppAuthentication: Information about the third party authentication flow.
-    ///   - sessionExpiryDate: Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
-    public init(
-        id: Credentials.ID,
-        providerID: Provider.ID,
-        kind: Credentials.Kind,
-        status: Credentials.Status,
-        statusPayload: String,
-        statusUpdated: Date?,
-        updated: Date?,
-        fields: [String: String],
-        supplementalInformationFields: [Provider.FieldSpecification],
-        thirdPartyAppAuthentication: Credentials.ThirdPartyAppAuthentication?,
-        sessionExpiryDate: Date?
-    ) {
-        self.id = id
-        self.providerID = providerID
-        self.kind = kind
-        self.status = status
-        self.statusPayload = statusPayload
-        self.statusUpdated = statusUpdated
-        self.updated = updated
-        self.fields = fields
-        self.supplementalInformationFields = supplementalInformationFields
-        self.thirdPartyAppAuthentication = thirdPartyAppAuthentication
-        self.sessionExpiryDate = sessionExpiryDate
-    }
 }

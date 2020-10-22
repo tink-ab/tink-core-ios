@@ -35,6 +35,7 @@ public struct TransactionsQuery: Equatable {
     }
 
     /// A type that determines the order of the transactions.
+    @frozen
     public enum Order: String {
         /// Display transactions in an ascending order.
         case ascending
@@ -82,7 +83,7 @@ public extension Collection where Element == Transaction {
                 guard query.categoryIDs.contains(transaction.categoryID) else { return false }
             }
 
-            if let dateInterval = query.dateInterval, let date = transaction.date, !dateInterval.contains(date) {
+            if let dateInterval = query.dateInterval, !dateInterval.contains(transaction.date) {
                 return false
             }
 

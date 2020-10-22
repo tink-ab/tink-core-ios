@@ -1,4 +1,4 @@
---disable unusedArguments,trailingCommas,andOperator,sortedImports
+--disable unusedArguments,trailingCommas,andOperator,sortedImports, wrapMultilineStatementBraces
 --self init-only
 --patternlet inline
 --ranges no-space
