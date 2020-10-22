@@ -3,13 +3,14 @@ import Foundation
 extension ActionableInsight {
     init?(restInsight: RESTActionableInsight) {
         guard let id = restInsight.id,
-            let data = restInsight.data,
-            let type = restInsight.type,
-            let kind = Kind(restType: type, restInsightData: data),
-            let actions = restInsight.insightActions,
-            let title = restInsight.title,
-            let description = restInsight.description,
-            let created = restInsight.createdTime else {
+              let data = restInsight.data,
+              let type = restInsight.type,
+              let kind = Kind(restType: type, restInsightData: data),
+              let actions = restInsight.insightActions,
+              let title = restInsight.title,
+              let description = restInsight.description,
+              let created = restInsight.createdTime
+        else {
             return nil
         }
 
@@ -19,13 +20,14 @@ extension ActionableInsight {
 
     init?(restArchivedInsight: RESTArchivedInsight) {
         guard let id = restArchivedInsight.id,
-            let data = restArchivedInsight.data,
-            let type = restArchivedInsight.insightType,
-            let kind = Kind(restType: type, restInsightData: data),
-            let title = restArchivedInsight.title,
-            let description = restArchivedInsight.description,
-            let archivedDate = restArchivedInsight.dateArchived,
-            let created = restArchivedInsight.dateInsightCreated else {
+              let data = restArchivedInsight.data,
+              let type = restArchivedInsight.insightType,
+              let kind = Kind(restType: type, restInsightData: data),
+              let title = restArchivedInsight.title,
+              let description = restArchivedInsight.description,
+              let archivedDate = restArchivedInsight.dateArchived,
+              let created = restArchivedInsight.dateInsightCreated
+        else {
             return nil
         }
 

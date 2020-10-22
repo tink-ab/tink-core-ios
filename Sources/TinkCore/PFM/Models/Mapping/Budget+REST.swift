@@ -85,6 +85,7 @@ extension Budget.Filter {
         return filters
     }
 }
+
 extension Budget.Periodicity {
     init?(restPeriodicityType: RESTBudget.PeriodicityType?, restOneOffPeriodicity: RESTBudget.OneOffPeriodicity?, restRecurringPeriodicity: RESTBudget.RecurringPeriodicity?) {
         switch restPeriodicityType {

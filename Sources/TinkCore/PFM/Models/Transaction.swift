@@ -42,7 +42,7 @@ public struct Transaction {
         self.originalDescription = description
         self.originalDate = date
         self.originalAmount = amount
-        self.notes = nil 
+        self.notes = nil
     }
 }
 
