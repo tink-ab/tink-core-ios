@@ -17,6 +17,6 @@ gh pr create --repo tink-ab/tink-core-ios-private -t "Public Sync" -b "Tink Core
 
 git push git@github.com:tink-ab/tink-core-ios-private $release
 
-pod trunk push TinkCore.podspec
+pod trunk push TinkCore.podspec --allow-warnings
 
 echo "Tink Core public sync created and pushed to cocoapods! 🎉"
