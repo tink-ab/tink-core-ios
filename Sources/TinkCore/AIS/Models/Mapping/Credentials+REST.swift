@@ -19,7 +19,7 @@ extension Credentials {
         self.sessionExpiryDate = restCredentials.sessionExpiryDate
     }
 
-    static func makeFieldSpecifications(from string: String?) throws -> [Provider.FieldSpecification] {
+    static func makeFieldSpecifications(from string: String?) throws -> [Provider.Field] {
         guard let string = string else {
             throw Error.supplementalInformationMissing
         }
@@ -29,7 +29,7 @@ extension Credentials {
             if fields.isEmpty {
                 throw Error.supplementalInformationMissing
             }
-            return fields.map(Provider.FieldSpecification.init)
+            return fields.map(Provider.Field.init)
         } else {
             throw Error.supplementalInformationMissing
         }
@@ -176,7 +176,7 @@ extension Credentials.Status {
         case .sessionExpired:
             self = .sessionExpired
         case .deleted:
-            self = .disabled
+            self = .deleted
         case .unknown:
             self = .unknown
         }
