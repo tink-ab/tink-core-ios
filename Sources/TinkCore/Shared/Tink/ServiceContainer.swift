@@ -3,9 +3,9 @@ import Foundation
 public final class ServiceContainer {
     let client: RESTClient
 
-    var appUri: URL
+    var appUri: URL?
 
-    init(client: RESTClient, appUri: URL) {
+    init(client: RESTClient, appUri: URL?) {
         self.client = client
         self.appUri = appUri
     }

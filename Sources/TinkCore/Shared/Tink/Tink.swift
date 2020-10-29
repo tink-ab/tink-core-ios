@@ -48,14 +48,6 @@ public class Tink {
 
     // MARK: - Creating a Tink Link Object
 
-    private convenience init() {
-        do {
-            let configuration = try Configuration(processInfo: .processInfo)
-            self.init(configuration: configuration)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
 
     /// Create a Tink instance with a custom configuration.
     /// - Parameters:
@@ -84,7 +76,7 @@ public class Tink {
     ///
     /// - Parameters:
     ///   - configuration: The configuration to be used for the shared instance.
-    public static func configure(with configuration: Tink.Configuration) {
+    public static func configure(with configuration: Configuration) {
         _shared = Tink(configuration: configuration)
     }
 
