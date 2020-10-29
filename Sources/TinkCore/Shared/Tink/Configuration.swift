@@ -1,5 +1,7 @@
 import Foundation
 
+// MARK: - Tink Configuration
+
 public protocol Configuration {
     /// The client id for your app.
     var clientID: String? { get set }
@@ -13,6 +15,4 @@ public protocol Configuration {
     /// Certificate to use with the API.
     var restCertificateURL: URL? { get set }
 }
-
-// MARK: - Tink Configuration
 
