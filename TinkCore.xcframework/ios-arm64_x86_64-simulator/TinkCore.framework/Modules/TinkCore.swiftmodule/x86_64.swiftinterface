@@ -632,17 +632,23 @@ public struct ClientDescription {
 }
 public protocol Configuration {
   var clientID: Swift.String { get }
-  var redirectURI: Foundation.URL? { get }
+  var appURI: Foundation.URL? { get }
   var environment: TinkCore.Tink.Environment { get }
-  var restCertificateURL: Foundation.URL? { get }
+  var certificateURL: Foundation.URL? { get }
 }
 extension Tink {
-  @available(*, deprecated, message: "Use other implementation of TinkCore.Configuration instead")
   public struct Configuration : TinkCore.Configuration {
     public var clientID: Swift.String
-    public var redirectURI: Foundation.URL?
+    public var redirectURI: Foundation.URL
+    public var appURI: Foundation.URL? {
+      get
+    }
     public var environment: TinkCore.Tink.Environment
-    public var restCertificateURL: Foundation.URL?
+    public var certificateURL: Foundation.URL?
+    @available(*, renamed: "certificateURL")
+    public var restCertificateURL: Foundation.URL? {
+      get
+    }
     public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, certificateURL: Foundation.URL? = nil) throws
     @available(*, deprecated, message: "Use init(clientID:redirectURI:environment:certificateURL:) instead")
     public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, grpcCertificateURL: Foundation.URL? = nil, restCertificateURL: Foundation.URL? = nil) throws
