@@ -48,11 +48,19 @@ public class Tink {
 
     // MARK: - Creating a Tink Link Object
 
+    private convenience init() {
+        do {
+            let configuration = try Configuration(processInfo: .processInfo)
+            self.init(configuration: configuration)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
 
     /// Create a Tink instance with a custom configuration.
     /// - Parameters:
     ///   - configuration: The configuration to be used.
-    public init(configuration: Configuration) {
+    public init(configuration: TinkCore.Configuration) {
         self.configuration = configuration
         let certificateURL = configuration.restCertificateURL
         let certificate = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
@@ -76,12 +84,12 @@ public class Tink {
     ///
     /// - Parameters:
     ///   - configuration: The configuration to be used for the shared instance.
-    public static func configure(with configuration: Configuration) {
+    public static func configure(with configuration: TinkCore.Configuration) {
         _shared = Tink(configuration: configuration)
     }
 
     /// The current configuration.
-    public let configuration: Configuration
+    public let configuration: TinkCore.Configuration
 
     // MARK: - Services
 
@@ -111,8 +119,7 @@ extension Tink {
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        precondition(configuration.clientID != nil, "Configure Tink by calling `Tink.configure(with:)` with a `clientID` configured.")
-        return services.oAuthService.authenticate(clientID: configuration.clientID!, code: authorizationCode, completion: { [weak self] result in
+        return services.oAuthService.authenticate(clientID: configuration.clientID, code: authorizationCode, completion: { [weak self] result in
             do {
                 let accessToken = try result.get()
                 self?.userSession = .accessToken(accessToken.rawValue)
