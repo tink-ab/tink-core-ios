@@ -7,7 +7,7 @@ public protocol Configuration {
     var clientID: String { get }
 
     /// The URI you've setup in Console.
-    var redirectURI: URL? { get }
+    var appURI: URL? { get }
 
     /// The environment to use.
     var environment: Tink.Environment { get }
@@ -24,7 +24,11 @@ extension Tink {
         public var clientID: String
 
         /// The URI you've setup in Console.
-        public var redirectURI: URL?
+        public var redirectURI: URL
+
+        public var appURI: URL? {
+            redirectURI
+        }
 
         /// The environment to use.
         public var environment: Environment
