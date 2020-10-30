@@ -111,7 +111,7 @@ extension Tink {
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
-        precondition(configuration.clientID != nil, "Configure Tink by calling `Tink.configure(with:TinkConfiguration)` with redirectURI congigured")
+        precondition(configuration.clientID != nil, "Configure Tink by calling `Tink.configure(with:)` with a `clientID` configured.")
         return services.oAuthService.authenticate(clientID: configuration.clientID!, code: authorizationCode, completion: { [weak self] result in
             do {
                 let accessToken = try result.get()
