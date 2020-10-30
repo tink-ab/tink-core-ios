@@ -4,15 +4,15 @@ import Foundation
 
 public protocol Configuration {
     /// The client id for your app.
-    var clientID: String? { get set }
+    var clientID: String { get }
 
     /// The URI you've setup in Console.
-    var redirectURI: URL? { get set }
+    var redirectURI: URL? { get }
 
     /// The environment to use.
-    var environment: Tink.Environment { get set }
+    var environment: Tink.Environment { get }
 
     /// Certificate to use with the API.
-    var restCertificateURL: URL? { get set }
+    var restCertificateURL: URL? { get }
 }
 
