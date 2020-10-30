@@ -13,7 +13,7 @@ public protocol Configuration {
     var environment: Tink.Environment { get }
 
     /// Certificate to use with the API.
-    var restCertificateURL: URL? { get }
+    var certificateURL: URL? { get }
 }
 
 extension Tink {
@@ -30,7 +30,13 @@ extension Tink {
         public var environment: Environment
 
         /// Certificate to use with the API.
-        public var restCertificateURL: URL?
+        public var certificateURL: URL?
+
+        /// Certificate to use with the API.
+        @available(*, renamed: "certificateURL")
+        public var restCertificateURL: URL? {
+            certificateURL
+        }
 
         /// - Parameters:
         ///   - clientID: The client id for your app.
@@ -49,7 +55,7 @@ extension Tink {
             self.clientID = clientID
             self.redirectURI = redirectURI
             self.environment = environment
-            self.restCertificateURL = certificateURL
+            self.certificateURL = certificateURL
         }
 
         /// - Parameters:
@@ -92,6 +98,6 @@ extension Tink.Configuration {
         self.clientID = clientID
         self.redirectURI = redirectURI
         self.environment = processInfo.tinkEnvironment ?? .production
-        self.restCertificateURL = processInfo.tinkRestCertificateURL
+        self.certificateURL = processInfo.tinkRestCertificateURL
     }
 }
