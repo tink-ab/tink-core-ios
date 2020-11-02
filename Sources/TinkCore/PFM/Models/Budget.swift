@@ -59,8 +59,8 @@ public struct Budget {
 
 // MARK: Budget Transaction
 
-public extension Budget {
-    struct Transaction {
+extension Budget {
+    public struct Transaction {
         /// The ID of the transaction.
         public let id: TinkCore.Transaction.ID
         /// The transaction amount.
