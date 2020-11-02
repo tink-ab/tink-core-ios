@@ -13,7 +13,7 @@ class ConfigurationTests: XCTestCase {
         let redirectURI = URL(string: "http://my-customer-app.com/authentication")!
         let configuration = try! Tink.Configuration(clientID: "abc", redirectURI: redirectURI, environment: .production)
         let link = Tink(configuration: configuration)
-        XCTAssertEqual(link.configuration.redirectURI, URL(string: "http://my-customer-app.com/authentication")!)
+        XCTAssertEqual(link.configuration.appURI, URL(string: "http://my-customer-app.com/authentication")!)
     }
 
     func testConfigureWithoutRedirectURLHost() {
@@ -29,9 +29,9 @@ class ConfigurationTests: XCTestCase {
     }
 
     func testConfigureSharedTinkWithConfigurationWithAppURI() {
-        let redirectURI = URL(string: "my-customer-app://authentication")!
-        let configuration = try! Tink.Configuration(clientID: "abc", redirectURI: redirectURI, environment: .production)
+        let appURI = URL(string: "my-customer-app://authentication")!
+        let configuration = try! Tink.Configuration(clientID: "abc", redirectURI: appURI, environment: .production)
         Tink.configure(with: configuration)
-        XCTAssertEqual(Tink.shared.configuration.redirectURI, redirectURI)
+        XCTAssertEqual(Tink.shared.configuration.appURI, appURI)
     }
 }
