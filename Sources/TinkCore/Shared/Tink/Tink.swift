@@ -96,8 +96,8 @@ public class Tink {
     public private(set) lazy var services = ServiceContainer(client: client, appUri: self.configuration.appURI)
 }
 
-extension Tink {
-    public enum UserError: Swift.Error {
+public extension Tink {
+    enum UserError: Swift.Error {
         /// The market and/or locale was invalid. The payload from the backend can be found in the associated value.
         case invalidMarketOrLocale(String)
 
@@ -118,7 +118,7 @@ extension Tink {
     /// - Parameter authorizationCode: Authenticate with a `AuthorizationCode` that delegated from Tink to exchanged for a user object.
     /// - Parameter completion: A result representing either a success or an error.
     @discardableResult
-    public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
+    func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
         return services.oAuthService.authenticate(clientID: configuration.clientID, code: authorizationCode, completion: { [weak self] result in
             do {
                 let accessToken = try result.get()
@@ -131,7 +131,7 @@ extension Tink {
     }
 }
 
-extension Tink {
+public extension Tink {
     /// Sets the credential to be used for this Tink Context.
     ///
     /// The credential is associated with a specific user which has been
@@ -139,7 +139,7 @@ extension Tink {
     ///
     /// - Parameter credential: The credential to use.
     @available(*, deprecated, message: "Set the userSession property directly instead.")
-    public func setCredential(_ credential: SessionCredential?) {
+    func setCredential(_ credential: SessionCredential?) {
         authorizationBehavior.userSession = credential
     }
 }

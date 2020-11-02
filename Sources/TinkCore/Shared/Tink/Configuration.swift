@@ -16,10 +16,10 @@ public protocol Configuration {
     var certificateURL: URL? { get }
 }
 
-extension Tink {
+public extension Tink {
     /// Configuration used to set up the Tink
-    //@available(*, deprecated, message: "Use other implementation of TinkCore.Configuration instead")
-    public struct Configuration: TinkCore.Configuration {
+    // @available(*, deprecated, message: "Use other implementation of TinkCore.Configuration instead")
+    struct Configuration: TinkCore.Configuration {
         /// The client id for your app.
         public var clientID: String
 

@@ -3,9 +3,9 @@ import Foundation
 @available(*, deprecated, renamed: "Tink.Environment")
 public typealias Environment = Tink.Environment
 
-extension Tink {
+public extension Tink {
     /// Represents which endpoints Tink will use.
-    public enum Environment {
+    enum Environment {
         /// The production environment.
         case production
         /// A custom environment.

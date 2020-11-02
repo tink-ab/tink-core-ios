@@ -17,8 +17,8 @@ public struct Category: Equatable {
     }
 }
 
-extension Category {
-    public struct Code: Hashable, ExpressibleByStringLiteral {
+public extension Category {
+    struct Code: Hashable, ExpressibleByStringLiteral {
         public let value: String
 
         public init(_ value: String) {
@@ -31,32 +31,32 @@ extension Category {
     }
 }
 
-extension Category.Code {
-    public var isExpense: Bool { value.hasPrefix("expenses") }
-    public var isIncome: Bool { value.hasPrefix("income") }
-    public var isTransfer: Bool { value.hasPrefix("transfers") }
+public extension Category.Code {
+    var isExpense: Bool { value.hasPrefix("expenses") }
+    var isIncome: Bool { value.hasPrefix("income") }
+    var isTransfer: Bool { value.hasPrefix("transfers") }
 
-    public var type: Category.Kind { Category.Kind(code: self) }
+    var type: Category.Kind { Category.Kind(code: self) }
 
-    public var isUncategorized: Bool { type == .expenses && value == "expenses:misc.uncategorized" }
-    public var isReimbursement: Bool { type == .income && value.starts(with: "income:refund") }
-    public var isSavings: Bool { type == .transfers && value == "transfers:savings.other" }
-    public var isExcluded: Bool { type == .transfers && value == "transfers:exclude.other" }
-    public var isOther: Bool { value.hasSuffix(".other") }
-    public var isMiscOther: Bool { value == "expenses:misc.other" }
-    public var isExpensesOther: Bool { isOther && !isMiscOther && type == .expenses && !isSavings && !isExcluded }
+    var isUncategorized: Bool { type == .expenses && value == "expenses:misc.uncategorized" }
+    var isReimbursement: Bool { type == .income && value.starts(with: "income:refund") }
+    var isSavings: Bool { type == .transfers && value == "transfers:savings.other" }
+    var isExcluded: Bool { type == .transfers && value == "transfers:exclude.other" }
+    var isOther: Bool { value.hasSuffix(".other") }
+    var isMiscOther: Bool { value == "expenses:misc.other" }
+    var isExpensesOther: Bool { isOther && !isMiscOther && type == .expenses && !isSavings && !isExcluded }
 
-    public var isRootCategory: Bool { !value.contains(":") }
-    public var isSubcategory: Bool { value.contains(".") }
+    var isRootCategory: Bool { !value.contains(":") }
+    var isSubcategory: Bool { value.contains(".") }
 
-    public func isChild(of parent: Category.Code) -> Bool {
+    func isChild(of parent: Category.Code) -> Bool {
         return value.hasPrefix(parent.value)
     }
 }
 
-extension Category {
+public extension Category {
     /// A type of category.
-    public enum Kind: String, Hashable {
+    enum Kind: String, Hashable {
         /// The expenses category type.
         case expenses
         /// The income category type.
@@ -66,8 +66,8 @@ extension Category {
     }
 }
 
-extension Category.Kind {
-    public init(code: Category.Code) {
+public extension Category.Kind {
+    init(code: Category.Code) {
         if code.isExpense {
             self = .expenses
         } else if code.isIncome {
@@ -79,7 +79,7 @@ extension Category.Kind {
         }
     }
 
-    public var categoryCode: Category.Code {
+    var categoryCode: Category.Code {
         switch self {
         case .expenses:
             return Category.Code("expenses")

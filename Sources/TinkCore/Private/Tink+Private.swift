@@ -1,8 +1,8 @@
 import Foundation
 
-extension Tink {
+public extension Tink {
     @discardableResult
-    public func _createTemporaryUser(for market: Market, locale: Locale = Tink.defaultLocale, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
+    func _createTemporaryUser(for market: Market, locale: Locale = Tink.defaultLocale, completion: @escaping (Result<Void, Swift.Error>) -> Void) -> RetryCancellable? {
         return services.oAuthService.createAnonymous(market: market, locale: locale, origin: nil) { [weak self] result in
             let mappedResult = result.mapError { UserError(createTemporaryUserError: $0) ?? $0 }
             do {
@@ -15,7 +15,7 @@ extension Tink {
         }
     }
 
-    public var _sdkName: String {
+    var _sdkName: String {
         get { sdkHeaderBehavior.sdkName }
         set { sdkHeaderBehavior.sdkName = newValue }
     }

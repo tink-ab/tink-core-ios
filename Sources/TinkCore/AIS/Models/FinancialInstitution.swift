@@ -1,6 +1,6 @@
-extension Provider {
+public extension Provider {
     /// The FinancialInstitution model represents a financial institution.
-    public struct FinancialInstitution: Hashable {
+    struct FinancialInstitution: Hashable {
         /// A unique identifier of a `FinancialInstitution`.
         public typealias ID = Identifier<FinancialInstitution>
 
