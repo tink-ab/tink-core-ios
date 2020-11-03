@@ -12,7 +12,7 @@ extension Credentials {
         self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
         self.status = .init(restCredentialsStatus: status, id: id, supplementalInformation: restCredentials.supplementalInformation, appUri: appUri)
-        self.statusPayload = restCredentials.statusPayload
+        self.statusPayload = (restCredentials.statusPayload ?? "").isEmpty ? nil : restCredentials.statusPayload
         self.statusUpdated = restCredentials.statusUpdated
         self.updated = restCredentials.updated
         self.fields = restCredentials.fields
