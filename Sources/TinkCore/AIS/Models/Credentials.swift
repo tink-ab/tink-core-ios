@@ -117,7 +117,6 @@ public struct Credentials: Identifiable {
     public let status: Status
 
     /// A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
-    @available(*, deprecated)
     public let statusPayload: String?
 
     /// A timestamp of when the credentials' status was last modified.
