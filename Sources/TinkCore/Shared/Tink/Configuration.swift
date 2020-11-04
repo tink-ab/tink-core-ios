@@ -52,6 +52,7 @@ extension Tink {
             certificateURL: URL? = nil
         ) {
             if let appURI = appURI {
+                precondition(!(appURI.host?.isEmpty ?? true), "Cannot find host in the appURI")
                 redirectURI = appURI
             } else {
                 redirectURI = URL(string: "http://localhost:3000/callback")!
