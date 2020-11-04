@@ -14,7 +14,7 @@ public final class ServiceContainer {
     public private(set) lazy var oAuthService: OAuthService = RESTOAuthService(client: client)
     public private(set) lazy var beneficiaryService: BeneficiaryService = RESTBeneficiaryService(client: client)
     public private(set) lazy var credentialsService: CredentialsService = {
-        precondition(appUri != nil, "Configure Tink by calling `Tink.configure(with:)` with a `redirectURI` configured.")
+        precondition(appUri != nil, "Configure Tink by calling `Tink.configure(with:)` with a `appURI` configured.")
         let credentialsService = RESTCredentialsService(client: client, appUri: appUri!)
         return credentialsService
     }()
