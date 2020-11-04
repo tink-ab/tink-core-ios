@@ -196,19 +196,19 @@ public struct Provider: Identifiable {
     public let financialInstitution: FinancialInstitution
 }
 
-public extension Set where Element == Provider.Kind {
+extension Set where Element == Provider.Kind {
     /// A set of all providers kinds. Note that this also includes test providers.
-    static var all: Set<Provider.Kind> { Provider.Kind.all }
+    public static var all: Set<Provider.Kind> { Provider.Kind.all }
     /// A set of default provider kinds
-    static var `default`: Set<Provider.Kind> { Provider.Kind.default }
+    public static var `default`: Set<Provider.Kind> { Provider.Kind.default }
     /// A set of default provider kinds
     @available(*, deprecated, renamed: "default")
-    static var defaultKinds: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
+    public static var defaultKinds: Set<Provider.Kind> = [.bank, .creditCard, .broker, .other]
     /// A set of all test providers.
-    static var onlyTest: Set<Provider.Kind> { Provider.Kind.onlyTest }
+    public static var onlyTest: Set<Provider.Kind> { Provider.Kind.onlyTest }
 }
 
-public extension Set where Element == Provider.AccessType {
+extension Set where Element == Provider.AccessType {
     /// A set of all access types.
-    static var all: Set<Provider.AccessType> { Provider.AccessType.all }
+    public static var all: Set<Provider.AccessType> { Provider.AccessType.all }
 }
