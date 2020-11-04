@@ -92,9 +92,9 @@ public struct RefreshableItems: OptionSet {
     }
 }
 
-public extension RefreshableItems {
+extension RefreshableItems {
     /// Creates a set of refreshable items that corresponds to the providers capabilities.
-    init(providerCapabilities: Provider.Capabilities) {
+    public init(providerCapabilities: Provider.Capabilities) {
         var refreshableItems: RefreshableItems = []
         if providerCapabilities.contains(.checkingAccounts) {
             refreshableItems.insert([.checkingAccounts, .checkingTransactions])
@@ -126,7 +126,7 @@ public extension RefreshableItems {
     /// Returns a new set of refreshable items that contain the items in the set that the given provider capabilities supports.
     /// - Parameter providerCapabilities: A set of provider capabilities.
     /// - Returns: The subset of the items that the provider capabilities support.
-    func supporting(providerCapabilities: Provider.Capabilities) -> RefreshableItems {
+    public func supporting(providerCapabilities: Provider.Capabilities) -> RefreshableItems {
         return intersection(RefreshableItems(providerCapabilities: providerCapabilities))
     }
 }
