@@ -57,6 +57,7 @@ extension Tink {
             } else {
                 redirectURI = URL(string: "http://localhost:3000/callback")!
             }
+            self.appURI = appURI
             self.clientID = clientID
             self.environment = environment
             self.certificateURL = certificateURL
