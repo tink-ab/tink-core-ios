@@ -26,9 +26,7 @@ extension Tink {
         /// The URI you've setup in Console.
         public var redirectURI: URL
 
-        public var appURI: URL? {
-            redirectURI
-        }
+        public var appURI: URL?
 
         /// The environment to use.
         public var environment: Environment
@@ -40,6 +38,29 @@ extension Tink {
         @available(*, renamed: "certificateURL")
         public var restCertificateURL: URL? {
             certificateURL
+        }
+
+        /// - Parameters:
+        ///   - clientID: The client id for your app.
+        ///   - appURI: The URI you've setup in Console.
+        ///   - environment: The environment to use, defaults to production.
+        ///   - certificateURL: URL to a certificate file to use with the API.
+        public init(
+            clientID: String,
+            appURI: URL? = nil,
+            environment: Environment = .production,
+            certificateURL: URL? = nil
+        ) {
+            if let appURI = appURI {
+                precondition(!(appURI.host?.isEmpty ?? true), "Cannot find host in the appURI")
+                redirectURI = appURI
+            } else {
+                redirectURI = URL(string: "http://localhost:3000/callback")!
+            }
+            self.appURI = appURI
+            self.clientID = clientID
+            self.environment = environment
+            self.certificateURL = certificateURL
         }
 
         /// - Parameters:
@@ -58,6 +79,7 @@ extension Tink {
             }
             self.clientID = clientID
             self.redirectURI = redirectURI
+            self.appURI = redirectURI
             self.environment = environment
             self.certificateURL = certificateURL
         }
