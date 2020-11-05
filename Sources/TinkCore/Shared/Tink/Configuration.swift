@@ -2,20 +2,66 @@ import Foundation
 
 // MARK: - Tink Configuration
 
+public protocol Configuration {
+    /// The client id for your app.
+    var clientID: String { get }
+
+    /// The URI you've setup in Console.
+    var appURI: URL? { get }
+
+    /// The environment to use.
+    var environment: Tink.Environment { get }
+
+    /// Certificate to use with the API.
+    var certificateURL: URL? { get }
+}
+
 extension Tink {
     /// Configuration used to set up the Tink
-    public struct Configuration {
+    // @available(*, deprecated, message: "Use other implementation of TinkCore.Configuration instead")
+    public struct Configuration: TinkCore.Configuration {
         /// The client id for your app.
         public var clientID: String
 
         /// The URI you've setup in Console.
         public var redirectURI: URL
 
+        public var appURI: URL?
+
         /// The environment to use.
         public var environment: Environment
 
         /// Certificate to use with the API.
-        public var restCertificateURL: URL?
+        public var certificateURL: URL?
+
+        /// Certificate to use with the API.
+        @available(*, renamed: "certificateURL")
+        public var restCertificateURL: URL? {
+            certificateURL
+        }
+
+        /// - Parameters:
+        ///   - clientID: The client id for your app.
+        ///   - appURI: The URI you've setup in Console.
+        ///   - environment: The environment to use, defaults to production.
+        ///   - certificateURL: URL to a certificate file to use with the API.
+        public init(
+            clientID: String,
+            appURI: URL? = nil,
+            environment: Environment = .production,
+            certificateURL: URL? = nil
+        ) {
+            if let appURI = appURI {
+                precondition(!(appURI.host?.isEmpty ?? true), "Cannot find host in the appURI")
+                self.redirectURI = appURI
+            } else {
+                self.redirectURI = URL(string: "http://localhost:3000/callback")!
+            }
+            self.appURI = appURI
+            self.clientID = clientID
+            self.environment = environment
+            self.certificateURL = certificateURL
+        }
 
         /// - Parameters:
         ///   - clientID: The client id for your app.
@@ -33,8 +79,9 @@ extension Tink {
             }
             self.clientID = clientID
             self.redirectURI = redirectURI
+            self.appURI = redirectURI
             self.environment = environment
-            self.restCertificateURL = certificateURL
+            self.certificateURL = certificateURL
         }
     }
 }
@@ -60,6 +107,6 @@ extension Tink.Configuration {
         self.clientID = clientID
         self.redirectURI = redirectURI
         self.environment = processInfo.tinkEnvironment ?? .production
-        self.restCertificateURL = processInfo.tinkRestCertificateURL
+        self.certificateURL = processInfo.tinkRestCertificateURL
     }
 }

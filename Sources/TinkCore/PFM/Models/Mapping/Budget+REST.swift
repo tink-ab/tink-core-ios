@@ -60,6 +60,32 @@ extension Budget.Filter {
     }
 }
 
+extension Budget.Filter {
+    static func makeFilters(restFilter: RESTInsightActionData.CreateBudget.BudgetSuggestion.Filter?) -> [Budget.Filter] {
+        var filters: [Budget.Filter] = []
+
+        filters += restFilter?.accounts?
+            .map(Account.ID.init(_:))
+            .map(Budget.Filter.account)
+            ?? []
+
+        filters += restFilter?.categories?
+            .map(Category.Code.init(_:))
+            .map(Budget.Filter.category)
+            ?? []
+
+        filters += restFilter?.tags?
+            .map(Budget.Filter.tag)
+            ?? []
+
+        if let query = restFilter?.freeTextQuery {
+            filters.append(.search(query))
+        }
+
+        return filters
+    }
+}
+
 extension Budget.Periodicity {
     init?(restPeriodicityType: RESTBudget.PeriodicityType?, restOneOffPeriodicity: RESTBudget.OneOffPeriodicity?, restRecurringPeriodicity: RESTBudget.RecurringPeriodicity?) {
         switch restPeriodicityType {
