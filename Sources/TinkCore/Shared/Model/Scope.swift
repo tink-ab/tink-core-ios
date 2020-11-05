@@ -5,7 +5,7 @@ import Foundation
 public struct Scope {
     /// The name of the data the scope is for.
     let name: String
-    /// A set of access strings this scope have, for examle `"read"` or `"write"`.
+    /// A set of access strings this scope have, for example `"read"` or `"write"`.
     let access: [String]
 }
 
