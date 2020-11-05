@@ -25,7 +25,7 @@ public struct Provider: Identifiable {
         case business
         /// The user is authenticating as a person.
         case personal
-        /// The user is authenticating as a coorparation.
+        /// The user is authenticating as a corporation.
         case corporate
     }
 
