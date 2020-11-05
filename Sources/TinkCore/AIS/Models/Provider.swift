@@ -95,11 +95,11 @@ public struct Provider: Identifiable {
         public let minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
         public let isMasked: Bool
-        /// Determnies if the field should only accept numeric input.
+        /// Determines if the field should only accept numeric input.
         public let isNumeric: Bool
-        /// Determnies if the field is immutable.
+        /// Determines if the field is immutable.
         public let isImmutable: Bool
-        /// Determnies if the field is optional.
+        /// Determines if the field is optional.
         public let isOptional: Bool
         /// The name of the input field.
         public let name: String?
