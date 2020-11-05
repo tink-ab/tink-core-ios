@@ -138,7 +138,7 @@ public struct Provider: Identifiable {
         public static let transfers = Capabilities(rawValue: 1 << 1)
         /// The provider has mortgage aggregation.
         public static let mortgageAggregation = Capabilities(rawValue: 1 << 2)
-        /// The provider can aggregate checkings accounts.
+        /// The provider can aggregate checking accounts.
         public static let checkingAccounts = Capabilities(rawValue: 1 << 3)
         /// The provider can aggregate savings accounts.
         public static let savingsAccounts = Capabilities(rawValue: 1 << 4)
@@ -158,7 +158,7 @@ public struct Provider: Identifiable {
         public static let eInvoices = Capabilities(rawValue: 1 << 11)
         /// The provider can list all beneficiaries.
         public static let listBeneficiaries = Capabilities(rawValue: 1 << 12)
-        /// The provider can creat beneficiaries.
+        /// The provider can create beneficiaries.
         public static let createBeneficiaries = Capabilities(rawValue: 1 << 13)
         /// A list representing all possible capabilities.
         public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData, .listBeneficiaries, .createBeneficiaries]
