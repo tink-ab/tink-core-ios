@@ -83,7 +83,7 @@ public struct Provider: Identifiable {
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
 
-    /// A `Field` is a representation of a specfic user input field that the user will need to fill out.
+    /// A `Field` is a representation of a specific user input field that the user will need to fill out.
     public struct Field: Equatable {
         /// A short description of what the field is used for.
         public let description: String?
