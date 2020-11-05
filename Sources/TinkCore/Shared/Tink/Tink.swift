@@ -60,9 +60,9 @@ public class Tink {
     /// Create a Tink instance with a custom configuration.
     /// - Parameters:
     ///   - configuration: The configuration to be used.
-    public init(configuration: Configuration) {
+    public init(configuration: TinkCore.Configuration) {
         self.configuration = configuration
-        let certificateURL = configuration.restCertificateURL
+        let certificateURL = configuration.certificateURL
         let certificate = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
         self.sdkHeaderBehavior = SDKHeaderClientBehavior(sdkName: "Tink Link iOS", clientID: self.configuration.clientID)
         self.client = RESTClient(restURL: self.configuration.environment.restURL, certificates: certificate, behavior: ComposableClientBehavior(
@@ -84,16 +84,16 @@ public class Tink {
     ///
     /// - Parameters:
     ///   - configuration: The configuration to be used for the shared instance.
-    public static func configure(with configuration: Tink.Configuration) {
+    public static func configure(with configuration: TinkCore.Configuration) {
         _shared = Tink(configuration: configuration)
     }
 
     /// The current configuration.
-    public let configuration: Configuration
+    public let configuration: TinkCore.Configuration
 
     // MARK: - Services
 
-    public private(set) lazy var services = ServiceContainer(client: client, appUri: self.configuration.redirectURI)
+    public private(set) lazy var services = ServiceContainer(client: client, appUri: self.configuration.appURI)
 }
 
 extension Tink {

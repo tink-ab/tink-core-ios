@@ -592,4 +592,48 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTFail("No monthly summary data")
         }
     }
+
+    func testDecodingCreateBudgetSuggestionAction() throws {
+        let json = """
+        {
+          "label" : "Create Budget",
+          "data" : {
+            "budgetSuggestion" : {
+              "filter" : {
+                "accounts" : null,
+                "categories" : [ "expenses:food.restaurants" ]
+              },
+              "periodicityType" : "BUDGET_PERIODICITY_TYPE_RECURRING",
+              "oneOffPeriodicityData" : null,
+              "recurringPeriodicityData" : {
+                "periodUnit" : "MONTH"
+              },
+              "amount" : {
+                "currencyCode" : "SEK",
+                "amount" : 12210.3
+              }
+            },
+            "type" : "CREATE_BUDGET"
+          }
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let insight = try decoder.decode(RESTInsightProposedAction.self, from: data)
+
+        if case .createBudget(let createBudget) = insight.data {
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.accounts)
+            XCTAssertEqual(createBudget.budgetSuggestion.filter?.categories?.first, "expenses:food.restaurants")
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.tags)
+            XCTAssertNil(createBudget.budgetSuggestion.filter?.freeTextQuery)
+            XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
+            XCTAssertNil(createBudget.budgetSuggestion.oneOffPeriodicityData)
+            XCTAssertEqual(createBudget.budgetSuggestion.recurringPeriodicityData?.periodUnit, .month)
+            XCTAssertEqual(createBudget.budgetSuggestion.amount?.amount, 12210.3)
+            XCTAssertEqual(createBudget.budgetSuggestion.amount?.currencyCode, "SEK")
+        } else {
+            XCTFail("Expected create budget")
+        }
+    }
 }

@@ -13,7 +13,7 @@ extension Transaction {
         self.originalDate = restTransaction.originalDate
         self.originalDescription = restTransaction.originalDescription
         self.notes = restTransaction.notes
-        
+
         let now = Date()
         if let endOfDay = Calendar.current.endOfDay(for: now) {
             self.isUpcomingOrInFuture = restTransaction.upcoming || restTransaction.date > endOfDay
