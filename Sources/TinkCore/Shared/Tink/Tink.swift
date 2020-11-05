@@ -75,7 +75,7 @@ public class Tink {
 
     // MARK: - Configuring the Tink Link Object
 
-    /// Configure shared instance with configration description.
+    /// Configure shared instance with configuration description.
     ///
     /// Here's how you could configure Tink with a `Tink.Configuration`.
     ///

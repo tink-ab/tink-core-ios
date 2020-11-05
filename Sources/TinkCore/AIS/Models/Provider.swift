@@ -1,6 +1,6 @@
 import Foundation
 
-/// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
+/// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financial institution, and what financial information that can be accessed.
 public struct Provider: Identifiable {
     /// A unique identifier of a `Provider`.
     public typealias Name = Identifier<Provider>
@@ -25,7 +25,7 @@ public struct Provider: Identifiable {
         case business
         /// The user is authenticating as a person.
         case personal
-        /// The user is authenticating as a coorparation.
+        /// The user is authenticating as a corporation.
         case corporate
     }
 
@@ -83,7 +83,7 @@ public struct Provider: Identifiable {
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     public let isPopular: Bool
 
-    /// A `Field` is a representation of a specfic user input field that the user will need to fill out.
+    /// A `Field` is a representation of a specific user input field that the user will need to fill out.
     public struct Field: Equatable {
         /// A short description of what the field is used for.
         public let description: String?
@@ -95,11 +95,11 @@ public struct Provider: Identifiable {
         public let minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
         public let isMasked: Bool
-        /// Determnies if the field should only accept numeric input.
+        /// Determines if the field should only accept numeric input.
         public let isNumeric: Bool
-        /// Determnies if the field is immutable.
+        /// Determines if the field is immutable.
         public let isImmutable: Bool
-        /// Determnies if the field is optional.
+        /// Determines if the field is optional.
         public let isOptional: Bool
         /// The name of the input field.
         public let name: String?
@@ -138,7 +138,7 @@ public struct Provider: Identifiable {
         public static let transfers = Capabilities(rawValue: 1 << 1)
         /// The provider has mortgage aggregation.
         public static let mortgageAggregation = Capabilities(rawValue: 1 << 2)
-        /// The provider can aggregate checkings accounts.
+        /// The provider can aggregate checking accounts.
         public static let checkingAccounts = Capabilities(rawValue: 1 << 3)
         /// The provider can aggregate savings accounts.
         public static let savingsAccounts = Capabilities(rawValue: 1 << 4)
@@ -158,7 +158,7 @@ public struct Provider: Identifiable {
         public static let eInvoices = Capabilities(rawValue: 1 << 11)
         /// The provider can list all beneficiaries.
         public static let listBeneficiaries = Capabilities(rawValue: 1 << 12)
-        /// The provider can creat beneficiaries.
+        /// The provider can create beneficiaries.
         public static let createBeneficiaries = Capabilities(rawValue: 1 << 13)
         /// A list representing all possible capabilities.
         public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData, .listBeneficiaries, .createBeneficiaries]
