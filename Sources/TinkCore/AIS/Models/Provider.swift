@@ -1,6 +1,6 @@
 import Foundation
 
-/// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
+/// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financial institution, and what financial information that can be accessed.
 public struct Provider: Identifiable {
     /// A unique identifier of a `Provider`.
     public typealias Name = Identifier<Provider>
