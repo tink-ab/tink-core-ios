@@ -66,4 +66,8 @@ struct RESTCredentials: Decodable {
 
     /// The ID of the user that the credentials belongs to.
     var userId: String?
+
+    static var supplementalInformationCodingKey: CodingKey {
+        CodingKeys.supplementalInformation
+    }
 }
