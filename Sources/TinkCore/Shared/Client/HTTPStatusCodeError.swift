@@ -1,6 +1,6 @@
 import Foundation
 
-public enum HTTPStatusCodeError: Error {
+enum HTTPStatusCodeError: Error {
     /// Status code: 400
     case badRequest
 
