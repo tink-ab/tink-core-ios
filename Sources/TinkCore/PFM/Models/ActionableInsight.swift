@@ -100,7 +100,7 @@ extension ActionableInsight {
         @available(*, deprecated, renamed: "budgetID")
         public var budgetId: Budget.ID { budgetID }
 
-        @available(*, deprecated, renamed: "init(budgetID:budgtePeriod:)")
+        @available(*, deprecated, renamed: "init(budgetID:budgetPeriod:)")
         public init(budgetId: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
             self.budgetID = budgetId
             self.budgetPeriod = budgetPeriod
