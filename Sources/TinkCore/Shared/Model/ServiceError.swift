@@ -14,6 +14,8 @@ public enum ServiceError: Error {
     case unauthenticated(String)
     /// Precondition failed
     case failedPrecondition(String)
+    /// Request rate limit is exceeded
+    case tooManyRequests(String)
     /// The request cannot be fulfilled because of legal/contractual reasons.
     case unavailableForLegalReasons(String)
     /// Internal error
@@ -35,6 +37,8 @@ public enum ServiceError: Error {
                 self = .alreadyExists(restError?.errorMessage ?? "")
             case .preconditionFailed:
                 self = .failedPrecondition(restError?.errorMessage ?? "")
+            case .tooManyRequests:
+                self = .tooManyRequests(restError?.errorMessage ?? "")
             case .unavailableForLegalReasons:
                 self = .unavailableForLegalReasons(restError?.errorMessage ?? "")
             case .internalServerError:

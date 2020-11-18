@@ -19,6 +19,9 @@ public enum HTTPStatusCodeError: Error {
     /// Status code: 412
     case preconditionFailed
 
+    /// Status code: 429
+    case tooManyRequests
+
     /// Status code: 451
     case unavailableForLegalReasons
 
@@ -39,6 +42,7 @@ public enum HTTPStatusCodeError: Error {
         case 404: self = .notFound
         case 409: self = .conflict
         case 412: self = .preconditionFailed
+        case 429: self = .tooManyRequests
         case 451: self = .unavailableForLegalReasons
         case 500: self = .internalServerError
         case 400..<500: self = .clientError(statusCode)
