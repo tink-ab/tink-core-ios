@@ -36,7 +36,7 @@ public enum ServiceError: Error {
         case .preconditionFailed:
             self = .failedPrecondition(message ?? "")
         case .tooManyRequests:
-            self = .tooManyRequests(restError?.errorMessage ?? "")
+            self = .tooManyRequests(message ?? "")
         case .unavailableForLegalReasons:
             self = .unavailableForLegalReasons(message ?? "")
         case .internalServerError:
