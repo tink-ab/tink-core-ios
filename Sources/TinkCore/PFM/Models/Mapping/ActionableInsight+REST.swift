@@ -50,22 +50,22 @@ extension ActionableInsight.Kind {
         case (.budgetOverspent, .budgetOverspent(let summary)):
             let id = Budget.ID(summary.budgetId)
             let period = ActionableInsight.BudgetPeriod(restBudgetPeriod: summary.budgetPeriod)
-            self = .budgetOverspent(.init(budgetId: id, budgetPeriod: period))
+            self = .budgetOverspent(.init(budgetID: id, budgetPeriod: period))
 
         case (.budgetCloseNegative, .budgetCloseNegative(let summary)):
             let id = Budget.ID(summary.budgetId)
             let period = ActionableInsight.BudgetPeriod(restBudgetPeriod: summary.budgetPeriod)
-            self = .budgetCloseNegative(.init(budgetId: id, budgetPeriod: period))
+            self = .budgetCloseNegative(.init(budgetID: id, budgetPeriod: period))
 
         case (.budgetClosePositive, .budgetClosePositive(let summary)):
             let id = Budget.ID(summary.budgetId)
             let period = ActionableInsight.BudgetPeriod(restBudgetPeriod: summary.budgetPeriod)
-            self = .budgetClosePositive(.init(budgetId: id, budgetPeriod: period))
+            self = .budgetClosePositive(.init(budgetID: id, budgetPeriod: period))
 
         case (.budgetSuccess, .budgetSuccess(let summary)):
             let id = Budget.ID(summary.budgetId)
             let period = ActionableInsight.BudgetPeriod(restBudgetPeriod: summary.budgetPeriod)
-            self = .budgetSuccess(.init(budgetId: id, budgetPeriod: period))
+            self = .budgetSuccess(.init(budgetID: id, budgetPeriod: period))
 
         case (.budgetSummaryAchieved, .budgetSummaryAchieved(let summary)):
             let summary = ActionableInsight.BudgetPeriodSummary(achievedBudgets: summary.achievedBudgets.map(ActionableInsight.BudgetSummary.init), overspentBudgets: summary.overspentBudgets.map(ActionableInsight.BudgetSummary.init), periodUnit: ActionableInsight.BudgetPeriodUnit(restBudgetPeriodUnit: summary.periodUnit))
@@ -281,7 +281,7 @@ extension ActionableInsight.BudgetPeriod {
 
 extension ActionableInsight.BudgetSummary {
     init(restSummary: RESTInsightData.BudgetSummary) {
-        self = .init(budgetId: Budget.ID(restSummary.budgetId), budgetPeriod: .init(restBudgetPeriod: restSummary.budgetPeriod))
+        self = .init(budgetID: Budget.ID(restSummary.budgetId), budgetPeriod: .init(restBudgetPeriod: restSummary.budgetPeriod))
     }
 }
 
