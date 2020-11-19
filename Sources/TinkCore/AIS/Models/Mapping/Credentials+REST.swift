@@ -1,10 +1,6 @@
 import Foundation
 
 extension Credentials {
-    enum Error: Swift.Error {
-        case supplementalInformationMissing
-    }
-
     init(restCredentials: RESTCredentials, appUri: URL) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
@@ -19,18 +15,20 @@ extension Credentials {
     }
 
     static func makeFieldSpecifications(from string: String?) throws -> [Provider.Field] {
+        let supplementalInformationMissingError = DecodingError.valueNotFound(RESTCredentials.self, DecodingError.Context(codingPath: [RESTCredentials.supplementalInformationCodingKey], debugDescription: "Expected String value but found null instead."))
+
         guard let string = string else {
-            throw Error.supplementalInformationMissing
+            throw supplementalInformationMissingError
         }
 
         if let stringData = string.data(using: .utf8) {
             let fields = try JSONDecoder().decode([RESTField].self, from: stringData)
             if fields.isEmpty {
-                throw Error.supplementalInformationMissing
+                throw supplementalInformationMissingError
             }
             return fields.map(Provider.Field.init)
         } else {
-            throw Error.supplementalInformationMissing
+            throw supplementalInformationMissingError
         }
     }
 

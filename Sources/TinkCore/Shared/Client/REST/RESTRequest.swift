@@ -40,12 +40,7 @@ struct RESTSimpleRequest: RESTRequest {
     }
 
     func onResponse(_ result: Result<(data: Data, urlResponse: URLResponse), Error>) {
-        do {
-            let response = try result.get()
-            completion(.success(response.urlResponse))
-        } catch {
-            completion(.failure(ServiceError(error) ?? error))
-        }
+        completion(result.map(\.urlResponse))
     }
 }
 
@@ -88,7 +83,7 @@ struct RESTResourceRequest<T: Decodable>: RESTRequest {
             let model = try decoder.decode(T.self, from: response.data)
             completion(.success(model))
         } catch {
-            completion(.failure(ServiceError(error) ?? error))
+            completion(.failure(error))
         }
     }
 }
