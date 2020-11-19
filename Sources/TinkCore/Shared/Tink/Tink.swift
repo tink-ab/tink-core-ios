@@ -97,20 +97,6 @@ public class Tink {
 }
 
 extension Tink {
-    public enum UserError: Swift.Error {
-        /// The market and/or locale was invalid. The payload from the backend can be found in the associated value.
-        case invalidMarketOrLocale(String)
-
-        init?(createTemporaryUserError error: Swift.Error) {
-            switch error {
-            case ServiceError.invalidArgument(let message):
-                self = .invalidMarketOrLocale(message)
-            default:
-                return nil
-            }
-        }
-    }
-
     // MARK: - Authenticating a User
 
     /// Authenticate a permanent user with authorization code.

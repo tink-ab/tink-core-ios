@@ -3,44 +3,44 @@ public enum ServiceError: Error {
     /// Cancelled
     case cancelled
     /// Invalid argument
-    case invalidArgument(String)
+    case invalidArgument(String?)
     /// Not found
-    case notFound(String)
+    case notFound(String?)
     /// The resource already exists
-    case alreadyExists(String)
+    case alreadyExists(String?)
     /// The user has no permission
-    case permissionDenied(String)
+    case permissionDenied(String?)
     /// The user is not authenticated
-    case unauthenticated(String)
+    case unauthenticated(String?)
     /// Precondition failed
-    case failedPrecondition(String)
+    case failedPrecondition(String?)
     /// Request rate limit is exceeded
-    case tooManyRequests(String)
+    case tooManyRequests(String?)
     /// The request cannot be fulfilled because of legal/contractual reasons.
-    case unavailableForLegalReasons(String)
+    case unavailableForLegalReasons(String?)
     /// Internal error
-    case internalError(String)
+    case internalError(String?)
 
     init(statusCodeError: HTTPStatusCodeError, message: String?) {
         switch statusCodeError {
         case .badRequest:
-            self = .invalidArgument(message ?? "")
+            self = .invalidArgument(message)
         case .unauthorized:
-            self = .unauthenticated(message ?? "User is not authenticated")
+            self = .unauthenticated(message)
         case .forbidden:
-            self = .permissionDenied(message ?? "")
+            self = .permissionDenied(message)
         case .notFound:
-            self = .notFound(message ?? "")
+            self = .notFound(message)
         case .conflict:
-            self = .alreadyExists(message ?? "")
+            self = .alreadyExists(message)
         case .preconditionFailed:
-            self = .failedPrecondition(message ?? "")
+            self = .failedPrecondition(message)
         case .tooManyRequests:
-            self = .tooManyRequests(message ?? "")
+            self = .tooManyRequests(message)
         case .unavailableForLegalReasons:
-            self = .unavailableForLegalReasons(message ?? "")
+            self = .unavailableForLegalReasons(message)
         case .internalServerError:
-            self = .internalError(message ?? "Internal server error")
+            self = .internalError(message)
         case .serverError(let code):
             self = .internalError(message ?? "Error code \(code)")
         case .clientError(let code):
