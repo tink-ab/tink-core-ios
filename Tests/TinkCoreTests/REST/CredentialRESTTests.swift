@@ -81,7 +81,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
 
-        if case let .awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication) = credential.status {
+        if case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication) = credential.status {
             XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "this.is.not.a.valid.deeplink")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "https://itunes.apple.com")
             XCTAssertEqual(thirdPartyAppAuthentication.scheme, "this.is.not.a.valid.app.scheme")
@@ -120,7 +120,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
 
-        if case let .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication) = credential.status {
+        if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
             XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
         } else {
@@ -155,8 +155,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.fields, restCredentials.fields)
         XCTAssertNil(credential.sessionExpiryDate)
 
-        if case let .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication) = credential.status {
-
+        if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
             XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
         }

@@ -240,6 +240,7 @@
 		9F96C0713D035A673C283709 /* ActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008EC0EB0DF24282841C1210 /* ActionableInsightService.swift */; };
 		9FA59F7C9510C66241258728 /* BudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34A4D89E1DD0E9979692F6 /* BudgetService.swift */; };
 		A05ED007BA5E09D2DC2D83BB /* RESTCredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A453A70AC302CCB2F8C2BE /* RESTCredentialService.swift */; };
+		A2444A8587F890401CEE921A /* Credentials+Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5065BA805A612FB15EA8B /* Credentials+Deprecations.swift */; };
 		A331A892B33C26FB6ABB9AC8 /* RESTBeneficiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B0F53592E26BF3624E1A0B /* RESTBeneficiaryService.swift */; };
 		A3BE574D04714BBD760DEAC8 /* Tink+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A59DE67FCE1253A1F07F0C /* Tink+Private.swift */; };
 		A401D9CF0CDD248C9A58B784 /* RESTArchivedInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD199591115E668FE6D485AF /* RESTArchivedInsight.swift */; };
@@ -312,6 +313,7 @@
 		D41C86191CC36469E9A9DE48 /* AccountRESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6737742C4BFE5F8B104D0B /* AccountRESTTests.swift */; };
 		D7327789D38D2DE3CC3C8A40 /* RESTBudgetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BA794E07A08B2023BD0B7 /* RESTBudgetRequest.swift */; };
 		D85A3FCDB07F629E79C4758D /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723FFFD86F03FAD2DCFA9812 /* TransactionService.swift */; };
+		D908AAC7FA1B944A42E9418A /* Credentials+Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5065BA805A612FB15EA8B /* Credentials+Deprecations.swift */; };
 		D9F50D808D31E968ED11C057 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD7E2AEF465233534AC792A /* Result+Extensions.swift */; };
 		DACBA857196A7BF2847ED6E3 /* Statistic+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CEFA707449A63C3E6D8EF /* Statistic+REST.swift */; };
 		DAF2FED439D0A502372DABE4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41E3346B38D6F0EC70A5919 /* UserService.swift */; };
@@ -322,6 +324,7 @@
 		DBD2260319CF64E05ADCAFB2 /* RESTTransactionsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A84EFFB3CFAAE2A2BF419F /* RESTTransactionsResult.swift */; };
 		DC10B7048EEF7146F22D1323 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C3DD7641536EFB52095CA /* Identifier.swift */; };
 		DC2195B0FCA3D0D962301161 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588D7E4872239EEF81E1C42 /* AccountService.swift */; };
+		DD3B8E48AE3333D6C064D4ED /* Provider+Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C8D50FD1D61A6E93E47D6 /* Provider+Deprecations.swift */; };
 		DDB90222C6C1666718023E44 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F2CA253D3F521B4AFD84B6 /* AuthenticationService.swift */; };
 		DEF9E2D12F4B5EC432FCBC10 /* RESTBudgetSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72E61B71FFE4EF3354E85E6 /* RESTBudgetSummary.swift */; };
 		E06F1B6BB5993322B68FA8FD /* RESTCategorizeTransactionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28B99A85892EDA15B4702B /* RESTCategorizeTransactionsRequest.swift */; };
@@ -353,6 +356,7 @@
 		EF1B4A0DA9D3676F1EB8FCF9 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627C6CD0F5AC1F6D39A9996 /* Market.swift */; };
 		EF940D3736AD433CD6E559D4 /* Category+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B6123C643AB2D6ACF9014 /* Category+REST.swift */; };
 		F052D270A626DA1A9F163351 /* RESTActionableInsightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3889C64C778DC8268272702A /* RESTActionableInsightService.swift */; };
+		F1F9C92E7FFEB6798D6BB159 /* Provider+Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C8D50FD1D61A6E93E47D6 /* Provider+Deprecations.swift */; };
 		F28FAFB6DA71A03D47BDD988 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17225CDA6DC879B52FB2D8A4 /* Calendar+Extensions.swift */; };
 		F2B066818649CC32849E8051 /* SDKHeaderClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC99E6E5A186B2283D456CF7 /* SDKHeaderClientBehavior.swift */; };
 		F2B83FC432A2BE155919C09C /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1789ACF317A72FD3A9B4B3E6 /* OAuthService.swift */; };
@@ -546,6 +550,7 @@
 		B35658473C0304A45D5184A8 /* RESTSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTSearchQuery.swift; sourceTree = "<group>"; };
 		B35CD36F6AFD793A0A4EA360 /* RESTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCategory.swift; sourceTree = "<group>"; };
 		B3ACD2FC48F4A7ACDC6FDF57 /* RESTSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTSearchResponse.swift; sourceTree = "<group>"; };
+		B49C8D50FD1D61A6E93E47D6 /* Provider+Deprecations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Provider+Deprecations.swift"; sourceTree = "<group>"; };
 		B753013E937468E888E7EA85 /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		B831640C4808CEF75A59C179 /* RESTTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTransactionService.swift; sourceTree = "<group>"; };
 		B8E3986C0809410DA7AE3504 /* RESTProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTProviderService.swift; sourceTree = "<group>"; };
@@ -566,6 +571,7 @@
 		CD58CD212B5B3160CD9FAF95 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 		CD70EC629E3B17D0BE0FD73B /* RESTCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCalendarService.swift; sourceTree = "<group>"; };
 		CF0205C8E055BAA5A1AC8425 /* Beneficiary+REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beneficiary+REST.swift"; sourceTree = "<group>"; };
+		CFA5065BA805A612FB15EA8B /* Credentials+Deprecations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials+Deprecations.swift"; sourceTree = "<group>"; };
 		D72E61B71FFE4EF3354E85E6 /* RESTBudgetSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTBudgetSummary.swift; sourceTree = "<group>"; };
 		DA34A4D89E1DD0E9979692F6 /* BudgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetService.swift; sourceTree = "<group>"; };
 		DAA347F456551D28025858A9 /* SecCertificate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Swift.swift"; sourceTree = "<group>"; };
@@ -621,6 +627,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0159394F5E3A84C41FB50EF6 /* Deprecations */ = {
+			isa = PBXGroup;
+			children = (
+				CFA5065BA805A612FB15EA8B /* Credentials+Deprecations.swift */,
+				B49C8D50FD1D61A6E93E47D6 /* Provider+Deprecations.swift */,
+			);
+			path = Deprecations;
+			sourceTree = "<group>";
+		};
 		06BF5914B2438B7E1EF036CF = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +876,7 @@
 		6CD229AACE552907A18E8AA1 /* AIS */ = {
 			isa = PBXGroup;
 			children = (
+				0159394F5E3A84C41FB50EF6 /* Deprecations */,
 				6DA96658953369AC0333FEFB /* Models */,
 				0EE8FAAA4AE1164F94DE3CD1 /* REST */,
 				2180578C3A1E83580FD32493 /* Services */,
@@ -1225,7 +1241,7 @@
 		61A03A7661A62EF676A69C79 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 				};
 			};
@@ -1234,6 +1250,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				Base,
 				en,
 			);
 			mainGroup = 06BF5914B2438B7E1EF036CF;
@@ -1329,6 +1346,7 @@
 				26A2681B4C3293FF59975CCC /* ClientDescription.swift in Sources */,
 				1F3AA944615728CFF2AFCD74 /* ComposableClientBehavior.swift in Sources */,
 				9192C4C8B0E19E32E045CC58 /* Configuration.swift in Sources */,
+				A2444A8587F890401CEE921A /* Credentials+Deprecations.swift in Sources */,
 				47E5AC42585D44B062E2A349 /* Credentials+REST.swift in Sources */,
 				F93A076E558B9E84E59E7C6E /* Credentials.swift in Sources */,
 				360F4E5926D740D2A3A9FD27 /* CredentialsService.swift in Sources */,
@@ -1348,6 +1366,7 @@
 				26FBF5C024BC2A3C6EA9FAA5 /* Period+REST.swift in Sources */,
 				A9F27F15470DC6E036C9AA60 /* Period.swift in Sources */,
 				EE93C695723EDC2428E191BC /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */,
+				DD3B8E48AE3333D6C064D4ED /* Provider+Deprecations.swift in Sources */,
 				AE48DDB292FA089A174A605C /* Provider+REST.swift in Sources */,
 				6B19F00950D64907F2CB048E /* Provider.swift in Sources */,
 				B72C1DEB96F6CB05BEFB5DC1 /* ProviderService.swift in Sources */,
@@ -1504,6 +1523,7 @@
 				7D1DD827B1B0ADF4F76B213D /* ClientDescription.swift in Sources */,
 				2B8EC3D99F2DB544F856F509 /* ComposableClientBehavior.swift in Sources */,
 				C3742EB6D8CFEB495F39834B /* Configuration.swift in Sources */,
+				D908AAC7FA1B944A42E9418A /* Credentials+Deprecations.swift in Sources */,
 				AC53F260327C6B3B83D02C81 /* Credentials+REST.swift in Sources */,
 				86F1E6BF46B9E9FCDEA2D006 /* Credentials.swift in Sources */,
 				71E49CA96E0CF5AE7653E571 /* CredentialsService.swift in Sources */,
@@ -1523,6 +1543,7 @@
 				C49E9B75F022BCFD3EB3007C /* Period+REST.swift in Sources */,
 				25293F6C45E43C6926CD2643 /* Period.swift in Sources */,
 				4A858B5E16D99A5EBC109FE0 /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */,
+				F1F9C92E7FFEB6798D6BB159 /* Provider+Deprecations.swift in Sources */,
 				172F44881344475AF5622A09 /* Provider+REST.swift in Sources */,
 				2DE9E78C85420139041B41DE /* Provider.swift in Sources */,
 				0C892D49DA7C14B37BBF769C /* ProviderService.swift in Sources */,
@@ -1668,7 +1689,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = "1.0.0-rc.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1688,6 +1709,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1703,6 +1725,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1721,10 +1744,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1738,6 +1763,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1753,6 +1779,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1777,7 +1804,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1804,7 +1832,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = "1.0.0-rc.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
@@ -1868,7 +1896,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = "1.0.0-rc.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1896,7 +1924,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = "1.0.0-rc.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
