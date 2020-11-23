@@ -43,9 +43,9 @@ final class RESTClient {
                 } else if let data = data, let response = response {
                     if let response = response as? HTTPURLResponse, let statusCodeError = HTTPStatusCodeError(statusCode: response.statusCode) {
                         let restError = try? JSONDecoder().decode(RESTError.self, from: data)
-                        let error: Error = restError ?? statusCodeError
-                        request.onResponse(.failure(error))
-                        self.behavior.afterError(error: error)
+                        let serviceError = ServiceError(statusCodeError: restError?.statusCodeError ?? statusCodeError, message: restError?.errorMessage)
+                        request.onResponse(.failure(serviceError))
+                        self.behavior.afterError(error: serviceError)
                     } else {
                         request.onResponse(.success((data, response)))
                         self.behavior.afterSuccess(response: data, urlResponse: response)

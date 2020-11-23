@@ -70,8 +70,8 @@ public enum TransactionsQueryError: Error {
     case notMatchable
 }
 
-public extension Collection where Element == Transaction {
-    func filter(with query: TransactionsQuery) throws -> [Transaction] {
+extension Collection where Element == Transaction {
+    public func filter(with query: TransactionsQuery) throws -> [Transaction] {
         if let queryString = query.query, !queryString.isEmpty { throw TransactionsQueryError.notMatchable }
 
         return filter { transaction in

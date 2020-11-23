@@ -77,8 +77,8 @@ public struct ActionableInsight {
     }
 }
 
-public extension ActionableInsight {
-    struct AccountBalanceLowData {
+extension ActionableInsight {
+    public struct AccountBalanceLowData {
         public let accountID: Account.ID
         public let balance: CurrencyDenominatedAmount
 
@@ -88,7 +88,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct BudgetSummary {
+    public struct BudgetSummary {
         public let budgetID: Budget.ID
         public let budgetPeriod: BudgetPeriod
 
@@ -100,14 +100,14 @@ public extension ActionableInsight {
         @available(*, deprecated, renamed: "budgetID")
         public var budgetId: Budget.ID { budgetID }
 
-        @available(*, deprecated, renamed: "init(budgetID:budgtePeriod:)")
+        @available(*, deprecated, renamed: "init(budgetID:budgetPeriod:)")
         public init(budgetId: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
             self.budgetID = budgetId
             self.budgetPeriod = budgetPeriod
         }
     }
 
-    struct BudgetPeriod {
+    public struct BudgetPeriod {
         public let dateInterval: DateInterval
         public let spentAmount: CurrencyDenominatedAmount
         public let budgetAmount: CurrencyDenominatedAmount
@@ -119,14 +119,14 @@ public extension ActionableInsight {
         }
     }
 
-    enum BudgetPeriodUnit {
+    public enum BudgetPeriodUnit {
         case year
         case month
         case week
         case unspecified
     }
 
-    struct BudgetPeriodSummary {
+    public struct BudgetPeriodSummary {
         public let achievedBudgets: [BudgetSummary]
         public let overspentBudgets: [BudgetSummary]
         public let periodUnit: BudgetPeriodUnit
@@ -161,7 +161,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LargeExpense {
+    public struct LargeExpense {
         public let transactionID: Transaction.ID
         public let amount: CurrencyDenominatedAmount
 
@@ -171,7 +171,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct WeeklyTranscations {
+    public struct WeeklyTranscations {
         public let transactionIDs: [Transaction.ID]
         public let week: Week
 
@@ -181,7 +181,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct CategorySpending {
+    public struct CategorySpending {
         public let categoryCode: Category.Code
         public let spentAmount: CurrencyDenominatedAmount
 
@@ -191,7 +191,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct TransactionSummary {
+    public struct TransactionSummary {
         public struct TransactionsOverview {
             public let totalCount: Int
             public let mostCommonDescription: String
@@ -228,7 +228,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct WeeklyExpensesByCategory {
+    public struct WeeklyExpensesByCategory {
         public let week: Week
         public let expensesByCategory: [CategorySpending]
 
@@ -238,7 +238,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct WeeklyExpensesByDay {
+    public struct WeeklyExpensesByDay {
         public struct ExpenseStatisticsByDay {
             public let day: Day
             public let expenseStatistics: ExpenseStatistics
@@ -299,7 +299,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct WeeklyTransactionsSummary {
+    public struct WeeklyTransactionsSummary {
         public let week: Week
         public let summary: TransactionSummary
 
@@ -309,7 +309,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct MonthlyExpensesByCategory {
+    public struct MonthlyExpensesByCategory {
         public let month: Month
         public let expensesByCategory: [CategorySpending]
 
@@ -319,7 +319,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct NewIncomeTransaction {
+    public struct NewIncomeTransaction {
         public let transactionID: Transaction.ID
         public let accountID: Account.ID
 
@@ -329,7 +329,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct MonthlyTransactionsSummary {
+    public struct MonthlyTransactionsSummary {
         public let month: Month
         public let summary: TransactionSummary
 
@@ -339,7 +339,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct Month {
+    public struct Month {
         public let year: Int
         public let month: Int
 
@@ -349,7 +349,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct Week {
+    public struct Week {
         public let year: Int
         public let week: Int
 
@@ -359,7 +359,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct Day {
+    public struct Day {
         public let year: Int
         public let month: Int
         public let day: Int
@@ -371,7 +371,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct AccountInfo {
+    public struct AccountInfo {
         public let id: Account.ID
         public let name: String
 
@@ -381,7 +381,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct SuggestSetUpSavingsAccount {
+    public struct SuggestSetUpSavingsAccount {
         @available(*, deprecated, message: "Use ActionableInsight.AccountInfo instead.")
         public typealias AccountInfo = ActionableInsight.AccountInfo
 
@@ -396,7 +396,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct CreditCardLimit {
+    public struct CreditCardLimit {
         public let account: AccountInfo
         public let availableCredit: CurrencyDenominatedAmount?
 
@@ -406,7 +406,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendStatistics {
+    public struct LeftToSpendStatistics {
         public let createdAt: Date
         public let currentLeftToSpend: CurrencyDenominatedAmount
         public let averageLeftToSpend: CurrencyDenominatedAmount
@@ -418,7 +418,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendMidMonth {
+    public struct LeftToSpendMidMonth {
         public let month: Month
         public let amountDifference: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
@@ -430,7 +430,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendNegativeSummary {
+    public struct LeftToSpendNegativeSummary {
         public let month: Month
         public let leftToSpend: CurrencyDenominatedAmount
 
@@ -440,7 +440,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct BudgetSuggestCreateTopCategory {
+    public struct BudgetSuggestCreateTopCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
 
@@ -450,7 +450,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendBeginningMonth {
+    public struct LeftToSpendBeginningMonth {
         public let month: Month
         public let amountDifference: CurrencyDenominatedAmount
         public let totalExpense: CurrencyDenominatedAmount
@@ -464,7 +464,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendNegative {
+    public struct LeftToSpendNegative {
         public let month: Month
         public let createdAt: Date
         public let leftToSpend: CurrencyDenominatedAmount
@@ -476,7 +476,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct CategoryInfo {
+    public struct CategoryInfo {
         public let id: TinkCore.Category.ID
         public let code: TinkCore.Category.Code
         public let name: String
@@ -488,7 +488,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct SpendingByCategoryIncreased {
+    public struct SpendingByCategoryIncreased {
         public let category: CategoryInfo
         public let lastMonth: Month
         public let lastMonthSpending: CurrencyDenominatedAmount
@@ -504,7 +504,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendPositiveSummarySavingsAccount {
+    public struct LeftToSpendPositiveSummarySavingsAccount {
         public let month: Month
         public let leftAmount: CurrencyDenominatedAmount
 
@@ -514,7 +514,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct LeftToSpendPositiveFinalWeek {
+    public struct LeftToSpendPositiveFinalWeek {
         public let month: Month
         public let amountDifference: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
@@ -528,7 +528,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct ProviderInfo {
+    public struct ProviderInfo {
         public let id: Provider.ID
         public let displayName: String
 
@@ -538,7 +538,7 @@ public extension ActionableInsight {
         }
     }
 
-    struct AggregationRefreshPSD2Credentials {
+    public struct AggregationRefreshPSD2Credentials {
         public let credentialsID: Credentials.ID
         public let provider: ProviderInfo
         public let sessionExpiryDate: Date

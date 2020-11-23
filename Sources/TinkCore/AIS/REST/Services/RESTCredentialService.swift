@@ -29,8 +29,8 @@ final class RESTCredentialsService: CredentialsService {
     }
 
     @discardableResult
-    func create(providerID: Provider.ID, refreshableItems: RefreshableItems, fields: [String: String], appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTCreateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, triggerRefresh: nil)
+    func create(providerName: Provider.Name, refreshableItems: RefreshableItems, fields: [String: String], appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTCreateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, triggerRefresh: nil)
 
         let parameters: [URLQueryItem]
         if refreshableItems != .all {
@@ -56,8 +56,8 @@ final class RESTCredentialsService: CredentialsService {
     }
 
     @discardableResult
-    func update(id: Credentials.ID, providerID: Provider.ID, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTUpdateCredentialsRequest(providerName: providerID.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString)
+    func update(id: Credentials.ID, providerName: Provider.Name, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTUpdateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString)
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials/\(id.value)", method: .put, body: body, contentType: .json) { result in
             completion(result.map { Credentials(restCredentials: $0, appUri: self.appUri) })
         }

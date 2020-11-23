@@ -9,8 +9,6 @@ final class AuthorizationHeaderClientBehavior: ClientBehavior {
 
     var headers: [String: String] {
         switch userSession {
-        case .sessionID(let sessionID):
-            return ["Authorization": "Session \(sessionID)"]
         case .accessToken(let accessToken):
             return ["Authorization": "Bearer \(accessToken)"]
         default:

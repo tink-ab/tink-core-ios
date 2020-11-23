@@ -26,9 +26,7 @@ extension Tink {
         /// The URI you've setup in Console.
         public var redirectURI: URL
 
-        public var appURI: URL? {
-            redirectURI
-        }
+        public var appURI: URL?
 
         /// The environment to use.
         public var environment: Environment
@@ -40,6 +38,29 @@ extension Tink {
         @available(*, renamed: "certificateURL")
         public var restCertificateURL: URL? {
             certificateURL
+        }
+
+        /// - Parameters:
+        ///   - clientID: The client id for your app.
+        ///   - appURI: The URI you've setup in Console.
+        ///   - environment: The environment to use, defaults to production.
+        ///   - certificateURL: URL to a certificate file to use with the API.
+        public init(
+            clientID: String,
+            appURI: URL? = nil,
+            environment: Environment = .production,
+            certificateURL: URL? = nil
+        ) {
+            if let appURI = appURI {
+                precondition(!(appURI.host?.isEmpty ?? true), "Cannot find host in the appURI")
+                self.redirectURI = appURI
+            } else {
+                self.redirectURI = URL(string: "http://localhost:3000/callback")!
+            }
+            self.appURI = appURI
+            self.clientID = clientID
+            self.environment = environment
+            self.certificateURL = certificateURL
         }
 
         /// - Parameters:
@@ -58,25 +79,9 @@ extension Tink {
             }
             self.clientID = clientID
             self.redirectURI = redirectURI
+            self.appURI = redirectURI
             self.environment = environment
             self.certificateURL = certificateURL
-        }
-
-        /// - Parameters:
-        ///   - clientID: The client id for your app.
-        ///   - redirectURI: The URI you've setup in Console.
-        ///   - environment: The environment to use, defaults to production.
-        ///   - grpcCertificateURL: URL to a certificate file to use with the gRPC API.
-        ///   - restCertificateURL: URL to a certificate file to use with the REST API.
-        @available(*, deprecated, message: "Use init(clientID:redirectURI:environment:certificateURL:) instead")
-        public init(
-            clientID: String,
-            redirectURI: URL,
-            environment: Environment = .production,
-            grpcCertificateURL: URL? = nil,
-            restCertificateURL: URL? = nil
-        ) throws {
-            try self.init(clientID: clientID, redirectURI: redirectURI, environment: environment, certificateURL: restCertificateURL)
         }
     }
 }
@@ -89,7 +94,7 @@ extension Tink.Configuration {
         var errorDescription: String? {
             switch self {
             case .clientIDNotFound:
-                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client identifer before using it."
+                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client identifier before using it."
             case .redirectURINotFound:
                 return "`TINK_REDIRECT_URI` was not found in environment variable. Please configure a Tink Link redirect URI before using it."
             }

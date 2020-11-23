@@ -2,14 +2,14 @@ import Foundation
 
 extension Provider {
     init(restProvider: RESTProvider) {
-        self.id = .init(restProvider.name)
+        self.name = .init(restProvider.name)
         self.displayName = restProvider.displayName
         self.authenticationUserType = .init(restType: restProvider.authenticationUserType)
         self.kind = .init(restType: restProvider.type)
         self.status = Status(restStatus: restProvider.status)
         self.helpText = restProvider.passwordHelpText
         self.isPopular = restProvider.popular
-        self.fields = restProvider.fields.map(FieldSpecification.init)
+        self.fields = restProvider.fields.map(Field.init)
         self.groupDisplayName = restProvider.groupDisplayName ?? restProvider.displayName
         self.image = restProvider.images.flatMap { URL(string: $0.icon ?? "") }
         self.displayDescription = restProvider.displayDescription ?? ""
@@ -52,8 +52,6 @@ extension Provider.Kind {
             self = .other
         case .test:
             self = .test
-        case .fraud:
-            self = .fraud
         case .unknown:
             self = .unknown
         }
@@ -155,20 +153,20 @@ extension Provider.AccessType {
     }
 }
 
-extension Provider.FieldSpecification {
+extension Provider.Field {
     init(restField: RESTField) {
-        self.fieldDescription = restField._description ?? ""
-        self.hint = restField.hint ?? ""
+        self.description = restField._description
+        self.hint = restField.hint
         self.maxLength = restField.maxLength
         self.minLength = restField.minLength
         self.isMasked = restField.masked ?? false
         self.isNumeric = restField.numeric ?? false
         self.isImmutable = restField.immutable ?? false
         self.isOptional = restField._optional ?? true
-        self.name = restField.name ?? ""
-        self.initialValue = restField.value ?? ""
-        self.pattern = restField.pattern ?? ""
-        self.patternError = restField.patternError ?? ""
-        self.helpText = restField.helpText ?? ""
+        self.name = restField.name
+        self.initialValue = restField.value
+        self.pattern = restField.pattern
+        self.patternError = restField.patternError
+        self.helpText = restField.helpText
     }
 }
