@@ -31,6 +31,34 @@ class RESTActionableInsightService: ActionableInsightService {
     }
 
     @discardableResult
+    public func select(
+        _ insightAction: ActionableInsight.InsightAction,
+        forInsightWithID insightID: ActionableInsight.ID,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) -> RetryCancellable? {
+        let body = [
+            "insightAction": insightAction.data?.type ?? "",
+            "insightId": insightID.value
+        ]
+
+        let request = RESTSimpleRequest(path: "/api/v1/insights/action", method: .post, body: body, contentType: .json) { result in
+            completion(result.flatMap { response in
+                guard let response = response as? HTTPURLResponse else {
+                    return .failure(URLError(.cannotParseResponse))
+                }
+
+                guard response.statusCode == 204 else {
+                    return .failure(URLError(.cannotParseResponse))
+                }
+
+                return .success
+            })
+        }
+
+        return client.performRequest(request)
+    }
+
+    @discardableResult
     public func selectAction(
         insightAction: String,
         insightID: ActionableInsight.ID,
