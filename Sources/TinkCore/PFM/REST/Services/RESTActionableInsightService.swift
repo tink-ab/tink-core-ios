@@ -58,6 +58,7 @@ class RESTActionableInsightService: ActionableInsightService {
         return client.performRequest(request)
     }
 
+    @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
     @discardableResult
     public func selectAction(
         insightAction: String,

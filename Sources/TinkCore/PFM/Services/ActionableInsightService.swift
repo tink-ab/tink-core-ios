@@ -8,7 +8,8 @@ public protocol ActionableInsightService {
         forInsightWithID insightID: ActionableInsight.ID,
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable?
-    
+
+    @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
     func selectAction(insightAction: String, insightID: ActionableInsight.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable?
 
     @available(*, deprecated, message: "Use selectAction(insightAction:insightID:) method instead.")
