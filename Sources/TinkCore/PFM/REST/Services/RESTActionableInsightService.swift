@@ -58,6 +58,7 @@ class RESTActionableInsightService: ActionableInsightService {
         return client.performRequest(request)
     }
 
+    @available(*, deprecated, message: "Use selectAction(insightAction:insightID:) method instead.")
     @discardableResult
     public func archive(
         id: ActionableInsight.ID,
