@@ -57,6 +57,15 @@ public struct Provider: Identifiable {
     /// Indicates what kind of financial institution the provider represents.
     public let kind: Provider.Kind
 
+    /// Indicates the release status of a provider.
+    public enum ReleaseStatus {
+        /// The provider is in beta and might show unexpected behavior from time to time.
+        case beta
+    }
+
+    /// Indicates the release status of the provider.
+    public let releaseStatus: ReleaseStatus?
+
     /// Indicates the current status of a provider.
     public enum Status {
         /// The status of the provider is unknown.
