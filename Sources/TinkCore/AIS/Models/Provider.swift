@@ -59,6 +59,7 @@ public struct Provider: Identifiable {
 
     /// Indicates the release status of a provider.
     public enum ReleaseStatus {
+        /// The provider is in beta and might show unexpected behavior from time to time.
         case beta
     }
 
