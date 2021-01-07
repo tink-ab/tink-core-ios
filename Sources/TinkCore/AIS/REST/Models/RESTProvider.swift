@@ -83,6 +83,14 @@ struct RESTProvider: Decodable {
         static var decodeFallbackValue: RESTProvider.AuthenticationUserType = .unknown
     }
 
+    /// Indicates the release status of a provider.
+    enum ReleaseStatus: String, DefaultableDecodable {
+        case beta = "BETA"
+        case unknown = "UNKNOWN"
+
+        static var decodeFallbackValue: RESTProvider.ReleaseStatus = .unknown
+    }
+
     /// What Tink uses to access the data.
     var accessType: AccessType
     /// (PSD2 change - Not yet implemented) - What type of authentication flow used to access the data.
@@ -118,6 +126,8 @@ struct RESTProvider: Decodable {
     var passwordHelpText: String?
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
     var popular: Bool
+    /// Indicates the release status of the provider.
+    var releaseStatus: ReleaseStatus?
     /// Indicates the current status of the provider. It is only possible to perform credentials create or refresh actions on providers which are enabled.
     var status: Status
     /// Indicates if Tink can aggregate transactions for this provider.
