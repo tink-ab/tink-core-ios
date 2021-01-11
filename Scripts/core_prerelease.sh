@@ -34,6 +34,6 @@ mv ./build/TinkCore.xcframework ./
 git add .
 git commit -m"Update framework"
 
-gh pr create --repo tink-ab/tink-core-ios-private -t "rc:$newVersion" -b "Release candidate for Tink Core pre release." -r tink-ab/ios-maintainer
+gh pr create --repo tink-ab/tink-core-ios-private -t "$newVersion Prerelease" -b "Release candidate for Tink Core prerelease." -r tink-ab/ios-maintainer
 
 echo "Release candidate PR has been created! 🎉"
