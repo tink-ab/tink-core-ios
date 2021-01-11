@@ -53,9 +53,9 @@ extension Tink {
         ) {
             if let appURI = appURI {
                 precondition(!(appURI.host?.isEmpty ?? true), "Cannot find host in the appURI")
-                redirectURI = appURI
+                self.redirectURI = appURI
             } else {
-                redirectURI = URL(string: "http://localhost:3000/callback")!
+                self.redirectURI = URL(string: "http://localhost:3000/callback")!
             }
             self.appURI = appURI
             self.clientID = clientID
