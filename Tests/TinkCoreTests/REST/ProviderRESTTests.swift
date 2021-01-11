@@ -26,6 +26,7 @@ class ProviderRESTTests: XCTestCase {
             name: "se-test-other-third-party-app-successful",
             passwordHelpText: "To connect your bank, you need to identify yourself using a third party app.",
             popular: false,
+            releaseStatus: nil,
             status: .enabled,
             transactional: true,
             type: .test

@@ -17,8 +17,8 @@ public struct Period {
     }
 }
 
-public extension Period.Resolution {
-    var statisticResolution: Statistic.Resolution {
+extension Period.Resolution {
+    public var statisticResolution: Statistic.Resolution {
         switch self {
         case .monthly:
             return .monthly

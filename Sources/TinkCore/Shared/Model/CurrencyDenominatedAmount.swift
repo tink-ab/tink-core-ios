@@ -5,29 +5,29 @@ public struct CurrencyDenominatedAmount: Equatable, Hashable {
     public let currencyCode: CurrencyCode
 }
 
-public extension CurrencyDenominatedAmount {
-    var doubleValue: Double {
+extension CurrencyDenominatedAmount {
+    public var doubleValue: Double {
         return NSDecimalNumber(decimal: value).doubleValue
     }
 
-    init() {
+    public init() {
         self.init(0, currencyCode: CurrencyCode(""))
     }
 
-    init(_ int: Int, currencyCode: CurrencyCode) {
+    public init(_ int: Int, currencyCode: CurrencyCode) {
         self.init(Decimal(int), currencyCode: currencyCode)
     }
 
-    init(_ double: Double, currencyCode: CurrencyCode) {
+    public init(_ double: Double, currencyCode: CurrencyCode) {
         self.init(Decimal(double), currencyCode: currencyCode)
     }
 
-    init(_ decimal: Decimal, currencyCode: CurrencyCode) {
+    public init(_ decimal: Decimal, currencyCode: CurrencyCode) {
         self.value = decimal
         self.currencyCode = currencyCode
     }
 
-    init(_ number: NSNumber, currencyCode: CurrencyCode) {
+    public init(_ number: NSNumber, currencyCode: CurrencyCode) {
         self.value = number.decimalValue
         self.currencyCode = currencyCode
     }
