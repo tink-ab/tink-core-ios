@@ -6,6 +6,7 @@ extension Provider {
         self.displayName = restProvider.displayName
         self.authenticationUserType = .init(restType: restProvider.authenticationUserType)
         self.kind = .init(restType: restProvider.type)
+        self.releaseStatus = restProvider.releaseStatus == .beta ? .beta : nil
         self.status = Status(restStatus: restProvider.status)
         self.helpText = restProvider.passwordHelpText
         self.isPopular = restProvider.popular

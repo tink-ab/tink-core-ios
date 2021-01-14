@@ -18,6 +18,7 @@
 		06115CE6D571443CBCC13E0B /* RESTBudgetTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35209D281B1D1E92A95C458E /* RESTBudgetTransactionsResponse.swift */; };
 		0653733F48522507A92C1B29 /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62A081B4B197F9C0F16B7D /* CertificatePinningDelegate.swift */; };
 		088CEDC4EDCCF82FEA941C3A /* RESTArchiveBudgetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11741D6BA6D79078107A38BB /* RESTArchiveBudgetResponse.swift */; };
+		09C24161B5BB047F6947469D /* InsightActionData+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4C102EFD8F48C320A48DA /* InsightActionData+Type.swift */; };
 		0AD68A421D6D32C9E3EFD8A8 /* CredentialRESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0836D5167F87874F569C80AE /* CredentialRESTTests.swift */; };
 		0C219E3ACE73152B3B46CFC5 /* RESTArchiveBudgetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11741D6BA6D79078107A38BB /* RESTArchiveBudgetResponse.swift */; };
 		0C892D49DA7C14B37BBF769C /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AC13A0EC5667797708C98F /* ProviderService.swift */; };
@@ -114,6 +115,7 @@
 		4408F22BC1F6A74546104007 /* BeneficiaryRESTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0ECC92402A5369EA98DEB /* BeneficiaryRESTTest.swift */; };
 		4415C4DCAEBC24ED2E1AD93B /* Retriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC24BD77279CCFFC5D33742 /* Retriable.swift */; };
 		4468CA99202BD4D11FAA84BF /* RESTCreateCredentialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781D8F8F0826B741657A06A8 /* RESTCreateCredentialsRequest.swift */; };
+		449184166EFDA58B32B0EEF5 /* InsightActionData+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4C102EFD8F48C320A48DA /* InsightActionData+Type.swift */; };
 		44B133D452066BC141C77C21 /* RESTPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038A01AB94ACCEDB252E349 /* RESTPeriod.swift */; };
 		45118EA8D53ECD42CA965DEC /* TransactionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF967DAD2178A3FC4B71733 /* TransactionQuery.swift */; };
 		451A2CEACAE08E9914E10FD0 /* RESTThirdPartyAppAuthenticationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD0617A133051557E77FB2 /* RESTThirdPartyAppAuthenticationPayload.swift */; };
@@ -468,6 +470,7 @@
 		35209D281B1D1E92A95C458E /* RESTBudgetTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTBudgetTransactionsResponse.swift; sourceTree = "<group>"; };
 		374B288668BD6EDF7A0C2091 /* RESTCallbackRelayedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCallbackRelayedRequest.swift; sourceTree = "<group>"; };
 		3889C64C778DC8268272702A /* RESTActionableInsightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTActionableInsightService.swift; sourceTree = "<group>"; };
+		3BD4C102EFD8F48C320A48DA /* InsightActionData+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InsightActionData+Type.swift"; sourceTree = "<group>"; };
 		3BE01D8C0F447F42CD09CEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3D29360CA80FB6CD206AC0F8 /* ClientDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDescription.swift; sourceTree = "<group>"; };
 		3DAAB8DDFDA7DA901EF94B39 /* RefreshableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableItem.swift; sourceTree = "<group>"; };
@@ -1115,6 +1118,7 @@
 			isa = PBXGroup;
 			children = (
 				17225CDA6DC879B52FB2D8A4 /* Calendar+Extensions.swift */,
+				3BD4C102EFD8F48C320A48DA /* InsightActionData+Type.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1360,6 +1364,7 @@
 				6C9B88CEF91A6C954D01BA0F /* FinancialInstitution.swift in Sources */,
 				977E3E548AF7061EC8AB0472 /* HTTPStatusCodeError.swift in Sources */,
 				3D205290721E90D1954E96AE /* Identifier.swift in Sources */,
+				449184166EFDA58B32B0EEF5 /* InsightActionData+Type.swift in Sources */,
 				30A18C9A2CDC8F9592A31B0B /* Locale+Extensions.swift in Sources */,
 				1E6D2FCA230C34B4FAAAD921 /* Market.swift in Sources */,
 				F8C60C2CBAE57428EB7E51E4 /* OAuthService.swift in Sources */,
@@ -1537,6 +1542,7 @@
 				ACDF673B0CD76896ADE7A90B /* FinancialInstitution.swift in Sources */,
 				9244631045E6CA8CD26D16A8 /* HTTPStatusCodeError.swift in Sources */,
 				DC10B7048EEF7146F22D1323 /* Identifier.swift in Sources */,
+				09C24161B5BB047F6947469D /* InsightActionData+Type.swift in Sources */,
 				CB7EEE9785AA7AB70233AA36 /* Locale+Extensions.swift in Sources */,
 				EF1B4A0DA9D3676F1EB8FCF9 /* Market.swift in Sources */,
 				F2B83FC432A2BE155919C09C /* OAuthService.swift in Sources */,
