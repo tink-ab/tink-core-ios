@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
@@ -419,7 +419,10 @@ public enum InsightActionData {
 public protocol ActionableInsightService {
   func insights(completion: @escaping (Swift.Result<[TinkCore.ActionableInsight], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func archivedInsights(completion: @escaping (Swift.Result<[TinkCore.ActionableInsight], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func select(_ insightAction: TinkCore.ActionableInsight.InsightAction, forInsightWithID insightID: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
   func selectAction(insightAction: Swift.String, insightID: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
   func archive(id: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public protocol AuthenticationService {
@@ -895,6 +898,15 @@ public struct Provider : Swift.Identifiable {
     public func hash(into hasher: inout Swift.Hasher)
   }
   public let kind: TinkCore.Provider.Kind
+  public enum ReleaseStatus {
+    case beta
+    public static func == (a: TinkCore.Provider.ReleaseStatus, b: TinkCore.Provider.ReleaseStatus) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let releaseStatus: TinkCore.Provider.ReleaseStatus?
   public enum Status {
     case unknown
     case enabled
@@ -1409,6 +1421,8 @@ extension TinkCore.Provider.Kind : Swift.Equatable {}
 extension TinkCore.Provider.Kind : Swift.Hashable {}
 extension TinkCore.Provider.Status : Swift.Equatable {}
 extension TinkCore.Provider.Status : Swift.Hashable {}
+extension TinkCore.Provider.ReleaseStatus : Swift.Equatable {}
+extension TinkCore.Provider.ReleaseStatus : Swift.Hashable {}
 extension TinkCore.Scope.ReadAccess : Swift.Equatable {}
 extension TinkCore.Scope.ReadAccess : Swift.Hashable {}
 extension TinkCore.Scope.ReadAccess : Swift.RawRepresentable {}
