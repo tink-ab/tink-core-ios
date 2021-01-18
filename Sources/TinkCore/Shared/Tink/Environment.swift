@@ -9,8 +9,7 @@ extension Tink {
         /// The production environment.
         case production
         /// A custom environment.
-        /// - restURL: The URL for the REST endpoints
-        case custom(restURL: URL)
+        case custom(URL)
 
         var restURL: URL {
             switch self {
