@@ -48,15 +48,6 @@ public class Tink {
 
     // MARK: - Creating a Tink Link Object
 
-    private convenience init() {
-        do {
-            let configuration = try Configuration(processInfo: .processInfo)
-            self.init(configuration: configuration)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-
     /// Create a Tink instance with a custom configuration.
     /// - Parameters:
     ///   - configuration: The configuration to be used.
