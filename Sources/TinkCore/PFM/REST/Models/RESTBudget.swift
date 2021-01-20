@@ -10,6 +10,7 @@ struct RESTBudget: Decodable {
     enum PeriodicityType: String, Decodable {
         case oneOff = "ONE_OFF"
         case recurring = "RECURRING"
+        case unknown
     }
 
     struct RecurringPeriodicity: Codable {
@@ -17,6 +18,7 @@ struct RESTBudget: Decodable {
             case week = "WEEK"
             case month = "MONTH"
             case year = "YEAR"
+            case unknown
         }
 
         /// Recurring periodicity unit.
