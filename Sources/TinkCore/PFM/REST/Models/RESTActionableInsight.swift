@@ -549,10 +549,12 @@ enum RESTInsightActionData: Decodable {
             let filter: Filter?
             let amount: RESTInsightData.CurrencyDenominatedAmount?
 
-            enum PeriodicityType: String, Decodable {
+            enum PeriodicityType: String, DefaultableDecodable {
                 case recurring = "BUDGET_PERIODICITY_TYPE_RECURRING"
                 case oneOff = "BUDGET_PERIODICITY_TYPE_ONE_OFF"
                 case unknown
+
+                static var decodeFallbackValue: PeriodicityType = .unknown
             }
 
             let periodicityType: PeriodicityType?
