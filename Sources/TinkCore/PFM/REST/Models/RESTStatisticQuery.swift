@@ -29,4 +29,5 @@ enum RESTStatisticQueryType: String, Codable {
     case incomeAndExpenses = "income-and-expenses"
     case leftToSpend = "left-to-spend"
     case leftToSpendAverage = "left-to-spend-average"
+    case unknown
 }
