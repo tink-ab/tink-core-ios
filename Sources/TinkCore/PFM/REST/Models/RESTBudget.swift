@@ -16,11 +16,13 @@ struct RESTBudget: Decodable {
     }
 
     struct RecurringPeriodicity: Codable {
-        enum PeriodUnit: String, Codable {
+        enum PeriodUnit: String, DefaultableDecodable, Encodable {
             case week = "WEEK"
             case month = "MONTH"
             case year = "YEAR"
             case unknown
+
+            static var decodeFallbackValue: PeriodUnit = .unknown
         }
 
         /// Recurring periodicity unit.
