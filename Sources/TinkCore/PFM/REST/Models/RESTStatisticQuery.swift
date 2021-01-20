@@ -15,6 +15,7 @@ enum RESTStatisticQueryResolution: String, Codable {
     case monthlyAdjusted = "MONTHLY_ADJUSTED"
     case yearly = "YEARLY"
     case all = "ALL"
+    case unknown
 }
 
 enum RESTStatisticQueryType: String, Codable {
