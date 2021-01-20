@@ -8,7 +8,7 @@ struct RESTStatisticQuery: Encodable {
     let types: [RESTStatisticQueryType]?
 }
 
-enum RESTStatisticQueryResolution: String, Codable {
+enum RESTStatisticQueryResolution: String, Encodable, DefaultableDecodable {
     case daily = "DAILY"
     case weekly = "WEEKLY"
     case monthly = "MONTHLY"
@@ -16,9 +16,11 @@ enum RESTStatisticQueryResolution: String, Codable {
     case yearly = "YEARLY"
     case all = "ALL"
     case unknown
+
+    static var decodeFallbackValue: RESTStatisticQueryResolution = .unknown
 }
 
-enum RESTStatisticQueryType: String, Codable {
+enum RESTStatisticQueryType: String, Encodable, DefaultableDecodable {
     case balancesByAccount = "balances-by-account"
     case balancesByAccountTypeGroup = "balances-by-account-type-group"
     case expensesByCategory = "expenses-by-category"
@@ -30,4 +32,6 @@ enum RESTStatisticQueryType: String, Codable {
     case leftToSpend = "left-to-spend"
     case leftToSpendAverage = "left-to-spend-average"
     case unknown
+
+    static var decodeFallbackValue: RESTStatisticQueryType = .unknown
 }
