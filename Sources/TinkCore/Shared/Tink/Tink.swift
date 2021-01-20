@@ -56,7 +56,7 @@ public class Tink {
         let certificateURL = configuration.certificateURL
         let certificate = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
         self.sdkHeaderBehavior = SDKHeaderClientBehavior(sdkName: "Tink Link iOS", clientID: self.configuration.clientID)
-        self.client = RESTClient(restURL: self.configuration.environment.restURL, certificates: certificate, behavior: ComposableClientBehavior(
+        self.client = RESTClient(restURL: self.configuration.environment.url, certificates: certificate, behavior: ComposableClientBehavior(
             behaviors: [
                 sdkHeaderBehavior,
                 authorizationBehavior
