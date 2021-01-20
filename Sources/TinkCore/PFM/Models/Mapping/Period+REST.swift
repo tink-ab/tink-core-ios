@@ -2,7 +2,12 @@ import Foundation
 
 extension Period {
     init?(restPeriod: RESTPeriod) {
-        guard let start = restPeriod.startDate, let end = restPeriod.endDate, let restResolution = restPeriod.resolution, let name = restPeriod.name, let resolution = Resolution(restResolution: restResolution) else { return nil }
+        guard let start = restPeriod.startDate,
+              let end = restPeriod.endDate,
+              let restResolution = restPeriod.resolution,
+              let name = restPeriod.name,
+              let resolution = Resolution(restResolution: restResolution)
+        else { return nil }
         self.init(dateInterval: DateInterval(start: start, end: end), name: name, resolution: resolution)
     }
 }
