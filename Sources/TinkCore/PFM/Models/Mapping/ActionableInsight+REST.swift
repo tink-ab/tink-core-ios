@@ -357,7 +357,7 @@ extension InsightActionData {
                     return .recurring
                 case .oneOff:
                     return .oneOff
-                case .none:
+                case .none, .unknown:
                     return nil
                 }
             }
