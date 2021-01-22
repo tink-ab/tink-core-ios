@@ -478,7 +478,7 @@ struct RESTInsightProposedAction: Decodable {
     let data: RESTInsightActionData?
 }
 
-enum RESTInsightActionDataType: String, Decodable {
+enum RESTInsightActionDataType: String, DefaultableDecodable {
     case unknown
     case acknowledge = "ACKNOWLEDGE"
     case dismiss = "DISMISS"
@@ -494,11 +494,7 @@ enum RESTInsightActionDataType: String, Decodable {
     case createBudget = "CREATE_BUDGET"
     case refreshCredentials = "REFRESH_CREDENTIAL"
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let rawValue = try container.decode(String.self)
-        self = RESTInsightActionDataType(rawValue: rawValue) ?? .unknown
-    }
+    static var decodeFallbackValue: RESTInsightActionDataType = .unknown
 }
 
 enum RESTInsightActionData: Decodable {
@@ -553,9 +549,12 @@ enum RESTInsightActionData: Decodable {
             let filter: Filter?
             let amount: RESTInsightData.CurrencyDenominatedAmount?
 
-            enum PeriodicityType: String, Decodable {
+            enum PeriodicityType: String, DefaultableDecodable {
                 case recurring = "BUDGET_PERIODICITY_TYPE_RECURRING"
                 case oneOff = "BUDGET_PERIODICITY_TYPE_ONE_OFF"
+                case unknown
+
+                static var decodeFallbackValue: PeriodicityType = .unknown
             }
 
             let periodicityType: PeriodicityType?

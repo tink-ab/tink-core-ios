@@ -5,7 +5,7 @@ public struct UserProfile {
     public let locale: Locale
     public let market: Market
     public let periodAdjustedDay: Int
-    public let periodMode: Period.Resolution
+    public let periodMode: Period.Resolution?
     public let timeZone: TimeZone?
 
     public init(currency: CurrencyCode, locale: Locale, market: Market, periodAdjustedDay: Int, periodMode: Period.Resolution, timeZone: TimeZone?) {
