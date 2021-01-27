@@ -81,11 +81,22 @@ framework:
 		SKIP_INSTALL=NO \
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
+	echo 'Build macOS Framework...'
+	xcodebuild clean archive \
+		-project TinkCore.xcodeproj \
+		-scheme TinkCore_macOS \
+		-destination 'generic/platform=macOS' \
+		-archivePath ./build/macos.xcarchive \
+		-sdk macosx \
+		SKIP_INSTALL=NO \
+		BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
 	# Create XCFramework
 	echo 'Assemble Frameworks...'
 	xcodebuild -create-xcframework \
 		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkCore.framework \
+		-framework ./build/macos.xcarchive/Products/Library/Frameworks/TinkCore.framework \
 		-output ./build/TinkCore.xcframework
 
 prerelease:	
