@@ -57,7 +57,7 @@ public struct Account {
     public let credentialsID: Credentials.ID
 
     /// Indicates if the user has favored the account. This property can be updated in a update account request.
-    public let isFavored: Bool
+    public let isFavorite: Bool
 
     /// The internal identifier of account.
     public let id: ID
@@ -143,7 +143,7 @@ public struct Account {
         self.accountNumber = accountNumber
         self.balance = currencyDenominatedBalance?.doubleValue ?? 0.0
         self.credentialsID = credentialsID
-        self.isFavored = false
+        self.isFavorite = false
         self.id = id
         self.name = name
         self.ownership = 1.0
