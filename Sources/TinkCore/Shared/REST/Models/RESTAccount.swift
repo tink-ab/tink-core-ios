@@ -2,7 +2,7 @@ import Foundation
 
 /// An account could either be a debit account, a credit card, a loan or mortgage.
 struct RESTAccount: Decodable {
-    enum ModelType: String, DefaultableDecodable {
+    enum ModelType: String, Encodable, DefaultableDecodable {
         case checking = "CHECKING"
         case savings = "SAVINGS"
         case investment = "INVESTMENT"
