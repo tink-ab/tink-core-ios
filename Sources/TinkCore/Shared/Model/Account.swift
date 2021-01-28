@@ -57,7 +57,7 @@ public struct Account {
     public let credentialsID: Credentials.ID
 
     /// Indicates if the user has favored the account. This property can be updated in a update account request.
-    let isFavored: Bool
+    public let isFavored: Bool
 
     /// The internal identifier of account.
     public let id: ID
