@@ -53,13 +53,29 @@ final class RESTAccountService: AccountService {
             }
         }
 
+        var restAccountExclusion: RESTAccount.AccountExclusion? {
+            switch accountExclusion {
+            case .aggregation:
+                return .aggregation
+            case .pfmAndSearch:
+                return .pfmAndSearch
+            case .pfmData:
+                return .pfmData
+            case .unknown:
+                return .unknown
+            case .none :
+                return nil
+            }
+        }
+
         let updateRequest = RESTUpdateAccountRequest(
             id: id.value,
             name: name,
             accountNumber: accountNumber,
             ownership: ownership,
             favored: isFavorite,
-            type: restType
+            type: restType,
+            accountExclusion: restAccountExclusion
         )
 
         let request = RESTResourceRequest<RESTAccount>(
