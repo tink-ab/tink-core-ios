@@ -7,6 +7,7 @@ public protocol AccountService {
         accountNumber: String?,
         isFavorite: Bool?,
         ownership: Double?,
+        accountExclusion: Account.AccountExclusion?,
         completion: @escaping (Result<Account, Error>) -> Void
     ) -> Cancellable?
 }

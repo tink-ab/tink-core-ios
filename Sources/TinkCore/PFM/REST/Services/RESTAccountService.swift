@@ -23,6 +23,7 @@ final class RESTAccountService: AccountService {
         accountNumber: String?,
         isFavorite: Bool?,
         ownership: Double?,
+        accountExclusion: Account.AccountExclusion?,
         completion: @escaping (Result<Account, Error>) -> Void
     ) -> Cancellable? {
         var restType: RESTAccount.ModelType? {
