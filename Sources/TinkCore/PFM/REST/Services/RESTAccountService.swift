@@ -18,14 +18,14 @@ final class RESTAccountService: AccountService {
 
     func update(
         id: Account.ID,
-        name: String,
-        type: Account.Kind,
-        accountNumber: String,
-        isFavorite: Bool,
-        ownership: Double,
+        name: String?,
+        type: Account.Kind?,
+        accountNumber: String?,
+        isFavorite: Bool?,
+        ownership: Double?,
         completion: @escaping (Result<Account, Error>) -> Void
     ) -> Cancellable? {
-        var restType: RESTAccount.ModelType {
+        var restType: RESTAccount.ModelType? {
             switch type {
             case .checking:
                 return .checking
@@ -47,6 +47,8 @@ final class RESTAccountService: AccountService {
                 return .external
             case .unknown:
                 return .unknown
+            case .none:
+                return nil
             }
         }
 
