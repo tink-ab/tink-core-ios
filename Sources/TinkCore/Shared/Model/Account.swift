@@ -32,9 +32,13 @@ public struct Account {
         case unknown
     }
 
+    /// Indicates which features an account should be excluded from.
     public enum AccountExclusion {
+        /// No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
         case aggregation
+        /// Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
         case pfmAndSearch
+        /// Personal Finance Management Features, like statistics and activities are excluded.
         case pfmData
         case unknown
     }
