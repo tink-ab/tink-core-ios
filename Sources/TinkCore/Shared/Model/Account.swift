@@ -32,7 +32,7 @@ public struct Account {
         case unknown
     }
 
-    enum AccountExclusion {
+    public enum AccountExclusion {
         case aggregation
         case pfmAndSearch
         case pfmData
@@ -97,7 +97,7 @@ public struct Account {
     /// `PFM_AND_SEARCH`: Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
     /// `AGGREGATION`: No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
     /// This property can be updated in a update account request.
-    let accountExclusion: AccountExclusion?
+    public let accountExclusion: AccountExclusion?
 
     /// The current balance of the account.
     /// The definition of the balance property differ between account types.
