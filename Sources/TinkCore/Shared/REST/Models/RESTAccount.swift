@@ -25,7 +25,7 @@ struct RESTAccount: Decodable {
         static var decodeFallbackValue: RESTAccount.Flag = .unknown
     }
 
-    enum AccountExclusion: String, DefaultableDecodable {
+    enum AccountExclusion: String, Encodable, DefaultableDecodable {
         case aggregation = "AGGREGATION"
         case pfmAndSearch = "PFM_AND_SEARCH"
         case pfmData = "PFM_DATA"

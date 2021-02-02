@@ -32,9 +32,13 @@ public struct Account {
         case unknown
     }
 
-    enum AccountExclusion {
+    /// Indicates which features an account should be excluded from.
+    public enum AccountExclusion {
+        /// No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
         case aggregation
+        /// Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
         case pfmAndSearch
+        /// Personal Finance Management Features, like statistics and activities are excluded.
         case pfmData
         case unknown
     }
@@ -91,13 +95,10 @@ public struct Account {
     let flags: [Flag]?
 
     /// Indicates features this account should be excluded from.
-    /// Possible values are:
+    ///
     /// If `nil`, then no features are excluded from this account.
-    /// `PFM_DATA`: Personal Finance Management Features, like statistics and activities are excluded.
-    /// `PFM_AND_SEARCH`: Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
-    /// `AGGREGATION`: No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
-    /// This property can be updated in a update account request.
-    let accountExclusion: AccountExclusion?
+    /// - Note: This property can be updated in a update account request.
+    public let accountExclusion: AccountExclusion?
 
     /// The current balance of the account.
     /// The definition of the balance property differ between account types.
