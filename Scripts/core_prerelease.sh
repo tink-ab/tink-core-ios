@@ -42,6 +42,9 @@ old_path="path: \"TinkCore.xcframework\""
 new_path="url: \"https://github.com/tink-ab/tink-core-ios/releases/download/$version/TinkCore.xcframework.zip\", checksum: \"$checksum\""
 sed -i '' "s|$old_path|$new_path|" Package.swift
 
+git add .
+git commit -m "Package.swift checksum update"
+
 gh pr create --repo tink-ab/tink-core-ios-private -t "$newVersion Prerelease" -b "Release candidate for Tink Core prerelease." -r tink-ab/ios-maintainer
 
 echo "Pre-release PR has been created! 🎉"
