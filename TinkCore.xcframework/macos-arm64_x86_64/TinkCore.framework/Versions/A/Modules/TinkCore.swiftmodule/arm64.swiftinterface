@@ -12,7 +12,7 @@ public struct AccessToken : Swift.Hashable, Swift.RawRepresentable {
   public typealias RawValue = Swift.String
 }
 public struct Account {
-  public enum Kind {
+  public enum Kind : Swift.CaseIterable {
     case checking
     case savings
     case investment
@@ -28,6 +28,10 @@ public struct Account {
       get
     }
     public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [TinkCore.Account.Kind]
+    public static var allCases: [TinkCore.Account.Kind] {
+      get
+    }
   }
   public enum AccountExclusion {
     case aggregation
