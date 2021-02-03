@@ -6,3 +6,4 @@ IDEWorkspaceChecks.plist
 Pods/
 *.xcworkspace
 .swiftpm/
+TinkCore.xcframework.zip
