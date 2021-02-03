@@ -63,7 +63,7 @@ final class RESTAccountService: AccountService {
                 return .pfmData
             case .unknown:
                 return .unknown
-            case .none :
+            case .none:
                 return nil
             }
         }
