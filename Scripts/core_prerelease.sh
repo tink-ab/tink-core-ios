@@ -36,6 +36,8 @@ git commit -m"Update framework"
 
 zip -r TinkCore.xcframework.zip TinkCore.xcframework
 
+checksum=`swift package compute-checksum TinkCore.xcframework.zip`
+
 gh pr create --repo tink-ab/tink-core-ios-private -t "$newVersion Prerelease" -b "Release candidate for Tink Core prerelease." -r tink-ab/ios-maintainer
 
 echo "Pre-release PR has been created! 🎉"
