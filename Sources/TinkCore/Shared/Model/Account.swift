@@ -3,7 +3,7 @@ import Foundation
 /// An account could either be a debit account, a credit card, a loan or mortgage.
 public struct Account {
     /// The kind of the account.
-    public enum Kind {
+    public enum Kind: CaseIterable {
         /// A checking account.
         case checking
         /// A savings account.
