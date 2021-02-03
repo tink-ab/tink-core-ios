@@ -6,16 +6,17 @@ extension UserProfile {
         self.locale = .init(identifier: restUserProfile.locale)
         self.market = .init(code: restUserProfile.market)
         self.periodAdjustedDay = restUserProfile.periodAdjustedDay
-        self.periodMode = .init(restPeriodMode: restUserProfile.periodMode)
+        self.periodMode = Period.Resolution(restPeriodMode: restUserProfile.periodMode)
         self.timeZone = TimeZone(identifier: restUserProfile.timeZone)
     }
 }
 
 extension Period.Resolution {
-    init(restPeriodMode: RESTPeriodMode) {
+    init?(restPeriodMode: RESTPeriodMode) {
         switch restPeriodMode {
         case .monthly: self = .monthly
         case .monthlyAdjusted: self = .monthlyAdjusted
+        case .unknown: return nil
         }
     }
 }

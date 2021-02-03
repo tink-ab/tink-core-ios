@@ -3,7 +3,7 @@ import Foundation
 /// An account could either be a debit account, a credit card, a loan or mortgage.
 public struct Account {
     /// The kind of the account.
-    public enum Kind {
+    public enum Kind: CaseIterable {
         /// A checking account.
         case checking
         /// A savings account.
@@ -32,9 +32,13 @@ public struct Account {
         case unknown
     }
 
-    enum AccountExclusion {
+    /// Indicates which features an account should be excluded from.
+    public enum AccountExclusion {
+        /// No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
         case aggregation
+        /// Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
         case pfmAndSearch
+        /// Personal Finance Management Features, like statistics and activities are excluded.
         case pfmData
         case unknown
     }
@@ -57,7 +61,7 @@ public struct Account {
     public let credentialsID: Credentials.ID
 
     /// Indicates if the user has favored the account. This property can be updated in a update account request.
-    let isFavored: Bool
+    public let isFavorite: Bool
 
     /// The internal identifier of account.
     public let id: ID
@@ -66,7 +70,7 @@ public struct Account {
     public let name: String
 
     /// The ownership ratio indicating how much of the account is owned by the user. The ownership determine the percentage of the amounts on transactions belonging to this account, that should be attributed to the user when statistics are calculated. This property has a default value, and it can only be updated by you in a update account request.
-    let ownership: Double
+    public let ownership: Double
 
     /// The type of the account. This property can be updated in a update account request.
     public let kind: Kind
@@ -91,13 +95,10 @@ public struct Account {
     let flags: [Flag]?
 
     /// Indicates features this account should be excluded from.
-    /// Possible values are:
+    ///
     /// If `nil`, then no features are excluded from this account.
-    /// `PFM_DATA`: Personal Finance Management Features, like statistics and activities are excluded.
-    /// `PFM_AND_SEARCH`: Personal Finance Management Features are excluded, and transactions belonging to this account are not searchable. This is the equivalent of the, now deprecated, boolean flag `excluded`.
-    /// `AGGREGATION`: No data will be aggregated for this account and, all data associated with the account is removed (except account name and account number).
-    /// This property can be updated in a update account request.
-    let accountExclusion: AccountExclusion?
+    /// - Note: This property can be updated in a update account request.
+    public let accountExclusion: AccountExclusion?
 
     /// The current balance of the account.
     /// The definition of the balance property differ between account types.
@@ -143,7 +144,7 @@ public struct Account {
         self.accountNumber = accountNumber
         self.balance = currencyDenominatedBalance?.doubleValue ?? 0.0
         self.credentialsID = credentialsID
-        self.isFavored = false
+        self.isFavorite = false
         self.id = id
         self.name = name
         self.ownership = 1.0

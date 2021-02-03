@@ -5,7 +5,7 @@ read newVersion
 if [[ $newVersion =~ ^([0-9]{1,2}\.){2}[0-9]{1,10}$ ]]; then
 git checkout master
 git pull
-git checkout -b rc-$newVersion
+git checkout -b prerelease-$newVersion
 else
   echo "$newVersion is not in the right format."
   exit
@@ -34,6 +34,17 @@ mv ./build/TinkCore.xcframework ./
 git add .
 git commit -m"Update framework"
 
-gh pr create --repo tink-ab/tink-core-ios-private -t "rc:$newVersion" -b "Release candidate for Tink Core pre release." -r tink-ab/ios-maintainer
+zip -r TinkCore.xcframework.zip TinkCore.xcframework
 
-echo "Release candidate PR has been created! 🎉"
+checksum=`swift package compute-checksum TinkCore.xcframework.zip`
+
+old_path="path: \"TinkCore.xcframework\""
+new_path="url: \"https://github.com/tink-ab/tink-core-ios/releases/download/$newVersion/TinkCore.xcframework.zip\", checksum: \"$checksum\""
+sed -i '' "s|$old_path|$new_path|" Package.swift
+
+git add .
+git commit -m "Package.swift checksum update"
+
+gh pr create --repo tink-ab/tink-core-ios-private -t "$newVersion Prerelease" -b "Release candidate for Tink Core prerelease." -r tink-ab/ios-maintainer
+
+echo "Pre-release PR has been created! 🎉"

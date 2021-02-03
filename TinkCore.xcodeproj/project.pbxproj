@@ -104,6 +104,7 @@
 		3DBEEF345B2A188867623E2B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83982BA5B9774EB7FF8DABF /* AccessToken.swift */; };
 		3EE8C4AA5634B3A6938F5B18 /* SignableOperation+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1864B28698E8EA99365551E /* SignableOperation+REST.swift */; };
 		3EECCE20CB43F4BC85699934 /* TinkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6E08B2536064A03A4A3321 /* TinkCore.framework */; };
+		3EFA48E3E65EAA88D41E4F8B /* RESTUpdateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C4F7CA0430F39CB104A40A /* RESTUpdateAccountRequest.swift */; };
 		3F26CD442740649C966E500C /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63613333F00478EECAB0EE3 /* ConfigurationTests.swift */; };
 		408CD82F34985C79D3C8C052 /* BudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34A4D89E1DD0E9979692F6 /* BudgetService.swift */; };
 		40ED44D0BDC36D0F19E322DC /* RESTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CD36F6AFD793A0A4EA360 /* RESTCategory.swift */; };
@@ -194,6 +195,7 @@
 		784A415E176479832C46FE98 /* StatisticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178495C08C2AC34993FA488 /* StatisticService.swift */; };
 		7856CC9D2C8EBA8FCD2B1115 /* UserProfile+RESTUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEEB6A142DDE8C783FE3A7 /* UserProfile+RESTUserProfile.swift */; };
 		7A6051B97A17E010813B5515 /* RESTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA0C02D552829975759548 /* RESTProvider.swift */; };
+		7A7506C60E356A6194C83CE0 /* RESTUpdateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C4F7CA0430F39CB104A40A /* RESTUpdateAccountRequest.swift */; };
 		7AFC71669579610619BFD538 /* RESTUpdateCredentialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4511CAF178A22C455A5D2 /* RESTUpdateCredentialsRequest.swift */; };
 		7B1D6CDB2A8A5F7111CBF0C6 /* Account+REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB26E08FEB36E3F33D9FB3 /* Account+REST.swift */; };
 		7BAF632A5CB5E66C1F755A55 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66FEACC82EC82F93CE5442E /* TransferService.swift */; };
@@ -505,6 +507,7 @@
 		718F9A005BD3DF2A47901180 /* BeneficiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryService.swift; sourceTree = "<group>"; };
 		723FFFD86F03FAD2DCFA9812 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		7588D7E4872239EEF81E1C42 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		77C4F7CA0430F39CB104A40A /* RESTUpdateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTUpdateAccountRequest.swift; sourceTree = "<group>"; };
 		781D8F8F0826B741657A06A8 /* RESTCreateCredentialsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTCreateCredentialsRequest.swift; sourceTree = "<group>"; };
 		7BB41AA9327D5AF4E28B87C3 /* RESTTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTransferService.swift; sourceTree = "<group>"; };
 		7D389CDC34B53E3F038BF462 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
@@ -895,6 +898,7 @@
 				61AA3711B3031177E0D5A25D /* RESTDescribeOAuth2ClientRequest.swift */,
 				53C18DC3DCB29A8E267F354E /* RESTError.swift */,
 				0536986B82E489D3E33D89AB /* RESTTransferDestination.swift */,
+				77C4F7CA0430F39CB104A40A /* RESTUpdateAccountRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1419,6 +1423,7 @@
 				E4A66C4AB8B00CCAA34A90C8 /* RESTTransferDestination.swift in Sources */,
 				9835F6E3E0E961A2F10BC80A /* RESTTransferRequest.swift in Sources */,
 				0E99CF855E3B7D8CD1E1A811 /* RESTTransferService.swift in Sources */,
+				7A7506C60E356A6194C83CE0 /* RESTUpdateAccountRequest.swift in Sources */,
 				366C8859A7981174DAAC81AD /* RESTUpdateBudgetResponse.swift in Sources */,
 				7AFC71669579610619BFD538 /* RESTUpdateCredentialsRequest.swift in Sources */,
 				24D139CE21122E63B8F87F34 /* RESTUpdateTransactionRequest.swift in Sources */,
@@ -1595,6 +1600,7 @@
 				5347B883ADB93A2A9C420301 /* RESTTransferDestination.swift in Sources */,
 				BEAA94A50877A14C6F7D33F5 /* RESTTransferRequest.swift in Sources */,
 				3B080CA951FB0FA2FA9B4FEB /* RESTTransferService.swift in Sources */,
+				3EFA48E3E65EAA88D41E4F8B /* RESTUpdateAccountRequest.swift in Sources */,
 				C009EA8A4FE4020813716248 /* RESTUpdateBudgetResponse.swift in Sources */,
 				87F35397CBCCFFF591C66E24 /* RESTUpdateCredentialsRequest.swift in Sources */,
 				E516DAA83B5024AE7AA54E35 /* RESTUpdateTransactionRequest.swift in Sources */,
@@ -1675,7 +1681,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1818,7 +1824,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;
@@ -1882,7 +1888,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = iphoneos;
@@ -1910,7 +1916,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.Core;
 				PRODUCT_NAME = TinkCore;
 				SDKROOT = macosx;

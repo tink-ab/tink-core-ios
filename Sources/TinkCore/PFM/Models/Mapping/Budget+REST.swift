@@ -13,7 +13,7 @@ extension Budget {
 }
 
 extension Budget.RecurringPeriodicity {
-    init(restRecurringPeriodicity: RESTBudget.RecurringPeriodicity) {
+    init?(restRecurringPeriodicity: RESTBudget.RecurringPeriodicity) {
         switch restRecurringPeriodicity.periodUnit {
         case .month:
             self = .init(periodUnit: .month)
@@ -21,6 +21,8 @@ extension Budget.RecurringPeriodicity {
             self = .init(periodUnit: .week)
         case .year:
             self = .init(periodUnit: .year)
+        case .unknown:
+            return nil
         }
     }
 }
@@ -96,7 +98,7 @@ extension Budget.Periodicity {
             self = .oneOff(oneOffPeriodicity)
         case .recurring:
             guard let recurringPeriodicity = restRecurringPeriodicity
-                .map(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
+                .flatMap(Budget.RecurringPeriodicity.init(restRecurringPeriodicity:))
             else { return nil }
             self = .recurring(recurringPeriodicity)
         default:

@@ -13,7 +13,7 @@ public struct AccessToken : Swift.Hashable, Swift.RawRepresentable {
   public typealias RawValue = Swift.String
 }
 public struct Account {
-  public enum Kind {
+  public enum Kind : Swift.CaseIterable {
     case checking
     case savings
     case investment
@@ -29,16 +29,34 @@ public struct Account {
       get
     }
     public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [TinkCore.Account.Kind]
+    public static var allCases: [TinkCore.Account.Kind] {
+      get
+    }
+  }
+  public enum AccountExclusion {
+    case aggregation
+    case pfmAndSearch
+    case pfmData
+    case unknown
+    public static func == (a: TinkCore.Account.AccountExclusion, b: TinkCore.Account.AccountExclusion) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public typealias ID = TinkCore.Identifier<TinkCore.Account>
   public let accountNumber: Swift.String
   public let credentialsID: TinkCore.Credentials.ID
+  public let isFavorite: Swift.Bool
   public let id: TinkCore.Account.ID
   public let name: Swift.String
+  public let ownership: Swift.Double
   public let kind: TinkCore.Account.Kind
   public let transferSourceIdentifiers: [Foundation.URL]?
   public let holderName: Swift.String?
   public let isClosed: Swift.Bool?
+  public let accountExclusion: TinkCore.Account.AccountExclusion?
   public let currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?
   public let refreshed: Foundation.Date?
   public let financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?
@@ -71,6 +89,7 @@ public struct AccountNumberKind : Swift.Hashable, Swift.ExpressibleByStringLiter
 }
 public protocol AccountService {
   func accounts(completion: @escaping (Swift.Result<[TinkCore.Account], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
+  func update(id: TinkCore.Account.ID, name: Swift.String?, type: TinkCore.Account.Kind?, accountNumber: Swift.String?, isFavorite: Swift.Bool?, ownership: Swift.Double?, accountExclusion: TinkCore.Account.AccountExclusion?, completion: @escaping (Swift.Result<TinkCore.Account, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
 }
 public struct ActionableInsight {
   public typealias ID = TinkCore.Identifier<TinkCore.ActionableInsight>
@@ -1409,7 +1428,7 @@ public struct UserProfile {
   public let locale: Foundation.Locale
   public let market: TinkCore.Market
   public let periodAdjustedDay: Swift.Int
-  public let periodMode: TinkCore.Period.Resolution
+  public let periodMode: TinkCore.Period.Resolution?
   public let timeZone: Foundation.TimeZone?
   public init(currency: TinkCore.CurrencyCode, locale: Foundation.Locale, market: TinkCore.Market, periodAdjustedDay: Swift.Int, periodMode: TinkCore.Period.Resolution, timeZone: Foundation.TimeZone?)
 }
@@ -1425,6 +1444,8 @@ public enum UserSession {
 }
 extension TinkCore.Account.Kind : Swift.Equatable {}
 extension TinkCore.Account.Kind : Swift.Hashable {}
+extension TinkCore.Account.AccountExclusion : Swift.Equatable {}
+extension TinkCore.Account.AccountExclusion : Swift.Hashable {}
 extension TinkCore.ActionableInsight.BudgetPeriodUnit : Swift.Equatable {}
 extension TinkCore.ActionableInsight.BudgetPeriodUnit : Swift.Hashable {}
 extension TinkCore.Budget.RecurringPeriodicity.PeriodUnit : Swift.Equatable {}
