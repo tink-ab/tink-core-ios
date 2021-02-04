@@ -33,7 +33,7 @@ public struct ActionableInsight {
         case largeExpense(LargeExpense)
         case singleUncategorizedTransaction(Transaction.ID)
         case doubleCharge([Transaction.ID])
-        case weeklyUncategorizedTransactions(WeeklyTranscations)
+        case weeklyUncategorizedTransactions(WeeklyTransactions)
         case weeklySummaryExpensesByCategory(WeeklyExpensesByCategory)
         case weeklySummaryExpensesByDay(WeeklyExpensesByDay)
         case monthlySummaryExpensesByCategory(MonthlyExpensesByCategory)
@@ -171,7 +171,7 @@ extension ActionableInsight {
         }
     }
 
-    public struct WeeklyTranscations {
+    public struct WeeklyTransactions {
         public let transactionIDs: [Transaction.ID]
         public let week: Week
 
