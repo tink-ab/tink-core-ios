@@ -171,6 +171,9 @@ extension ActionableInsight {
         }
     }
 
+    @available(*, deprecated, renamed: "WeeklyTransactions")
+    public typealias WeeklyTranscations = WeeklyTransactions
+
     public struct WeeklyTransactions {
         public let transactionIDs: [Transaction.ID]
         public let week: Week
