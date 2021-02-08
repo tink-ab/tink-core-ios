@@ -17,7 +17,7 @@ test:
 	xcodebuild clean test \
 		-project TinkCore.xcodeproj \
 		-scheme TinkCore_iOS \
-		-destination 'platform=iOS Simulator,name=iPhone 12'
+		-destination 'platform=iOS Simulator,name=iPhone 11 Pro'
 	xcodebuild clean test \
 		-project TinkCore.xcodeproj \
 		-scheme TinkCore_macOS \
