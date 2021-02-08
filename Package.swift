@@ -13,25 +13,12 @@ let package = Package(
         .library(
             name: "TinkCore",
             targets: ["TinkCore"]
-        ),
-        .library(
-            name: "TinkCoreXCFramework",
-            targets: ["TinkCoreXCFramework"]
         )
     ],
     targets: [
-        .target(
-            name: "TinkCore",
-            exclude: ["Info.plist"]
-        ),
         .binaryTarget(
-            name: "TinkCoreXCFramework",
-            url: "https://github.com/tink-ab/tink-core-ios/releases/download/0.6.0/TinkCore.xcframework.zip", checksum: "332b9a9bfe3ede375c2f09b3ef73d76340914ba6f16a773da60b0f0fa0aa7977"
-        ),
-        .testTarget(
-            name: "TinkCoreTests",
-            dependencies: ["TinkCore"],
-            exclude: ["Info.plist"]
+            name: "TinkCore",
+            url: "https://github.com/tink-ab/tink-core-ios/releases/download/0.7.0/TinkCore.xcframework.zip", checksum: "c8f7b21a5c9c2901c456d5189392a0b594e3b7c0aa0381c072022c3670cf7983"
         ),
     ]
 )

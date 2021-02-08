@@ -112,7 +112,7 @@ public struct ActionableInsight {
     case largeExpense(TinkCore.ActionableInsight.LargeExpense)
     case singleUncategorizedTransaction(TinkCore.Transaction.ID)
     case doubleCharge([TinkCore.Transaction.ID])
-    case weeklyUncategorizedTransactions(TinkCore.ActionableInsight.WeeklyTranscations)
+    case weeklyUncategorizedTransactions(TinkCore.ActionableInsight.WeeklyTransactions)
     case weeklySummaryExpensesByCategory(TinkCore.ActionableInsight.WeeklyExpensesByCategory)
     case weeklySummaryExpensesByDay(TinkCore.ActionableInsight.WeeklyExpensesByDay)
     case monthlySummaryExpensesByCategory(TinkCore.ActionableInsight.MonthlyExpensesByCategory)
@@ -195,7 +195,9 @@ extension ActionableInsight {
     public let amount: TinkCore.CurrencyDenominatedAmount
     public init(transactionID: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount)
   }
-  public struct WeeklyTranscations {
+  @available(*, deprecated, renamed: "WeeklyTransactions")
+  public typealias WeeklyTranscations = TinkCore.ActionableInsight.WeeklyTransactions
+  public struct WeeklyTransactions {
     public let transactionIDs: [TinkCore.Transaction.ID]
     public let week: TinkCore.ActionableInsight.Week
     public init(transactionIDs: [TinkCore.Transaction.ID], week: TinkCore.ActionableInsight.Week)
