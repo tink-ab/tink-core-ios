@@ -24,9 +24,6 @@ rm -rf ./TinkCore.xcframework
 
 make carthage-project
 
-xcodebuild -project TinkCore.xcodeproj -target "TinkCore_iOS" build | xcpretty
-swift test
-
 make framework
 
 mv ./build/TinkCore.xcframework ./
