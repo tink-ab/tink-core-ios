@@ -13,11 +13,11 @@ ifeq ($(strip $(shell command -v gh 2> /dev/null)),)
 endif
 
 test:
-	# Delete binary target
-	sed -i '' '27,30d' Package.swift
-	# Delete XCFramework library
-	sed -i '' '17,20d' Package.swift
-	swift test
+	xcodegen generate
+	xcodebuild clean test \
+		-project TinkCore.xcodeproj \
+		-scheme TinkCore_iOS \
+		-destination 'platform=iOS Simulator,name=iPhone 12'
 
 carthage-project:
 	xcodegen generate
