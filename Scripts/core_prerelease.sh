@@ -19,10 +19,12 @@ git commit -am"Update version"
 make format
 git commit -am"Format project"
 
+make carthage-project
+git add .
+git commit -m"Update Xcode project"
+
 rm -rf ./build
 rm -rf ./TinkCore.xcframework
-
-make carthage-project
 
 make framework
 
