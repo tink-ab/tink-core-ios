@@ -19,13 +19,12 @@ git commit -am"Update version"
 make format
 git commit -am"Format project"
 
+make carthage-project
+git add .
+git commit -m"Update Xcode project"
+
 rm -rf ./build
 rm -rf ./TinkCore.xcframework
-
-make carthage-project
-
-xcodebuild -project TinkCore.xcodeproj -target "TinkCore_iOS" build | xcpretty
-swift test
 
 make framework
 
@@ -36,14 +35,15 @@ git commit -m"Update framework"
 
 zip -r TinkCore.xcframework.zip TinkCore.xcframework
 
-checksum=`swift package compute-checksum TinkCore.xcframework.zip`
+# Update path
+sed -i '' 's/[0-9]\.[0-9]\.[0-9]\/TinkCore.xcframework.zip"/'$newVersion'\/TinkCore.xcframework.zip"/' Package.swift
 
-old_path="path: \"TinkCore.xcframework\""
-new_path="url: \"https://github.com/tink-ab/tink-core-ios/releases/download/$newVersion/TinkCore.xcframework.zip\", checksum: \"$checksum\""
-sed -i '' "s|$old_path|$new_path|" Package.swift
+# Update checksum
+checksum=`swift package compute-checksum TinkCore.xcframework.zip`
+sed -i '' 's/checksum: ".*"/checksum: "'$checksum'"/' Package.swift
 
 git add .
-git commit -m "Package.swift checksum update"
+git commit -m "Package.swift url update"
 
 gh pr create --repo tink-ab/tink-core-ios-private -t "$newVersion Prerelease" -b "Release candidate for Tink Core prerelease." -r tink-ab/ios-maintainer
 
