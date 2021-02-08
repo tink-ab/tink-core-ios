@@ -35,7 +35,7 @@ zip -r TinkCore.xcframework.zip TinkCore.xcframework
 
 checksum=`swift package compute-checksum TinkCore.xcframework.zip`
 
-old_path="path: \"TinkCore.xcframework\""
+old_path="url: \"https://github.com/tink-ab/tink-core-ios/releases/download/[0-9]\.[0-9]\.[0-9]/TinkCore.xcframework.zip\", checksum: \".\""
 new_path="url: \"https://github.com/tink-ab/tink-core-ios/releases/download/$newVersion/TinkCore.xcframework.zip\", checksum: \"$checksum\""
 sed -i '' "s|$old_path|$new_path|" Package.swift
 
