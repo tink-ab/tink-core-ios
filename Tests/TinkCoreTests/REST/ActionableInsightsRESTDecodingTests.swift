@@ -625,8 +625,6 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         if case .createBudget(let createBudget) = insight.data {
             XCTAssertNil(createBudget.budgetSuggestion.filter?.accounts)
             XCTAssertEqual(createBudget.budgetSuggestion.filter?.categories?.first, "expenses:food.restaurants")
-            XCTAssertNil(createBudget.budgetSuggestion.filter?.tags)
-            XCTAssertNil(createBudget.budgetSuggestion.filter?.freeTextQuery)
             XCTAssertEqual(createBudget.budgetSuggestion.periodicityType, .recurring)
             XCTAssertNil(createBudget.budgetSuggestion.oneOffPeriodicityData)
             XCTAssertEqual(createBudget.budgetSuggestion.recurringPeriodicityData?.periodUnit, .month)
