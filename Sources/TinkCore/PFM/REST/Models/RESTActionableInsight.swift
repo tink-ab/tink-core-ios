@@ -542,8 +542,6 @@ enum RESTInsightActionData: Decodable {
             struct Filter: Decodable {
                 var accounts: [String]?
                 var categories: [String]?
-                var tags: [String]?
-                var freeTextQuery: String?
             }
 
             let filter: Filter?
