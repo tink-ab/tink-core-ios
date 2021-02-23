@@ -190,6 +190,16 @@ extension ActionableInsight.Kind {
                     suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
                 )
             )
+        case (.budgetSuggestCreateTopPrimaryCategory, .budgetSuggestCreateTopPrimaryCategory(let data)):
+            self = .budgetSuggestCreateTopPrimaryCategory(
+                .init(
+                    categorySpending: .init(
+                        categoryCode: Category.Code(data.categorySpending.categoryCode),
+                        spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
+                    ),
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
+                )
+            )
         case (.budgetSuggestCreateFirst, .budgetSuggestCreateFirst):
             self = .budgetSuggestCreateFirst
         case (.leftToSpendPositiveBeginningMonth, .leftToSpendPositiveBeginningMonth(let data)):

@@ -47,6 +47,7 @@ public struct ActionableInsight {
         case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
         case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
         case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+        case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopPrimaryCategory)
         case budgetSuggestCreateFirst
         case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
         case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -444,6 +445,16 @@ extension ActionableInsight {
     }
 
     public struct BudgetSuggestCreateTopCategory {
+        public let categorySpending: CategorySpending
+        public let suggestedBudgetAmount: CurrencyDenominatedAmount
+
+        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount) {
+            self.categorySpending = categorySpending
+            self.suggestedBudgetAmount = suggestedBudgetAmount
+        }
+    }
+
+    public struct BudgetSuggestCreateTopPrimaryCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
 
