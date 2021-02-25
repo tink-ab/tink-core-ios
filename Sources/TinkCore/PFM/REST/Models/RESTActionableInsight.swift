@@ -268,16 +268,6 @@ enum RESTInsightData: Decodable {
         let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
     }
 
-    struct BudgetSuggestCreateTopPrimaryCategory: Decodable {
-        struct CategorySpending: Decodable {
-            let categoryCode: String
-            let spentAmount: RESTInsightData.CurrencyDenominatedAmount
-        }
-
-        let categorySpending: CategorySpending
-        let suggestedBudgetAmount: RESTInsightData.CurrencyDenominatedAmount
-    }
-
     struct LeftToSpendBeginningMonth: Decodable {
         let month: RESTInsightData.Month
         let amountDifference: RESTInsightData.CurrencyDenominatedAmount
@@ -357,7 +347,7 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
-    case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopPrimaryCategory)
+    case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -451,7 +441,7 @@ enum RESTInsightData: Decodable {
                 let data = try BudgetSuggestCreateTopCategory(from: decoder)
                 self = .budgetSuggestCreateTopCategory(data)
             case .budgetSuggestCreateTopPrimaryCategory:
-                let data = try BudgetSuggestCreateTopPrimaryCategory(from: decoder)
+                let data = try BudgetSuggestCreateTopCategory(from: decoder)
                 self = .budgetSuggestCreateTopPrimaryCategory(data)
             case .budgetSuggestCreateFirst:
                 self = .budgetSuggestCreateFirst
