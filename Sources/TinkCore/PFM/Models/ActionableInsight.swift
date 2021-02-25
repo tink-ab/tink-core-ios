@@ -447,10 +447,12 @@ extension ActionableInsight {
     public struct BudgetSuggestCreateTopCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
+        public let suggestedBudgetCategoryDisplayName: String
 
-        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount) {
+        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: String) {
             self.categorySpending = categorySpending
             self.suggestedBudgetAmount = suggestedBudgetAmount
+            self.suggestedBudgetCategoryDisplayName = suggestedBudgetCategoryDisplayName
         }
     }
 
