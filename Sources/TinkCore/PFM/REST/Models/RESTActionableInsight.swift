@@ -59,6 +59,7 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendNegativeMidMonth = "LEFT_TO_SPEND_NEGATIVE_MID_MONTH"
     case leftToSpendNegativeSummary = "LEFT_TO_SPEND_NEGATIVE_SUMMARY"
     case budgetSuggestCreateTopCategory = "BUDGET_SUGGEST_CREATE_TOP_CATEGORY"
+    case budgetSuggestCreateTopPrimaryCategory = "BUDGET_SUGGEST_CREATE_TOP_PRIMARY_CATEGORY"
     case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
     case leftToSpendPositiveBeginningMonth = "LEFT_TO_SPEND_POSITIVE_BEGINNING_MONTH"
     case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
@@ -261,6 +262,7 @@ enum RESTInsightData: Decodable {
         struct CategorySpending: Decodable {
             let categoryCode: String
             let spentAmount: RESTInsightData.CurrencyDenominatedAmount
+            let suggestedBudgetCategoryDisplayName: String
         }
 
         let categorySpending: CategorySpending
@@ -346,6 +348,7 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -438,6 +441,9 @@ enum RESTInsightData: Decodable {
             case .budgetSuggestCreateTopCategory:
                 let data = try BudgetSuggestCreateTopCategory(from: decoder)
                 self = .budgetSuggestCreateTopCategory(data)
+            case .budgetSuggestCreateTopPrimaryCategory:
+                let data = try BudgetSuggestCreateTopCategory(from: decoder)
+                self = .budgetSuggestCreateTopPrimaryCategory(data)
             case .budgetSuggestCreateFirst:
                 self = .budgetSuggestCreateFirst
             case .leftToSpendPositiveBeginningMonth:
