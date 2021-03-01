@@ -32,6 +32,8 @@ struct RESTField: Decodable {
     var options: [String]?
     var pattern: String?
     var patternError: String?
+    /** A list of options where the user should select one */
+    var selectOptions: [SelectOption]?
     var value: String?
     var sensitive: Bool?
     /** Display boolean value as checkbox */

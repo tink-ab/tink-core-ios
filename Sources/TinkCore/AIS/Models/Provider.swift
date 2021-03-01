@@ -114,7 +114,7 @@ public struct Provider: Identifiable {
         /// An option that can be selected with a checkbox.
         public let isCheckbox: Bool
         /// A list of options where the user should select one.
-        public let options: [String]
+        public let selectOptions: [SelectOption]
         /// A serialized JSON containing additional information that could be useful.
         public let additionalInfo: String?
         /// Controls whether or not the field should be sensitive.
@@ -136,7 +136,7 @@ public struct Provider: Identifiable {
                 patternError: patternError,
                 helpText: helpText,
                 isCheckbox: isCheckbox,
-                options: options,
+                selectOptions: selectOptions,
                 additionalInfo: additionalInfo,
                 isSensitive: isSensitive
             )
