@@ -112,13 +112,13 @@ public struct Provider: Identifiable {
         /// Text displayed next to the input field
         public let helpText: String
         /// An option that can be selected with a checkbox.
-        public let checkbox: Bool
+        public let isCheckbox: Bool
         /// A list of options where the user should select one.
         public let options: [String]
         /// A serialized JSON containing additional information that could be useful.
-        public let additionalInfo: String
+        public let additionalInfo: String?
         /// Controls whether or not the field should be sensitive.
-        public let sensitive: Bool
+        public let isSensitive: Bool
 
         public mutating func setImmutable(initialValue newValue: String) {
             self = .init(
@@ -135,10 +135,10 @@ public struct Provider: Identifiable {
                 pattern: pattern,
                 patternError: patternError,
                 helpText: helpText,
-                checkbox: checkbox,
+                isCheckbox: isCheckbox,
                 options: options,
                 additionalInfo: additionalInfo,
-                sensitive: sensitive
+                isSensitive: isSensitive
             )
         }
     }
