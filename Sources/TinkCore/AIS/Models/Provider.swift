@@ -32,6 +32,20 @@ public struct Provider: Identifiable {
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public let authenticationUserType: AuthenticationUserType
 
+    public  struct FinancialService {
+        enum Segment: String {
+            case personal = "PERSONAL"
+            case business = "BUSINESS"
+            case unknown = "UNKNOWN"
+        }
+
+        let segment: Segment
+        let shortName: String
+    }
+
+    /// Information about financial services covered with this provider.
+    public let financialServices: [FinancialService]
+
     /// Indicates what kind of financial institution the provider represents.
     public enum Kind {
         /// The kind of the provider is unknown.
