@@ -9,6 +9,8 @@ public protocol Configuration {
     /// The URI you've setup in Console.
     var appURI: URL? { get }
 
+    var callbackURI: URL? { get }
+
     /// The environment to use.
     var environment: Tink.Environment { get }
 
@@ -27,6 +29,8 @@ extension Tink {
         public var redirectURI: URL
 
         public var appURI: URL?
+
+        public var callbackURI: URL?
 
         /// The environment to use.
         public var environment: Environment
