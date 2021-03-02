@@ -36,10 +36,10 @@ public struct Provider: Identifiable {
     /// Information about financial services covered with this provider.
     public struct FinancialService {
         /// Indicates which segment the financial service belongs to.
-        public enum Segment: String {
-            case personal = "PERSONAL"
-            case business = "BUSINESS"
-            case unknown = "UNKNOWN"
+        public enum Segment {
+            case personal
+            case business
+            case unknown
         }
 
         /// Segment of the financial service belongs to.
