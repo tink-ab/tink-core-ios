@@ -72,15 +72,6 @@ struct RESTProvider: Decodable {
         static var decodeFallbackValue: RESTProvider.ModelType = .unknown
     }
 
-    enum AuthenticationUserType: String, DefaultableDecodable {
-        case business = "BUSINESS"
-        case personal = "PERSONAL"
-        case corporate = "CORPORATE"
-        case unknown = "UNKNOWN"
-
-        static var decodeFallbackValue: RESTProvider.AuthenticationUserType = .unknown
-    }
-
     /// Indicates the release status of a provider.
     enum ReleaseStatus: String, DefaultableDecodable {
         case beta = "BETA"
@@ -106,8 +97,6 @@ struct RESTProvider: Decodable {
     var accessType: AccessType
     /// (PSD2 change - Not yet implemented) - What type of authentication flow used to access the data.
 //    var authenticationFlow: AuthenticationFlow
-    /// Indicates if a user authenticates toward the bank as a person or a business.
-    var authenticationUserType: AuthenticationUserType
     /// Information about financial services covered with this provider.
     var financialServices: [FinancialService]
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
