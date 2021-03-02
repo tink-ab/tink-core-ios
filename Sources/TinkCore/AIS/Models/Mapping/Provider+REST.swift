@@ -171,9 +171,6 @@ extension Provider.FieldSpecification {
         self.pattern = restField.pattern ?? ""
         self.patternError = restField.patternError ?? ""
         self.helpText = restField.helpText ?? ""
-        self.isCheckbox = restField.checkbox ?? false
         self.selectOptions = restField.selectOptions ?? []
-        self.additionalInfo = restField.additionalInfo
-        self.isSensitive = restField.sensitive ?? false
     }
 }
