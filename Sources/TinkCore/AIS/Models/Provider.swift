@@ -32,7 +32,7 @@ public struct Provider: Identifiable {
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public let authenticationUserType: AuthenticationUserType
 
-    public  struct FinancialService {
+    public struct FinancialService {
         enum Segment: String {
             case personal = "PERSONAL"
             case business = "BUSINESS"
