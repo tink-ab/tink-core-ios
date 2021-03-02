@@ -90,7 +90,7 @@ struct RESTProvider: Decodable {
         }
 
         let segment: Segment
-        let shortName: String
+        let shortName: String?
     }
 
     /// What Tink uses to access the data.
