@@ -29,6 +29,7 @@ public struct Provider: Identifiable {
         case corporate
     }
 
+    @available(*, deprecated, message: "Use `financialServices` instead.")
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public let authenticationUserType: AuthenticationUserType
 
@@ -47,7 +48,7 @@ public struct Provider: Identifiable {
         public let shortName: String
     }
 
-    /// Information about financial services covered with this provider.
+    /// Financial services covered of this provider.
     public let financialServices: [FinancialService]
 
     /// Indicates what kind of financial institution the provider represents.
