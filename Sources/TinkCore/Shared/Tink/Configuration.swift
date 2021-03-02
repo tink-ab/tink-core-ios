@@ -9,6 +9,13 @@ public protocol Configuration {
     /// The URI you've setup in Console.
     var appURI: URL? { get }
 
+    /// This URI will be used by the ASPSP to pass the authorization code.
+    ///
+    /// It corresponds to the redirect/callback URI in OAuth2/OpenId.
+    ///
+    /// - Note: This parameter is only applicable if you are a TPP.
+    var callbackURI: URL? { get }
+
     /// The environment to use.
     var environment: Tink.Environment { get }
 
@@ -27,6 +34,8 @@ extension Tink {
         public var redirectURI: URL
 
         public var appURI: URL?
+
+        public var callbackURI: URL?
 
         /// The environment to use.
         public var environment: Environment
