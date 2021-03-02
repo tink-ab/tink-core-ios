@@ -29,8 +29,27 @@ public struct Provider: Identifiable {
         case corporate
     }
 
+    @available(*, deprecated, message: "Use `financialServices` instead.")
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public let authenticationUserType: AuthenticationUserType
+
+    /// Information about financial services covered with this provider.
+    public struct FinancialService {
+        /// Indicates which segment the financial service belongs to.
+        public enum Segment {
+            case personal
+            case business
+            case unknown
+        }
+
+        /// Segment of the financial service belongs to.
+        public let segment: Segment
+        /// Short name of the financial service.
+        public let shortName: String?
+    }
+
+    /// Financial services covered of this provider.
+    public let financialServices: [FinancialService]
 
     /// Indicates what kind of financial institution the provider represents.
     public enum Kind {
