@@ -55,6 +55,8 @@
 		1F434E87BDBDB61616FEA07A /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58CD212B5B3160CD9FAF95 /* CurrencyDenominatedAmount.swift */; };
 		1FE129E7A57E85ABEFE153D7 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D389CDC34B53E3F038BF462 /* Cancellable.swift */; };
 		207D77E3B86870A5BBDBD9DD /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E4326986BB7595645538F6 /* SessionUser.swift */; };
+		208F42BE25ED42F400F15379 /* SelectOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F42BD25ED42F400F15379 /* SelectOption.swift */; };
+		208F42BF25ED42F400F15379 /* SelectOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F42BD25ED42F400F15379 /* SelectOption.swift */; };
 		21E382F746A884F35266902D /* RESTCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA150D3A4A2D6908984DC5 /* RESTCategoryService.swift */; };
 		228865C46F095F7211E37FAD /* RESTCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD70EC629E3B17D0BE0FD73B /* RESTCalendarService.swift */; };
 		2355D22A4AF6CC039A94619E /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEACF4767A2726C11672AA /* RESTRequest.swift */; };
@@ -455,6 +457,7 @@
 		1ECCA95B71666128C5113298 /* Budget+REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Budget+REST.swift"; sourceTree = "<group>"; };
 		1ED6FC8BF4F1C5357BF4DD0F /* DeviceIdHeaderClientBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdHeaderClientBehavior.swift; sourceTree = "<group>"; };
 		2038A01AB94ACCEDB252E349 /* RESTPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTPeriod.swift; sourceTree = "<group>"; };
+		208F42BD25ED42F400F15379 /* SelectOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOption.swift; sourceTree = "<group>"; };
 		20E62D5ABD7EDD1E20C3686A /* SignableOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignableOperation.swift; sourceTree = "<group>"; };
 		218C08AEA8C73CBF79156484 /* RESTTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTransaction.swift; sourceTree = "<group>"; };
 		22AD9A61568CB4171EAA505C /* RESTBudgetPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTBudgetPeriod.swift; sourceTree = "<group>"; };
@@ -881,6 +884,7 @@
 				E2C136045F7CA52D7F778ED7 /* FinancialInstitution.swift */,
 				E4C64B4809FBD76F39CAFCE6 /* Provider.swift */,
 				3DAAB8DDFDA7DA901EF94B39 /* RefreshableItem.swift */,
+				208F42BD25ED42F400F15379 /* SelectOption.swift */,
 				F04A07EAE7D52A2C700D098A /* Mapping */,
 			);
 			path = Models;
@@ -1234,8 +1238,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1200;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E46FAD30DFB951E62059B2D2 /* Build configuration list for PBXProject "TinkCore" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1312,6 +1314,7 @@
 				27E80265BB5B627787DA441B /* AnyCanceller.swift in Sources */,
 				B6670A516C0D690101481999 /* AnyEncodable.swift in Sources */,
 				93E136D4B7D11B194EFE447D /* AuthenticationService.swift in Sources */,
+				208F42BE25ED42F400F15379 /* SelectOption.swift in Sources */,
 				DB2C7B6CCC2132EA49975B94 /* AuthorizationCode.swift in Sources */,
 				89465989CF6F21138659464D /* AuthorizationHeaderClientBehavior.swift in Sources */,
 				77381016C84F5137E30CC0FA /* Beneficiary+REST.swift in Sources */,
@@ -1489,6 +1492,7 @@
 				FE47D768E002FD64EF448C22 /* AnyCanceller.swift in Sources */,
 				512BEB2EDB583C105BA590D1 /* AnyEncodable.swift in Sources */,
 				DDB90222C6C1666718023E44 /* AuthenticationService.swift in Sources */,
+				208F42BF25ED42F400F15379 /* SelectOption.swift in Sources */,
 				E52B8D22CBA4E9D709844462 /* AuthorizationCode.swift in Sources */,
 				C289E4D079F8C59BA5BD58F0 /* AuthorizationHeaderClientBehavior.swift in Sources */,
 				45E4BB718BA45D14E97346C9 /* Beneficiary+REST.swift in Sources */,

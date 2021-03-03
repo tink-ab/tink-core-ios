@@ -111,6 +111,8 @@ public struct Provider: Identifiable {
         public let patternError: String
         /// Text displayed next to the input field
         public let helpText: String
+        /// A list of options where the user should select one.
+        public let selectOptions: [SelectOption]
 
         public mutating func setImmutable(initialValue newValue: String) {
             self = .init(
@@ -126,7 +128,8 @@ public struct Provider: Identifiable {
                 initialValue: newValue,
                 pattern: pattern,
                 patternError: patternError,
-                helpText: helpText
+                helpText: helpText,
+                selectOptions: selectOptions
             )
         }
     }
