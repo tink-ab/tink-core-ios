@@ -16,7 +16,7 @@ class ProviderRESTTests: XCTestCase {
             currency: "SEK",
             displayName: "Demo Unregulated Third party (successful)",
             displayDescription: "Third party app",
-            fields: [RESTField(defaultValue: nil, _description: "Username", helpText: nil, hint: nil, immutable: true, masked: false, maxLength: nil, minLength: nil, name: "username", numeric: false, _optional: false, options: nil, pattern: nil, patternError: nil, value: nil, sensitive: false, checkbox: false, additionalInfo: nil)],
+            fields: [RESTField(defaultValue: nil, _description: "Username", helpText: nil, hint: nil, immutable: true, masked: false, maxLength: nil, minLength: nil, name: "username", numeric: false, _optional: false, options: nil, pattern: nil, patternError: nil, selectOptions: nil, value: nil, sensitive: false, checkbox: false, additionalInfo: nil)],
             financialInstitutionId: "946bd1966c1f5ef792a79f96b3d5facf",
             financialInstitutionName: "Demo Unregulated Third party (successful)",
             groupDisplayName: "Demo providers",
