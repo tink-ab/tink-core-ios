@@ -52,7 +52,6 @@ class ProviderRESTTests: XCTestCase {
         XCTAssertEqual(provider.financialInstitution.id.value, restProvider.financialInstitutionId)
         XCTAssertEqual(provider.financialInstitution.name, restProvider.financialInstitutionName)
         XCTAssertEqual(provider.financialServices.first?.segment, .personal)
-        XCTAssertEqual(provider.authenticationUserType, .personal)
     }
 
     func testProviderMappingWithNewCapabilities() throws {
