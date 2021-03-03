@@ -171,6 +171,6 @@ extension Provider.FieldSpecification {
         self.pattern = restField.pattern ?? ""
         self.patternError = restField.patternError ?? ""
         self.helpText = restField.helpText ?? ""
-        self.selectOptions = restField.selectOptions ?? []
+        self.selectOptions = (restField.selectOptions ?? []).map { SelectOption.init(restSelectOption: $0) }
     }
 }

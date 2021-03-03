@@ -13,4 +13,10 @@ public struct SelectOption {
         self.text = text
         self.value = value
     }
+
+    internal init(restSelectOption: RESTSelectOption) {
+        self.iconURL = restSelectOption.iconURL
+        self.text = restSelectOption.text
+        self.value = restSelectOption.value
+    }
 }
