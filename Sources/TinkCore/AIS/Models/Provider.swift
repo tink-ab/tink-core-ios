@@ -34,7 +34,7 @@ public struct Provider: Identifiable {
     public let authenticationUserType: AuthenticationUserType
 
     /// Information about financial services covered with this provider.
-    public struct FinancialService {
+    public struct FinancialService: Equatable, Hashable {
         /// Indicates which segment the financial service belongs to.
         public enum Segment {
             case personal
@@ -45,7 +45,7 @@ public struct Provider: Identifiable {
         /// Segment of the financial service belongs to.
         public let segment: Segment
         /// Short name of the financial service.
-        public let shortName: String?
+        public let shortName: String
     }
 
     /// Financial services covered of this provider.

@@ -30,11 +30,11 @@ extension Provider.FinancialService {
     init(restFinancialService: RESTProvider.FinancialService) {
         switch restFinancialService.segment {
         case .business:
-            self = .init(segment: .business, shortName: restFinancialService.shortName)
+            self = .init(segment: .business, shortName: restFinancialService.shortName ?? "")
         case .personal:
-            self = .init(segment: .personal, shortName: restFinancialService.shortName)
+            self = .init(segment: .personal, shortName: restFinancialService.shortName ?? "")
         case .unknown:
-            self = .init(segment: .unknown, shortName: restFinancialService.shortName)
+            self = .init(segment: .unknown, shortName: restFinancialService.shortName ?? "")
         }
     }
 }
