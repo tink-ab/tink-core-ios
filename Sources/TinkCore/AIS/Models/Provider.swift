@@ -45,7 +45,7 @@ public struct Provider: Identifiable {
         /// Segment of the financial service belongs to.
         public let segment: Segment
         /// Short name of the financial service.
-        public let shortName: String?
+        public let shortName: String
     }
 
     /// Financial services covered of this provider.
