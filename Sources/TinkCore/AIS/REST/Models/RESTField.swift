@@ -14,12 +14,12 @@ struct RESTFieldsString: Decodable {
 }
 
 struct RESTSelectOption: Decodable {
-    var iconURL: URL?
+    var iconUrl: URL?
     var text: String?
     var value: String?
 
-    init(iconURL: URL?, text: String?, value: String?) {
-        self.iconURL = iconURL
+    init(iconUrl: URL?, text: String?, value: String?) {
+        self.iconUrl = iconUrl
         self.text = text
         self.value = value
     }
