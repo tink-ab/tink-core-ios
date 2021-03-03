@@ -4,7 +4,6 @@ extension Provider {
     init(restProvider: RESTProvider) {
         self.name = .init(restProvider.name)
         self.displayName = restProvider.displayName
-        self.authenticationUserType = .init(restFinancialService: restProvider.financialServices.first)
         self.financialServices = restProvider.financialServices.compactMap(Provider.FinancialService.init(restFinancialService:))
         self.kind = .init(restType: restProvider.type)
         self.releaseStatus = restProvider.releaseStatus == .beta ? .beta : nil
@@ -35,19 +34,6 @@ extension Provider.FinancialService {
             self = .init(segment: .personal, shortName: restFinancialService.shortName ?? "")
         case .unknown:
             self = .init(segment: .unknown, shortName: restFinancialService.shortName ?? "")
-        }
-    }
-}
-
-extension Provider.AuthenticationUserType {
-    init(restFinancialService: RESTProvider.FinancialService?) {
-        switch restFinancialService?.segment {
-        case .business:
-            self = .business
-        case .personal:
-            self = .personal
-        default:
-            self = .unknown
         }
     }
 }
