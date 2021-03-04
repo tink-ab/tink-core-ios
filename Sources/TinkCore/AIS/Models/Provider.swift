@@ -18,17 +18,6 @@ public struct Provider: Identifiable {
     /// The display name of the provider.
     public let displayName: String
 
-    /// Indicates if a user authenticates towards the provider as a person or business.
-    public enum AuthenticationUserType {
-        case unknown
-        /// The user is authenticating as a business.
-        case business
-        /// The user is authenticating as a person.
-        case personal
-        /// The user is authenticating as a corporation.
-        case corporate
-    }
-
     /// Information about financial services covered with this provider.
     public struct FinancialService: Equatable, Hashable {
         /// Indicates which segment the financial service belongs to.
