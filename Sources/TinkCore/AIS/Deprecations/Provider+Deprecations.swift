@@ -12,7 +12,7 @@ extension Provider {
         /// The user is authenticating as a corporation.
         case corporate
     }
-    
+
     @available(*, unavailable, message: "Use `financialServices` instead.")
     /// Indicates if a user authenticates toward the bank as a person or a business.
     public var authenticationUserType: AuthenticationUserType {
