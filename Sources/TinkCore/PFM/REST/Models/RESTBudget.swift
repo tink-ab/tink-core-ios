@@ -7,16 +7,22 @@ import Foundation
 /// The amount of the budget will relate to the recurring period defined by the periodicity unit for recurring budgets, or the fixed time window for a one-off budget.
 /// A budget could for example be the goal to spend at maximum 10 euros weekly on coffee.
 struct RESTBudget: Decodable {
-    enum PeriodicityType: String, Decodable {
+    enum PeriodicityType: String, DefaultableDecodable {
         case oneOff = "ONE_OFF"
         case recurring = "RECURRING"
+        case unknown
+
+        static var decodeFallbackValue: PeriodicityType = .unknown
     }
 
     struct RecurringPeriodicity: Codable {
-        enum PeriodUnit: String, Codable {
+        enum PeriodUnit: String, DefaultableDecodable, Encodable {
             case week = "WEEK"
             case month = "MONTH"
             case year = "YEAR"
+            case unknown
+
+            static var decodeFallbackValue: PeriodUnit = .unknown
         }
 
         /// Recurring periodicity unit.

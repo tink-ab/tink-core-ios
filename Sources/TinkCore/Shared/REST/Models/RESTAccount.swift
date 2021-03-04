@@ -2,7 +2,7 @@ import Foundation
 
 /// An account could either be a debit account, a credit card, a loan or mortgage.
 struct RESTAccount: Decodable {
-    enum ModelType: String, DefaultableDecodable {
+    enum ModelType: String, Encodable, DefaultableDecodable {
         case checking = "CHECKING"
         case savings = "SAVINGS"
         case investment = "INVESTMENT"
@@ -25,7 +25,7 @@ struct RESTAccount: Decodable {
         static var decodeFallbackValue: RESTAccount.Flag = .unknown
     }
 
-    enum AccountExclusion: String, DefaultableDecodable {
+    enum AccountExclusion: String, Encodable, DefaultableDecodable {
         case aggregation = "AGGREGATION"
         case pfmAndSearch = "PFM_AND_SEARCH"
         case pfmData = "PFM_DATA"
