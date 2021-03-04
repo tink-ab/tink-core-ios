@@ -29,19 +29,6 @@ public struct Provider: Identifiable {
         case corporate
     }
 
-    @available(*, unavailable, message: "Use `financialServices` instead.")
-    /// Indicates if a user authenticates toward the bank as a person or a business.
-    public var authenticationUserType: AuthenticationUserType {
-        switch financialServices.first?.segment {
-        case .business:
-            return .business
-        case .personal:
-            return .personal
-        default:
-            return .unknown
-        }
-    }
-
     /// Information about financial services covered with this provider.
     public struct FinancialService: Equatable, Hashable {
         /// Indicates which segment the financial service belongs to.
