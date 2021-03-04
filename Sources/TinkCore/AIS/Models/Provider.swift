@@ -139,15 +139,36 @@ public struct Provider: Identifiable {
         /// Determines if the field is optional.
         public let isOptional: Bool
         /// The name of the input field.
-        public let name: String?
+        public let name: String
         /// The initial value of the field, if present.
-        public let initialValue: String?
+        public let initialValue: String
         /// A regex pattern that can be evaluated of the input.
-        public let pattern: String?
+        public let pattern: String
         /// An error message that can be displayed if the provided pattern does not validate.
-        public let patternError: String?
+        public let patternError: String
         /// Text displayed next to the input field.
-        public let helpText: String?
+        public let helpText: String
+        /// A list of options where the user should select one.
+        public let selectOptions: [SelectOption]
+
+        public mutating func setImmutable(initialValue newValue: String) {
+            self = .init(
+                fieldDescription: fieldDescription,
+                hint: hint,
+                maxLength: maxLength,
+                minLength: minLength,
+                isMasked: isMasked,
+                isNumeric: isNumeric,
+                isImmutable: true,
+                isOptional: isOptional,
+                name: name,
+                initialValue: newValue,
+                pattern: pattern,
+                patternError: patternError,
+                helpText: helpText,
+                selectOptions: selectOptions
+            )
+        }
     }
 
     /// List of fields which need to be provided when creating a credential connected to the provider.

@@ -13,6 +13,18 @@ struct RESTFieldsString: Decodable {
     }
 }
 
+struct RESTSelectOption: Decodable {
+    var iconUrl: URL?
+    var text: String?
+    var value: String?
+
+    init(iconUrl: URL?, text: String?, value: String?) {
+        self.iconUrl = iconUrl
+        self.text = text
+        self.value = value
+    }
+}
+
 struct RESTField: Decodable {
     var defaultValue: String?
     var _description: String?
@@ -32,6 +44,8 @@ struct RESTField: Decodable {
     var options: [String]?
     var pattern: String?
     var patternError: String?
+    /** A list of options where the user should select one */
+    var selectOptions: [RESTSelectOption]?
     var value: String?
     var sensitive: Bool?
     /** Display boolean value as checkbox */
@@ -39,7 +53,7 @@ struct RESTField: Decodable {
     /** A serialized JSON containing additional information that could be useful */
     var additionalInfo: String?
 
-    init(defaultValue: String?, _description: String?, helpText: String?, hint: String?, immutable: Bool?, masked: Bool?, maxLength: Int?, minLength: Int?, name: String?, numeric: Bool?, _optional: Bool?, options: [String]?, pattern: String?, patternError: String?, value: String?, sensitive: Bool?, checkbox: Bool?, additionalInfo: String?) {
+    init(defaultValue: String?, _description: String?, helpText: String?, hint: String?, immutable: Bool?, masked: Bool?, maxLength: Int?, minLength: Int?, name: String?, numeric: Bool?, _optional: Bool?, options: [String]?, pattern: String?, patternError: String?, selectOptions: [RESTSelectOption]?, value: String?, sensitive: Bool?, checkbox: Bool?, additionalInfo: String?) {
         self.defaultValue = defaultValue
         self._description = _description
         self.helpText = helpText
@@ -54,6 +68,7 @@ struct RESTField: Decodable {
         self.options = options
         self.pattern = pattern
         self.patternError = patternError
+        self.selectOptions = selectOptions
         self.value = value
         self.sensitive = sensitive
         self.checkbox = checkbox
@@ -75,6 +90,7 @@ struct RESTField: Decodable {
         case options
         case pattern
         case patternError
+        case selectOptions
         case value
         case sensitive
         case checkbox

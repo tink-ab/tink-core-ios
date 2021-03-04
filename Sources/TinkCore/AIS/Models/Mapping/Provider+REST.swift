@@ -162,10 +162,11 @@ extension Provider.Field {
         self.isNumeric = restField.numeric ?? false
         self.isImmutable = restField.immutable ?? false
         self.isOptional = restField._optional ?? true
-        self.name = restField.name
-        self.initialValue = restField.value
-        self.pattern = restField.pattern
-        self.patternError = restField.patternError
-        self.helpText = restField.helpText
+        self.name = restField.name ?? ""
+        self.initialValue = restField.value ?? ""
+        self.pattern = restField.pattern ?? ""
+        self.patternError = restField.patternError ?? ""
+        self.helpText = restField.helpText ?? ""
+        self.selectOptions = (restField.selectOptions ?? []).map { SelectOption.init(restSelectOption: $0) }
     }
 }
