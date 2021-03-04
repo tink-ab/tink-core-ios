@@ -7,3 +7,4 @@ Pods/
 *.xcworkspace
 .swiftpm/
 TinkCore.xcframework.zip
+TinkCore.xcodeproj

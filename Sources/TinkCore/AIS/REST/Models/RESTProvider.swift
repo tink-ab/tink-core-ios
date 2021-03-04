@@ -47,7 +47,6 @@ struct RESTProvider: Decodable {
         case mobileBankid = "MOBILE_BANKID"
         case keyfob = "KEYFOB"
         case thirdPartyApp = "THIRD_PARTY_APP"
-        case fraud = "FRAUD"
         case unknown = "UNKNOWN"
 
         static var decodeFallbackValue: RESTProvider.CredentialsType = .unknown
@@ -67,20 +66,10 @@ struct RESTProvider: Decodable {
         case creditCard = "CREDIT_CARD"
         case broker = "BROKER"
         case test = "TEST"
-        case fraud = "FRAUD"
         case other = "OTHER"
         case unknown = "UNKNOWN"
 
         static var decodeFallbackValue: RESTProvider.ModelType = .unknown
-    }
-
-    enum AuthenticationUserType: String, DefaultableDecodable {
-        case business = "BUSINESS"
-        case personal = "PERSONAL"
-        case corporate = "CORPORATE"
-        case unknown = "UNKNOWN"
-
-        static var decodeFallbackValue: RESTProvider.AuthenticationUserType = .unknown
     }
 
     /// Indicates the release status of a provider.
@@ -91,12 +80,25 @@ struct RESTProvider: Decodable {
         static var decodeFallbackValue: RESTProvider.ReleaseStatus = .unknown
     }
 
+    struct FinancialService: Decodable {
+        enum Segment: String, DefaultableDecodable {
+            case personal = "PERSONAL"
+            case business = "BUSINESS"
+            case unknown = "UNKNOWN"
+
+            static var decodeFallbackValue: RESTProvider.FinancialService.Segment = .unknown
+        }
+
+        let segment: Segment
+        let shortName: String?
+    }
+
     /// What Tink uses to access the data.
     var accessType: AccessType
     /// (PSD2 change - Not yet implemented) - What type of authentication flow used to access the data.
 //    var authenticationFlow: AuthenticationFlow
-    /// Indicates if a user authenticates toward the bank as a person or a business.
-    var authenticationUserType: AuthenticationUserType
+    /// Information about financial services covered with this provider.
+    var financialServices: [FinancialService]
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
     var capabilities: [Capabilities]
     /// When creating a new credential connected to the provider this will be the credentials type.

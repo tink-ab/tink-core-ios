@@ -5,7 +5,7 @@ class ProviderRESTTests: XCTestCase {
     func testProviderMapping() {
         let restProvider = RESTProvider(
             accessType: .other,
-            authenticationUserType: .personal,
+            financialServices: [RESTProvider.FinancialService.init(segment: .personal, shortName: "Personal")],
             capabilities: [
                 .loans,
                 .savingsAccounts,
@@ -43,7 +43,7 @@ class ProviderRESTTests: XCTestCase {
         XCTAssertEqual(provider.fields.count, 1)
         if let field = provider.fields.first {
             XCTAssertEqual(field.name, "username")
-            XCTAssertEqual(field.fieldDescription, "Username")
+            XCTAssertEqual(field.description, "Username")
             XCTAssertEqual(field.isImmutable, true)
         }
         XCTAssertEqual(provider.displayDescription, restProvider.displayDescription)
@@ -51,13 +51,17 @@ class ProviderRESTTests: XCTestCase {
         XCTAssertEqual(provider.accessType, .other)
         XCTAssertEqual(provider.financialInstitution.id.value, restProvider.financialInstitutionId)
         XCTAssertEqual(provider.financialInstitution.name, restProvider.financialInstitutionName)
+        XCTAssertEqual(provider.financialServices.first?.segment, .personal)
     }
 
     func testProviderMappingWithNewCapabilities() throws {
         let testProviderJSON = """
         {
             "accessType": "OPEN_BANKING",
-            "authenticationUserType": "PERSONAL",
+            "financialServices": [{
+                "segment": "PERSONAL",
+                "shortName": "Personal Banking"
+            }],
             "capabilities": ["CREDIT_CARDS", "TEST_CAPABILITIES"],
             "credentialsType": "THIRD_PARTY_APP",
             "currency": "SEK",

@@ -4,24 +4,32 @@ extension Credentials {
     init(restCredentials: RESTCredentials, appUri: URL) {
         guard let id = restCredentials.id, let type = restCredentials.type, let status = restCredentials.status else { fatalError() }
         self.id = .init(id)
-        self.providerID = .init(restCredentials.providerName)
+        self.providerName = .init(restCredentials.providerName)
         self.kind = .init(restCredentialType: type)
-        self.status = .init(restCredentialsStatus: status)
-        self.statusPayload = restCredentials.statusPayload ?? ""
+        self.status = .init(restCredentialsStatus: status, id: id, supplementalInformation: restCredentials.supplementalInformation, appUri: appUri)
+        self.statusPayload = (restCredentials.statusPayload ?? "").isEmpty ? nil : restCredentials.statusPayload
         self.statusUpdated = restCredentials.statusUpdated
         self.updated = restCredentials.updated
         self.fields = restCredentials.fields
-        self.supplementalInformationFields = Self.makeFieldSpecifications(from: restCredentials.supplementalInformation)
-        self.thirdPartyAppAuthentication = Self.makeThirdPartyAppAuthentication(from: restCredentials.supplementalInformation, id: id, status: restCredentials.status, appUri: appUri)
         self.sessionExpiryDate = restCredentials.sessionExpiryDate
     }
 
-    static func makeFieldSpecifications(from string: String?) -> [Provider.FieldSpecification] {
-        if let stringData = string?.data(using: .utf8),
-           let fields = try? JSONDecoder().decode([RESTField].self, from: stringData) {
-            return fields.map(Provider.FieldSpecification.init)
+    static func makeFieldSpecifications(from string: String?) throws -> [Provider.Field] {
+        let supplementalInformationMissingError = DecodingError.valueNotFound(RESTCredentials.self, DecodingError.Context(codingPath: [RESTCredentials.supplementalInformationCodingKey], debugDescription: "Expected String value but found null instead."))
+
+        guard let string = string else {
+            throw supplementalInformationMissingError
         }
-        return []
+
+        if let stringData = string.data(using: .utf8) {
+            let fields = try JSONDecoder().decode([RESTField].self, from: stringData)
+            if fields.isEmpty {
+                throw supplementalInformationMissingError
+            }
+            return fields.map(Provider.Field.init)
+        } else {
+            throw supplementalInformationMissingError
+        }
     }
 
     static func makeThirdPartyAppAuthentication(from string: String?, id: String, status: RESTCredentials.Status?, appUri: URL) -> Credentials.ThirdPartyAppAuthentication? {
@@ -102,8 +110,6 @@ extension Credentials.Kind {
             self = .mobileBankID
         case .keyfob:
             self = .keyfob
-        case .fraud:
-            self = .fraud
         case .unknown:
             self = .unknown
         }
@@ -119,8 +125,6 @@ extension Credentials.Kind {
             return .mobileBankid
         case .keyfob:
             return .keyfob
-        case .fraud:
-            return nil
         case .thirdPartyAuthentication:
             return .thirdPartyApp
         }
@@ -128,7 +132,7 @@ extension Credentials.Kind {
 }
 
 extension Credentials.Status {
-    init(restCredentialsStatus: RESTCredentials.Status) {
+    init(restCredentialsStatus: RESTCredentials.Status, id: String, supplementalInformation: String?, appUri: URL) {
         switch restCredentialsStatus {
         case .created:
             self = .created
@@ -145,15 +149,31 @@ extension Credentials.Status {
         case .permanentError:
             self = .permanentError
         case .awaitingMobileBankidAuthentication:
-            self = .awaitingMobileBankIDAuthentication
-        case .awaitingSupplementalInformation:
-            self = .awaitingSupplementalInformation
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus, appUri: appUri) {
+                self = .awaitingMobileBankIDAuthentication(thirdPartyAppAuthentication)
+            } else {
+                assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
+                self = .authenticationError
+            }
         case .awaitingThirdPartyAppAuthentication:
-            self = .awaitingThirdPartyAppAuthentication
+            if let thirdPartyAppAuthentication = Credentials.makeThirdPartyAppAuthentication(from: supplementalInformation, id: id, status: restCredentialsStatus, appUri: appUri) {
+                self = .awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication)
+            } else {
+                assertionFailure("Failed to parse third party app authentication. You may need to update your version of TinkCore.")
+                self = .authenticationError
+            }
+        case .awaitingSupplementalInformation:
+            do {
+                let fields = try Credentials.makeFieldSpecifications(from: supplementalInformation)
+                self = .awaitingSupplementalInformation(fields)
+            } catch {
+                assertionFailure("Failed to parse supplemental information. You may need to update your version of TinkCore. Underlying error: \(error)")
+                self = .authenticationError
+            }
         case .sessionExpired:
             self = .sessionExpired
         case .deleted:
-            self = .disabled
+            self = .deleted
         case .unknown:
             self = .unknown
         }

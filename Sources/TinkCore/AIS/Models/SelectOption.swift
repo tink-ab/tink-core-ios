@@ -1,6 +1,6 @@
 import Foundation
 /// A list of options where the user should select one.
-public struct SelectOption {
+public struct SelectOption: Equatable {
     /// A URL the client can optionally use to show an icon to represent the option.
     public let iconURL: URL?
     /// The human-readable description of this option to display to the user.
