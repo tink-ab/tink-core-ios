@@ -59,6 +59,7 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendNegativeMidMonth = "LEFT_TO_SPEND_NEGATIVE_MID_MONTH"
     case leftToSpendNegativeSummary = "LEFT_TO_SPEND_NEGATIVE_SUMMARY"
     case budgetSuggestCreateTopCategory = "BUDGET_SUGGEST_CREATE_TOP_CATEGORY"
+    case budgetSuggestCreateTopPrimaryCategory = "BUDGET_SUGGEST_CREATE_TOP_PRIMARY_CATEGORY"
     case budgetSuggestCreateFirst = "BUDGET_SUGGEST_CREATE_FIRST"
     case leftToSpendPositiveBeginningMonth = "LEFT_TO_SPEND_POSITIVE_BEGINNING_MONTH"
     case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
@@ -261,6 +262,7 @@ enum RESTInsightData: Decodable {
         struct CategorySpending: Decodable {
             let categoryCode: String
             let spentAmount: RESTInsightData.CurrencyDenominatedAmount
+            let suggestedBudgetCategoryDisplayName: String
         }
 
         let categorySpending: CategorySpending
@@ -346,6 +348,7 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -438,6 +441,9 @@ enum RESTInsightData: Decodable {
             case .budgetSuggestCreateTopCategory:
                 let data = try BudgetSuggestCreateTopCategory(from: decoder)
                 self = .budgetSuggestCreateTopCategory(data)
+            case .budgetSuggestCreateTopPrimaryCategory:
+                let data = try BudgetSuggestCreateTopCategory(from: decoder)
+                self = .budgetSuggestCreateTopPrimaryCategory(data)
             case .budgetSuggestCreateFirst:
                 self = .budgetSuggestCreateFirst
             case .leftToSpendPositiveBeginningMonth:
@@ -478,7 +484,7 @@ struct RESTInsightProposedAction: Decodable {
     let data: RESTInsightActionData?
 }
 
-enum RESTInsightActionDataType: String, Decodable {
+enum RESTInsightActionDataType: String, DefaultableDecodable {
     case unknown
     case acknowledge = "ACKNOWLEDGE"
     case dismiss = "DISMISS"
@@ -494,11 +500,7 @@ enum RESTInsightActionDataType: String, Decodable {
     case createBudget = "CREATE_BUDGET"
     case refreshCredentials = "REFRESH_CREDENTIAL"
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let rawValue = try container.decode(String.self)
-        self = RESTInsightActionDataType(rawValue: rawValue) ?? .unknown
-    }
+    static var decodeFallbackValue: RESTInsightActionDataType = .unknown
 }
 
 enum RESTInsightActionData: Decodable {
@@ -546,16 +548,17 @@ enum RESTInsightActionData: Decodable {
             struct Filter: Decodable {
                 var accounts: [String]?
                 var categories: [String]?
-                var tags: [String]?
-                var freeTextQuery: String?
             }
 
             let filter: Filter?
             let amount: RESTInsightData.CurrencyDenominatedAmount?
 
-            enum PeriodicityType: String, Decodable {
+            enum PeriodicityType: String, DefaultableDecodable {
                 case recurring = "BUDGET_PERIODICITY_TYPE_RECURRING"
                 case oneOff = "BUDGET_PERIODICITY_TYPE_ONE_OFF"
+                case unknown
+
+                static var decodeFallbackValue: PeriodicityType = .unknown
             }
 
             let periodicityType: PeriodicityType?

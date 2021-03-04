@@ -33,7 +33,7 @@ public struct ActionableInsight {
         case largeExpense(LargeExpense)
         case singleUncategorizedTransaction(Transaction.ID)
         case doubleCharge([Transaction.ID])
-        case weeklyUncategorizedTransactions(WeeklyTranscations)
+        case weeklyUncategorizedTransactions(WeeklyTransactions)
         case weeklySummaryExpensesByCategory(WeeklyExpensesByCategory)
         case weeklySummaryExpensesByDay(WeeklyExpensesByDay)
         case monthlySummaryExpensesByCategory(MonthlyExpensesByCategory)
@@ -47,6 +47,7 @@ public struct ActionableInsight {
         case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
         case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
         case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+        case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopCategory)
         case budgetSuggestCreateFirst
         case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
         case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -171,7 +172,10 @@ extension ActionableInsight {
         }
     }
 
-    public struct WeeklyTranscations {
+    @available(*, deprecated, renamed: "WeeklyTransactions")
+    public typealias WeeklyTranscations = WeeklyTransactions
+
+    public struct WeeklyTransactions {
         public let transactionIDs: [Transaction.ID]
         public let week: Week
 
@@ -443,10 +447,12 @@ extension ActionableInsight {
     public struct BudgetSuggestCreateTopCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
+        public let suggestedBudgetCategoryDisplayName: String
 
-        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount) {
+        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: String = "") {
             self.categorySpending = categorySpending
             self.suggestedBudgetAmount = suggestedBudgetAmount
+            self.suggestedBudgetCategoryDisplayName = suggestedBudgetCategoryDisplayName
         }
     }
 

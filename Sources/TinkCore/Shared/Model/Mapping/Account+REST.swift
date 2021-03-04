@@ -5,7 +5,7 @@ extension Account {
         self.accountNumber = account.accountNumber
         self.balance = account.balance
         self.credentialsID = Credentials.ID(account.credentialsId)
-        self.isFavored = account.favored
+        self.isFavorite = account.favored
         self.id = Account.ID(account.id)
         self.name = account.name
         self.ownership = account.ownership
