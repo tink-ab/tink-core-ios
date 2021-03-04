@@ -153,7 +153,7 @@ public struct Provider: Identifiable {
 
         public mutating func setImmutable(initialValue newValue: String) {
             self = .init(
-                fieldDescription: fieldDescription,
+                description: description,
                 hint: hint,
                 maxLength: maxLength,
                 minLength: minLength,
