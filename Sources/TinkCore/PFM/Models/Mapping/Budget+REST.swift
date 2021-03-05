@@ -76,14 +76,6 @@ extension Budget.Filter {
             .map(Budget.Filter.category)
             ?? []
 
-        filters += restFilter?.tags?
-            .map(Budget.Filter.tag)
-            ?? []
-
-        if let query = restFilter?.freeTextQuery {
-            filters.append(.search(query))
-        }
-
         return filters
     }
 }

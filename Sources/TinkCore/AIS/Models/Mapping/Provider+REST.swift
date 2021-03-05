@@ -2,15 +2,15 @@ import Foundation
 
 extension Provider {
     init(restProvider: RESTProvider) {
-        self.id = .init(restProvider.name)
+        self.name = .init(restProvider.name)
         self.displayName = restProvider.displayName
-        self.authenticationUserType = .init(restType: restProvider.authenticationUserType)
+        self.financialServices = restProvider.financialServices.compactMap(Provider.FinancialService.init(restFinancialService:))
         self.kind = .init(restType: restProvider.type)
         self.releaseStatus = restProvider.releaseStatus == .beta ? .beta : nil
         self.status = Status(restStatus: restProvider.status)
         self.helpText = restProvider.passwordHelpText
         self.isPopular = restProvider.popular
-        self.fields = restProvider.fields.map(FieldSpecification.init)
+        self.fields = restProvider.fields.map(Field.init)
         self.groupDisplayName = restProvider.groupDisplayName ?? restProvider.displayName
         self.image = restProvider.images.flatMap { URL(string: $0.icon ?? "") }
         self.displayDescription = restProvider.displayDescription ?? ""
@@ -25,17 +25,15 @@ extension Provider {
     }
 }
 
-extension Provider.AuthenticationUserType {
-    init(restType: RESTProvider.AuthenticationUserType) {
-        switch restType {
+extension Provider.FinancialService {
+    init(restFinancialService: RESTProvider.FinancialService) {
+        switch restFinancialService.segment {
         case .business:
-            self = .business
+            self = .init(segment: .business, shortName: restFinancialService.shortName ?? "")
         case .personal:
-            self = .personal
-        case .corporate:
-            self = .corporate
+            self = .init(segment: .personal, shortName: restFinancialService.shortName ?? "")
         case .unknown:
-            self = .unknown
+            self = .init(segment: .unknown, shortName: restFinancialService.shortName ?? "")
         }
     }
 }
@@ -53,8 +51,6 @@ extension Provider.Kind {
             self = .other
         case .test:
             self = .test
-        case .fraud:
-            self = .fraud
         case .unknown:
             self = .unknown
         }
@@ -156,10 +152,10 @@ extension Provider.AccessType {
     }
 }
 
-extension Provider.FieldSpecification {
+extension Provider.Field {
     init(restField: RESTField) {
-        self.fieldDescription = restField._description ?? ""
-        self.hint = restField.hint ?? ""
+        self.description = restField._description
+        self.hint = restField.hint
         self.maxLength = restField.maxLength
         self.minLength = restField.minLength
         self.isMasked = restField.masked ?? false
@@ -171,5 +167,6 @@ extension Provider.FieldSpecification {
         self.pattern = restField.pattern ?? ""
         self.patternError = restField.patternError ?? ""
         self.helpText = restField.helpText ?? ""
+        self.selectOptions = (restField.selectOptions ?? []).map { SelectOption(restSelectOption: $0) }
     }
 }

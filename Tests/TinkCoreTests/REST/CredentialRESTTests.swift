@@ -9,7 +9,7 @@ class CredentialRESTTests: XCTestCase {
             type: .mobileBankid,
             status: .created,
             statusUpdated: nil,
-            statusPayload: "Analyzed 1,200 out of 1,200 transactions",
+            statusPayload: nil,
             updated: nil,
             fields: ["username": "180012121234"],
             supplementalInformation: nil,
@@ -17,17 +17,15 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .created)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
-        XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
-        XCTAssertNil(credential.thirdPartyAppAuthentication)
         XCTAssertNil(credential.sessionExpiryDate)
     }
 
@@ -48,17 +46,15 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .updated)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertEqual(credential.updated, updatedAt)
         XCTAssertEqual(credential.fields, restCredentials.fields)
-        XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
-        XCTAssertNil(credential.thirdPartyAppAuthentication)
         XCTAssertNil(credential.sessionExpiryDate)
     }
 
@@ -77,25 +73,25 @@ class CredentialRESTTests: XCTestCase {
             userId: nil
         )
 
-        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink://")!)
+        let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .thirdPartyAuthentication)
-        XCTAssertEqual(credential.status, .awaitingThirdPartyAppAuthentication)
-        XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
-        XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
-        XCTAssertNotNil(credential.thirdPartyAppAuthentication)
 
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.deepLinkURL?.absoluteString, "this.is.not.a.valid.deeplink")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.appStoreURL?.absoluteString, "https://itunes.apple.com")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.scheme, "this.is.not.a.valid.app.scheme")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.downloadTitle, "Download Tink Demo Authentication app")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.downloadMessage, "You need to download the Tink Demo Authentication app in order to continue.")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.upgradeTitle, "Upgrade Tink Demo Authentication app")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.upgradeMessage, "You need to upgrade the Tink Demo Authentication app in order to continue.")
+        if case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication) = credential.status {
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "this.is.not.a.valid.deeplink")
+            XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "https://itunes.apple.com")
+            XCTAssertEqual(thirdPartyAppAuthentication.scheme, "this.is.not.a.valid.app.scheme")
+            XCTAssertEqual(thirdPartyAppAuthentication.downloadTitle, "Download Tink Demo Authentication app")
+            XCTAssertEqual(thirdPartyAppAuthentication.downloadMessage, "You need to download the Tink Demo Authentication app in order to continue.")
+            XCTAssertEqual(thirdPartyAppAuthentication.upgradeTitle, "Upgrade Tink Demo Authentication app")
+            XCTAssertEqual(thirdPartyAppAuthentication.upgradeMessage, "You need to upgrade the Tink Demo Authentication app in order to continue.")
+        } else {
+            XCTFail("Wrong status")
+        }
 
         XCTAssertNil(credential.sessionExpiryDate)
     }
@@ -118,17 +114,18 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "tink:///")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
-        XCTAssertEqual(credential.status, .awaitingMobileBankIDAuthentication)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
-        XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
-        XCTAssertNotNil(credential.thirdPartyAppAuthentication)
 
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
+        if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
+        } else {
+            XCTFail("Wrong status")
+        }
 
         XCTAssertNil(credential.sessionExpiryDate)
     }
@@ -151,18 +148,16 @@ class CredentialRESTTests: XCTestCase {
         let credential = Credentials(restCredentials: restCredentials, appUri: URL(string: "https://facebook.com/cool_redirect/")!)
 
         XCTAssertEqual(credential.id.value, restCredentials.id)
-        XCTAssertEqual(credential.providerID.value, restCredentials.providerName)
+        XCTAssertEqual(credential.providerName.value, restCredentials.providerName)
         XCTAssertEqual(credential.kind, .mobileBankID)
-        XCTAssertEqual(credential.status, .awaitingMobileBankIDAuthentication)
         XCTAssertEqual(credential.statusPayload, restCredentials.statusPayload)
         XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, restCredentials.fields)
-        XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
-        XCTAssertNotNil(credential.thirdPartyAppAuthentication)
-
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
-        XCTAssertEqual(credential.thirdPartyAppAuthentication?.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
-
         XCTAssertNil(credential.sessionExpiryDate)
+
+        if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
+        }
     }
 }

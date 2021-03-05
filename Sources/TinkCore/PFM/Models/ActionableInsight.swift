@@ -47,6 +47,7 @@ public struct ActionableInsight {
         case leftToSpendNegativeMidMonth(LeftToSpendMidMonth)
         case leftToSpendNegativeSummary(LeftToSpendNegativeSummary)
         case budgetSuggestCreateTopCategory(BudgetSuggestCreateTopCategory)
+        case budgetSuggestCreateTopPrimaryCategory(BudgetSuggestCreateTopCategory)
         case budgetSuggestCreateFirst
         case leftToSpendPositiveBeginningMonth(LeftToSpendBeginningMonth)
         case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
@@ -100,7 +101,7 @@ extension ActionableInsight {
         @available(*, deprecated, renamed: "budgetID")
         public var budgetId: Budget.ID { budgetID }
 
-        @available(*, deprecated, renamed: "init(budgetID:budgtePeriod:)")
+        @available(*, deprecated, renamed: "init(budgetID:budgetPeriod:)")
         public init(budgetId: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
             self.budgetID = budgetId
             self.budgetPeriod = budgetPeriod
@@ -446,10 +447,12 @@ extension ActionableInsight {
     public struct BudgetSuggestCreateTopCategory {
         public let categorySpending: CategorySpending
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
+        public let suggestedBudgetCategoryDisplayName: String
 
-        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount) {
+        public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: String = "") {
             self.categorySpending = categorySpending
             self.suggestedBudgetAmount = suggestedBudgetAmount
+            self.suggestedBudgetCategoryDisplayName = suggestedBudgetCategoryDisplayName
         }
     }
 

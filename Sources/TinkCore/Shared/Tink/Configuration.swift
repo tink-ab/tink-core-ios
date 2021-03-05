@@ -9,6 +9,13 @@ public protocol Configuration {
     /// The URI you've setup in Console.
     var appURI: URL? { get }
 
+    /// This URI will be used by the ASPSP to pass the authorization code.
+    ///
+    /// It corresponds to the redirect/callback URI in OAuth2/OpenId.
+    ///
+    /// - Note: This parameter is only applicable if you are a TPP.
+    var callbackURI: URL? { get }
+
     /// The environment to use.
     var environment: Tink.Environment { get }
 
@@ -27,6 +34,8 @@ extension Tink {
         public var redirectURI: URL
 
         public var appURI: URL?
+
+        public var callbackURI: URL?
 
         /// The environment to use.
         public var environment: Environment
@@ -83,23 +92,6 @@ extension Tink {
             self.environment = environment
             self.certificateURL = certificateURL
         }
-
-        /// - Parameters:
-        ///   - clientID: The client id for your app.
-        ///   - redirectURI: The URI you've setup in Console.
-        ///   - environment: The environment to use, defaults to production.
-        ///   - grpcCertificateURL: URL to a certificate file to use with the gRPC API.
-        ///   - restCertificateURL: URL to a certificate file to use with the REST API.
-        @available(*, deprecated, message: "Use init(clientID:redirectURI:environment:certificateURL:) instead")
-        public init(
-            clientID: String,
-            redirectURI: URL,
-            environment: Environment = .production,
-            grpcCertificateURL: URL? = nil,
-            restCertificateURL: URL? = nil
-        ) throws {
-            try self.init(clientID: clientID, redirectURI: redirectURI, environment: environment, certificateURL: restCertificateURL)
-        }
     }
 }
 
@@ -111,19 +103,10 @@ extension Tink.Configuration {
         var errorDescription: String? {
             switch self {
             case .clientIDNotFound:
-                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client identifer before using it."
+                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client identifier before using it."
             case .redirectURINotFound:
                 return "`TINK_REDIRECT_URI` was not found in environment variable. Please configure a Tink Link redirect URI before using it."
             }
         }
-    }
-
-    init(processInfo: ProcessInfo) throws {
-        guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
-        guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.redirectURINotFound }
-        self.clientID = clientID
-        self.redirectURI = redirectURI
-        self.environment = processInfo.tinkEnvironment ?? .production
-        self.certificateURL = processInfo.tinkRestCertificateURL
     }
 }

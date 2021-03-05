@@ -3,7 +3,9 @@ import Foundation
 /// Each API customer has a set of scopes which control the maximum permitted data access.
 /// To see the total set of scopes that you can use, go to app settings in the Tink Console.
 public struct Scope {
+    /// The name of the data the scope is for.
     let name: String
+    /// A set of access strings this scope have, for example `"read"` or `"write"`.
     let access: [String]
 }
 
