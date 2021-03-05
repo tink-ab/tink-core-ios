@@ -131,6 +131,7 @@ public struct ActionableInsight {
     case leftToSpendNegativeMidMonth(TinkCore.ActionableInsight.LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(TinkCore.ActionableInsight.LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(TinkCore.ActionableInsight.BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateTopPrimaryCategory(TinkCore.ActionableInsight.BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(TinkCore.ActionableInsight.LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(TinkCore.ActionableInsight.LeftToSpendBeginningMonth)
@@ -331,7 +332,8 @@ extension ActionableInsight {
   public struct BudgetSuggestCreateTopCategory {
     public let categorySpending: TinkCore.ActionableInsight.CategorySpending
     public let suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount
-    public init(categorySpending: TinkCore.ActionableInsight.CategorySpending, suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount)
+    public let suggestedBudgetCategoryDisplayName: Swift.String
+    public init(categorySpending: TinkCore.ActionableInsight.CategorySpending, suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: Swift.String = "")
   }
   public struct LeftToSpendBeginningMonth {
     public let month: TinkCore.ActionableInsight.Month
@@ -657,6 +659,7 @@ public struct ClientDescription {
 public protocol Configuration {
   var clientID: Swift.String { get }
   var appURI: Foundation.URL? { get }
+  var callbackURI: Foundation.URL? { get }
   var environment: TinkCore.Tink.Environment { get }
   var certificateURL: Foundation.URL? { get }
 }
@@ -665,6 +668,7 @@ extension Tink {
     public var clientID: Swift.String
     public var redirectURI: Foundation.URL
     public var appURI: Foundation.URL?
+    public var callbackURI: Foundation.URL?
     public var environment: TinkCore.Tink.Environment
     public var certificateURL: Foundation.URL?
     @available(*, renamed: "certificateURL")
@@ -795,7 +799,7 @@ public typealias Environment = TinkCore.Tink.Environment
 extension Tink {
   public enum Environment {
     case production
-    case custom(restURL: Foundation.URL)
+    case custom(Foundation.URL)
   }
 }
 extension Provider {
@@ -876,6 +880,21 @@ extension Period.Resolution {
 extension Provider {
   @available(*, deprecated, renamed: "Field")
   public typealias FieldSpecification = TinkCore.Provider.Field
+  public enum AuthenticationUserType {
+    case unknown
+    case business
+    case personal
+    case corporate
+    public static func == (a: TinkCore.Provider.AuthenticationUserType, b: TinkCore.Provider.AuthenticationUserType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  @available(*, unavailable, message: "Use `financialServices` instead.")
+  public var authenticationUserType: TinkCore.Provider.AuthenticationUserType {
+    get
+  }
 }
 extension Provider.Field {
   @available(*, deprecated, renamed: "description")
@@ -890,18 +909,26 @@ public struct Provider : Swift.Identifiable {
   }
   public let name: TinkCore.Provider.Name
   public let displayName: Swift.String
-  public enum AuthenticationUserType {
-    case unknown
-    case business
-    case personal
-    case corporate
-    public static func == (a: TinkCore.Provider.AuthenticationUserType, b: TinkCore.Provider.AuthenticationUserType) -> Swift.Bool
+  public struct FinancialService : Swift.Equatable, Swift.Hashable {
+    public enum Segment {
+      case personal
+      case business
+      case unknown
+      public static func == (a: TinkCore.Provider.FinancialService.Segment, b: TinkCore.Provider.FinancialService.Segment) -> Swift.Bool
+      public var hashValue: Swift.Int {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+    }
+    public let segment: TinkCore.Provider.FinancialService.Segment
+    public let shortName: Swift.String
+    public static func == (a: TinkCore.Provider.FinancialService, b: TinkCore.Provider.FinancialService) -> Swift.Bool
     public var hashValue: Swift.Int {
       get
     }
     public func hash(into hasher: inout Swift.Hasher)
   }
-  public let authenticationUserType: TinkCore.Provider.AuthenticationUserType
+  public let financialServices: [TinkCore.Provider.FinancialService]
   public enum Kind {
     case unknown
     case bank
@@ -952,11 +979,13 @@ public struct Provider : Swift.Identifiable {
     public let isNumeric: Swift.Bool
     public let isImmutable: Swift.Bool
     public let isOptional: Swift.Bool
-    public let name: Swift.String?
-    public let initialValue: Swift.String?
-    public let pattern: Swift.String?
-    public let patternError: Swift.String?
-    public let helpText: Swift.String?
+    public let name: Swift.String
+    public let initialValue: Swift.String
+    public let pattern: Swift.String
+    public let patternError: Swift.String
+    public let helpText: Swift.String
+    public let selectOptions: [TinkCore.SelectOption]
+    public mutating func setImmutable(initialValue newValue: Swift.String)
     public static func == (a: TinkCore.Provider.Field, b: TinkCore.Provider.Field) -> Swift.Bool
   }
   public let fields: [TinkCore.Provider.Field]
@@ -1139,6 +1168,12 @@ extension Scope {
 public struct ScopeDescription {
   public let title: Swift.String
   public let description: Swift.String
+}
+public struct SelectOption : Swift.Equatable {
+  public let iconURL: Foundation.URL?
+  public let text: Swift.String?
+  public let value: Swift.String?
+  public static func == (a: TinkCore.SelectOption, b: TinkCore.SelectOption) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers final public class ServiceContainer {
   final public var authenticationService: TinkCore.AuthenticationService {
@@ -1444,6 +1479,8 @@ extension TinkCore.Provider.Kind : Swift.Equatable {}
 extension TinkCore.Provider.Kind : Swift.Hashable {}
 extension TinkCore.Provider.Status : Swift.Equatable {}
 extension TinkCore.Provider.Status : Swift.Hashable {}
+extension TinkCore.Provider.FinancialService.Segment : Swift.Equatable {}
+extension TinkCore.Provider.FinancialService.Segment : Swift.Hashable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Equatable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Hashable {}
 extension TinkCore.Scope.ReadAccess : Swift.Equatable {}

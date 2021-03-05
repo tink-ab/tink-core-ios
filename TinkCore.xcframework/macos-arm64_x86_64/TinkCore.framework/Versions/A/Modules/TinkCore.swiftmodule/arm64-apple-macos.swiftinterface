@@ -5,11 +5,15 @@ import Dispatch
 import Foundation
 import Security
 import Swift
-public struct AccessToken : Swift.Hashable, Swift.RawRepresentable {
+public struct AccessToken : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
   public let rawValue: Swift.String
   public init?(rawValue: Swift.String)
+  public init(stringLiteral value: Swift.String)
   public init(_ value: Swift.String)
   public typealias RawValue = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
 }
 public struct Account {
   public enum Kind : Swift.CaseIterable {
@@ -126,6 +130,7 @@ public struct ActionableInsight {
     case leftToSpendNegativeMidMonth(TinkCore.ActionableInsight.LeftToSpendMidMonth)
     case leftToSpendNegativeSummary(TinkCore.ActionableInsight.LeftToSpendNegativeSummary)
     case budgetSuggestCreateTopCategory(TinkCore.ActionableInsight.BudgetSuggestCreateTopCategory)
+    case budgetSuggestCreateTopPrimaryCategory(TinkCore.ActionableInsight.BudgetSuggestCreateTopCategory)
     case budgetSuggestCreateFirst
     case leftToSpendPositiveBeginningMonth(TinkCore.ActionableInsight.LeftToSpendBeginningMonth)
     case leftToSpendNegativeBeginningMonth(TinkCore.ActionableInsight.LeftToSpendBeginningMonth)
@@ -158,7 +163,7 @@ extension ActionableInsight {
     public var budgetId: TinkCore.Budget.ID {
       get
     }
-    @available(*, deprecated, renamed: "init(budgetID:budgtePeriod:)")
+    @available(*, deprecated, renamed: "init(budgetID:budgetPeriod:)")
     public init(budgetId: TinkCore.Budget.ID, budgetPeriod: TinkCore.ActionableInsight.BudgetPeriod)
   }
   public struct BudgetPeriod {
@@ -326,7 +331,8 @@ extension ActionableInsight {
   public struct BudgetSuggestCreateTopCategory {
     public let categorySpending: TinkCore.ActionableInsight.CategorySpending
     public let suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount
-    public init(categorySpending: TinkCore.ActionableInsight.CategorySpending, suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount)
+    public let suggestedBudgetCategoryDisplayName: Swift.String
+    public init(categorySpending: TinkCore.ActionableInsight.CategorySpending, suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: Swift.String = "")
   }
   public struct LeftToSpendBeginningMonth {
     public let month: TinkCore.ActionableInsight.Month
@@ -456,10 +462,6 @@ public struct AuthorizationCode : Swift.Hashable, Swift.RawRepresentable, Swift.
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 public struct Beneficiary : Swift.Equatable {
-  @available(*, deprecated, renamed: "accountNumberKind")
-  public var accountNumberType: Swift.String {
-    get
-  }
   public let accountNumberKind: TinkCore.AccountNumberKind
   public let accountNumber: Swift.String
   public let name: Swift.String
@@ -656,6 +658,7 @@ public struct ClientDescription {
 public protocol Configuration {
   var clientID: Swift.String { get }
   var appURI: Foundation.URL? { get }
+  var callbackURI: Foundation.URL? { get }
   var environment: TinkCore.Tink.Environment { get }
   var certificateURL: Foundation.URL? { get }
 }
@@ -664,6 +667,7 @@ extension Tink {
     public var clientID: Swift.String
     public var redirectURI: Foundation.URL
     public var appURI: Foundation.URL?
+    public var callbackURI: Foundation.URL?
     public var environment: TinkCore.Tink.Environment
     public var certificateURL: Foundation.URL?
     @available(*, renamed: "certificateURL")
@@ -672,20 +676,23 @@ extension Tink {
     }
     public init(clientID: Swift.String, appURI: Foundation.URL? = nil, environment: TinkCore.Tink.Environment = .production, certificateURL: Foundation.URL? = nil)
     public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, certificateURL: Foundation.URL? = nil) throws
-    @available(*, deprecated, message: "Use init(clientID:redirectURI:environment:certificateURL:) instead")
-    public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, grpcCertificateURL: Foundation.URL? = nil, restCertificateURL: Foundation.URL? = nil) throws
+  }
+}
+extension Credentials {
+  @available(*, deprecated, renamed: "providerName")
+  public var providerID: TinkCore.Provider.Name {
+    get
   }
 }
 public struct Credentials : Swift.Identifiable {
   public typealias ID = TinkCore.Identifier<TinkCore.Credentials>
   public let id: TinkCore.Credentials.ID
-  public let providerID: TinkCore.Provider.ID
+  public let providerName: TinkCore.Provider.Name
   public enum Kind {
     case unknown
     case password
     case mobileBankID
     case keyfob
-    case fraud
     case thirdPartyAuthentication
     public var sortOrder: Swift.Int {
       get
@@ -697,7 +704,7 @@ public struct Credentials : Swift.Identifiable {
     public func hash(into hasher: inout Swift.Hasher)
   }
   public let kind: TinkCore.Credentials.Kind
-  public enum Status {
+  public enum Status : Swift.Equatable {
     case unknown
     case created
     case authenticating
@@ -706,24 +713,19 @@ public struct Credentials : Swift.Identifiable {
     case temporaryError
     case authenticationError
     case permanentError
-    case awaitingMobileBankIDAuthentication
-    case awaitingSupplementalInformation
-    case disabled
-    case awaitingThirdPartyAppAuthentication
+    case awaitingMobileBankIDAuthentication(TinkCore.Credentials.ThirdPartyAppAuthentication)
+    case awaitingSupplementalInformation([TinkCore.Provider.Field])
+    case deleted
+    case awaitingThirdPartyAppAuthentication(TinkCore.Credentials.ThirdPartyAppAuthentication)
     case sessionExpired
     public static func == (a: TinkCore.Credentials.Status, b: TinkCore.Credentials.Status) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let status: TinkCore.Credentials.Status
-  public let statusPayload: Swift.String
+  public let statusPayload: Swift.String?
   public let statusUpdated: Foundation.Date?
   public let updated: Foundation.Date?
   public let fields: [Swift.String : Swift.String]
-  public let supplementalInformationFields: [TinkCore.Provider.FieldSpecification]
-  public struct ThirdPartyAppAuthentication {
+  public struct ThirdPartyAppAuthentication : Swift.Equatable {
     public let downloadTitle: Swift.String?
     public let downloadMessage: Swift.String?
     public let upgradeTitle: Swift.String?
@@ -734,16 +736,16 @@ public struct Credentials : Swift.Identifiable {
     public var hasAutoStartToken: Swift.Bool {
       get
     }
+    public static func == (a: TinkCore.Credentials.ThirdPartyAppAuthentication, b: TinkCore.Credentials.ThirdPartyAppAuthentication) -> Swift.Bool
   }
-  public let thirdPartyAppAuthentication: TinkCore.Credentials.ThirdPartyAppAuthentication?
   public let sessionExpiryDate: Foundation.Date?
 }
 public protocol CredentialsService {
   func credentialsList(completion: @escaping (Swift.Result<[TinkCore.Credentials], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func credentials(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func create(providerID: TinkCore.Provider.ID, refreshableItems: TinkCore.RefreshableItems, fields: [Swift.String : Swift.String], appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func create(providerName: TinkCore.Provider.Name, refreshableItems: TinkCore.RefreshableItems, fields: [Swift.String : Swift.String], appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func delete(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func update(id: TinkCore.Credentials.ID, providerID: TinkCore.Provider.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func update(id: TinkCore.Credentials.ID, providerName: TinkCore.Provider.Name, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func addSupplementalInformation(id: TinkCore.Credentials.ID, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func cancelSupplementalInformation(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -796,7 +798,7 @@ public typealias Environment = TinkCore.Tink.Environment
 extension Tink {
   public enum Environment {
     case production
-    case custom(restURL: Foundation.URL)
+    case custom(Foundation.URL)
   }
 }
 extension Provider {
@@ -810,18 +812,6 @@ extension Provider {
     public func hash(into hasher: inout Swift.Hasher)
     public static func == (a: TinkCore.Provider.FinancialInstitution, b: TinkCore.Provider.FinancialInstitution) -> Swift.Bool
   }
-}
-public enum HTTPStatusCodeError : Swift.Error {
-  case badRequest
-  case unauthorized
-  case forbidden
-  case notFound
-  case conflict
-  case preconditionFailed
-  case unavailableForLegalReasons
-  case internalServerError
-  case serverError(Swift.Int)
-  case clientError(Swift.Int)
 }
 public struct Identifier<Type> : Swift.Hashable, Swift.ExpressibleByStringLiteral {
   public let value: Swift.String
@@ -886,10 +876,9 @@ extension Period.Resolution {
     get
   }
 }
-public struct Provider : Swift.Identifiable {
-  public typealias ID = TinkCore.Identifier<TinkCore.Provider>
-  public let id: TinkCore.Provider.ID
-  public let displayName: Swift.String
+extension Provider {
+  @available(*, deprecated, renamed: "Field")
+  public typealias FieldSpecification = TinkCore.Provider.Field
   public enum AuthenticationUserType {
     case unknown
     case business
@@ -901,7 +890,44 @@ public struct Provider : Swift.Identifiable {
     }
     public func hash(into hasher: inout Swift.Hasher)
   }
-  public let authenticationUserType: TinkCore.Provider.AuthenticationUserType
+  @available(*, unavailable, message: "Use `financialServices` instead.")
+  public var authenticationUserType: TinkCore.Provider.AuthenticationUserType {
+    get
+  }
+}
+extension Provider.Field {
+  @available(*, deprecated, renamed: "description")
+  public var fieldDescription: Swift.String {
+    get
+  }
+}
+public struct Provider : Swift.Identifiable {
+  public typealias Name = TinkCore.Identifier<TinkCore.Provider>
+  public var id: TinkCore.Provider.Name {
+    get
+  }
+  public let name: TinkCore.Provider.Name
+  public let displayName: Swift.String
+  public struct FinancialService : Swift.Equatable, Swift.Hashable {
+    public enum Segment {
+      case personal
+      case business
+      case unknown
+      public static func == (a: TinkCore.Provider.FinancialService.Segment, b: TinkCore.Provider.FinancialService.Segment) -> Swift.Bool
+      public var hashValue: Swift.Int {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+    }
+    public let segment: TinkCore.Provider.FinancialService.Segment
+    public let shortName: Swift.String
+    public static func == (a: TinkCore.Provider.FinancialService, b: TinkCore.Provider.FinancialService) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let financialServices: [TinkCore.Provider.FinancialService]
   public enum Kind {
     case unknown
     case bank
@@ -909,15 +935,8 @@ public struct Provider : Swift.Identifiable {
     case broker
     case other
     case test
-    case fraud
-    case businessBank
-    case firstParty
     public static var `default`: Swift.Set<TinkCore.Provider.Kind>
-    @available(*, deprecated, renamed: "default")
-    public static var defaultKinds: Swift.Set<TinkCore.Provider.Kind>
     public static var onlyTest: Swift.Set<TinkCore.Provider.Kind>
-    @available(*, deprecated)
-    public static var excludingTest: Swift.Set<TinkCore.Provider.Kind>
     public static var all: Swift.Set<TinkCore.Provider.Kind>
     public static func == (a: TinkCore.Provider.Kind, b: TinkCore.Provider.Kind) -> Swift.Bool
     public var hashValue: Swift.Int {
@@ -940,7 +959,6 @@ public struct Provider : Swift.Identifiable {
     case enabled
     case disabled
     case temporaryDisabled
-    case obsolete
     public static func == (a: TinkCore.Provider.Status, b: TinkCore.Provider.Status) -> Swift.Bool
     public var hashValue: Swift.Int {
       get
@@ -951,9 +969,9 @@ public struct Provider : Swift.Identifiable {
   public let credentialsKind: TinkCore.Credentials.Kind
   public let helpText: Swift.String?
   public let isPopular: Swift.Bool
-  public struct FieldSpecification {
-    public let fieldDescription: Swift.String
-    public let hint: Swift.String
+  public struct Field : Swift.Equatable {
+    public let description: Swift.String?
+    public let hint: Swift.String?
     public let maxLength: Swift.Int?
     public let minLength: Swift.Int?
     public let isMasked: Swift.Bool
@@ -965,9 +983,11 @@ public struct Provider : Swift.Identifiable {
     public let pattern: Swift.String
     public let patternError: Swift.String
     public let helpText: Swift.String
+    public let selectOptions: [TinkCore.SelectOption]
     public mutating func setImmutable(initialValue newValue: Swift.String)
+    public static func == (a: TinkCore.Provider.Field, b: TinkCore.Provider.Field) -> Swift.Bool
   }
-  public let fields: [TinkCore.Provider.FieldSpecification]
+  public let fields: [TinkCore.Provider.Field]
   public let groupDisplayName: Swift.String
   public let image: Foundation.URL?
   public let displayDescription: Swift.String
@@ -1007,6 +1027,7 @@ public struct Provider : Swift.Identifiable {
   public let accessType: TinkCore.Provider.AccessType
   public let marketCode: Swift.String
   public let financialInstitution: TinkCore.Provider.FinancialInstitution
+  public typealias ID = TinkCore.Provider.Name
 }
 extension Set where Element == TinkCore.Provider.Kind {
   public static var all: Swift.Set<TinkCore.Provider.Kind> {
@@ -1015,8 +1036,6 @@ extension Set where Element == TinkCore.Provider.Kind {
   public static var `default`: Swift.Set<TinkCore.Provider.Kind> {
     get
   }
-  @available(*, deprecated, renamed: "default")
-  public static var defaultKinds: Swift.Set<TinkCore.Provider.Kind>
   public static var onlyTest: Swift.Set<TinkCore.Provider.Kind> {
     get
   }
@@ -1027,7 +1046,7 @@ extension Set where Element == TinkCore.Provider.AccessType {
   }
 }
 public protocol ProviderService {
-  func providers(id: TinkCore.Provider.ID?, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func providers(name: TinkCore.Provider.Name?, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public struct RefreshableItems : Swift.OptionSet {
   public let rawValue: Swift.Int
@@ -1149,6 +1168,12 @@ public struct ScopeDescription {
   public let title: Swift.String
   public let description: Swift.String
 }
+public struct SelectOption : Swift.Equatable {
+  public let iconURL: Foundation.URL?
+  public let text: Swift.String?
+  public let value: Swift.String?
+  public static func == (a: TinkCore.SelectOption, b: TinkCore.SelectOption) -> Swift.Bool
+}
 @_hasMissingDesignatedInitializers final public class ServiceContainer {
   final public var authenticationService: TinkCore.AuthenticationService {
     get
@@ -1196,14 +1221,15 @@ public struct ScopeDescription {
 }
 public enum ServiceError : Swift.Error {
   case cancelled
-  case invalidArgument(Swift.String)
-  case notFound(Swift.String)
-  case alreadyExists(Swift.String)
-  case permissionDenied(Swift.String)
-  case unauthenticated(Swift.String)
-  case failedPrecondition(Swift.String)
-  case unavailableForLegalReasons(Swift.String)
-  case internalError(Swift.String)
+  case invalidArgument(Swift.String?)
+  case notFound(Swift.String?)
+  case alreadyExists(Swift.String?)
+  case permissionDenied(Swift.String?)
+  case unauthenticated(Swift.String?)
+  case failedPrecondition(Swift.String?)
+  case tooManyRequests(Swift.String?)
+  case unavailableForLegalReasons(Swift.String?)
+  case internalError(Swift.String?)
 }
 public protocol SessionManager {
 }
@@ -1300,7 +1326,7 @@ public protocol StatisticService {
 }
 extension Tink {
   @discardableResult
-  public func _createTemporaryUser(for market: TinkCore.Market, locale: Foundation.Locale = Tink.defaultLocale, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  public func _createTemporaryUser(for market: TinkCore.Market, locale: Foundation.Locale = Tink.defaultLocale, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   public var _sdkName: Swift.String {
     get
     set
@@ -1324,15 +1350,8 @@ public class Tink {
   @objc deinit
 }
 extension Tink {
-  public enum UserError : Swift.Error {
-    case invalidMarketOrLocale(Swift.String)
-  }
   @discardableResult
-  public func authenticateUser(authorizationCode: TinkCore.AuthorizationCode, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-}
-extension Tink {
-  @available(*, deprecated, message: "Set the userSession property directly instead.")
-  public func setCredential(_ credential: TinkCore.SessionCredential?)
+  public func authenticateUser(authorizationCode: TinkCore.AuthorizationCode, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public struct Transaction {
   public typealias ID = TinkCore.Identifier<TinkCore.Transaction>
@@ -1437,10 +1456,7 @@ public protocol UserService {
   func userProfile(completion: @escaping (Swift.Result<TinkCore.UserProfile, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func user(completion: @escaping (Swift.Result<TinkCore.User, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
-@available(*, deprecated, renamed: "UserSession")
-public typealias SessionCredential = TinkCore.UserSession
 public enum UserSession {
-  case sessionID(Swift.String)
   case accessToken(Swift.String)
 }
 extension TinkCore.Account.Kind : Swift.Equatable {}
@@ -1454,8 +1470,6 @@ extension TinkCore.Budget.RecurringPeriodicity.PeriodUnit : Swift.Hashable {}
 extension TinkCore.Category.Kind : Swift.RawRepresentable {}
 extension TinkCore.Credentials.Kind : Swift.Equatable {}
 extension TinkCore.Credentials.Kind : Swift.Hashable {}
-extension TinkCore.Credentials.Status : Swift.Equatable {}
-extension TinkCore.Credentials.Status : Swift.Hashable {}
 extension TinkCore.Period.Resolution : Swift.Equatable {}
 extension TinkCore.Period.Resolution : Swift.Hashable {}
 extension TinkCore.Provider.AuthenticationUserType : Swift.Equatable {}
@@ -1464,6 +1478,8 @@ extension TinkCore.Provider.Kind : Swift.Equatable {}
 extension TinkCore.Provider.Kind : Swift.Hashable {}
 extension TinkCore.Provider.Status : Swift.Equatable {}
 extension TinkCore.Provider.Status : Swift.Hashable {}
+extension TinkCore.Provider.FinancialService.Segment : Swift.Equatable {}
+extension TinkCore.Provider.FinancialService.Segment : Swift.Hashable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Equatable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Hashable {}
 extension TinkCore.Scope.ReadAccess : Swift.Equatable {}

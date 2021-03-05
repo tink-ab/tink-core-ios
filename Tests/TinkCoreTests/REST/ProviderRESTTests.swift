@@ -5,7 +5,7 @@ class ProviderRESTTests: XCTestCase {
     func testProviderMapping() {
         let restProvider = RESTProvider(
             accessType: .other,
-            financialServices: [RESTProvider.FinancialService.init(segment: .personal, shortName: "Personal")],
+            financialServices: [RESTProvider.FinancialService(segment: .personal, shortName: "Personal")],
             capabilities: [
                 .loans,
                 .savingsAccounts,
