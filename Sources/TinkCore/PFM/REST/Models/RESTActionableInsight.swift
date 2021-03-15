@@ -181,7 +181,7 @@ enum RESTInsightData: Decodable {
             let description: String
         }
 
-        let totalExpenses: CurrencyDenominatedAmount
+        let totalExpenses: RESTInsightData.CurrencyDenominatedAmount
         let commonTransactionsOverview: Overview
         let largestExpense: LargestExpense
     }
@@ -217,7 +217,7 @@ enum RESTInsightData: Decodable {
             let accountName: String
         }
 
-        let balance: CurrencyDenominatedAmount
+        let balance: RESTInsightData.CurrencyDenominatedAmount
         let savingsAccount: Account
         let currentAccount: Account
     }
