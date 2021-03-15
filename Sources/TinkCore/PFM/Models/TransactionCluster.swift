@@ -2,7 +2,6 @@ import Foundation
 
 /// A cluster of transactions to be categorized.
 public struct TransactionCluster {
-
     /// The categorization improvement achived if cluster is categorized.
     public let categorizationImprovement: Double
     /// A description of the cluster to categorized.
