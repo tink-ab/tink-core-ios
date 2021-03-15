@@ -634,4 +634,81 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTFail("Expected create budget")
         }
     }
+
+    func testDecodingInsightSpendingByCategoryIncreased() throws {
+        let json = """
+        {
+        "id": "a76fad32c16b457ab9b1c9dd15b4687b",
+        "userId": "d1fa9a8628244ab9920baa93a76e702d",
+        "type": "SPENDING_BY_CATEGORY_INCREASED",
+        "title": "Your Coffee & Snacks expenses went up by 229% since last month",
+        "description": "Want to take a closer look at your Coffee & Snacks expenses in February?",
+        "data": {
+        "lastMonth": {
+            "year": 2021,
+            "month": 2
+        },
+        "percentage": 229.0,
+        "category": {
+            "displayName": "Coffee & Snacks",
+            "id": "63a7e66150d44c67a3380265c86e1c26",
+            "code": "expenses:food.coffee"
+        },
+        "lastMonthSpending": {
+            "currencyCode": "EUR",
+            "amount": 61.9
+        },
+        "twoMonthsAgoSpending": {
+            "currencyCode": "EUR",
+            "amount": 18.79
+        },
+        "type": "SPENDING_BY_CATEGORY_INCREASED"
+        },
+        "createdTime": 1615807101753,
+        "insightActions": [{
+        "label": "See Details",
+        "data": {
+            "transactionIds": [{
+                "id": "0a759d4c990c49c08233b69587756d69",
+                "type": "TRANSACTION"
+            }, {
+                "id": "387031d5f3a043a48e96ff90f1b355b4",
+                "type": "TRANSACTION"
+            }, {
+                "id": "e95f3f1a5634494ea2edd55346bfe013",
+                "type": "TRANSACTION"
+            }],
+            "type": "VIEW_TRANSACTIONS"
+        }
+        }, {
+        "label": "Dismiss",
+        "data": {
+            "type": "DISMISS"
+        }
+        }]
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let insight = try decoder.decode(RESTActionableInsight.self, from: data)
+
+        if case .spendingByCategoryIncreased(let spendingByCategoryIncreased) = insight.data {
+            XCTAssertNotNil(spendingByCategoryIncreased)
+            XCTAssertEqual(spendingByCategoryIncreased.lastMonth.year, 2021)
+            XCTAssertEqual(spendingByCategoryIncreased.lastMonth.month, 2)
+            XCTAssertEqual(spendingByCategoryIncreased.percentage, 229)
+
+        } else {
+            XCTFail("Expected spendingByCategoryIncreased")
+        }
+
+        XCTAssertNotNil(insight.insightActions)
+        XCTAssertEqual(insight.insightActions!.count, 2)
+        if case .viewTransactions(let viewTransactions) = insight.insightActions?.first?.data {
+            XCTAssertEqual(viewTransactions.transactionIds.count, 3)
+        } else {
+            XCTFail("Expected viewTransactions")
+        }
+    }
 }
