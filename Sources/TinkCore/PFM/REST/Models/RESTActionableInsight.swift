@@ -262,7 +262,6 @@ enum RESTInsightData: Decodable {
         struct CategorySpending: Decodable {
             let categoryCode: String
             let spentAmount: RESTInsightData.CurrencyDenominatedAmount
-            let suggestedBudgetCategoryDisplayName: String?
         }
 
         let categorySpending: CategorySpending
