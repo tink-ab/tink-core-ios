@@ -96,4 +96,14 @@ final class RESTTransactionService: TransactionService {
 
         return client.performRequest(request)
     }
+
+    func suggestTransactions(numberOfClusters: Int, completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void) -> Cancellable? {
+        let request = RESTResourceRequest<RESTSuggestTransactionsResponse>(path: "/api/v1/transactions/suggest", method: .get, contentType: nil) { result in
+            let mapped = result.map(SuggestTransactionsResponse.init)
+            completion(mapped)
+        }
+
+        return client.performRequest(request)
+    }
+
 }
