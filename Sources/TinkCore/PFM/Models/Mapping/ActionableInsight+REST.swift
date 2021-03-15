@@ -187,8 +187,7 @@ extension ActionableInsight.Kind {
                         categoryCode: Category.Code(data.categorySpending.categoryCode),
                         spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
                     ),
-                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount),
-                    suggestedBudgetCategoryDisplayName: data.categorySpending.suggestedBudgetCategoryDisplayName
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
                 )
             )
         case (.budgetSuggestCreateTopPrimaryCategory, .budgetSuggestCreateTopPrimaryCategory(let data)):
@@ -198,8 +197,7 @@ extension ActionableInsight.Kind {
                         categoryCode: Category.Code(data.categorySpending.categoryCode),
                         spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
                     ),
-                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount),
-                    suggestedBudgetCategoryDisplayName: data.categorySpending.suggestedBudgetCategoryDisplayName
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
                 )
             )
         case (.budgetSuggestCreateFirst, .budgetSuggestCreateFirst):
@@ -349,7 +347,7 @@ extension InsightActionData {
         case .categorizeExpense(let categorizeExpense):
             self = .categorizeExpense(Transaction.ID(categorizeExpense.transactionId))
         case .viewTransactions(let viewTransactions):
-            self = .viewTransactions(viewTransactions.transactionIds.map(Transaction.ID.init(_:)))
+            self = .viewTransactions(viewTransactions.transactionIds.map({ Transaction.ID($0.id) }))
         case .categorizeTransactions(let categorizeTransactions):
             self = .categorizeTransactions(categorizeTransactions.transactionIds.map(Transaction.ID.init(_:)))
         case .viewTransactionsByCategory(let transactionsByCategory):
