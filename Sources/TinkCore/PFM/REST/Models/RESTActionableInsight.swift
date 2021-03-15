@@ -133,6 +133,11 @@ enum RESTInsightData: Decodable {
         let month: Int
     }
 
+    struct TransactionId: Decodable {
+        let id: String
+        let type: String
+    }
+
     struct DoubleCharge: Decodable {
         let transactionIds: [String]
     }
@@ -524,7 +529,7 @@ enum RESTInsightActionData: Decodable {
     }
 
     struct ViewTransactions: Decodable {
-        let transactionIds: [String]
+        let transactionIds: [RESTInsightData.TransactionId]
     }
 
     struct CategorizeTransactions: Decodable {
@@ -532,7 +537,7 @@ enum RESTInsightActionData: Decodable {
     }
 
     struct ViewTransactionsByCategory: Decodable {
-        let transactionIdsByCategory: [String: RESTInsightActionData.ViewTransactions]
+        let transactionIdsByCategory: [String: RESTInsightActionData.CategorizeTransactions]
     }
 
     struct ViewAccount: Decodable {
