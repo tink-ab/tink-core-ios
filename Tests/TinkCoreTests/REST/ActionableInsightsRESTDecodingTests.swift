@@ -698,13 +698,12 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTAssertEqual(spendingByCategoryIncreased.lastMonth.year, 2021)
             XCTAssertEqual(spendingByCategoryIncreased.lastMonth.month, 2)
             XCTAssertEqual(spendingByCategoryIncreased.percentage, 229)
-
         } else {
             XCTFail("Expected spendingByCategoryIncreased")
         }
 
         XCTAssertNotNil(insight.insightActions)
-        XCTAssertEqual(insight.insightActions!.count, 2)
+        XCTAssertEqual(insight.insightActions?.count ?? 0 , 2)
         if case .viewTransactions(let viewTransactions) = insight.insightActions?.first?.data {
             XCTAssertEqual(viewTransactions.transactionIds.count, 3)
         } else {
