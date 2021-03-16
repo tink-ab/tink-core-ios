@@ -2,7 +2,7 @@ import Foundation
 @testable import TinkCore
 import XCTest
 
-class BeneficiaryRESTTest: XCTestCase {
+class BeneficiaryRESTTests: XCTestCase {
     func testBeneficiaryMapping() {
         let restBeneficiary = RESTBeneficiary(
             accountNumberType: "se",

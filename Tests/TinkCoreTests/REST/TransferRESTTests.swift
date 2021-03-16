@@ -2,7 +2,7 @@ import Foundation
 @testable import TinkCore
 import XCTest
 
-class TransferRESTTest: XCTestCase {
+class TransferRESTTests: XCTestCase {
     func testSignableOperationMapping() {
         let restSignableOperation = RESTSignableOperation(
             created: Date(),
