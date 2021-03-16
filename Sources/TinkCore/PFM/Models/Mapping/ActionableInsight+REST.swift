@@ -347,7 +347,7 @@ extension InsightActionData {
         case .categorizeExpense(let categorizeExpense):
             self = .categorizeExpense(Transaction.ID(categorizeExpense.transactionId))
         case .viewTransactions(let viewTransactions):
-            self = .viewTransactions(viewTransactions.transactionIds.map({ Transaction.ID($0.id) }))
+            self = .viewTransactions(viewTransactions.transactionIds.map { Transaction.ID($0.id) })
         case .categorizeTransactions(let categorizeTransactions):
             self = .categorizeTransactions(categorizeTransactions.transactionIds.map(Transaction.ID.init(_:)))
         case .viewTransactionsByCategory(let transactionsByCategory):
