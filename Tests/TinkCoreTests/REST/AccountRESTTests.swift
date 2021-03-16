@@ -253,5 +253,4 @@ class AccountRESTTests: XCTestCase {
         XCTAssertEqual(account.kind, Account.Kind(restAccountType: restAccount.type))
         XCTAssertNil(account.details)
     }
-
 }

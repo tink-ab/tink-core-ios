@@ -703,7 +703,7 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         }
 
         XCTAssertNotNil(insight.insightActions)
-        XCTAssertEqual(insight.insightActions?.count ?? 0 , 2)
+        XCTAssertEqual(insight.insightActions?.count ?? 0, 2)
         if case .viewTransactions(let viewTransactions) = insight.insightActions?.first?.data {
             XCTAssertEqual(viewTransactions.transactionIds.count, 3)
         } else {
