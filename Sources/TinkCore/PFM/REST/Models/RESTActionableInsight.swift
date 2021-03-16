@@ -181,7 +181,7 @@ enum RESTInsightData: Decodable {
             let description: String
         }
 
-        let totalExpenses: CurrencyDenominatedAmount
+        let totalExpenses: RESTInsightData.CurrencyDenominatedAmount
         let commonTransactionsOverview: Overview
         let largestExpense: LargestExpense
     }
@@ -217,7 +217,7 @@ enum RESTInsightData: Decodable {
             let accountName: String
         }
 
-        let balance: CurrencyDenominatedAmount
+        let balance: RESTInsightData.CurrencyDenominatedAmount
         let savingsAccount: Account
         let currentAccount: Account
     }
@@ -262,7 +262,6 @@ enum RESTInsightData: Decodable {
         struct CategorySpending: Decodable {
             let categoryCode: String
             let spentAmount: RESTInsightData.CurrencyDenominatedAmount
-            let suggestedBudgetCategoryDisplayName: String
         }
 
         let categorySpending: CategorySpending
@@ -523,8 +522,13 @@ enum RESTInsightActionData: Decodable {
         let transactionId: String
     }
 
+    struct TransactionId: Decodable {
+        let id: String
+        let type: String
+    }
+
     struct ViewTransactions: Decodable {
-        let transactionIds: [String]
+        let transactionIds: [RESTInsightActionData.TransactionId]
     }
 
     struct CategorizeTransactions: Decodable {
@@ -532,7 +536,7 @@ enum RESTInsightActionData: Decodable {
     }
 
     struct ViewTransactionsByCategory: Decodable {
-        let transactionIdsByCategory: [String: RESTInsightActionData.ViewTransactions]
+        let transactionIdsByCategory: [String: RESTInsightActionData.CategorizeTransactions]
     }
 
     struct ViewAccount: Decodable {
