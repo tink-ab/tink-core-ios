@@ -102,7 +102,7 @@ final class RESTTransactionService: TransactionService {
         var parameters: [URLQueryItem] = []
 
         if let numberOfClusters = numberOfClusters {
-            parameters.append(.init(name: "numberOfClusters", value: numberOfClusters.description))
+            parameters.append(.init(name: "numberOfClusters", value: String(numberOfClusters)))
         }
 
         if let evaluateEverything = evaluateEverything {
