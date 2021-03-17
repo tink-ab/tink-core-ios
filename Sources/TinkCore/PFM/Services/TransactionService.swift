@@ -35,7 +35,8 @@ public protocol TransactionService {
     ) -> Cancellable?
 
     func suggestTransactions(
-        numberOfClusters: Int,
+        numberOfClusters: Int?,
+        evaluateEverything: Bool?,
         completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void
     ) -> Cancellable?
 }

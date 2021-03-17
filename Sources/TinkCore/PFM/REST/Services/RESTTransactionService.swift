@@ -97,13 +97,25 @@ final class RESTTransactionService: TransactionService {
         return client.performRequest(request)
     }
 
-    func suggestTransactions(numberOfClusters: Int, completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void) -> Cancellable? {
-        let request = RESTResourceRequest<RESTSuggestTransactionsResponse>(path: "/api/v1/transactions/suggest", method: .get, contentType: nil) { result in
+    func suggestTransactions(numberOfClusters: Int?, evaluateEverything: Bool? = nil, completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void) -> Cancellable? {
+
+        var parameters: [URLQueryItem] = []
+
+        if let numberOfClusters = numberOfClusters {
+            parameters.append(.init(name: "numberOfClusters", value: numberOfClusters.description))
+        } else {
+            if let evaluateEverything = evaluateEverything {
+                parameters.append(.init(name: "evaluateEverything", value: evaluateEverything ? "true" : "false"))
+            } else {
+                return nil
+            }
+        }
+
+        let request = RESTResourceRequest<RESTSuggestTransactionsResponse>(path: "/api/v1/transactions/suggest", method: .get, contentType: .json, parameters: parameters) { result in
             let mapped = result.map(SuggestTransactionsResponse.init)
             completion(mapped)
         }
 
         return client.performRequest(request)
     }
-
 }
