@@ -98,7 +98,6 @@ final class RESTTransactionService: TransactionService {
     }
 
     func suggestTransactions(numberOfClusters: Int?, evaluateEverything: Bool? = nil, completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void) -> Cancellable? {
-
         var parameters: [URLQueryItem] = []
 
         if let numberOfClusters = numberOfClusters {

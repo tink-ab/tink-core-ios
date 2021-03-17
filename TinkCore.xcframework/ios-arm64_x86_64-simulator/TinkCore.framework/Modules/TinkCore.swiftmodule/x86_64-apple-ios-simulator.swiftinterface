@@ -1325,6 +1325,11 @@ public enum StatisticPeriod : Swift.Hashable {
 public protocol StatisticService {
   func statistics(description: Swift.String?, periods: [TinkCore.StatisticPeriod], types: [TinkCore.Statistic.Kind], resolution: TinkCore.Statistic.Resolution, padResultsUntilToday: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Statistic], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
 }
+public struct SuggestTransactionsResponse {
+  public let categorizationImprovement: Swift.Double
+  public let categorizationLevel: Swift.Double
+  public let clusters: [TinkCore.TransactionCluster]
+}
 extension Tink {
   @discardableResult
   public func _createTemporaryUser(for market: TinkCore.Market, locale: Foundation.Locale = Tink.defaultLocale, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -1377,6 +1382,11 @@ extension Transaction : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.Transaction, b: TinkCore.Transaction) -> Swift.Bool
 }
+public struct TransactionCluster {
+  public let categorizationImprovement: Swift.Double
+  public let description: Swift.String
+  public let transactions: [TinkCore.Transaction]
+}
 public struct TransactionsQuery : Swift.Equatable {
   public var accountIDs: [TinkCore.Account.ID]
   public var categoryIDs: [TinkCore.Category.ID]
@@ -1427,6 +1437,7 @@ public protocol TransactionService {
   func transactionsSimilar(to transactionID: Swift.String, ifCategorizedAs categoryID: Swift.String, completion: @escaping (Swift.Result<[TinkCore.Transaction], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
   func transaction(id: TinkCore.Transaction.ID, completion: @escaping (Swift.Result<TinkCore.Transaction, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
   func update(transactionID: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, date: Foundation.Date, description: Swift.String, notes: Swift.String?, completion: @escaping (Swift.Result<TinkCore.Transaction, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
+  func suggestTransactions(numberOfClusters: Swift.Int?, evaluateEverything: Swift.Bool?, completion: @escaping (Swift.Result<TinkCore.SuggestTransactionsResponse, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
 }
 public struct Transfer {
   public typealias ID = TinkCore.Identifier<TinkCore.Transfer>
