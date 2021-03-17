@@ -31,20 +31,23 @@ class SuggestTransactionsTests: XCTestCase {
                 type: .creditCard,
                 upcoming: false,
                 userId: "d9f134ee2eb44846a4e02990ecc8d32e",
-                pending: false)
+                pending: false
+            )
         ]
 
         let clusters = [RESTTransactionCluster(
             categorizationImprovement: 0.003,
-                description: "McDonalds Stock",
-                transactions: transactions)]
+            description: "McDonalds Stock",
+            transactions: transactions
+        )]
 
         let restSuggestion = RESTSuggestTransactionsResponse(
             categorizationImprovement: 0.01,
             categorizationLevel: 0.93,
-            clusters: clusters)
+            clusters: clusters
+        )
 
-        let suggestion = SuggestTransactionsResponse(from:  restSuggestion)
+        let suggestion = SuggestTransactionsResponse(from: restSuggestion)
         XCTAssertEqual(suggestion.categorizationImprovement, restSuggestion.categorizationImprovement)
         XCTAssertEqual(suggestion.categorizationLevel, restSuggestion.categorizationLevel)
         XCTAssertEqual(suggestion.clusters.count, restSuggestion.clusters.count)
