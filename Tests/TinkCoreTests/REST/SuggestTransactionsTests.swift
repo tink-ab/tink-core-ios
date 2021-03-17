@@ -125,7 +125,7 @@ class SuggestTransactionsTests: XCTestCase {
 
         XCTAssertEqual(suggestTransaction.categorizationImprovement, 0.01)
         XCTAssertEqual(suggestTransaction.categorizationLevel, 0.93)
-        XCTAssertEqual(suggestTransaction.clusters[0].transactions[0].accountID, "3fe2d96efacd4dc5994404a950f238a9")
-        XCTAssertEqual(suggestTransaction.clusters[0].transactions[0].categoryID, "0e1bade6a7e3459eb794f27b7ba4cea0")
+        XCTAssertEqual(suggestTransaction.clusters.first?.transactions.first?.accountID, "3fe2d96efacd4dc5994404a950f238a9")
+        XCTAssertEqual(suggestTransaction.clusters.first?.transactions.first?.categoryID, "0e1bade6a7e3459eb794f27b7ba4cea0")
     }
 }
