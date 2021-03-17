@@ -47,6 +47,6 @@ class SuggestTransactionsTests: XCTestCase {
         let suggestion = SuggestTransactionsResponse(from:  restSuggestion)
         XCTAssertEqual(suggestion.categorizationImprovement, restSuggestion.categorizationImprovement)
         XCTAssertEqual(suggestion.categorizationLevel, restSuggestion.categorizationLevel)
-        XCTAssertEqual(suggestion.clusters, restSuggestion.clusters)
+        XCTAssertEqual(suggestion.clusters.count, restSuggestion.clusters.count)
     }
 }
