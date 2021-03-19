@@ -128,6 +128,9 @@ public struct Account {
     ///   - currencyDenominatedBalance: The current balance of the account.
     ///   - refreshed: Timestamp of when the account was last refreshed.
     ///   - financialInstitutionID: A unique identifier to group accounts belonging the same financial institution.
+    ///   - isFavorite: A boolean to indicate if the account is favorite. Default to `false`.
+    ///   - ownership: The ownership of the account. Default to `1.0`.
+    ///   - accountExclusion: A way to exclude the account from statistics. Default to `unknown` to not exclude the account.
     public init(
         id: Account.ID,
         credentialsID: Credentials.ID,
