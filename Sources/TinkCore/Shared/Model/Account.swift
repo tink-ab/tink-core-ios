@@ -139,15 +139,18 @@ public struct Account {
         isClosed: Bool?,
         currencyDenominatedBalance: CurrencyDenominatedAmount?,
         refreshed: Date?,
-        financialInstitutionID: Provider.FinancialInstitution.ID?
+        financialInstitutionID: Provider.FinancialInstitution.ID?,
+        isFavorite: Bool = false
+        ownership: Double = 1.0
+        accountExclusion: AccountExclusion = .unknown
     ) {
         self.accountNumber = accountNumber
         self.balance = currencyDenominatedBalance?.doubleValue ?? 0.0
         self.credentialsID = credentialsID
-        self.isFavorite = false
+        self.isFavorite = isFavorite
         self.id = id
         self.name = name
-        self.ownership = 1.0
+        self.ownership = ownership
         self.kind = kind
         self.transferSourceIdentifiers = transferSourceIdentifiers
         self.transferDestinations = transferSourceIdentifiers?.map { url in
@@ -165,7 +168,7 @@ public struct Account {
         self.holderName = holderName
         self.isClosed = isClosed
         self.flags = []
-        self.accountExclusion = .unknown
+        self.accountExclusion = accountExclusion
         self.currencyDenominatedBalance = currencyDenominatedBalance
         self.refreshed = refreshed
         self.financialInstitutionID = financialInstitutionID
