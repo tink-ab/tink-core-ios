@@ -128,6 +128,9 @@ public struct Account {
     ///   - currencyDenominatedBalance: The current balance of the account.
     ///   - refreshed: Timestamp of when the account was last refreshed.
     ///   - financialInstitutionID: A unique identifier to group accounts belonging the same financial institution.
+    ///   - isFavorite: A boolean to indicate if the account is favorite. Default to `false`.
+    ///   - ownership: The ownership of the account. Default to `1.0`.
+    ///   - accountExclusion: A way to exclude the account from statistics. Default to `unknown` to not exclude the account.
     public init(
         id: Account.ID,
         credentialsID: Credentials.ID,
@@ -139,15 +142,18 @@ public struct Account {
         isClosed: Bool?,
         currencyDenominatedBalance: CurrencyDenominatedAmount?,
         refreshed: Date?,
-        financialInstitutionID: Provider.FinancialInstitution.ID?
+        financialInstitutionID: Provider.FinancialInstitution.ID?,
+        isFavorite: Bool = false,
+        ownership: Double = 1.0,
+        accountExclusion: AccountExclusion = .unknown
     ) {
         self.accountNumber = accountNumber
         self.balance = currencyDenominatedBalance?.doubleValue ?? 0.0
         self.credentialsID = credentialsID
-        self.isFavorite = false
+        self.isFavorite = isFavorite
         self.id = id
         self.name = name
-        self.ownership = 1.0
+        self.ownership = ownership
         self.kind = kind
         self.transferSourceIdentifiers = transferSourceIdentifiers
         self.transferDestinations = transferSourceIdentifiers?.map { url in
@@ -165,7 +171,7 @@ public struct Account {
         self.holderName = holderName
         self.isClosed = isClosed
         self.flags = []
-        self.accountExclusion = .unknown
+        self.accountExclusion = accountExclusion
         self.currencyDenominatedBalance = currencyDenominatedBalance
         self.refreshed = refreshed
         self.financialInstitutionID = financialInstitutionID
