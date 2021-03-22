@@ -143,8 +143,8 @@ public struct Account {
         currencyDenominatedBalance: CurrencyDenominatedAmount?,
         refreshed: Date?,
         financialInstitutionID: Provider.FinancialInstitution.ID?,
-        isFavorite: Bool = false
-        ownership: Double = 1.0
+        isFavorite: Bool = false,
+        ownership: Double = 1.0,
         accountExclusion: AccountExclusion = .unknown
     ) {
         self.accountNumber = accountNumber
