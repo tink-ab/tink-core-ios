@@ -1328,6 +1328,7 @@ public struct SuggestTransactionsResponse {
   public let categorizationImprovement: Swift.Double
   public let categorizationLevel: Swift.Double
   public let clusters: [TinkCore.TransactionCluster]
+  public init(categorizationImprovement: Swift.Double, categorizationLevel: Swift.Double, clusters: [TinkCore.TransactionCluster])
 }
 extension Tink {
   @discardableResult
@@ -1385,6 +1386,7 @@ public struct TransactionCluster {
   public let categorizationImprovement: Swift.Double
   public let description: Swift.String
   public let transactions: [TinkCore.Transaction]
+  public init(categorizationImprovement: Swift.Double, description: Swift.String, transactions: [TinkCore.Transaction])
 }
 public struct TransactionsQuery : Swift.Equatable {
   public var accountIDs: [TinkCore.Account.ID]
