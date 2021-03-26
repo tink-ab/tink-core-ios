@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.description  = <<-DESC
                     Core library for Tink SDKs.
                     DESC
-  spec.version      = "1.1.1"
+  spec.version      = "1.2.0"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.authors      = { "Tink AB" => "mobile@tink.se" }
   spec.homepage     = "https://tink.com"
