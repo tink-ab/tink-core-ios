@@ -8,4 +8,10 @@ public struct SuggestTransactionsResponse {
     public let categorizationLevel: Double
     /// Clusters to categorize.
     public let clusters: [TransactionCluster]
+
+    public init(categorizationImprovement: Double, categorizationLevel: Double, clusters: [TransactionCluster]) {
+        self.categorizationImprovement = categorizationImprovement
+        self.categorizationLevel = categorizationLevel
+        self.clusters = clusters
+    }
 }
