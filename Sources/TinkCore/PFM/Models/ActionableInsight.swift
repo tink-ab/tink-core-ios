@@ -53,6 +53,7 @@ public struct ActionableInsight {
         case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
         case leftToSpendNegative(LeftToSpendNegative)
         case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+        case spendingByPrimaryCategoryIncreased(SpendingByCategoryIncreased)
         case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
         case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
         case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
