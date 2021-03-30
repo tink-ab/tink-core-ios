@@ -29,6 +29,11 @@ public class Tink {
     let client: RESTClient
     public var sessionManagers: [SessionManager] = []
 
+    public var _urlSession: URLSession {
+        get { client.session }
+        set { client.session = newValue }
+    }
+
     // MARK: - Specifying the Credential
 
     /// The current user session associated with this Tink object.
