@@ -3,7 +3,7 @@ import Foundation
 final class RESTClient {
     let restURL: URL
     let behavior: ClientBehavior
-    private let session: URLSession
+    var session: URLSession
     private let sessionDelegate: URLSessionDelegate?
 
     private let encoder: JSONEncoder = {
