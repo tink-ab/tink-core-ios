@@ -48,6 +48,7 @@ public struct Budget {
     public let filter: [Filter]
     public let periodicity: Periodicity?
 
+    @available(*, deprecated)
     public init(id: Budget.ID, name: String, amount: CurrencyDenominatedAmount?, filter: [Budget.Filter], periodicity: Budget.Periodicity?) {
         self.id = id
         self.name = name
@@ -76,6 +77,7 @@ extension Budget {
         /// The ID of the account this transaction belongs to.
         public let accountID: Account.ID?
 
+        @available(*, deprecated)
         public init(id: TinkCore.Transaction.ID, amount: CurrencyDenominatedAmount, dispensableAmount: CurrencyDenominatedAmount?, date: Date?, description: String?, categoryCode: Category.Code?, accountID: Account.ID?) {
             self.id = id
             self.amount = amount

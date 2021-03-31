@@ -30,6 +30,7 @@ public struct Transaction {
     /// The orginal amount of the transaction. This will not change even if the owner of the transaction has changed the amount.
     public let originalAmount: CurrencyDenominatedAmount
 
+    @available(*, deprecated)
     public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool) {
         self.id = id
         self.accountID = accountID
