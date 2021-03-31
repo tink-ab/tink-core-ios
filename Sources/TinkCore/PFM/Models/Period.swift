@@ -10,6 +10,7 @@ public struct Period {
     public let name: String
     public let resolution: Resolution
 
+    @available(*, deprecated)
     public init(dateInterval: DateInterval, name: String, resolution: Period.Resolution) {
         self.dateInterval = dateInterval
         self.name = name

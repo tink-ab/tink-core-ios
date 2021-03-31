@@ -9,6 +9,7 @@ public struct SuggestTransactionsResponse {
     /// Clusters to categorize.
     public let clusters: [TransactionCluster]
 
+    @available(*, deprecated)
     public init(categorizationImprovement: Double, categorizationLevel: Double, clusters: [TransactionCluster]) {
         self.categorizationImprovement = categorizationImprovement
         self.categorizationLevel = categorizationLevel

@@ -8,6 +8,7 @@ public struct UserProfile {
     public let periodMode: Period.Resolution?
     public let timeZone: TimeZone?
 
+    @available(*, deprecated)
     public init(currency: CurrencyCode, locale: Locale, market: Market, periodAdjustedDay: Int, periodMode: Period.Resolution, timeZone: TimeZone?) {
         self.currency = currency
         self.locale = locale
