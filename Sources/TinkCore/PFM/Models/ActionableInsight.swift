@@ -613,12 +613,16 @@ public enum InsightActionData {
         public let sourceAccount: URL?
         public let destinationAccount: URL?
         public let amount: CurrencyDenominatedAmount?
+        public let sourceAccountNumber: String?
+        public let destinationAccountNumber: String?
 
         @available(*, deprecated)
-        public init(sourceAccount: URL?, destinationAccount: URL?, amount: CurrencyDenominatedAmount?) {
+        public init(sourceAccount: URL?, destinationAccount: URL?, amount: CurrencyDenominatedAmount?, sourceAccountNumber: String? = nil, destinationAccountNumber: String? = nil) {
             self.sourceAccount = sourceAccount
             self.destinationAccount = destinationAccount
             self.amount = amount
+            self.sourceAccountNumber = sourceAccountNumber
+            self.destinationAccountNumber = destinationAccountNumber
         }
     }
 
