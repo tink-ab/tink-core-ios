@@ -65,6 +65,7 @@ enum RESTActionableInsightType: String, Decodable, DefaultableDecodable {
     case leftToSpendNegativeBeginningMonth = "LEFT_TO_SPEND_NEGATIVE_BEGINNING_MONTH"
     case leftToSpendNegative = "LEFT_TO_SPEND_NEGATIVE"
     case spendingByCategoryIncreased = "SPENDING_BY_CATEGORY_INCREASED"
+    case spendingByPrimaryCategoryIncreased = "SPENDING_BY_PRIMARY_CATEGORY_INCREASED"
     case leftToSpendPositiveSummarySavingsAccount = "LEFT_TO_SPEND_POSITIVE_SUMMARY_SAVINGS_ACCOUNT"
     case leftToSpendPositiveFinalWeek = "LEFT_TO_SPEND_POSITIVE_FINAL_WEEK"
     case aggregationRefreshPSD2Credentials = "AGGREGATION_REFRESH_PSD2_CREDENTIAL"
@@ -353,6 +354,7 @@ enum RESTInsightData: Decodable {
     case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
     case leftToSpendNegative(LeftToSpendNegative)
     case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+    case spendingByPrimaryCategoryIncreased(SpendingByCategoryIncreased)
     case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
     case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
     case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
@@ -457,6 +459,9 @@ enum RESTInsightData: Decodable {
             case .spendingByCategoryIncreased:
                 let data = try SpendingByCategoryIncreased(from: decoder)
                 self = .spendingByCategoryIncreased(data)
+            case .spendingByPrimaryCategoryIncreased:
+                let data = try SpendingByCategoryIncreased(from: decoder)
+                self = .spendingByPrimaryCategoryIncreased(data)
             case .leftToSpendPositiveSummarySavingsAccount:
                 let data = try LeftToSpendPositiveSummarySavingsAccount(from: decoder)
                 self = .leftToSpendPositiveSummarySavingsAccount(data)
@@ -512,6 +517,8 @@ enum RESTInsightActionData: Decodable {
         let sourceAccount: URL?
         let destinationAccount: URL?
         let amount: RESTInsightData.CurrencyDenominatedAmount?
+        let sourceAccountNumber: String?
+        let destinationAccountNumber: String?
     }
 
     struct ViewTransaction: Decodable {

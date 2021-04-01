@@ -9,6 +9,7 @@ public struct User {
     let nationalID: String?
     public let profile: UserProfile
 
+    @available(*, deprecated)
     public init(created: Date, id: User.ID, username: String?, nationalID: String?, profile: UserProfile) {
         self.created = created
         self.id = id

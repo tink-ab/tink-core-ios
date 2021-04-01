@@ -10,4 +10,9 @@ extension Tink {
         get { sdkHeaderBehavior.sdkName }
         set { sdkHeaderBehavior.sdkName = newValue }
     }
+
+    public var _urlSession: URLSession {
+        get { client.session }
+        set { client.session = newValue }
+    }
 }

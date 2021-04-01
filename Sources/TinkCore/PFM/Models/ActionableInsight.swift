@@ -10,6 +10,7 @@ public struct ActionableInsight {
         /// The data that describes the action.
         public let data: InsightActionData?
 
+        @available(*, deprecated)
         public init(label: String?, data: InsightActionData?) {
             self.label = label
             self.data = data
@@ -53,6 +54,7 @@ public struct ActionableInsight {
         case leftToSpendNegativeBeginningMonth(LeftToSpendBeginningMonth)
         case leftToSpendNegative(LeftToSpendNegative)
         case spendingByCategoryIncreased(SpendingByCategoryIncreased)
+        case spendingByPrimaryCategoryIncreased(SpendingByCategoryIncreased)
         case leftToSpendPositiveSummarySavingsAccount(LeftToSpendPositiveSummarySavingsAccount)
         case leftToSpendPositiveFinalWeek(LeftToSpendPositiveFinalWeek)
         case aggregationRefreshPSD2Credentials(AggregationRefreshPSD2Credentials)
@@ -68,6 +70,7 @@ public struct ActionableInsight {
     public let description: String
     public let created: Date
 
+    @available(*, deprecated)
     public init(id: ActionableInsight.ID, kind: ActionableInsight.Kind, state: ActionableInsight.State, title: String, description: String, created: Date) {
         self.id = id
         self.kind = kind
@@ -83,6 +86,7 @@ extension ActionableInsight {
         public let accountID: Account.ID
         public let balance: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(accountID: Account.ID, balance: CurrencyDenominatedAmount) {
             self.accountID = accountID
             self.balance = balance
@@ -93,6 +97,7 @@ extension ActionableInsight {
         public let budgetID: Budget.ID
         public let budgetPeriod: BudgetPeriod
 
+        @available(*, deprecated)
         public init(budgetID: Budget.ID, budgetPeriod: ActionableInsight.BudgetPeriod) {
             self.budgetID = budgetID
             self.budgetPeriod = budgetPeriod
@@ -113,6 +118,7 @@ extension ActionableInsight {
         public let spentAmount: CurrencyDenominatedAmount
         public let budgetAmount: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(dateInterval: DateInterval, spentAmount: CurrencyDenominatedAmount, budgetAmount: CurrencyDenominatedAmount) {
             self.dateInterval = dateInterval
             self.spentAmount = spentAmount
@@ -132,6 +138,7 @@ extension ActionableInsight {
         public let overspentBudgets: [BudgetSummary]
         public let periodUnit: BudgetPeriodUnit
 
+        @available(*, deprecated)
         public init(achievedBudgets: [ActionableInsight.BudgetSummary], overspentBudgets: [ActionableInsight.BudgetSummary], periodUnit: ActionableInsight.BudgetPeriodUnit) {
             self.achievedBudgets = achievedBudgets
             self.overspentBudgets = overspentBudgets
@@ -166,6 +173,7 @@ extension ActionableInsight {
         public let transactionID: Transaction.ID
         public let amount: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(transactionID: Transaction.ID, amount: CurrencyDenominatedAmount) {
             self.transactionID = transactionID
             self.amount = amount
@@ -179,6 +187,7 @@ extension ActionableInsight {
         public let transactionIDs: [Transaction.ID]
         public let week: Week
 
+        @available(*, deprecated)
         public init(transactionIDs: [Transaction.ID], week: ActionableInsight.Week) {
             self.transactionIDs = transactionIDs
             self.week = week
@@ -189,6 +198,7 @@ extension ActionableInsight {
         public let categoryCode: Category.Code
         public let spentAmount: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(categoryCode: Category.Code, spentAmount: CurrencyDenominatedAmount) {
             self.categoryCode = categoryCode
             self.spentAmount = spentAmount
@@ -200,6 +210,8 @@ extension ActionableInsight {
             public let totalCount: Int
             public let mostCommonDescription: String
             public let mostCommonCount: Int
+
+            @available(*, deprecated)
             public init(totalCount: Int, mostCommonDescription: String, mostCommonCount: Int) {
                 self.totalCount = totalCount
                 self.mostCommonDescription = mostCommonDescription
@@ -213,6 +225,7 @@ extension ActionableInsight {
             public let amount: CurrencyDenominatedAmount
             public let description: String
 
+            @available(*, deprecated)
             public init(id: Transaction.ID, date: Date, amount: CurrencyDenominatedAmount, description: String) {
                 self.id = id
                 self.date = date
@@ -225,6 +238,7 @@ extension ActionableInsight {
         public let commonTransactionsOverview: TransactionsOverview
         public let largestExpense: LargestExpense
 
+        @available(*, deprecated)
         public init(totalExpenses: CurrencyDenominatedAmount, commonTransactionsOverview: ActionableInsight.TransactionSummary.TransactionsOverview, largestExpense: ActionableInsight.TransactionSummary.LargestExpense) {
             self.totalExpenses = totalExpenses
             self.commonTransactionsOverview = commonTransactionsOverview
@@ -236,6 +250,7 @@ extension ActionableInsight {
         public let week: Week
         public let expensesByCategory: [CategorySpending]
 
+        @available(*, deprecated)
         public init(week: ActionableInsight.Week, expensesByCategory: [ActionableInsight.CategorySpending]) {
             self.week = week
             self.expensesByCategory = expensesByCategory
@@ -247,6 +262,7 @@ extension ActionableInsight {
             public let day: Day
             public let expenseStatistics: ExpenseStatistics
 
+            @available(*, deprecated)
             public init(day: ActionableInsight.Day, expenseStatistics: ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics) {
                 self.day = day
                 self.expenseStatistics = expenseStatistics
@@ -288,6 +304,7 @@ extension ActionableInsight {
             public let totalAmount: CurrencyDenominatedAmount
             public let averageAmount: CurrencyDenominatedAmount
 
+            @available(*, deprecated)
             public init(totalAmount: CurrencyDenominatedAmount, averageAmount: CurrencyDenominatedAmount) {
                 self.totalAmount = totalAmount
                 self.averageAmount = averageAmount
@@ -297,6 +314,7 @@ extension ActionableInsight {
         public let week: Week
         public let expenseStatisticsByDay: [ExpenseStatisticsByDay]
 
+        @available(*, deprecated)
         public init(week: ActionableInsight.Week, expenseStatisticsByDay: [ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay]) {
             self.week = week
             self.expenseStatisticsByDay = expenseStatisticsByDay
@@ -307,6 +325,7 @@ extension ActionableInsight {
         public let week: Week
         public let summary: TransactionSummary
 
+        @available(*, deprecated)
         public init(week: ActionableInsight.Week, summary: ActionableInsight.TransactionSummary) {
             self.week = week
             self.summary = summary
@@ -317,6 +336,7 @@ extension ActionableInsight {
         public let month: Month
         public let expensesByCategory: [CategorySpending]
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, expensesByCategory: [ActionableInsight.CategorySpending]) {
             self.month = month
             self.expensesByCategory = expensesByCategory
@@ -327,6 +347,7 @@ extension ActionableInsight {
         public let transactionID: Transaction.ID
         public let accountID: Account.ID
 
+        @available(*, deprecated)
         public init(transactionID: Transaction.ID, accountID: Account.ID) {
             self.transactionID = transactionID
             self.accountID = accountID
@@ -337,6 +358,7 @@ extension ActionableInsight {
         public let month: Month
         public let summary: TransactionSummary
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, summary: ActionableInsight.TransactionSummary) {
             self.month = month
             self.summary = summary
@@ -347,6 +369,7 @@ extension ActionableInsight {
         public let year: Int
         public let month: Int
 
+        @available(*, deprecated)
         public init(year: Int, month: Int) {
             self.year = year
             self.month = month
@@ -357,6 +380,7 @@ extension ActionableInsight {
         public let year: Int
         public let week: Int
 
+        @available(*, deprecated)
         public init(year: Int, week: Int) {
             self.year = year
             self.week = week
@@ -368,6 +392,7 @@ extension ActionableInsight {
         public let month: Int
         public let day: Int
 
+        @available(*, deprecated)
         public init(year: Int, month: Int, day: Int) {
             self.year = year
             self.month = month
@@ -379,6 +404,7 @@ extension ActionableInsight {
         public let id: Account.ID
         public let name: String
 
+        @available(*, deprecated)
         public init(id: Account.ID, name: String) {
             self.id = id
             self.name = name
@@ -393,6 +419,7 @@ extension ActionableInsight {
         public let savingsAccount: ActionableInsight.AccountInfo
         public let currentAccount: ActionableInsight.AccountInfo
 
+        @available(*, deprecated)
         public init(balance: CurrencyDenominatedAmount, savingsAccount: ActionableInsight.AccountInfo, currentAccount: ActionableInsight.AccountInfo) {
             self.balance = balance
             self.savingsAccount = savingsAccount
@@ -404,6 +431,7 @@ extension ActionableInsight {
         public let account: AccountInfo
         public let availableCredit: CurrencyDenominatedAmount?
 
+        @available(*, deprecated)
         public init(account: ActionableInsight.AccountInfo, availableCredit: CurrencyDenominatedAmount?) {
             self.account = account
             self.availableCredit = availableCredit
@@ -415,6 +443,7 @@ extension ActionableInsight {
         public let currentLeftToSpend: CurrencyDenominatedAmount
         public let averageLeftToSpend: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(createdAt: Date, currentLeftToSpend: CurrencyDenominatedAmount, averageLeftToSpend: CurrencyDenominatedAmount) {
             self.createdAt = createdAt
             self.currentLeftToSpend = currentLeftToSpend
@@ -427,6 +456,7 @@ extension ActionableInsight {
         public let amountDifference: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics) {
             self.month = month
             self.amountDifference = amountDifference
@@ -438,6 +468,7 @@ extension ActionableInsight {
         public let month: Month
         public let leftToSpend: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, leftToSpend: CurrencyDenominatedAmount) {
             self.month = month
             self.leftToSpend = leftToSpend
@@ -449,6 +480,7 @@ extension ActionableInsight {
         public let suggestedBudgetAmount: CurrencyDenominatedAmount
         public let suggestedBudgetCategoryDisplayName: String
 
+        @available(*, deprecated)
         public init(categorySpending: ActionableInsight.CategorySpending, suggestedBudgetAmount: CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: String = "") {
             self.categorySpending = categorySpending
             self.suggestedBudgetAmount = suggestedBudgetAmount
@@ -462,6 +494,7 @@ extension ActionableInsight {
         public let totalExpense: CurrencyDenominatedAmount
         public let leftToSpendStatistics: LeftToSpendStatistics
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, totalExpense: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics) {
             self.month = month
             self.amountDifference = amountDifference
@@ -475,6 +508,7 @@ extension ActionableInsight {
         public let createdAt: Date
         public let leftToSpend: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, createdAt: Date, leftToSpend: CurrencyDenominatedAmount) {
             self.month = month
             self.createdAt = createdAt
@@ -487,6 +521,7 @@ extension ActionableInsight {
         public let code: TinkCore.Category.Code
         public let name: String
 
+        @available(*, deprecated)
         public init(id: Category.ID, code: Category.Code, name: String) {
             self.id = id
             self.code = code
@@ -501,6 +536,7 @@ extension ActionableInsight {
         public let twoMonthsAgoSpending: CurrencyDenominatedAmount
         public let percentage: Double
 
+        @available(*, deprecated)
         public init(category: ActionableInsight.CategoryInfo, lastMonth: ActionableInsight.Month, lastMonthSpending: CurrencyDenominatedAmount, twoMonthsAgoSpending: CurrencyDenominatedAmount, percentage: Double) {
             self.category = category
             self.lastMonth = lastMonth
@@ -514,6 +550,7 @@ extension ActionableInsight {
         public let month: Month
         public let leftAmount: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, leftAmount: CurrencyDenominatedAmount) {
             self.month = month
             self.leftAmount = leftAmount
@@ -526,6 +563,7 @@ extension ActionableInsight {
         public let leftToSpendStatistics: LeftToSpendStatistics
         public let leftToSpendPerDay: CurrencyDenominatedAmount
 
+        @available(*, deprecated)
         public init(month: ActionableInsight.Month, amountDifference: CurrencyDenominatedAmount, leftToSpendStatistics: ActionableInsight.LeftToSpendStatistics, leftToSpendPerDay: CurrencyDenominatedAmount) {
             self.month = month
             self.amountDifference = amountDifference
@@ -538,6 +576,7 @@ extension ActionableInsight {
         public let id: Provider.ID
         public let displayName: String
 
+        @available(*, deprecated)
         public init(id: Provider.ID, displayName: String) {
             self.id = id
             self.displayName = displayName
@@ -549,6 +588,7 @@ extension ActionableInsight {
         public let provider: ProviderInfo
         public let sessionExpiryDate: Date
 
+        @available(*, deprecated)
         public init(credentialsID: Credentials.ID, provider: ActionableInsight.ProviderInfo, sessionExpiryDate: Date) {
             self.credentialsID = credentialsID
             self.provider = provider
@@ -562,6 +602,7 @@ public enum InsightActionData {
         public let budgetID: Budget.ID
         public let budgetPeriodStartTime: Date
 
+        @available(*, deprecated)
         public init(budgetID: Budget.ID, budgetPeriodStartTime: Date) {
             self.budgetID = budgetID
             self.budgetPeriodStartTime = budgetPeriodStartTime
@@ -572,17 +613,23 @@ public enum InsightActionData {
         public let sourceAccount: URL?
         public let destinationAccount: URL?
         public let amount: CurrencyDenominatedAmount?
+        public let sourceAccountNumber: String?
+        public let destinationAccountNumber: String?
 
-        public init(sourceAccount: URL?, destinationAccount: URL?, amount: CurrencyDenominatedAmount?) {
+        @available(*, deprecated)
+        public init(sourceAccount: URL?, destinationAccount: URL?, amount: CurrencyDenominatedAmount?, sourceAccountNumber: String? = nil, destinationAccountNumber: String? = nil) {
             self.sourceAccount = sourceAccount
             self.destinationAccount = destinationAccount
             self.amount = amount
+            self.sourceAccountNumber = sourceAccountNumber
+            self.destinationAccountNumber = destinationAccountNumber
         }
     }
 
     public struct ViewTransaction {
         public let transactionID: Transaction.ID
 
+        @available(*, deprecated)
         public init(transactionID: Transaction.ID) {
             self.transactionID = transactionID
         }
@@ -591,6 +638,7 @@ public enum InsightActionData {
     public struct CategorizeSingleExpense {
         public let transactionID: Transaction.ID
 
+        @available(*, deprecated)
         public init(transactionID: Transaction.ID) {
             self.transactionID = transactionID
         }
@@ -599,6 +647,7 @@ public enum InsightActionData {
     public struct ViewTransactions {
         public let transactionIDs: [Transaction.ID]
 
+        @available(*, deprecated)
         public init(transactionIDs: [Transaction.ID]) {
             self.transactionIDs = transactionIDs
         }
@@ -607,6 +656,7 @@ public enum InsightActionData {
     public struct CategorizeTransactions {
         public let transactionIDs: [Transaction.ID]
 
+        @available(*, deprecated)
         public init(transactionIDs: [Transaction.ID]) {
             self.transactionIDs = transactionIDs
         }
@@ -615,6 +665,7 @@ public enum InsightActionData {
     public struct ViewTransactionsByCategory {
         public let transactionIdsByCategory: [Category.Code: [Transaction.ID]]
 
+        @available(*, deprecated)
         public init(transactionIdsByCategory: [Category.Code: [Transaction.ID]]) {
             self.transactionIdsByCategory = transactionIdsByCategory
         }
@@ -625,6 +676,7 @@ public enum InsightActionData {
         public let amount: CurrencyDenominatedAmount?
         public let periodicity: Budget.Periodicity?
 
+        @available(*, deprecated)
         public init(filters: [Budget.Filter], amount: CurrencyDenominatedAmount?, periodicity: Budget.Periodicity?) {
             self.filters = filters
             self.amount = amount

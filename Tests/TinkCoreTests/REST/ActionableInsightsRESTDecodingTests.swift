@@ -710,4 +710,161 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTFail("Expected viewTransactions")
         }
     }
+
+    func testDecodingSpendingByPrimaryCategoryIncreasedAction() throws {
+        let json = """
+        {
+        "id": "01fd2a17c0dd49d79fb195e6bf4978a9",
+        "userId": "d1fa9a8628244ab9920baa93a76e702d",
+        "type": "SPENDING_BY_PRIMARY_CATEGORY_INCREASED",
+        "title": "Your Food & Drinks expenses went up by 19% since last month",
+        "description": "Want to take a closer look at your Food & Drinks expenses in February?",
+        "data": {
+        "category": {
+            "displayName": "Food & Drinks",
+            "id": "47ea44117c6543178b3fefae8ffada52",
+            "code": "expenses:food"
+        },
+        "lastMonthSpending": {
+            "currencyCode": "EUR",
+            "amount": 1477.23
+        },
+        "twoMonthsAgoSpending": {
+            "currencyCode": "EUR",
+            "amount": 1244.73
+        },
+        "lastMonth": {
+            "year": 2021,
+            "month": 2
+        },
+        "percentage": 19.0,
+        "type": "SPENDING_BY_PRIMARY_CATEGORY_INCREASED"
+        },
+        "createdTime": 1615807101752,
+        "insightActions": [{
+        "label": "See Details",
+        "data": {
+            "transactionIdsByCategory": {
+                "expenses:food": {
+                    "transactionIds": []
+                }
+            },
+            "type": "VIEW_TRANSACTIONS_BY_CATEGORY"
+        }
+        }, {
+        "label": "Dismiss",
+        "data": {
+            "type": "DISMISS"
+        }
+        }]
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let insight = try decoder.decode(RESTActionableInsight.self, from: data)
+
+        if case .spendingByPrimaryCategoryIncreased(let spendingByCategoryIncreased) = insight.data {
+            XCTAssertNotNil(spendingByCategoryIncreased)
+            XCTAssertEqual(spendingByCategoryIncreased.lastMonth.year, 2021)
+            XCTAssertEqual(spendingByCategoryIncreased.lastMonth.month, 2)
+            XCTAssertEqual(spendingByCategoryIncreased.percentage, 19.0)
+        } else {
+            XCTFail("Expected spendingByCategoryIncreased")
+        }
+
+        XCTAssertNotNil(insight.insightActions)
+        XCTAssertEqual(insight.insightActions?.count ?? 0, 2)
+        if case .viewTransactionsByCategory(let viewTransactions) = insight.insightActions?.first?.data {
+            XCTAssertEqual(viewTransactions.transactionIdsByCategory.count, 1)
+        } else {
+            XCTFail("Expected viewTransactionsByCategory")
+        }
+    }
+
+    func testDecodingCreateTransferActionWithOnlyDestinationAccount() throws {
+        let json = """
+        {
+          "sourceAccount" : null,
+          "destinationAccount" : "1019-637004280640",
+          "amount" : null,
+          "sourceAccountNumber" : null,
+          "destinationAccountNumber" : "1019-637004280640",
+          "type" : "CREATE_TRANSFER"
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let action = try decoder.decode(RESTInsightActionData.self, from: data)
+
+        if case .createTransfer(let createTransfer) = action {
+            XCTAssertNil(createTransfer.sourceAccount)
+            XCTAssertEqual(createTransfer.destinationAccount, URL(string: "1019-637004280640"))
+            XCTAssertNil(createTransfer.amount)
+            XCTAssertNil(createTransfer.sourceAccountNumber)
+            XCTAssertEqual(createTransfer.destinationAccountNumber, "1019-637004280640")
+        } else {
+            XCTFail("Expected create transfer action type")
+        }
+    }
+
+    func testDecodingCreateTransferActionWithOnlySourceAccount() throws {
+        let json = """
+        {
+          "sourceAccount" : "1299-925966870660",
+          "destinationAccount" : null,
+          "amount" : null,
+          "sourceAccountNumber" : "1299-925966870660",
+          "destinationAccountNumber" : null,
+          "type" : "CREATE_TRANSFER"
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let action = try decoder.decode(RESTInsightActionData.self, from: data)
+
+        if case .createTransfer(let createTransfer) = action {
+            XCTAssertEqual(createTransfer.sourceAccount, URL(string: "1299-925966870660"))
+            XCTAssertNil(createTransfer.destinationAccount)
+            XCTAssertNil(createTransfer.amount)
+            XCTAssertNil(createTransfer.destinationAccountNumber)
+            XCTAssertEqual(createTransfer.sourceAccountNumber, "1299-925966870660")
+        } else {
+            XCTFail("Expected create transfer action type")
+        }
+    }
+
+    func testDecodingCreateTransferAction() throws {
+        let json = """
+        {
+          "type": "CREATE_TRANSFER",
+          "sourceAccount": "iban://SE9832691627751644451227",
+          "destinationAccount": "iban://NL41INGB1822913977",
+          "amount": {
+            "currencyCode": "EUR",
+            "amount": 30.00
+          },
+          "sourceAccountNumber": "1234567890",
+          "destinationAccountNumber": "1234098765"
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let action = try decoder.decode(RESTInsightActionData.self, from: data)
+
+        if case .createTransfer(let createTransfer) = action {
+            XCTAssertEqual(createTransfer.sourceAccount?.scheme, "iban")
+            XCTAssertEqual(createTransfer.sourceAccount?.host, "SE9832691627751644451227")
+            XCTAssertEqual(createTransfer.destinationAccount, URL(string: "iban://NL41INGB1822913977"))
+            XCTAssertEqual(createTransfer.amount?.amount, 30.0)
+            XCTAssertEqual(createTransfer.amount?.currencyCode, "EUR")
+            XCTAssertEqual(createTransfer.sourceAccountNumber, "1234567890")
+            XCTAssertEqual(createTransfer.destinationAccountNumber, "1234098765")
+        } else {
+            XCTFail("Expected create transfer action type")
+        }
+    }
 }

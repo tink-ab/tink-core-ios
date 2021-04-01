@@ -246,6 +246,16 @@ extension ActionableInsight.Kind {
                     percentage: data.percentage
                 )
             )
+        case (.spendingByPrimaryCategoryIncreased, .spendingByPrimaryCategoryIncreased(let data)):
+            self = .spendingByPrimaryCategoryIncreased(
+                .init(
+                    category: .init(id: .init(data.category.id), code: .init(data.category.code), name: data.category.displayName),
+                    lastMonth: ActionableInsight.Month(year: data.lastMonth.year, month: data.lastMonth.month),
+                    lastMonthSpending: CurrencyDenominatedAmount(restAIAmount: data.lastMonthSpending),
+                    twoMonthsAgoSpending: CurrencyDenominatedAmount(restAIAmount: data.twoMonthsAgoSpending),
+                    percentage: data.percentage
+                )
+            )
         case (.leftToSpendPositiveSummarySavingsAccount, .leftToSpendPositiveSummarySavingsAccount(let data)):
             self = .leftToSpendPositiveSummarySavingsAccount(
                 ActionableInsight.LeftToSpendPositiveSummarySavingsAccount(
@@ -341,7 +351,7 @@ extension InsightActionData {
         case .viewBudget(let viewBudget):
             self = .viewBudget(.init(budgetID: Budget.ID(viewBudget.budgetId), budgetPeriodStartTime: viewBudget.budgetPeriodStartTime))
         case .createTransfer(let createTransfer):
-            self = .createTransfer(.init(sourceAccount: createTransfer.sourceAccount, destinationAccount: createTransfer.destinationAccount, amount: createTransfer.amount.flatMap(CurrencyDenominatedAmount.init)))
+            self = .createTransfer(.init(sourceAccount: createTransfer.sourceAccount, destinationAccount: createTransfer.destinationAccount, amount: createTransfer.amount.flatMap(CurrencyDenominatedAmount.init), sourceAccountNumber: createTransfer.sourceAccountNumber, destinationAccountNumber: createTransfer.destinationAccountNumber))
         case .viewTransaction(let viewTransaction):
             self = .viewTransaction(Transaction.ID(viewTransaction.transactionId))
         case .categorizeExpense(let categorizeExpense):

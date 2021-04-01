@@ -28,6 +28,7 @@ public struct Statistic {
 
     public let userID: String
 
+    @available(*, deprecated)
     public init(description: String, payload: String?, period: StatisticPeriod, resoultion: Statistic.Resolution, kind: Statistic.Kind, value: Double, userID: String) {
         self.description = description
         self.payload = payload
