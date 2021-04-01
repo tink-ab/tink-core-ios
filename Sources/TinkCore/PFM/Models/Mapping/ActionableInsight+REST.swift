@@ -351,7 +351,7 @@ extension InsightActionData {
         case .viewBudget(let viewBudget):
             self = .viewBudget(.init(budgetID: Budget.ID(viewBudget.budgetId), budgetPeriodStartTime: viewBudget.budgetPeriodStartTime))
         case .createTransfer(let createTransfer):
-            self = .createTransfer(.init(sourceAccount: createTransfer.sourceAccount, destinationAccount: createTransfer.destinationAccount, amount: createTransfer.amount.flatMap(CurrencyDenominatedAmount.init)))
+            self = .createTransfer(.init(sourceAccount: createTransfer.sourceAccount, destinationAccount: createTransfer.destinationAccount, amount: createTransfer.amount.flatMap(CurrencyDenominatedAmount.init), sourceAccountNumber: createTransfer.sourceAccountNumber, destinationAccountNumber: createTransfer.destinationAccountNumber))
         case .viewTransaction(let viewTransaction):
             self = .viewTransaction(Transaction.ID(viewTransaction.transactionId))
         case .categorizeExpense(let categorizeExpense):
