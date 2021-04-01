@@ -781,4 +781,32 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
             XCTFail("Expected viewTransactionsByCategory")
         }
     }
+
+    func testDecodingCreateTransferActionData() throws {
+        let json = """
+        {
+          "sourceAccount" : null,
+          "destinationAccount" : "1019-637004280640",
+          "amount" : null,
+          "sourceAccountNumber" : null,
+          "destinationAccountNumber" : "1019-637004280640",
+          "type" : "CREATE_TRANSFER"
+        }
+        """
+
+        let data = json.data(using: .utf8)!
+
+        let action = try decoder.decode(RESTInsightActionData.self, from: data)
+
+        if case .createTransfer(let createTransfer) = action {
+            XCTAssertNil(createTransfer.sourceAccount)
+            XCTAssertEqual(createTransfer.destinationAccount, URL(string: "1019-637004280640"))
+            XCTAssertNil(createTransfer.amount)
+            XCTAssertNil(createTransfer.sourceAccountNumber)
+            XCTAssertEqual(createTransfer.destinationAccountNumber, "1019-637004280640")
+        } else {
+            XCTFail("Expected create transfer action type")
+        }
+
+    }
 }
