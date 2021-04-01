@@ -782,7 +782,7 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         }
     }
 
-    func testDecodingCreateTransferActionData() throws {
+    func testDecodingCreateTransferActionDataWithOnlyDestinationAccount() throws {
         let json = """
         {
           "sourceAccount" : null,
