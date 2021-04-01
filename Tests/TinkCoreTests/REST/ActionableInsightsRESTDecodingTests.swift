@@ -782,7 +782,7 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         }
     }
 
-    func testDecodingCreateTransferActionDataWithOnlyDestinationAccount() throws {
+    func testDecodingCreateTransferActionWithOnlyDestinationAccount() throws {
         let json = """
         {
           "sourceAccount" : null,
@@ -809,7 +809,7 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         }
     }
 
-    func testDecodingCreateTransferActionDataWithOnlySourceAccount() throws {
+    func testDecodingCreateTransferActionWithOnlySourceAccount() throws {
         let json = """
         {
           "sourceAccount" : "1299-925966870660",
