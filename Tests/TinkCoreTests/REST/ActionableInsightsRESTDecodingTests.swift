@@ -866,6 +866,5 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         } else {
             XCTFail("Expected create transfer action type")
         }
-
     }
 }

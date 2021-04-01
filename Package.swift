@@ -16,7 +16,6 @@ let package = Package(
         )
     ],
     targets: [
-        .target(name: "TinkCore", exclude: ["Info.plist"]
-        ),
+        .target(name: "TinkCore", exclude: ["Info.plist"]),
     ]
 )
