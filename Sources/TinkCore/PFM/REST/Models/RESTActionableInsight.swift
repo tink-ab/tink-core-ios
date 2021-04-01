@@ -517,6 +517,8 @@ enum RESTInsightActionData: Decodable {
         let sourceAccount: URL?
         let destinationAccount: URL?
         let amount: RESTInsightData.CurrencyDenominatedAmount?
+        let sourceAccountNumber: String?
+        let destinationAccountNumber: String?
     }
 
     struct ViewTransaction: Decodable {
