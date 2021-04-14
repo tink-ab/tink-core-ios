@@ -40,7 +40,7 @@ extension Credentials {
         switch status {
         case .awaitingMobileBankidAuthentication:
 
-            guard let url = URL(string: "bankid:///"), var bankIDComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            guard let url = URL(string: "https://app.bankid.com"), var bankIDComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
                 return nil
             }
 
