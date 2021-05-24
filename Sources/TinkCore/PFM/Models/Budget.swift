@@ -47,6 +47,7 @@ public struct Budget {
     public let amount: CurrencyDenominatedAmount?
     public let filter: [Filter]
     public let periodicity: Periodicity?
+    public let created: Date?
 
     @available(*, deprecated)
     public init(id: Budget.ID, name: String, amount: CurrencyDenominatedAmount?, filter: [Budget.Filter], periodicity: Budget.Periodicity?) {
@@ -55,6 +56,7 @@ public struct Budget {
         self.amount = amount
         self.filter = filter
         self.periodicity = periodicity
+        self.created = Date()
     }
 }
 
