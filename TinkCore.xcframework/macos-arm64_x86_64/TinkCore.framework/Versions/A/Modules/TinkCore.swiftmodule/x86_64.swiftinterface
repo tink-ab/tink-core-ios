@@ -560,6 +560,7 @@ public struct Budget {
   public let amount: TinkCore.CurrencyDenominatedAmount?
   public let filter: [TinkCore.Budget.Filter]
   public let periodicity: TinkCore.Budget.Periodicity?
+  public let created: Foundation.Date?
   @available(*, deprecated)
   public init(id: TinkCore.Budget.ID, name: Swift.String, amount: TinkCore.CurrencyDenominatedAmount?, filter: [TinkCore.Budget.Filter], periodicity: TinkCore.Budget.Periodicity?)
 }
