@@ -9,6 +9,7 @@ extension Budget {
         self.periodicity = Periodicity(restPeriodicityType: restBudget.periodicityType, restOneOffPeriodicity: restBudget.oneOffPeriodicity, restRecurringPeriodicity: restBudget.recurringPeriodicity)
 
         self.filter = Budget.Filter.makeFilters(restFilter: restBudget.filter)
+        self.created = restBudget.created
     }
 }
 

@@ -74,6 +74,7 @@ struct RESTBudget: Decodable {
     /// Indicates if the budget has state archived or not.
     let archived: Bool?
     let filter: Filter?
+    let created: Date?
 }
 
 struct RESTListBudgetSpecificationsResponse: Decodable {
