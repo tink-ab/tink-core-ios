@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
@@ -11,9 +11,9 @@ public struct AccessToken : Swift.Hashable, Swift.RawRepresentable, Swift.Expres
   public init?(rawValue: Swift.String)
   public init(stringLiteral value: Swift.String)
   public init(_ value: Swift.String)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias RawValue = Swift.String
   public typealias StringLiteralType = Swift.String
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 public struct Account {
@@ -29,12 +29,12 @@ public struct Account {
     case external
     case unknown
     public static func == (a: TinkCore.Account.Kind, b: TinkCore.Account.Kind) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
     public func hash(into hasher: inout Swift.Hasher)
     public typealias AllCases = [TinkCore.Account.Kind]
     public static var allCases: [TinkCore.Account.Kind] {
+      get
+    }
+    public var hashValue: Swift.Int {
       get
     }
   }
@@ -44,10 +44,10 @@ public struct Account {
     case pfmData
     case unknown
     public static func == (a: TinkCore.Account.AccountExclusion, b: TinkCore.Account.AccountExclusion) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public typealias ID = TinkCore.Identifier<TinkCore.Account>
   public let accountNumber: Swift.String
@@ -67,11 +67,11 @@ public struct Account {
   public init(id: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, name: Swift.String, accountNumber: Swift.String, kind: TinkCore.Account.Kind, transferSourceIdentifiers: [Foundation.URL]?, holderName: Swift.String?, isClosed: Swift.Bool?, currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?, refreshed: Foundation.Date?, financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?, isFavorite: Swift.Bool = false, ownership: Swift.Double = 1.0, accountExclusion: TinkCore.Account.AccountExclusion = .unknown)
 }
 extension Account : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TinkCore.Account, b: TinkCore.Account) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: TinkCore.Account, b: TinkCore.Account) -> Swift.Bool
 }
 public struct AccountNumberKind : Swift.Hashable, Swift.ExpressibleByStringLiteral {
   public init(stringLiteral value: Swift.String)
@@ -82,14 +82,14 @@ public struct AccountNumberKind : Swift.Hashable, Swift.ExpressibleByStringLiter
   public static let seBankGiro: TinkCore.AccountNumberKind
   public static let sePlusGiro: TinkCore.AccountNumberKind
   public static let sortCode: TinkCore.AccountNumberKind
-  public typealias StringLiteralType = Swift.String
-  public var hashValue: Swift.Int {
-    get
-  }
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.AccountNumberKind, b: TinkCore.AccountNumberKind) -> Swift.Bool
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public protocol AccountService {
   func accounts(completion: @escaping (Swift.Result<[TinkCore.Account], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
@@ -185,10 +185,10 @@ extension ActionableInsight {
     case week
     case unspecified
     public static func == (a: TinkCore.ActionableInsight.BudgetPeriodUnit, b: TinkCore.ActionableInsight.BudgetPeriodUnit) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public struct BudgetPeriodSummary {
     public let achievedBudgets: [TinkCore.ActionableInsight.BudgetSummary]
@@ -506,9 +506,9 @@ public struct AuthorizationCode : Swift.Hashable, Swift.RawRepresentable, Swift.
   public init?(rawValue: Swift.String)
   public init(stringLiteral value: Swift.String)
   public init(_ value: Swift.String)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias RawValue = Swift.String
   public typealias StringLiteralType = Swift.String
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 public struct Beneficiary : Swift.Equatable {
@@ -535,10 +535,10 @@ public struct Budget {
       case month
       case year
       public static func == (a: TinkCore.Budget.RecurringPeriodicity.PeriodUnit, b: TinkCore.Budget.RecurringPeriodicity.PeriodUnit) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     public let periodUnit: TinkCore.Budget.RecurringPeriodicity.PeriodUnit
     public init(periodUnit: TinkCore.Budget.RecurringPeriodicity.PeriodUnit)
@@ -633,14 +633,14 @@ extension Category {
     public let value: Swift.String
     public init(_ value: Swift.String)
     public init(stringLiteral value: Swift.String)
-    public typealias StringLiteralType = Swift.String
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: TinkCore.Category.Code, b: TinkCore.Category.Code) -> Swift.Bool
     public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+    public typealias StringLiteralType = Swift.String
     public typealias UnicodeScalarLiteralType = Swift.String
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: TinkCore.Category.Code, b: TinkCore.Category.Code) -> Swift.Bool
   }
 }
 extension Category.Code {
@@ -690,8 +690,8 @@ extension Category {
     case expenses
     case income
     case transfers
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -755,10 +755,10 @@ public struct Credentials : Swift.Identifiable {
       get
     }
     public static func == (a: TinkCore.Credentials.Kind, b: TinkCore.Credentials.Kind) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let kind: TinkCore.Credentials.Kind
   public enum Status : Swift.Equatable {
@@ -816,23 +816,23 @@ public struct CurrencyCode : Swift.Hashable, Swift.ExpressibleByStringLiteral {
   public let value: Swift.String
   public init(_ value: Swift.String)
   public init(stringLiteral value: Swift.String)
-  public typealias StringLiteralType = Swift.String
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TinkCore.CurrencyCode, b: TinkCore.CurrencyCode) -> Swift.Bool
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: TinkCore.CurrencyCode, b: TinkCore.CurrencyCode) -> Swift.Bool
 }
 public struct CurrencyDenominatedAmount : Swift.Equatable, Swift.Hashable {
   public let value: Foundation.Decimal
   public let currencyCode: TinkCore.CurrencyCode
   public static func == (a: TinkCore.CurrencyDenominatedAmount, b: TinkCore.CurrencyDenominatedAmount) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 extension CurrencyDenominatedAmount {
   public var doubleValue: Swift.Double {
@@ -863,11 +863,11 @@ extension Provider {
     public typealias ID = TinkCore.Identifier<TinkCore.Provider.FinancialInstitution>
     public let id: TinkCore.Provider.FinancialInstitution.ID
     public let name: Swift.String
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: TinkCore.Provider.FinancialInstitution, b: TinkCore.Provider.FinancialInstitution) -> Swift.Bool
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: TinkCore.Provider.FinancialInstitution, b: TinkCore.Provider.FinancialInstitution) -> Swift.Bool
   }
 }
 public struct Identifier<Type> : Swift.Hashable, Swift.ExpressibleByStringLiteral {
@@ -876,14 +876,14 @@ public struct Identifier<Type> : Swift.Hashable, Swift.ExpressibleByStringLitera
   public init(stringLiteral value: Swift.String)
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  public typealias StringLiteralType = Swift.String
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
-  public typealias UnicodeScalarLiteralType = Swift.String
   public static func == (a: TinkCore.Identifier<Type>, b: TinkCore.Identifier<Type>) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 extension Tink {
   public static var availableLocales: [Foundation.Locale] {
@@ -901,9 +901,9 @@ public struct Market : Swift.Hashable, Swift.RawRepresentable, Swift.Expressible
   public var code: Swift.String {
     get
   }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias RawValue = Swift.String
   public typealias StringLiteralType = Swift.String
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 extension Market : Swift.Comparable {
@@ -918,10 +918,10 @@ public struct Period {
     case monthly
     case monthlyAdjusted
     public static func == (a: TinkCore.Period.Resolution, b: TinkCore.Period.Resolution) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let dateInterval: Foundation.DateInterval
   public let name: Swift.String
@@ -943,10 +943,10 @@ extension Provider {
     case personal
     case corporate
     public static func == (a: TinkCore.Provider.AuthenticationUserType, b: TinkCore.Provider.AuthenticationUserType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   @available(*, unavailable, message: "Use `financialServices` instead.")
   public var authenticationUserType: TinkCore.Provider.AuthenticationUserType {
@@ -972,18 +972,18 @@ public struct Provider : Swift.Identifiable {
       case business
       case unknown
       public static func == (a: TinkCore.Provider.FinancialService.Segment, b: TinkCore.Provider.FinancialService.Segment) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     public let segment: TinkCore.Provider.FinancialService.Segment
     public let shortName: Swift.String
     public static func == (a: TinkCore.Provider.FinancialService, b: TinkCore.Provider.FinancialService) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let financialServices: [TinkCore.Provider.FinancialService]
   public enum Kind {
@@ -997,19 +997,19 @@ public struct Provider : Swift.Identifiable {
     public static var onlyTest: Swift.Set<TinkCore.Provider.Kind>
     public static var all: Swift.Set<TinkCore.Provider.Kind>
     public static func == (a: TinkCore.Provider.Kind, b: TinkCore.Provider.Kind) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let kind: TinkCore.Provider.Kind
   public enum ReleaseStatus {
     case beta
     public static func == (a: TinkCore.Provider.ReleaseStatus, b: TinkCore.Provider.ReleaseStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let releaseStatus: TinkCore.Provider.ReleaseStatus?
   public enum Status {
@@ -1018,10 +1018,10 @@ public struct Provider : Swift.Identifiable {
     case disabled
     case temporaryDisabled
     public static func == (a: TinkCore.Provider.Status, b: TinkCore.Provider.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let status: TinkCore.Provider.Status
   public let credentialsKind: TinkCore.Credentials.Kind
@@ -1066,8 +1066,8 @@ public struct Provider : Swift.Identifiable {
     public static let listBeneficiaries: TinkCore.Provider.Capabilities
     public static let createBeneficiaries: TinkCore.Provider.Capabilities
     public static let all: TinkCore.Provider.Capabilities
-    public typealias Element = TinkCore.Provider.Capabilities
     public typealias ArrayLiteralElement = TinkCore.Provider.Capabilities
+    public typealias Element = TinkCore.Provider.Capabilities
     public typealias RawValue = Swift.Int
   }
   public let capabilities: TinkCore.Provider.Capabilities
@@ -1077,10 +1077,10 @@ public struct Provider : Swift.Identifiable {
     case other
     public static let all: Swift.Set<TinkCore.Provider.AccessType>
     public static func == (a: TinkCore.Provider.AccessType, b: TinkCore.Provider.AccessType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let accessType: TinkCore.Provider.AccessType
   public let marketCode: Swift.String
@@ -1125,9 +1125,9 @@ public struct RefreshableItems : Swift.OptionSet {
   public static let accounts: TinkCore.RefreshableItems
   public static let transactions: TinkCore.RefreshableItems
   public static let all: TinkCore.RefreshableItems
-  public typealias RawValue = Swift.Int
-  public typealias Element = TinkCore.RefreshableItems
   public typealias ArrayLiteralElement = TinkCore.RefreshableItems
+  public typealias Element = TinkCore.RefreshableItems
+  public typealias RawValue = Swift.Int
 }
 extension RefreshableItems {
   public init(providerCapabilities: TinkCore.Provider.Capabilities)
@@ -1145,56 +1145,56 @@ extension Scope : Swift.Equatable {
 extension Scope {
   public enum ReadAccess : Swift.String {
     case read
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum ReadWriteAccess : Swift.String {
     case read, write
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum AuthorizationAccess : Swift.String {
     case grant, read, revoke
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum CredentialsAccess : Swift.String {
     case read, write, refresh
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum TransactionAccess : Swift.String {
     case read, write, categorize
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum TransferAccess : Swift.String {
     case read, execute
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
   }
   public enum UserAccess : Swift.String {
     case create, delete, read, webHooks, write
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -1308,18 +1308,18 @@ public struct SignableOperation {
     case cancelled
     case unknown
     public static func == (a: TinkCore.SignableOperation.Status, b: TinkCore.SignableOperation.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Kind {
     case transfer
     public static func == (a: TinkCore.SignableOperation.Kind, b: TinkCore.SignableOperation.Kind) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let created: Foundation.Date?
   public let credentialsID: TinkCore.Credentials.ID?
@@ -1334,10 +1334,10 @@ public struct Statistic {
   public enum Resolution {
     case daily, monthly, monthlyAdjusted, yearly, all, weekly
     public static func == (a: TinkCore.Statistic.Resolution, b: TinkCore.Statistic.Resolution) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Kind {
     case balancesByAccount
@@ -1351,10 +1351,10 @@ public struct Statistic {
     case leftToSpend
     case leftToSpendAverage
     public static func == (a: TinkCore.Statistic.Kind, b: TinkCore.Statistic.Kind) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public let description: Swift.String
   public let payload: Swift.String?
@@ -1374,11 +1374,11 @@ public enum StatisticPeriod : Swift.Hashable {
   public var stringRepresentation: Swift.String {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TinkCore.StatisticPeriod, b: TinkCore.StatisticPeriod) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: TinkCore.StatisticPeriod, b: TinkCore.StatisticPeriod) -> Swift.Bool
 }
 public protocol StatisticService {
   func statistics(description: Swift.String?, periods: [TinkCore.StatisticPeriod], types: [TinkCore.Statistic.Kind], resolution: TinkCore.Statistic.Resolution, padResultsUntilToday: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Statistic], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
@@ -1441,11 +1441,11 @@ public struct Transaction {
   public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool)
 }
 extension Transaction : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TinkCore.Transaction, b: TinkCore.Transaction) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: TinkCore.Transaction, b: TinkCore.Transaction) -> Swift.Bool
 }
 public struct TransactionCluster {
   public let categorizationImprovement: Swift.Double
@@ -1469,8 +1469,8 @@ public struct TransactionsQuery : Swift.Equatable {
     case description
     case amount
     case category
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -1478,8 +1478,8 @@ public struct TransactionsQuery : Swift.Equatable {
   @frozen public enum Order : Swift.String {
     case ascending
     case descending
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -1490,10 +1490,10 @@ public struct TransactionsQuery : Swift.Equatable {
 public enum TransactionsQueryError : Swift.Error {
   case notMatchable
   public static func == (a: TinkCore.TransactionsQueryError, b: TinkCore.TransactionsQueryError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 extension Collection where Self.Element == TinkCore.Transaction {
   public func filter(with query: TinkCore.TransactionsQuery) throws -> [TinkCore.Transaction]
