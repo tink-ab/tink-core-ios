@@ -41,6 +41,10 @@ public struct RefreshableItems: OptionSet {
     ///
     /// Contains .checkingTransactions`, `.savingTransactions`, `.creditCardTransactions`, `.loanTransactions`, and `.investmentTransactions`.
     public static let transactions: RefreshableItems = [.checkingTransactions, .savingTransactions, .creditCardTransactions, .loanTransactions, .investmentTransactions]
+    /// All kinds of refreshable items for connect accounts.
+    ///
+    /// Contains `.checkingAccounts`, `.checkingTransactions`, `.savingAccounts`, `.savingTransactions`, `.creditCardAccounts` and `.creditCardTransactions`.
+    public static let connectAccounts: RefreshableItems = [.checkingAccounts, .checkingTransactions, .savingAccounts, .savingTransactions, .creditCardAccounts, .creditCardTransactions]
     /// All possible data.
     ///
     /// Contains all types of refreshable items.
