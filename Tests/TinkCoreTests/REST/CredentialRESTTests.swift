@@ -121,7 +121,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertEqual(credential.fields, restCredentials.fields)
 
         if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
-            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "https://app.bankid.com/?autostartToken=TOKEN&redirect=tink:///bankid/credentials/6e68cc6287704273984567b3300c5822")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
         } else {
             XCTFail("Wrong status")
@@ -156,7 +156,7 @@ class CredentialRESTTests: XCTestCase {
         XCTAssertNil(credential.sessionExpiryDate)
 
         if case .awaitingMobileBankIDAuthentication(let thirdPartyAppAuthentication) = credential.status {
-            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "bankid:///?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
+            XCTAssertEqual(thirdPartyAppAuthentication.deepLinkURL?.absoluteString, "https://app.bankid.com/?autostartToken=TOKEN&redirect=https://facebook.com/cool_redirect/bankid/credentials/6e68cc6287704273984567b3300c5822")
             XCTAssertEqual(thirdPartyAppAuthentication.appStoreURL?.absoluteString, "itms://itunes.apple.com/se/app/bankid-sakerhetsapp/id433151512")
         }
     }

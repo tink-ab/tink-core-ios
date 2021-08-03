@@ -40,4 +40,27 @@ final class RESTProviderService: ProviderService {
 
         return client.performRequest(request)
     }
+
+    func providers(market: Market, capabilities: Provider.Capabilities?, includeTestProviders: Bool, excludeNonTestProviders: Bool, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
+        var parameters = [
+            URLQueryItem(name: "includeTestProviders", value: includeTestProviders ? "true" : "false"),
+            URLQueryItem(name: "excludeNonTestProviders", value: excludeNonTestProviders ? "true" : "false")
+        ]
+
+        if let restCapabilities = capabilities?.restCapabilities, restCapabilities.count == 1 {
+            parameters.append(.init(name: "capability", value: restCapabilities[0].rawValue))
+        }
+
+        let request = RESTResourceRequest<RESTProviders>(path: "/api/v1/providers/\(market.rawValue)", method: .get, contentType: .json) { result in
+
+            do {
+                let providers = try result.get().providers.map(Provider.init)
+                completion(.success(providers))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+
+        return client.performRequest(request)
+    }
 }

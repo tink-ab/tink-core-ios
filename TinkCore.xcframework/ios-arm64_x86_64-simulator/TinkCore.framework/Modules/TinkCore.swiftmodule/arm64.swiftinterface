@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
@@ -1105,6 +1105,7 @@ extension Set where Element == TinkCore.Provider.AccessType {
 }
 public protocol ProviderService {
   func providers(name: TinkCore.Provider.Name?, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func providers(market: TinkCore.Market, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public struct RefreshableItems : Swift.OptionSet {
   public let rawValue: Swift.Int
@@ -1124,6 +1125,7 @@ public struct RefreshableItems : Swift.OptionSet {
   public static let identityData: TinkCore.RefreshableItems
   public static let accounts: TinkCore.RefreshableItems
   public static let transactions: TinkCore.RefreshableItems
+  public static let connectAccounts: TinkCore.RefreshableItems
   public static let all: TinkCore.RefreshableItems
   public typealias ArrayLiteralElement = TinkCore.RefreshableItems
   public typealias Element = TinkCore.RefreshableItems

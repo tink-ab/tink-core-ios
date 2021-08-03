@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "TinkCore",
-            url: "https://github.com/tink-ab/tink-core-ios/releases/download/1.4.1/TinkCore.xcframework.zip", checksum: "9f3a43e110b972ab299bbacec856d496ea8839ee27302eb8bbfde46a7f8c5c6e"
+            url: "https://github.com/tink-ab/tink-core-ios/releases/download/1.5.0/TinkCore.xcframework.zip", checksum: "a6e117931c5d508edb3db315c4f05e41313bb9394b5c9cc6cca06c02ea3c5e18"
         ),
     ]
 )
