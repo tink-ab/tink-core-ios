@@ -51,7 +51,7 @@ final class RESTProviderService: ProviderService {
             parameters.append(.init(name: "capability", value: restCapabilities[0].rawValue))
         }
 
-        let request = RESTResourceRequest<RESTProviders>(path: "/api/v1/providers/\(market.rawValue)", method: .get, contentType: .json) { result in
+        let request = RESTResourceRequest<RESTProviders>(path: "/api/v1/providers/\(market.rawValue)", method: .get, contentType: .json, parameters: parameters) { result in
 
             do {
                 let providers = try result.get().providers.map(Provider.init)
