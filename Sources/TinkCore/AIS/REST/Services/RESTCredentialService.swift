@@ -65,6 +65,7 @@ final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
+    @available(*, deprecated, message: "Use refresh(id:authenticate:refreshableItems:appURI:callbackURI:optIn:completion:) method instead.")
     @discardableResult
     func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         var parameters: [URLQueryItem]
@@ -83,6 +84,31 @@ final class RESTCredentialsService: CredentialsService {
         }
 
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/refresh", method: .post, contentType: .json, parameters: parameters) { result in
+            completion(result.map { _ in })
+        }
+        return client.performRequest(request)
+    }
+
+    @discardableResult
+    func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, appURI: URL?, callbackURI: URL?, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString)
+
+        var parameters: [URLQueryItem]
+        if refreshableItems != .all {
+            parameters = refreshableItems.strings.map { .init(name: "items", value: $0) }
+        } else {
+            parameters = []
+        }
+
+        if authenticate {
+            parameters.append(.init(name: "authenticate", value: "true"))
+        }
+
+        if optIn {
+            parameters.append(.init(name: "optIn", value: "true"))
+        }
+
+        let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/refresh", method: .post, body: body, contentType: .json, parameters: parameters) { result in
             completion(result.map { _ in })
         }
         return client.performRequest(request)
@@ -131,9 +157,19 @@ final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
+    @available(*, deprecated, message: "Use authenticate(id:appURI:callbackURI:completion:) method instead.")
     @discardableResult
     func authenticate(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/authenticate", method: .post, contentType: .json) { result in
+            completion(result.map { _ in })
+        }
+        return client.performRequest(request)
+    }
+
+    @discardableResult
+    func authenticate(id: Credentials.ID, appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString)
+        let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/authenticate", method: .post, body: body, contentType: .json) { result in
             completion(result.map { _ in })
         }
         return client.performRequest(request)
