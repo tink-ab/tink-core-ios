@@ -253,4 +253,60 @@ class AccountRESTTests: XCTestCase {
         XCTAssertEqual(account.kind, Account.Kind(restAccountType: restAccount.type))
         XCTAssertNil(account.details)
     }
+
+    func testAccountModelMappingWithFirstSeen() throws {
+        let accountJSON = """
+        {
+            "accountNumber": "IE34SUEB68829007936718",
+            "availableCredit": 0.0,
+            "balance": 3200.0,
+            "bankId": "IE34SUEB68829007936718",
+            "certainDate": 1625781600000,
+            "credentialsId": "dad6fb5a8865450eb2a7c91dc0539245",
+            "excluded": false,
+            "favored": true,
+            "id": "12749cdae92f4fb288e1e64da2b49dfd",
+            "name": "Savings Account",
+            "ownership": 1.0,
+            "payload": null,
+            "type": "SAVINGS",
+            "userId": "0caa9805653b4a0bb20bed71373f59c3",
+            "userModifiedExcluded": false,
+            "userModifiedName": false,
+            "userModifiedType": false,
+            "identifiers": "[iban://IE34SUEB68829007936718]",
+            "transferDestinations": null,
+            "details": null,
+            "images": {
+                "icon": "https://cdn.tink.se/provider-images/placeholder.png",
+                "banner": null
+            },
+            "holderName": null,
+            "closed": false,
+            "flags": "[PSD2_PAYMENT_ACCOUNT]",
+            "accountExclusion": "NONE",
+            "currencyCode": "EUR",
+            "currencyDenominatedBalance": {
+                "unscaledValue": 32,
+                "scale": -2,
+                "currencyCode": "EUR"
+            },
+            "refreshed": 1632210468000,
+            "financialInstitutionId": "85fda619bbdc40369502ec3f792ae644",
+            "firstSeen": 1629289914000,
+            "iban": "IE34SUEB68829007936718"
+        }
+        """
+
+        guard let data = accountJSON.data(using: .utf8) else {
+            XCTFail("Failed to parse the JSON")
+            return
+        }
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .millisecondsSince1970
+        let restAccount = try decoder.decode(RESTAccount.self, from: data)
+
+        XCTAssertEqual(restAccount.firstSeen, Date(timeIntervalSince1970: 1_629_289_914))
+    }
 }
