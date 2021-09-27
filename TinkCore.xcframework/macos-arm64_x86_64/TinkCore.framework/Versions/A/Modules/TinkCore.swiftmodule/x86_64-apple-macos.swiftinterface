@@ -62,8 +62,9 @@ public struct Account {
   public let accountExclusion: TinkCore.Account.AccountExclusion?
   public let currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?
   public let refreshed: Foundation.Date?
+  public let firstSeen: Foundation.Date?
   public let financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?
-  public init(id: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, name: Swift.String, accountNumber: Swift.String, kind: TinkCore.Account.Kind, transferSourceIdentifiers: [Foundation.URL]?, holderName: Swift.String?, isClosed: Swift.Bool?, currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?, refreshed: Foundation.Date?, financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?, isFavorite: Swift.Bool = false, ownership: Swift.Double = 1.0, accountExclusion: TinkCore.Account.AccountExclusion = .unknown)
+  public init(id: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, name: Swift.String, accountNumber: Swift.String, kind: TinkCore.Account.Kind, transferSourceIdentifiers: [Foundation.URL]?, holderName: Swift.String?, isClosed: Swift.Bool?, currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?, refreshed: Foundation.Date?, firstSeen: Foundation.Date?, financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?, isFavorite: Swift.Bool = false, ownership: Swift.Double = 1.0, accountExclusion: TinkCore.Account.AccountExclusion = .unknown)
 }
 extension Account : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)

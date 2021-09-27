@@ -19,6 +19,7 @@ extension Account {
         self.accountExclusion = AccountExclusion(restAccountExclusion: account.accountExclusion)
         self.currencyDenominatedBalance = account.currencyDenominatedBalance.flatMap { CurrencyDenominatedAmount(restCurrencyDenominatedAmount: $0) }
         self.refreshed = account.refreshed
+        self.firstSeen = account.firstSeen
         self.financialInstitutionID = account.financialInstitutionId.flatMap { Provider.FinancialInstitution.ID($0) }
     }
 

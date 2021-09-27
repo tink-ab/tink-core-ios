@@ -112,6 +112,9 @@ public struct Account {
     /// Timestamp of when the account was last refreshed.
     public let refreshed: Date?
 
+    /// Timestamp of when the account was first seen by Tink, e.g. when the account was aggregated for the first time.
+    public let firstSeen: Date?
+
     /// A unique identifier to group accounts belonging the same financial institution. Available for aggregated accounts only.
     public let financialInstitutionID: Provider.FinancialInstitution.ID?
 
@@ -142,6 +145,7 @@ public struct Account {
         isClosed: Bool?,
         currencyDenominatedBalance: CurrencyDenominatedAmount?,
         refreshed: Date?,
+        firstSeen: Date?,
         financialInstitutionID: Provider.FinancialInstitution.ID?,
         isFavorite: Bool = false,
         ownership: Double = 1.0,
@@ -175,6 +179,7 @@ public struct Account {
         self.currencyDenominatedBalance = currencyDenominatedBalance
         self.refreshed = refreshed
         self.financialInstitutionID = financialInstitutionID
+        self.firstSeen = firstSeen
     }
 }
 

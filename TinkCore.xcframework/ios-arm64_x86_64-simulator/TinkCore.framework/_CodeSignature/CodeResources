@@ -14,51 +14,51 @@
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		oJLjRda7r7tytRAh8gQ1FVWBdnU=
+		KlpmQ3R6XUA4ownJ9uVllfAS178=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		jnSA/ADsAL4OVgrnvVrDBh6L8Wg=
+		ZzzyEWgJVSPzkeLiOijkxI520Js=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9v5NWBCqKDsGke2at/UlC4HQvYs=
+		bR6G8F72kkUcWEKa+xBy/nSjqqc=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		oJLjRda7r7tytRAh8gQ1FVWBdnU=
+		KlpmQ3R6XUA4ownJ9uVllfAS178=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		jnSA/ADsAL4OVgrnvVrDBh6L8Wg=
+		ZzzyEWgJVSPzkeLiOijkxI520Js=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		9v5NWBCqKDsGke2at/UlC4HQvYs=
+		bR6G8F72kkUcWEKa+xBy/nSjqqc=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		0iv4Fq2IKWE61s/tS4xSqbkdRTI=
+		2m+Xi0QKJnzhifjg4ijPDLn65uw=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		VGLJD20jpoVe+JkYlqRiFzgGY78=
+		RXvDIwHpNXmI8RjJQ6lrxqpRHz4=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		CbrV47My4D5tsgnXGb47CeIPiKk=
+		fq9vc+aiur5rtEF3kREpM9Ec/DQ=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		0iv4Fq2IKWE61s/tS4xSqbkdRTI=
+		2m+Xi0QKJnzhifjg4ijPDLn65uw=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		VGLJD20jpoVe+JkYlqRiFzgGY78=
+		RXvDIwHpNXmI8RjJQ6lrxqpRHz4=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		CbrV47My4D5tsgnXGb47CeIPiKk=
+		fq9vc+aiur5rtEF3kREpM9Ec/DQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -78,84 +78,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sTwTeSwjZw6dJAzsXifOe/ZD0odAL6PxpbdP6giTdiI=
+			htSbyypK6HX0n8fcpJ9nPB9scAQ2mbHQ8pqamytTNio=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vuOYd6cqBZQOjs52g5JlSPiF6P/vmlpTF7xLizQRUiA=
+			uZDy4EJJhFYOU9l8TvZPJYIDpDrXSTAXAucBE11wXDA=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			veRm12seFV421gT7HYAM2r+jZv7/qW3KqoABOXckWfo=
+			EU7oOh538HJGx3/0J/6YkTUPbt2NQwp6ONnjsKADHvM=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sTwTeSwjZw6dJAzsXifOe/ZD0odAL6PxpbdP6giTdiI=
+			htSbyypK6HX0n8fcpJ9nPB9scAQ2mbHQ8pqamytTNio=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vuOYd6cqBZQOjs52g5JlSPiF6P/vmlpTF7xLizQRUiA=
+			uZDy4EJJhFYOU9l8TvZPJYIDpDrXSTAXAucBE11wXDA=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			veRm12seFV421gT7HYAM2r+jZv7/qW3KqoABOXckWfo=
+			EU7oOh538HJGx3/0J/6YkTUPbt2NQwp6ONnjsKADHvM=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GiUow2focZKSiiX4QIEetdYbLFHA2rWy4L99dXb5s0Y=
+			UBIIt/kJOwayESak2k18UlOgX6EpZg82GQer5vsmjy8=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mpxwMWRsYSJpADIhNjxN4gZHx23EXxmm2hMCcvSbLqU=
+			qB1r6NNSM16EWEMMlXqa0EucpKhKNEnH3ZAqFNoV7uo=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yf2DO//jNnAagydEmEqd8iTS+pqKNVVse/+dm1jHDPo=
+			aes8AzDhO4f4Rk5By1WXgStRC/r7D/7brHlEOl+/Nmw=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GiUow2focZKSiiX4QIEetdYbLFHA2rWy4L99dXb5s0Y=
+			UBIIt/kJOwayESak2k18UlOgX6EpZg82GQer5vsmjy8=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mpxwMWRsYSJpADIhNjxN4gZHx23EXxmm2hMCcvSbLqU=
+			qB1r6NNSM16EWEMMlXqa0EucpKhKNEnH3ZAqFNoV7uo=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yf2DO//jNnAagydEmEqd8iTS+pqKNVVse/+dm1jHDPo=
+			aes8AzDhO4f4Rk5By1WXgStRC/r7D/7brHlEOl+/Nmw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

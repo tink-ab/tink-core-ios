@@ -109,4 +109,7 @@ struct RESTAccount: Decodable {
 
     /// A unique identifier to group accounts belonging the same financial institution. Available for aggregated accounts only.
     var financialInstitutionId: String?
+
+    /// Timestamp of when the account was first seen by Tink, e.g. when the account was aggregated for the first time.
+    var firstSeen: Date?
 }
