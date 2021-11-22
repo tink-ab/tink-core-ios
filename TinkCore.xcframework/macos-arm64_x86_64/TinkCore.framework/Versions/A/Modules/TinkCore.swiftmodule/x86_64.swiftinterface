@@ -1,10 +1,11 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target x86_64-apple-macos10.13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
 import Security
 import Swift
+import _Concurrency
 public struct AccessToken : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
   public let rawValue: Swift.String
   public init?(rawValue: Swift.String)
@@ -66,7 +67,7 @@ public struct Account {
   public let financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?
   public init(id: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, name: Swift.String, accountNumber: Swift.String, kind: TinkCore.Account.Kind, transferSourceIdentifiers: [Foundation.URL]?, holderName: Swift.String?, isClosed: Swift.Bool?, currencyDenominatedBalance: TinkCore.CurrencyDenominatedAmount?, refreshed: Foundation.Date?, firstSeen: Foundation.Date?, financialInstitutionID: TinkCore.Provider.FinancialInstitution.ID?, isFavorite: Swift.Bool = false, ownership: Swift.Double = 1.0, accountExclusion: TinkCore.Account.AccountExclusion = .unknown)
 }
-extension Account : Swift.Hashable {
+extension TinkCore.Account : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.Account, b: TinkCore.Account) -> Swift.Bool
   public var hashValue: Swift.Int {
@@ -153,7 +154,7 @@ public struct ActionableInsight {
   @available(*, deprecated)
   public init(id: TinkCore.ActionableInsight.ID, kind: TinkCore.ActionableInsight.Kind, state: TinkCore.ActionableInsight.State, title: Swift.String, description: Swift.String, created: Foundation.Date)
 }
-extension ActionableInsight {
+extension TinkCore.ActionableInsight {
   public struct AccountBalanceLowData {
     public let accountID: TinkCore.Account.ID
     public let balance: TinkCore.CurrencyDenominatedAmount
@@ -565,7 +566,7 @@ public struct Budget {
   @available(*, deprecated)
   public init(id: TinkCore.Budget.ID, name: Swift.String, amount: TinkCore.CurrencyDenominatedAmount?, filter: [TinkCore.Budget.Filter], periodicity: TinkCore.Budget.Periodicity?)
 }
-extension Budget {
+extension TinkCore.Budget {
   public struct Transaction {
     public let id: TinkCore.Transaction.ID
     public let amount: TinkCore.CurrencyDenominatedAmount
@@ -587,7 +588,7 @@ public struct BudgetDetails {
   @available(*, deprecated)
   public init(budgetSpecification: TinkCore.Budget, budgetPeriods: [TinkCore.Budget.Period], dateInterval: Foundation.DateInterval, totalSpentAmount: TinkCore.CurrencyDenominatedAmount?, averageSpentAmount: TinkCore.CurrencyDenominatedAmount?)
 }
-extension Budget {
+extension TinkCore.Budget {
   public struct Period : Swift.Equatable {
     public let dateInterval: Foundation.DateInterval
     public let spentAmount: TinkCore.CurrencyDenominatedAmount?
@@ -628,7 +629,7 @@ public struct Category : Swift.Equatable {
   public init(id: TinkCore.Category.ID, code: TinkCore.Category.Code, name: Swift.String, sortOrder: Swift.Int, parent: TinkCore.Category.ID?)
   public static func == (a: TinkCore.Category, b: TinkCore.Category) -> Swift.Bool
 }
-extension Category {
+extension TinkCore.Category {
   public struct Code : Swift.Hashable, Swift.ExpressibleByStringLiteral {
     public let value: Swift.String
     public init(_ value: Swift.String)
@@ -643,7 +644,7 @@ extension Category {
     }
   }
 }
-extension Category.Code {
+extension TinkCore.Category.Code {
   public var isExpense: Swift.Bool {
     get
   }
@@ -685,7 +686,7 @@ extension Category.Code {
   }
   public func isChild(of parent: TinkCore.Category.Code) -> Swift.Bool
 }
-extension Category {
+extension TinkCore.Category {
   public enum Kind : Swift.String, Swift.Hashable {
     case expenses
     case income
@@ -697,7 +698,7 @@ extension Category {
     }
   }
 }
-extension Category.Kind {
+extension TinkCore.Category.Kind {
   public init(code: TinkCore.Category.Code)
   public var categoryCode: TinkCore.Category.Code {
     get
@@ -719,7 +720,7 @@ public protocol Configuration {
   var environment: TinkCore.Tink.Environment { get }
   var certificateURL: Foundation.URL? { get }
 }
-extension Tink {
+extension TinkCore.Tink {
   public struct Configuration : TinkCore.Configuration {
     public var clientID: Swift.String
     public var redirectURI: Foundation.URL
@@ -735,7 +736,7 @@ extension Tink {
     public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, certificateURL: Foundation.URL? = nil) throws
   }
 }
-extension Credentials {
+extension TinkCore.Credentials {
   @available(*, deprecated, renamed: "providerName")
   public var providerID: TinkCore.Provider.Name {
     get
@@ -838,7 +839,7 @@ public struct CurrencyDenominatedAmount : Swift.Equatable, Swift.Hashable {
     get
   }
 }
-extension CurrencyDenominatedAmount {
+extension TinkCore.CurrencyDenominatedAmount {
   public var doubleValue: Swift.Double {
     get
   }
@@ -848,7 +849,7 @@ extension CurrencyDenominatedAmount {
   public init(_ decimal: Foundation.Decimal, currencyCode: TinkCore.CurrencyCode)
   public init(_ number: Foundation.NSNumber, currencyCode: TinkCore.CurrencyCode)
 }
-extension CurrencyDenominatedAmount {
+extension TinkCore.CurrencyDenominatedAmount {
   public static func + (lhs: TinkCore.CurrencyDenominatedAmount, rhs: TinkCore.CurrencyDenominatedAmount) -> TinkCore.CurrencyDenominatedAmount
   public static func - (lhs: TinkCore.CurrencyDenominatedAmount, rhs: TinkCore.CurrencyDenominatedAmount) -> TinkCore.CurrencyDenominatedAmount
   public static func * (lhs: TinkCore.CurrencyDenominatedAmount, rhs: TinkCore.CurrencyDenominatedAmount) -> TinkCore.CurrencyDenominatedAmount
@@ -856,13 +857,13 @@ extension CurrencyDenominatedAmount {
 }
 @available(*, deprecated, renamed: "Tink.Environment")
 public typealias Environment = TinkCore.Tink.Environment
-extension Tink {
+extension TinkCore.Tink {
   public enum Environment {
     case production
     case custom(Foundation.URL)
   }
 }
-extension Provider {
+extension TinkCore.Provider {
   public struct FinancialInstitution : Swift.Hashable {
     public typealias ID = TinkCore.Identifier<TinkCore.Provider.FinancialInstitution>
     public let id: TinkCore.Provider.FinancialInstitution.ID
@@ -889,7 +890,7 @@ public struct Identifier<Type> : Swift.Hashable, Swift.ExpressibleByStringLitera
     get
   }
 }
-extension Tink {
+extension TinkCore.Tink {
   public static var availableLocales: [Foundation.Locale] {
     get
   }
@@ -910,7 +911,7 @@ public struct Market : Swift.Hashable, Swift.RawRepresentable, Swift.Expressible
   public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
-extension Market : Swift.Comparable {
+extension TinkCore.Market : Swift.Comparable {
   public static func < (lhs: TinkCore.Market, rhs: TinkCore.Market) -> Swift.Bool
 }
 public protocol OAuthService {
@@ -933,12 +934,12 @@ public struct Period {
   @available(*, deprecated)
   public init(dateInterval: Foundation.DateInterval, name: Swift.String, resolution: TinkCore.Period.Resolution)
 }
-extension Period.Resolution {
+extension TinkCore.Period.Resolution {
   public var statisticResolution: TinkCore.Statistic.Resolution {
     get
   }
 }
-extension Provider {
+extension TinkCore.Provider {
   @available(*, deprecated, renamed: "Field")
   public typealias FieldSpecification = TinkCore.Provider.Field
   public enum AuthenticationUserType {
@@ -957,7 +958,7 @@ extension Provider {
     get
   }
 }
-extension Provider.Field {
+extension TinkCore.Provider.Field {
   @available(*, deprecated, renamed: "description")
   public var fieldDescription: Swift.String {
     get
@@ -1091,7 +1092,7 @@ public struct Provider : Swift.Identifiable {
   public let financialInstitution: TinkCore.Provider.FinancialInstitution
   public typealias ID = TinkCore.Provider.Name
 }
-extension Set where Element == TinkCore.Provider.Kind {
+extension Swift.Set where Element == TinkCore.Provider.Kind {
   public static var all: Swift.Set<TinkCore.Provider.Kind> {
     get
   }
@@ -1102,7 +1103,7 @@ extension Set where Element == TinkCore.Provider.Kind {
     get
   }
 }
-extension Set where Element == TinkCore.Provider.AccessType {
+extension Swift.Set where Element == TinkCore.Provider.AccessType {
   public static var all: Swift.Set<TinkCore.Provider.AccessType> {
     get
   }
@@ -1135,7 +1136,7 @@ public struct RefreshableItems : Swift.OptionSet {
   public typealias Element = TinkCore.RefreshableItems
   public typealias RawValue = Swift.Int
 }
-extension RefreshableItems {
+extension TinkCore.RefreshableItems {
   public init(providerCapabilities: TinkCore.Provider.Capabilities)
   public func supporting(providerCapabilities: TinkCore.Provider.Capabilities) -> TinkCore.RefreshableItems
 }
@@ -1145,10 +1146,10 @@ public protocol Retriable {
 public typealias RetryCancellable = (TinkCore.Cancellable & TinkCore.Retriable)
 public struct Scope {
 }
-extension Scope : Swift.Equatable {
+extension TinkCore.Scope : Swift.Equatable {
   public static func == (a: TinkCore.Scope, b: TinkCore.Scope) -> Swift.Bool
 }
-extension Scope {
+extension TinkCore.Scope {
   public enum ReadAccess : Swift.String {
     case read
     public init?(rawValue: Swift.String)
@@ -1396,7 +1397,7 @@ public struct SuggestTransactionsResponse {
   @available(*, deprecated)
   public init(categorizationImprovement: Swift.Double, categorizationLevel: Swift.Double, clusters: [TinkCore.TransactionCluster])
 }
-extension Tink {
+extension TinkCore.Tink {
   @discardableResult
   public func _createTemporaryUser(for market: TinkCore.Market, locale: Foundation.Locale = Tink.defaultLocale, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   public var _sdkName: Swift.String {
@@ -1425,7 +1426,7 @@ public class Tink {
   }
   @objc deinit
 }
-extension Tink {
+extension TinkCore.Tink {
   @discardableResult
   public func authenticateUser(authorizationCode: TinkCore.AuthorizationCode, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
@@ -1446,7 +1447,7 @@ public struct Transaction {
   @available(*, deprecated)
   public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool)
 }
-extension Transaction : Swift.Hashable {
+extension TinkCore.Transaction : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.Transaction, b: TinkCore.Transaction) -> Swift.Bool
   public var hashValue: Swift.Int {
@@ -1501,7 +1502,7 @@ public enum TransactionsQueryError : Swift.Error {
     get
   }
 }
-extension Collection where Self.Element == TinkCore.Transaction {
+extension Swift.Collection where Self.Element == TinkCore.Transaction {
   public func filter(with query: TinkCore.TransactionsQuery) throws -> [TinkCore.Transaction]
 }
 public protocol TransactionService {
@@ -1604,5 +1605,6 @@ extension TinkCore.TransactionsQuery.Sort : Swift.RawRepresentable {}
 extension TinkCore.TransactionsQuery.Order : Swift.Equatable {}
 extension TinkCore.TransactionsQuery.Order : Swift.Hashable {}
 extension TinkCore.TransactionsQuery.Order : Swift.RawRepresentable {}
+extension TinkCore.TransactionsQuery.Order : Swift.Sendable {}
 extension TinkCore.TransactionsQueryError : Swift.Equatable {}
 extension TinkCore.TransactionsQueryError : Swift.Hashable {}
