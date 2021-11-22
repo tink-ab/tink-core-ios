@@ -100,6 +100,15 @@ extension ActionableInsight.Kind {
             )
             self = .weeklySummaryExpensesByCategory(expensesByCategory)
 
+        case (.monthlySummaryExpensesByCategory, .monthlySummaryExpensesByCategory(let summary)):
+            let expensesByCategory = ActionableInsight.MonthlyExpensesByCategory(
+                month: .init(year: summary.month.year, month: summary.month.month),
+                expensesByCategory: summary.expensesByCategory.map {
+                    ActionableInsight.CategorySpending(categoryCode: Category.Code($0.categoryCode), spentAmount: .init(restAIAmount: $0.spentAmount))
+                }
+            )
+            self = .monthlySummaryExpensesByCategory(expensesByCategory)
+
         case (.weeklyExpensesByDay, .weeklySummaryExpensesByDay(let weeklyExpenses)):
 
             let expensesByDay = ActionableInsight.WeeklyExpensesByDay(

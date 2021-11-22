@@ -413,8 +413,8 @@ enum RESTInsightData: Decodable {
                 let data = try MonthlyExpensesByCategory(from: decoder)
                 self = .monthlySummaryExpensesByCategory(data)
             case .monthlySummaryExpenseTransactions:
-                let data = try MonthlyExpensesByCategory(from: decoder)
-                self = .monthlySummaryExpensesByCategory(data)
+                let data = try MonthlySummaryExpenseTransactions(from: decoder)
+                self = .monthlySummaryExpenseTransactions(data)
             case .weeklySummaryExpenseTransactions:
                 let data = try WeeklySummaryExpenseTransactions(from: decoder)
                 self = .weeklySummaryExpenseTransactions(data)

@@ -593,6 +593,172 @@ class ActionableInsightsRESTDecodingTests: XCTestCase {
         }
     }
 
+    func testMappingOfMonthlySummaryInsight() throws {
+        let json =
+            """
+            {
+              "id": "b311286f069042a98986fd3412983bfe",
+              "userId": "f4d084e4429f42d995692c2e697ea4e6",
+              "type": "MONTHLY_SUMMARY_EXPENSES_BY_CATEGORY",
+              "title": "Here's your spent amount per category last month",
+              "description": "You spent the most on these categories last month.",
+              "data": {
+                  "month": {
+                      "year": 2021,
+                      "month": 10
+                  },
+                  "expensesByCategory": [
+                      {
+                          "categoryCode": "expenses:transport.publictransport",
+                          "spentAmount": {
+                              "currencyCode": "GBP",
+                              "amount": 66.0
+                          }
+                      }
+                  ],
+                  "type": "MONTHLY_SUMMARY_EXPENSES_BY_CATEGORY"
+              },
+              "createdTime": 1634116417310,
+              "insightActions": [
+                  {
+                      "label": "See details",
+                      "data": {
+                          "transactionIdsByCategory": {
+                              "expenses:transport.publictransport": {
+                                  "transactionIds": [
+                                      "899bf28741ca4797824986ca70835695",
+                                      "b41973114cec4309ab303f44bfefa0b5",
+                                      "00b1423ef30e4dbd811d223cb31f6636"
+                                  ]
+                              }
+                          },
+                          "type": "VIEW_TRANSACTIONS_BY_CATEGORY"
+                      }
+                  },
+                  {
+                      "label": "Archive",
+                      "data": {
+                          "type": "DISMISS"
+                      }
+                  }
+              ]
+            }
+            """
+
+        let data = json.data(using: .utf8)!
+
+        let restInsight = try decoder.decode(RESTActionableInsight.self, from: data)
+        let insight = ActionableInsight(restInsight: restInsight)!
+
+        XCTAssertEqual(insight.title, "Here's your spent amount per category last month")
+        switch insight.kind {
+        case .monthlySummaryExpensesByCategory(let data):
+            XCTAssertEqual(data.month.year, 2021)
+            XCTAssertEqual(data.month.month, 10)
+            XCTAssertEqual(data.expensesByCategory.count, 1)
+            if let expenses = data.expensesByCategory.first {
+                XCTAssertEqual(expenses.categoryCode.value, "expenses:transport.publictransport")
+                XCTAssertEqual(expenses.spentAmount.doubleValue, 66.0)
+                XCTAssertEqual(expenses.spentAmount.currencyCode, "GBP")
+            } else {
+                XCTFail("No monthly summary category data")
+            }
+        default:
+            XCTFail("No monthly summary data")
+        }
+    }
+
+    func testDecodingMonthlyTransactionsInsight() throws {
+        let json =
+            """
+            {
+                "id": "12df945538dd4063876053776f41ad82",
+                "userId": "f4d084e4429f42d995692c2e697ea4e6",
+                "type": "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS",
+                "title": "Here's a summary of your expense transactions last month",
+                "description": "£66 in total expenses. 3 transactions last month. Most common was Sl(3 times). £36 was your largest expense, to Sl.",
+                "data": {
+                    "month": {
+                        "year": 2021,
+                        "month": 10
+                    },
+                    "transactionSummary": {
+                        "totalExpenses": {
+                            "currencyCode": "GBP",
+                            "amount": 66.0
+                        },
+                        "commonTransactionsOverview": {
+                            "totalNumberOfTransactions": 3,
+                            "mostCommonTransactionDescription": "Sl",
+                            "mostCommonTransactionCount": 3
+                        },
+                        "largestExpense": {
+                            "id": "00b1423ef30e4dbd811d223cb31f6636",
+                            "date": 1633943404995,
+                            "amount": {
+                                "currencyCode": "GBP",
+                                "amount": 36.0
+                            },
+                            "description": "Sl"
+                        }
+                    },
+                    "type": "MONTHLY_SUMMARY_EXPENSE_TRANSACTIONS"
+                },
+                "createdTime": 1634116417322,
+                "insightActions": [
+                    {
+                        "label": "See details",
+                        "data": {
+                            "transactionIds": [
+                                {
+                                    "id": "899bf28741ca4797824986ca70835695",
+                                    "type": "TRANSACTION"
+                                },
+                                {
+                                    "id": "b41973114cec4309ab303f44bfefa0b5",
+                                    "type": "TRANSACTION"
+                                },
+                                {
+                                    "id": "00b1423ef30e4dbd811d223cb31f6636",
+                                    "type": "TRANSACTION"
+                                }
+                            ],
+                            "type": "VIEW_TRANSACTIONS"
+                        }
+                    },
+                    {
+                        "label": "Archive",
+                        "data": {
+                            "type": "DISMISS"
+                        }
+                    }
+                ]
+            }
+            """
+
+        let data = json.data(using: .utf8)!
+
+        let restInsight = try decoder.decode(RESTActionableInsight.self, from: data)
+        let insight = ActionableInsight(restInsight: restInsight)!
+
+        XCTAssertEqual(insight.title, "Here's a summary of your expense transactions last month")
+        switch insight.kind {
+        case .monthlySummaryExpenseTransactions(let summary):
+            XCTAssertEqual(summary.month.month, 10)
+            XCTAssertEqual(summary.month.year, 2021)
+            XCTAssertEqual(summary.summary.totalExpenses.doubleValue, 66.0)
+
+            XCTAssertEqual(summary.summary.commonTransactionsOverview.mostCommonCount, 3)
+            XCTAssertEqual(summary.summary.commonTransactionsOverview.mostCommonDescription, "Sl")
+            XCTAssertEqual(summary.summary.commonTransactionsOverview.totalCount, 3)
+
+            XCTAssertEqual(summary.summary.largestExpense.amount, CurrencyDenominatedAmount(36, currencyCode: "GBP"))
+            XCTAssertEqual(summary.summary.largestExpense.description, "Sl")
+        default:
+            XCTFail("No monthly summary data")
+        }
+    }
+
     func testDecodingCreateBudgetSuggestionAction() throws {
         let json = """
         {
