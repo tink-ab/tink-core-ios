@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target x86_64-apple-macos10.13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
@@ -70,24 +70,6 @@ public struct Account {
 extension TinkCore.Account : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.Account, b: TinkCore.Account) -> Swift.Bool
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public struct AccountNumberKind : Swift.Hashable, Swift.ExpressibleByStringLiteral {
-  public init(stringLiteral value: Swift.String)
-  public init(_ value: Swift.String)
-  public let value: Swift.String
-  public static let iban: TinkCore.AccountNumberKind
-  public static let se: TinkCore.AccountNumberKind
-  public static let seBankGiro: TinkCore.AccountNumberKind
-  public static let sePlusGiro: TinkCore.AccountNumberKind
-  public static let sortCode: TinkCore.AccountNumberKind
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: TinkCore.AccountNumberKind, b: TinkCore.AccountNumberKind) -> Swift.Bool
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
-  public typealias StringLiteralType = Swift.String
-  public typealias UnicodeScalarLiteralType = Swift.String
   public var hashValue: Swift.Int {
     get
   }
@@ -511,17 +493,6 @@ public struct AuthorizationCode : Swift.Hashable, Swift.RawRepresentable, Swift.
   public typealias RawValue = Swift.String
   public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
-}
-public struct Beneficiary : Swift.Equatable {
-  public let accountNumberKind: TinkCore.AccountNumberKind
-  public let accountNumber: Swift.String
-  public let name: Swift.String
-  public let ownerAccountID: TinkCore.Account.ID
-  public static func == (a: TinkCore.Beneficiary, b: TinkCore.Beneficiary) -> Swift.Bool
-}
-public protocol BeneficiaryService {
-  func beneficiaries(completion: @escaping (Swift.Result<[TinkCore.Beneficiary], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func create(accountNumberKind: TinkCore.AccountNumberKind, accountNumber: Swift.String, name: Swift.String, ownerAccountID: TinkCore.Account.ID, credentialsID: TinkCore.Credentials.ID, appURI: Foundation.URL, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public struct Budget {
   public typealias ID = TinkCore.Identifier<TinkCore.Budget>
@@ -1246,16 +1217,10 @@ public struct SelectOption : Swift.Equatable {
   final public var oAuthService: TinkCore.OAuthService {
     get
   }
-  final public var beneficiaryService: TinkCore.BeneficiaryService {
-    get
-  }
   final public var credentialsService: TinkCore.CredentialsService {
     get
   }
   final public var providerService: TinkCore.ProviderService {
-    get
-  }
-  final public var transferService: TinkCore.TransferService {
     get
   }
   final public var userService: TinkCore.UserService {
@@ -1302,40 +1267,6 @@ public struct SessionUser {
   public var username: Swift.String? {
     get
   }
-}
-public struct SignableOperation {
-  public typealias ID = TinkCore.Identifier<TinkCore.SignableOperation>
-  public enum Status {
-    case awaitingCredentials
-    case awaitingThirdPartyAppAuthentication
-    case created
-    case executing
-    case executed
-    case failed
-    case cancelled
-    case unknown
-    public static func == (a: TinkCore.SignableOperation.Status, b: TinkCore.SignableOperation.Status) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum Kind {
-    case transfer
-    public static func == (a: TinkCore.SignableOperation.Kind, b: TinkCore.SignableOperation.Kind) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public let created: Foundation.Date?
-  public let credentialsID: TinkCore.Credentials.ID?
-  public let id: TinkCore.SignableOperation.ID?
-  public let status: TinkCore.SignableOperation.Status
-  public let statusMessage: Swift.String?
-  public let kind: TinkCore.SignableOperation.Kind
-  public let transferID: TinkCore.Transfer.ID?
-  public let updated: Foundation.Date?
 }
 public struct Statistic {
   public enum Resolution {
@@ -1513,14 +1444,6 @@ public protocol TransactionService {
   func update(transactionID: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, date: Foundation.Date, description: Swift.String, notes: Swift.String?, completion: @escaping (Swift.Result<TinkCore.Transaction, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
   func suggestTransactions(numberOfClusters: Swift.Int?, evaluateEverything: Swift.Bool?, completion: @escaping (Swift.Result<TinkCore.SuggestTransactionsResponse, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
 }
-public struct Transfer {
-  public typealias ID = TinkCore.Identifier<TinkCore.Transfer>
-}
-public protocol TransferService {
-  func accounts(destinationURIs: [Foundation.URL], completion: @escaping (Swift.Result<[TinkCore.Account], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func transfer(amount: Foundation.Decimal, currency: TinkCore.CurrencyCode, credentialsID: TinkCore.Credentials.ID?, transferID: TinkCore.Transfer.ID?, sourceURI: Swift.String, destinationURI: Swift.String, sourceMessage: Swift.String?, destinationMessage: Swift.String, dueDate: Foundation.Date?, redirectURI: Foundation.URL, completion: @escaping (Swift.Result<TinkCore.SignableOperation, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  func transferStatus(id: TinkCore.Transfer.ID, completion: @escaping (Swift.Result<TinkCore.SignableOperation, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-}
 public struct User {
   public typealias ID = TinkCore.Identifier<TinkCore.User>
   public let created: Foundation.Date
@@ -1591,10 +1514,6 @@ extension TinkCore.Scope.TransferAccess : Swift.RawRepresentable {}
 extension TinkCore.Scope.UserAccess : Swift.Equatable {}
 extension TinkCore.Scope.UserAccess : Swift.Hashable {}
 extension TinkCore.Scope.UserAccess : Swift.RawRepresentable {}
-extension TinkCore.SignableOperation.Status : Swift.Equatable {}
-extension TinkCore.SignableOperation.Status : Swift.Hashable {}
-extension TinkCore.SignableOperation.Kind : Swift.Equatable {}
-extension TinkCore.SignableOperation.Kind : Swift.Hashable {}
 extension TinkCore.Statistic.Kind : Swift.Equatable {}
 extension TinkCore.Statistic.Kind : Swift.Hashable {}
 extension TinkCore.Statistic.Resolution : Swift.Equatable {}

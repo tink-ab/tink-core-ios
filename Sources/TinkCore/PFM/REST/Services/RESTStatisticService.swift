@@ -26,7 +26,7 @@ final class RESTStatisticService: StatisticService {
             types: types.map(RESTStatisticQueryType.init)
         )
 
-        let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: query, contentType: .json) { result -> Void in
+        let request = RESTResourceRequest<[RESTStatistic]>(path: "/api/v1/statistics/query", method: .post, body: query, contentType: .json) { result in
             completion(result.map { $0.compactMap(Statistic.init) })
         }
 
