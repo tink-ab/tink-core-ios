@@ -65,6 +65,9 @@ extension Credentials {
             )
 
         case .awaitingThirdPartyAppAuthentication:
+            if string == nil {
+                return ThirdPartyAppAuthentication(downloadTitle: nil, downloadMessage: nil, upgradeTitle: nil, upgradeMessage: nil, appStoreURL: nil, scheme: nil, deepLinkURL: nil)
+            }
             guard let payloadData = string?.data(using: .utf8),
                   let payload = try? JSONDecoder().decode(RESTThirdPartyAppAuthenticationPayload.self, from: payloadData)
             else { return nil }

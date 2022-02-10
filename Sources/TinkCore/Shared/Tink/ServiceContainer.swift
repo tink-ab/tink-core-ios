@@ -12,7 +12,6 @@ public final class ServiceContainer {
 
     public private(set) lazy var authenticationService: AuthenticationService = RESTAuthenticationService(client: client)
     public private(set) lazy var oAuthService: OAuthService = RESTOAuthService(client: client)
-    public private(set) lazy var beneficiaryService: BeneficiaryService = RESTBeneficiaryService(client: client)
     public private(set) lazy var credentialsService: CredentialsService = {
         precondition(appUri != nil, "Configure Tink by calling `Tink.configure(with:)` with a `appURI` configured.")
         let credentialsService = RESTCredentialsService(client: client, appUri: appUri!)
@@ -20,7 +19,6 @@ public final class ServiceContainer {
     }()
 
     public private(set) lazy var providerService: ProviderService = RESTProviderService(client: client)
-    public private(set) lazy var transferService: TransferService = RESTTransferService(client: client)
     public private(set) lazy var userService: UserService = RESTUserService(client: client)
 
     // PFM

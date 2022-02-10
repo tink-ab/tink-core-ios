@@ -94,7 +94,7 @@ class RESTActionableInsightService: ActionableInsightService {
         completion: @escaping (Result<Void, Error>) -> Void
     ) -> RetryCancellable? {
         let request = RESTSimpleRequest(path: "/api/v1/insights/\(id)/archive", method: .put, contentType: .json, completion: { result in
-            let mapped = result.map { response -> Void in
+            let mapped = result.map { response in
                 ()
             }
             completion(mapped)
