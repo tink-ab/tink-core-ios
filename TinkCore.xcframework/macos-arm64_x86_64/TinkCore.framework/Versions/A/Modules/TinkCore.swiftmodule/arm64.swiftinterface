@@ -1180,6 +1180,7 @@ extension TinkCore.Scope {
   public static func accounts(_ access: TinkCore.Scope.ReadWriteAccess...) -> TinkCore.Scope
   public static func activities(_ access: TinkCore.Scope.ReadAccess...) -> TinkCore.Scope
   public static func authorization(_ access: TinkCore.Scope.AuthorizationAccess...) -> TinkCore.Scope
+  public static func balances(_ access: TinkCore.Scope.ReadAccess...) -> TinkCore.Scope
   public static func beneficiaries(_ access: TinkCore.Scope.ReadWriteAccess...) -> TinkCore.Scope
   public static func budgets(_ access: TinkCore.Scope.ReadWriteAccess...) -> TinkCore.Scope
   public static func calendar(_ access: TinkCore.Scope.ReadAccess...) -> TinkCore.Scope
@@ -1335,11 +1336,16 @@ extension TinkCore.Tink {
     get
     set
   }
+  public var _version: Swift.String {
+    get
+    set
+  }
   public var _urlSession: Foundation.URLSession {
     get
     set
   }
 }
+public let version: Swift.String
 public class Tink {
   public static var shared: TinkCore.Tink {
     get

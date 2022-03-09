@@ -50,7 +50,7 @@ extension Scope {
         case create, delete, read, webHooks = "web_hooks", write
     }
 
-    /// Access to all the user's account information, including balances.
+    /// Access to all the user's account information.
     public static func accounts(_ access: ReadWriteAccess...) -> Scope {
         return Scope(name: "accounts", access: access.map(\.rawValue))
     }
@@ -61,6 +61,11 @@ extension Scope {
 
     public static func authorization(_ access: AuthorizationAccess...) -> Scope {
         return Scope(name: "authorization", access: access.map(\.rawValue))
+    }
+
+    /// Access to accounts' balances data.
+    public static func balances(_ access: ReadAccess...) -> Scope {
+        return Scope(name: "balances", access: access.map(\.rawValue))
     }
 
     public static func beneficiaries(_ access: ReadWriteAccess...) -> Scope {

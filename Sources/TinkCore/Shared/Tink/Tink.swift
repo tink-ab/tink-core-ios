@@ -3,6 +3,9 @@ import Foundation
     import UIKit
 #endif
 
+/// Current TinkCore version.
+public let version = "1.6.0"
+
 /// The `Tink` class encapsulates a connection to the Tink API.
 ///
 /// By default a shared `Tink` instance will be used, but you can also create your own

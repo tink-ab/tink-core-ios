@@ -11,6 +11,11 @@ extension Tink {
         set { sdkHeaderBehavior.sdkName = newValue }
     }
 
+    public var _version: String {
+        get { sdkHeaderBehavior.version }
+        set { sdkHeaderBehavior.version = newValue }
+    }
+
     public var _urlSession: URLSession {
         get { client.session }
         set { client.session = newValue }
