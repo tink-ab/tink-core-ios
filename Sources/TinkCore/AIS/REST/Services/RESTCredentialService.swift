@@ -30,8 +30,12 @@ final class RESTCredentialsService: CredentialsService {
 
     @discardableResult
     func create(providerName: Provider.Name, refreshableItems: RefreshableItems, fields: [String: String], appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTCreateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, triggerRefresh: nil)
+        create(providerName: providerName, refreshableItems: refreshableItems, fields: fields, appURI: appURI, callbackURI: callbackURI, products: [], completion: completion)
+    }
 
+    @discardableResult
+    func create(providerName: Provider.Name, refreshableItems: RefreshableItems, fields: [String: String], appURI: URL?, callbackURI: URL?, products: [Product], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTCreateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, triggerRefresh: nil, productNames: products.productNames)
         let parameters: [URLQueryItem]
         if refreshableItems != .all {
             parameters = refreshableItems.strings.map { .init(name: "items", value: $0) }
@@ -57,7 +61,12 @@ final class RESTCredentialsService: CredentialsService {
 
     @discardableResult
     func update(id: Credentials.ID, providerName: Provider.Name, appURI: URL?, callbackURI: URL?, fields: [String: String], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTUpdateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString)
+        update(id: id, providerName: providerName, appURI: appURI, callbackURI: callbackURI, fields: fields, products: [], completion: completion)
+    }
+
+    @discardableResult
+    func update(id: Credentials.ID, providerName: Provider.Name, appURI: URL?, callbackURI: URL?, fields: [String: String], products: [Product], completion: @escaping (Result<Credentials, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTUpdateCredentialsRequest(providerName: providerName.value, fields: fields, callbackUri: callbackURI?.absoluteString, appUri: appURI?.absoluteString, products: products)
         let request = RESTResourceRequest<RESTCredentials>(path: "/api/v1/credentials/\(id.value)", method: .put, body: body, contentType: .json) { result in
             completion(result.map { Credentials(restCredentials: $0, appUri: self.appUri) })
         }
@@ -91,7 +100,12 @@ final class RESTCredentialsService: CredentialsService {
 
     @discardableResult
     func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, appURI: URL?, callbackURI: URL?, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString)
+        refresh(id: id, authenticate: authenticate, refreshableItems: refreshableItems, appURI: appURI, callbackURI: callbackURI, optIn: optIn, products: [], completion: completion)
+    }
+
+    @discardableResult
+    func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, appURI: URL?, callbackURI: URL?, optIn: Bool, products: [Product], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString, products: products)
 
         var parameters: [URLQueryItem]
         if refreshableItems != .all {
@@ -168,7 +182,12 @@ final class RESTCredentialsService: CredentialsService {
 
     @discardableResult
     func authenticate(id: Credentials.ID, appURI: URL?, callbackURI: URL?, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString)
+        authenticate(id: id, appURI: appURI, callbackURI: callbackURI, products: [], completion: completion)
+    }
+
+    @discardableResult
+    func authenticate(id: Credentials.ID, appURI: URL?, callbackURI: URL?, products: [Product], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        let body = RESTRefreshCredentialsRequest(appUri: appURI?.absoluteString, callbackUri: callbackURI?.absoluteString, products: products)
         let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/authenticate", method: .post, body: body, contentType: .json) { result in
             completion(result.map { _ in })
         }
