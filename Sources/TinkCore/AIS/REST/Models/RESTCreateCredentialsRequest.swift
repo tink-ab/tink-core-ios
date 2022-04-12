@@ -11,4 +11,6 @@ struct RESTCreateCredentialsRequest: Codable {
     var appUri: String?
     /// Defines if the Credentials creation should cause a refresh on aggregated data. Defaults to &#x60;true&#x60;
     var triggerRefresh: Bool?
+    /// The array contains the list of used products needed to connect the aggregation event triggered from Tink Link to the actual product flow running in Tink Link.
+    var productNames: [RESTProductName]?
 }

@@ -161,4 +161,14 @@ public struct Credentials: Identifiable {
 
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public let sessionExpiryDate: Date?
+
+    /// A Boolean value indicating if there is an error of type `Status.permanentError`, `Status.temporaryError` or `Status.authenticationError`.
+    public var hasError: Bool {
+        switch status {
+        case .permanentError, .temporaryError, .authenticationError:
+            return true
+        default:
+            return false
+        }
+    }
 }

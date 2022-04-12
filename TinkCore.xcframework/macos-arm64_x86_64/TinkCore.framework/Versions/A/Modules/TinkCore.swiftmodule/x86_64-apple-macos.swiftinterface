@@ -768,16 +768,22 @@ public struct Credentials : Swift.Identifiable {
     public static func == (a: TinkCore.Credentials.ThirdPartyAppAuthentication, b: TinkCore.Credentials.ThirdPartyAppAuthentication) -> Swift.Bool
   }
   public let sessionExpiryDate: Foundation.Date?
+  public var hasError: Swift.Bool {
+    get
+  }
 }
 public protocol CredentialsService {
   func credentialsList(completion: @escaping (Swift.Result<[TinkCore.Credentials], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func credentials(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func create(providerName: TinkCore.Provider.Name, refreshableItems: TinkCore.RefreshableItems, fields: [Swift.String : Swift.String], appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func create(providerName: TinkCore.Provider.Name, refreshableItems: TinkCore.RefreshableItems, fields: [Swift.String : Swift.String], appURI: Foundation.URL?, callbackURI: Foundation.URL?, products: [TinkCore.Product], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func delete(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func update(id: TinkCore.Credentials.ID, providerName: TinkCore.Provider.Name, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func update(id: TinkCore.Credentials.ID, providerName: TinkCore.Provider.Name, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], products: [TinkCore.Product], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   @available(*, deprecated)
   func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, appURI: Foundation.URL?, callbackURI: Foundation.URL?, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, appURI: Foundation.URL?, callbackURI: Foundation.URL?, optIn: Swift.Bool, products: [TinkCore.Product], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func addSupplementalInformation(id: TinkCore.Credentials.ID, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func cancelSupplementalInformation(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func enable(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -786,6 +792,7 @@ public protocol CredentialsService {
   @available(*, deprecated)
   func authenticate(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func authenticate(id: TinkCore.Credentials.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+  func authenticate(id: TinkCore.Credentials.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, products: [TinkCore.Product], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func qrCode(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public struct CurrencyCode : Swift.Hashable, Swift.ExpressibleByStringLiteral {
@@ -907,6 +914,22 @@ public struct Period {
 }
 extension TinkCore.Period.Resolution {
   public var statisticResolution: TinkCore.Statistic.Resolution {
+    get
+  }
+}
+public enum Product {
+  case realTimeBalance
+  case paymentInitiation
+  case accountAggregation
+  case accountCheck
+  case incomeCheck
+  case moneyManager
+  case transactions
+  case businessTransactions
+  case riskInsights
+  public static func == (a: TinkCore.Product, b: TinkCore.Product) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
 }
@@ -1489,6 +1512,8 @@ extension TinkCore.Credentials.Kind : Swift.Equatable {}
 extension TinkCore.Credentials.Kind : Swift.Hashable {}
 extension TinkCore.Period.Resolution : Swift.Equatable {}
 extension TinkCore.Period.Resolution : Swift.Hashable {}
+extension TinkCore.Product : Swift.Equatable {}
+extension TinkCore.Product : Swift.Hashable {}
 extension TinkCore.Provider.AuthenticationUserType : Swift.Equatable {}
 extension TinkCore.Provider.AuthenticationUserType : Swift.Hashable {}
 extension TinkCore.Provider.Kind : Swift.Equatable {}
