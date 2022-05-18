@@ -1404,12 +1404,43 @@ public struct Transaction {
   public let originalDescription: Swift.String
   public let originalDate: Foundation.Date
   public let originalAmount: TinkCore.CurrencyDenominatedAmount
+  public let isPending: Swift.Bool
+  public let categoryType: TinkCore.CategoryType
+  public let dispensableAmount: Swift.Double?
+  public let lastModified: Foundation.Date
+  public let type: TinkCore.TransactionType
+  public let userId: Swift.String
+  public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool, notes: Swift.String?, originalDescription: Swift.String, originalDate: Foundation.Date, originalAmount: TinkCore.CurrencyDenominatedAmount, isPending: Swift.Bool, categoryType: TinkCore.CategoryType, dispensableAmount: Swift.Double?, lastModified: Foundation.Date, type: TinkCore.TransactionType, userId: Swift.String)
   @available(*, deprecated)
   public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool)
 }
 extension TinkCore.Transaction : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: TinkCore.Transaction, b: TinkCore.Transaction) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum TransactionType {
+  case `default`
+  case creditCard
+  case transfer
+  case payment
+  case withdrawal
+  case unknown
+  public static func == (a: TinkCore.TransactionType, b: TinkCore.TransactionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum CategoryType {
+  case expenses
+  case income
+  case transfers
+  case unknown
+  public static func == (a: TinkCore.CategoryType, b: TinkCore.CategoryType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
@@ -1549,6 +1580,10 @@ extension TinkCore.Statistic.Kind : Swift.Equatable {}
 extension TinkCore.Statistic.Kind : Swift.Hashable {}
 extension TinkCore.Statistic.Resolution : Swift.Equatable {}
 extension TinkCore.Statistic.Resolution : Swift.Hashable {}
+extension TinkCore.TransactionType : Swift.Equatable {}
+extension TinkCore.TransactionType : Swift.Hashable {}
+extension TinkCore.CategoryType : Swift.Equatable {}
+extension TinkCore.CategoryType : Swift.Hashable {}
 extension TinkCore.TransactionsQuery.Sort : Swift.Equatable {}
 extension TinkCore.TransactionsQuery.Sort : Swift.Hashable {}
 extension TinkCore.TransactionsQuery.Sort : Swift.RawRepresentable {}

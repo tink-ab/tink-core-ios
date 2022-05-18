@@ -29,9 +29,20 @@ public struct Transaction {
     public let originalDate: Date
     /// The orginal amount of the transaction. This will not change even if the owner of the transaction has changed the amount.
     public let originalAmount: CurrencyDenominatedAmount
+    /// The flag indicates if the original transaction is in pending state or not.
+    public let isPending: Bool
+    /// The category type of the transaction. Values: `expenses`, `income`, `transfers` and `unknown` in case the type is not specified.
+    public let categoryType: CategoryType
+    /// The dispensable amount of the transaction.
+    public let dispensableAmount: Double?
+    /// The date the transaction was last modified by the user.
+    public let lastModified: Date
+    /// The type of the transaction. Values: `default`, `creditCard`, `transfer`, `payment`, `withdrawal` and `unknown` in case the type is not specified.
+    public let type: TransactionType
+    /// The internal identifier of the user that the transaction belongs to.
+    public let userId: String
 
-    @available(*, deprecated)
-    public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool) {
+    public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool, notes: String?, originalDescription: String, originalDate: Date, originalAmount: CurrencyDenominatedAmount, isPending: Bool, categoryType: CategoryType, dispensableAmount: Double?, lastModified: Date, type: TransactionType, userId: String) {
         self.id = id
         self.accountID = accountID
         self.amount = amount
@@ -40,11 +51,40 @@ public struct Transaction {
         self.date = date
         self.inserted = inserted
         self.isUpcomingOrInFuture = isUpcomingOrInFuture
-        self.originalDescription = description
-        self.originalDate = date
-        self.originalAmount = amount
-        self.notes = nil
+        self.originalDescription = originalDescription
+        self.originalDate = originalDate
+        self.originalAmount = originalAmount
+        self.notes = notes
+        self.isPending = isPending
+        self.categoryType = categoryType
+        self.dispensableAmount = dispensableAmount
+        self.lastModified = lastModified
+        self.type = type
+        self.userId = userId
+    }
+
+    @available(*, deprecated)
+    public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool) {
+        self.init(id: id, accountID: accountID, amount: amount, categoryID: categoryID, description: description, date: date, inserted: inserted, isUpcomingOrInFuture: isUpcomingOrInFuture, notes: nil, originalDescription: description, originalDate: date, originalAmount: amount, isPending: false, categoryType: .unknown, dispensableAmount: nil, lastModified: date, type: .unknown, userId: "")
     }
 }
 
 extension Transaction: Hashable {}
+
+/// The `TransactionType` is just a PFM's representation of the `RESTTransactionType` model.
+public enum TransactionType {
+    case `default`
+    case creditCard
+    case transfer
+    case payment
+    case withdrawal
+    case unknown
+}
+
+/// The `CategoryType` is just a PFM's representation of the `RESTCategoryType` model.
+public enum CategoryType {
+    case expenses
+    case income
+    case transfers
+    case unknown
+}
