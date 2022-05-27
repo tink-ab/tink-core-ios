@@ -317,10 +317,10 @@ enum RESTInsightData: Decodable {
         struct Credentials: Decodable {
             let id: String
             let provider: AggregationRefreshPSD2Credentials.Provider
+            let sessionExpiryDate: Date
         }
 
         let credential: Credentials
-        let sessionExpiryDate: Date
     }
 
     case unknown

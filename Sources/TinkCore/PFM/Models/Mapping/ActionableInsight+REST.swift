@@ -293,7 +293,7 @@ extension ActionableInsight.Kind {
                         id: .init(data.credential.provider.name),
                         displayName: data.credential.provider.displayName
                     ),
-                    sessionExpiryDate: data.sessionExpiryDate
+                    sessionExpiryDate: data.credential.sessionExpiryDate
                 )
             )
         default:
