@@ -3,6 +3,7 @@
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 import Dispatch
 import Foundation
+import OSLog
 import Security
 import Swift
 import UIKit
@@ -547,7 +548,8 @@ extension TinkCore.Budget {
     public let description: Swift.String?
     public let categoryCode: TinkCore.Category.Code?
     public let accountID: TinkCore.Account.ID?
-    @available(*, deprecated)
+    public let pending: Swift.Bool?
+    @available(*, deprecated, message: "Deprecated initializer will igonre properties: pending (set to nil)")
     public init(id: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount, dispensableAmount: TinkCore.CurrencyDenominatedAmount?, date: Foundation.Date?, description: Swift.String?, categoryCode: TinkCore.Category.Code?, accountID: TinkCore.Account.ID?)
   }
 }
@@ -1390,6 +1392,9 @@ public class Tink {
 extension TinkCore.Tink {
   @discardableResult
   public func authenticateUser(authorizationCode: TinkCore.AuthorizationCode, completion: @escaping (Swift.Result<TinkCore.AccessToken, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+}
+public enum TinkLogger {
+  public static func logUsedSDK(version: Swift.String, subsystem: Swift.String, category: Swift.String)
 }
 public struct Transaction {
   public typealias ID = TinkCore.Identifier<TinkCore.Transaction>

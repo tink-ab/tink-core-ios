@@ -13,7 +13,7 @@ extension Budget.Transaction {
         self.categoryCode = restBudgetTransaction.categoryCode.map { Category.Code($0) }
         self.date = restBudgetTransaction.date
         self.description = restBudgetTransaction.description
-        self.dispensableAmount = restBudgetTransaction.dispensableAmount.map { CurrencyDenominatedAmount(restCurrencyDenominatedAmount: $0)
-        }
+        self.dispensableAmount = restBudgetTransaction.dispensableAmount.map { CurrencyDenominatedAmount(restCurrencyDenominatedAmount: $0) }
+        self.pending = restBudgetTransaction.pending
     }
 }
