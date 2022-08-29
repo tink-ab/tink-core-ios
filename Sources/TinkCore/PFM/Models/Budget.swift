@@ -78,8 +78,10 @@ extension Budget {
         public let categoryCode: Category.Code?
         /// The ID of the account this transaction belongs to.
         public let accountID: Account.ID?
+        /// Defines if the transaction is in pending state.
+        public let pending: Bool?
 
-        @available(*, deprecated)
+        @available(*, deprecated, message: "Deprecated initializer will igonre properties: pending (set to nil)")
         public init(id: TinkCore.Transaction.ID, amount: CurrencyDenominatedAmount, dispensableAmount: CurrencyDenominatedAmount?, date: Date?, description: String?, categoryCode: Category.Code?, accountID: Account.ID?) {
             self.id = id
             self.amount = amount
@@ -88,6 +90,7 @@ extension Budget {
             self.description = description
             self.categoryCode = categoryCode
             self.accountID = accountID
+            self.pending = nil
         }
     }
 }

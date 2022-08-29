@@ -15,4 +15,6 @@ struct RESTBudgetTransaction: Decodable {
     let categoryCode: String?
     /// The ID of the account this transaction belongs to.
     let accountId: String?
+    /// Defines if the transaction is in pending state.
+    let pending: Bool?
 }
