@@ -39,7 +39,7 @@ extension Category.Code {
 
     public var type: Category.Kind { Category.Kind(code: self) }
 
-    public var isUncategorized: Bool { type == .expenses && value == "expenses:misc.uncategorized" }
+    public var isUncategorized: Bool { (type == .expenses && value == "expenses:misc.uncategorized") || value.starts(with: "income:uncategorized") }
     public var isReimbursement: Bool { type == .income && value.starts(with: "income:refund") }
     public var isSavings: Bool { type == .transfers && value == "transfers:savings.other" }
     public var isExcluded: Bool { type == .transfers && value == "transfers:exclude.other" }
