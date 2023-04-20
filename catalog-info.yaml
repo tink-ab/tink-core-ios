@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tink-core-ios
+  description: Tink Core iOS Public
+  tags: []
+  annotations:
+    github.com/project-slug: tink-ab/tink-core-ios
+  links: []
+spec:
+  owner: ios
+  type: library
+  lifecycle: production
