@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Dispatch
 import Foundation
 import OSLog
@@ -8,6 +9,7 @@ import Security
 import Swift
 import UIKit
 import _Concurrency
+import _StringProcessing
 public struct AccessToken : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
   public let rawValue: Swift.String
   public init?(rawValue: Swift.String)
@@ -862,8 +864,8 @@ public struct Identifier<Type> : Swift.Hashable, Swift.ExpressibleByStringLitera
   public init(stringLiteral value: Swift.String)
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  public static func == (a: TinkCore.Identifier<Type>, b: TinkCore.Identifier<Type>) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TinkCore.Identifier<Type>, b: TinkCore.Identifier<Type>) -> Swift.Bool
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
