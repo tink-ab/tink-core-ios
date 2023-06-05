@@ -52385,7 +52385,7 @@
       "kind": "StringLiteral",
       "offset": 106,
       "length": 8,
-      "value": "\"1.11.0\""
+      "value": "\"1.11.1\""
     },
     {
       "filePath": "\/usr\/local\/var\/buildkite-agent\/builds\/Mac-mini\/tink-ab\/tink-core-ios-pre-release\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",
