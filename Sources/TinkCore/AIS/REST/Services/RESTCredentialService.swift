@@ -74,30 +74,6 @@ final class RESTCredentialsService: CredentialsService {
         return client.performRequest(request)
     }
 
-    @available(*, deprecated, message: "Use refresh(id:authenticate:refreshableItems:appURI:callbackURI:optIn:completion:) method instead.")
-    @discardableResult
-    func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        var parameters: [URLQueryItem]
-        if refreshableItems != .all {
-            parameters = refreshableItems.strings.map { .init(name: "items", value: $0) }
-        } else {
-            parameters = []
-        }
-
-        if authenticate {
-            parameters.append(.init(name: "authenticate", value: "true"))
-        }
-
-        if optIn {
-            parameters.append(.init(name: "optIn", value: "true"))
-        }
-
-        let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/refresh", method: .post, contentType: .json, parameters: parameters) { result in
-            completion(result.map { _ in })
-        }
-        return client.performRequest(request)
-    }
-
     @discardableResult
     func refresh(id: Credentials.ID, authenticate: Bool, refreshableItems: RefreshableItems, appURI: URL?, callbackURI: URL?, optIn: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         refresh(id: id, authenticate: authenticate, refreshableItems: refreshableItems, appURI: appURI, callbackURI: callbackURI, optIn: optIn, products: [], completion: completion)
@@ -166,15 +142,6 @@ final class RESTCredentialsService: CredentialsService {
     func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         let relayedRequest = RESTCallbackRelayedRequest(state: state, parameters: parameters)
         let request = RESTSimpleRequest(path: "/api/v1/credentials/third-party/callback/relayed", method: .post, body: relayedRequest, contentType: .json) { result in
-            completion(result.map { _ in })
-        }
-        return client.performRequest(request)
-    }
-
-    @available(*, deprecated, message: "Use authenticate(id:appURI:callbackURI:completion:) method instead.")
-    @discardableResult
-    func authenticate(id: Credentials.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        let request = RESTSimpleRequest(path: "/api/v1/credentials/\(id.value)/authenticate", method: .post, contentType: .json) { result in
             completion(result.map { _ in })
         }
         return client.performRequest(request)

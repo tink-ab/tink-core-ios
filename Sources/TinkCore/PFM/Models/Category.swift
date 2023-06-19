@@ -7,15 +7,6 @@ public struct Category: Equatable {
     public let name: String
     public let sortOrder: Int
     public let parent: ID?
-
-    @available(*, deprecated)
-    public init(id: Category.ID, code: Category.Code, name: String, sortOrder: Int, parent: Category.ID?) {
-        self.id = id
-        self.code = code
-        self.name = name
-        self.sortOrder = sortOrder
-        self.parent = parent
-    }
 }
 
 extension Category {

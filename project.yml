@@ -5,9 +5,9 @@ targets:
     platform: [iOS, macOS]
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: "com.tink.Core"
-      IPHONEOS_DEPLOYMENT_TARGET: 11.0
-      MACOSX_DEPLOYMENT_TARGET: 10.13
-      MARKETING_VERSION: 1.10.0
+      IPHONEOS_DEPLOYMENT_TARGET: 13.0
+      MACOSX_DEPLOYMENT_TARGET: 11.0
+      MARKETING_VERSION: 1.11.1
       CURRENT_PROJECT_VERSION: 3
     scheme:
       testTargets:
@@ -19,8 +19,8 @@ targets:
     platform: [iOS, macOS]
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: "com.tink.CoreTests"
-      IPHONEOS_DEPLOYMENT_TARGET: 11.0
-      MACOSX_DEPLOYMENT_TARGET: 10.13
+      IPHONEOS_DEPLOYMENT_TARGET: 13.0
+      MACOSX_DEPLOYMENT_TARGET: 11.0
     sources:
       - Tests/TinkCoreTests
     dependencies:

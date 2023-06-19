@@ -8,13 +8,4 @@ public struct User {
     public let username: String?
     let nationalID: String?
     public let profile: UserProfile
-
-    @available(*, deprecated)
-    public init(created: Date, id: User.ID, username: String?, nationalID: String?, profile: UserProfile) {
-        self.created = created
-        self.id = id
-        self.username = username
-        self.nationalID = nationalID
-        self.profile = profile
-    }
 }

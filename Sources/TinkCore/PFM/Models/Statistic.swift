@@ -27,17 +27,6 @@ public struct Statistic {
     public let value: Double
 
     public let userID: String
-
-    @available(*, deprecated)
-    public init(description: String, payload: String?, period: StatisticPeriod, resoultion: Statistic.Resolution, kind: Statistic.Kind, value: Double, userID: String) {
-        self.description = description
-        self.payload = payload
-        self.period = period
-        self.resoultion = resoultion
-        self.kind = kind
-        self.value = value
-        self.userID = userID
-    }
 }
 
 public enum StatisticPeriod: Hashable {

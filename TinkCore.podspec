@@ -10,8 +10,8 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/tink-ab/tink-core-ios"
   spec.source       = { :git => "https://github.com/tink-ab/tink-core-ios.git", :tag => spec.version }
 
-  spec.platform     = :ios, "11.0"
-  spec.swift_version = ["5.1", "5.2", "5.3"]
+  spec.platform     = :ios, "13.0"
+  spec.swift_version = ["5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8"]
 
   spec.vendored_frameworks = 'TinkCore.xcframework'
 end
