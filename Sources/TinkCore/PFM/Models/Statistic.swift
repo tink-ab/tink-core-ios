@@ -22,7 +22,7 @@ public struct Statistic {
     public let payload: String?
     public let period: StatisticPeriod
 
-    public let resoultion: Resolution
+    public let resolution: Resolution
     public let kind: Kind
     public let value: Double
 

@@ -1157,7 +1157,7 @@ public struct Statistic {
   public let description: Swift.String
   public let payload: Swift.String?
   public let period: TinkCore.StatisticPeriod
-  public let resoultion: TinkCore.Statistic.Resolution
+  public let resolution: TinkCore.Statistic.Resolution
   public let kind: TinkCore.Statistic.Kind
   public let value: Swift.Double
   public let userID: Swift.String

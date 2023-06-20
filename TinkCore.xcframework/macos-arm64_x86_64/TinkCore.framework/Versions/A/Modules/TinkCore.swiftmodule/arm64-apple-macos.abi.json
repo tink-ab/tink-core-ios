@@ -36324,8 +36324,8 @@
           },
           {
             "kind": "Var",
-            "name": "resoultion",
-            "printedName": "resoultion",
+            "name": "resolution",
+            "printedName": "resolution",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -36335,8 +36335,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:8TinkCore9StatisticV10resoultionAC10ResolutionOvp",
-            "mangledName": "$s8TinkCore9StatisticV10resoultionAC10ResolutionOvp",
+            "usr": "s:8TinkCore9StatisticV10resolutionAC10ResolutionOvp",
+            "mangledName": "$s8TinkCore9StatisticV10resolutionAC10ResolutionOvp",
             "moduleName": "TinkCore",
             "declAttributes": [
               "HasStorage",
@@ -36358,8 +36358,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8TinkCore9StatisticV10resoultionAC10ResolutionOvg",
-                "mangledName": "$s8TinkCore9StatisticV10resoultionAC10ResolutionOvg",
+                "usr": "s:8TinkCore9StatisticV10resolutionAC10ResolutionOvg",
+                "mangledName": "$s8TinkCore9StatisticV10resolutionAC10ResolutionOvg",
                 "moduleName": "TinkCore",
                 "implicit": true,
                 "accessorKind": "get"
