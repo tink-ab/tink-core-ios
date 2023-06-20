@@ -22,22 +22,11 @@ public struct Statistic {
     public let payload: String?
     public let period: StatisticPeriod
 
-    public let resoultion: Resolution
+    public let resolution: Resolution
     public let kind: Kind
     public let value: Double
 
     public let userID: String
-
-    @available(*, deprecated)
-    public init(description: String, payload: String?, period: StatisticPeriod, resoultion: Statistic.Resolution, kind: Statistic.Kind, value: Double, userID: String) {
-        self.description = description
-        self.payload = payload
-        self.period = period
-        self.resoultion = resoultion
-        self.kind = kind
-        self.value = value
-        self.userID = userID
-    }
 }
 
 public enum StatisticPeriod: Hashable {

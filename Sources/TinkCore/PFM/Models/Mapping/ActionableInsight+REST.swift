@@ -196,7 +196,8 @@ extension ActionableInsight.Kind {
                         categoryCode: Category.Code(data.categorySpending.categoryCode),
                         spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
                     ),
-                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount),
+                    suggestedBudgetCategoryDisplayName: ""
                 )
             )
         case (.budgetSuggestCreateTopPrimaryCategory, .budgetSuggestCreateTopPrimaryCategory(let data)):
@@ -206,7 +207,8 @@ extension ActionableInsight.Kind {
                         categoryCode: Category.Code(data.categorySpending.categoryCode),
                         spentAmount: CurrencyDenominatedAmount(restAIAmount: data.categorySpending.spentAmount)
                     ),
-                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount)
+                    suggestedBudgetAmount: CurrencyDenominatedAmount(restAIAmount: data.suggestedBudgetAmount),
+                    suggestedBudgetCategoryDisplayName: ""
                 )
             )
         case (.budgetSuggestCreateFirst, .budgetSuggestCreateFirst):

@@ -8,11 +8,4 @@ public struct TransactionCluster {
     public let description: String
     /// List of transactions belonging to this cluster.
     public let transactions: [Transaction]
-
-    @available(*, deprecated)
-    public init(categorizationImprovement: Double, description: String, transactions: [Transaction]) {
-        self.categorizationImprovement = categorizationImprovement
-        self.description = description
-        self.transactions = transactions
-    }
 }

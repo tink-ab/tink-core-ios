@@ -2817,10 +2817,8 @@
                 "usr": "s:8TinkCore17ActionableInsightV0D6ActionV5label4dataAESSSg_AA0dE4DataOSgtcfc",
                 "mangledName": "$s8TinkCore17ActionableInsightV0D6ActionV5label4dataAESSSg_AA0dE4DataOSgtcfc",
                 "moduleName": "TinkCore",
-                "deprecated": true,
                 "declAttributes": [
-                  "AccessControl",
-                  "Available"
+                  "AccessControl"
                 ],
                 "init_kind": "Designated"
               }
@@ -5002,73 +5000,6 @@
             ]
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(id:kind:state:title:description:created:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "ActionableInsight",
-                "printedName": "TinkCore.ActionableInsight",
-                "usr": "s:8TinkCore17ActionableInsightV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.ActionableInsight>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ActionableInsight",
-                    "printedName": "TinkCore.ActionableInsight",
-                    "usr": "s:8TinkCore17ActionableInsightV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Kind",
-                "printedName": "TinkCore.ActionableInsight.Kind",
-                "usr": "s:8TinkCore17ActionableInsightV4KindO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "TinkCore.ActionableInsight.State",
-                "usr": "s:8TinkCore17ActionableInsightV5StateO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Date",
-                "printedName": "Foundation.Date",
-                "usr": "s:10Foundation4DateV"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore17ActionableInsightV2id4kind5state5title11description7createdAcA10IdentifierVyACG_AC4KindOAC5StateOS2S10Foundation4DateVtcfc",
-            "mangledName": "$s8TinkCore17ActionableInsightV2id4kind5state5title11description7createdAcA10IdentifierVyACG_AC4KindOAC5StateOS2S10Foundation4DateVtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
             "kind": "TypeDecl",
             "name": "AccountBalanceLowData",
             "printedName": "AccountBalanceLowData",
@@ -5176,49 +5107,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(accountID:balance:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AccountBalanceLowData",
-                    "printedName": "TinkCore.ActionableInsight.AccountBalanceLowData",
-                    "usr": "s:8TinkCore17ActionableInsightV21AccountBalanceLowDataV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Account>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Account",
-                        "printedName": "TinkCore.Account",
-                        "usr": "s:8TinkCore7AccountV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV21AccountBalanceLowDataV9accountID7balanceAeA10IdentifierVyAA0E0VG_AA25CurrencyDenominatedAmountVtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV21AccountBalanceLowDataV9accountID7balanceAeA10IdentifierVyAA0E0VG_AA25CurrencyDenominatedAmountVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -5338,150 +5226,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(budgetID:budgetPeriod:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetSummary",
-                    "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Budget",
-                        "printedName": "TinkCore.Budget",
-                        "usr": "s:8TinkCore6BudgetV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriod",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriod",
-                    "usr": "s:8TinkCore17ActionableInsightV12BudgetPeriodV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV8budgetID0G6PeriodAeA10IdentifierVyAA0E0VG_AC0eI0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV13BudgetSummaryV8budgetID0G6PeriodAeA10IdentifierVyAA0E0VG_AC0eI0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Var",
-                "name": "budgetId",
-                "printedName": "budgetId",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Budget",
-                        "printedName": "TinkCore.Budget",
-                        "usr": "s:8TinkCore6BudgetV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV8budgetIdAA10IdentifierVyAA0E0VGvp",
-                "mangledName": "$s8TinkCore17ActionableInsightV13BudgetSummaryV8budgetIdAA10IdentifierVyAA0E0VGvp",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Budget",
-                            "printedName": "TinkCore.Budget",
-                            "usr": "s:8TinkCore6BudgetV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV8budgetIdAA10IdentifierVyAA0E0VGvg",
-                    "mangledName": "$s8TinkCore17ActionableInsightV13BudgetSummaryV8budgetIdAA10IdentifierVyAA0E0VGvg",
-                    "moduleName": "TinkCore",
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(budgetId:budgetPeriod:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetSummary",
-                    "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Budget",
-                        "printedName": "TinkCore.Budget",
-                        "usr": "s:8TinkCore6BudgetV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriod",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriod",
-                    "usr": "s:8TinkCore17ActionableInsightV12BudgetPeriodV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV8budgetId0G6PeriodAeA10IdentifierVyAA0E0VG_AC0eI0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV13BudgetSummaryV8budgetId0G6PeriodAeA10IdentifierVyAA0E0VG_AC0eI0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -5629,47 +5373,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(dateInterval:spentAmount:budgetAmount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriod",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriod",
-                    "usr": "s:8TinkCore17ActionableInsightV12BudgetPeriodV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "DateInterval",
-                    "printedName": "Foundation.DateInterval",
-                    "usr": "s:10Foundation12DateIntervalV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV12BudgetPeriodV12dateInterval11spentAmount06budgetJ0AE10Foundation04DateH0V_AA019CurrencyDenominatedJ0VAMtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV12BudgetPeriodV12dateInterval11spentAmount06budgetJ0AE10Foundation04DateH0V_AA019CurrencyDenominatedJ0VAMtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -6124,162 +5827,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(achievedBudgets:overspentBudgets:periodUnit:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriodSummary",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriodSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.BudgetSummary]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "BudgetSummary",
-                        "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                        "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.BudgetSummary]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "BudgetSummary",
-                        "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                        "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriodUnit",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriodUnit",
-                    "usr": "s:8TinkCore17ActionableInsightV16BudgetPeriodUnitO"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV15achievedBudgets09overspentI010periodUnitAESayAC0eG0VG_AkC0efL0Otcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV19BudgetPeriodSummaryV15achievedBudgets09overspentI010periodUnitAESayAC0eG0VG_AkC0efL0Otcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Var",
-                "name": "period",
-                "printedName": "period",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV6periodSSvp",
-                "mangledName": "$s8TinkCore17ActionableInsightV19BudgetPeriodSummaryV6periodSSvp",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV6periodSSvg",
-                    "mangledName": "$s8TinkCore17ActionableInsightV19BudgetPeriodSummaryV6periodSSvg",
-                    "moduleName": "TinkCore",
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(achievedBudgets:overspentBudgets:period:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetPeriodSummary",
-                    "printedName": "TinkCore.ActionableInsight.BudgetPeriodSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.BudgetSummary]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "BudgetSummary",
-                        "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                        "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.BudgetSummary]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "BudgetSummary",
-                        "printedName": "TinkCore.ActionableInsight.BudgetSummary",
-                        "usr": "s:8TinkCore17ActionableInsightV13BudgetSummaryV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV19BudgetPeriodSummaryV15achievedBudgets09overspentI06periodAESayAC0eG0VG_AKSStcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV19BudgetPeriodSummaryV15achievedBudgets09overspentI06periodAESayAC0eG0VG_AKSStcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -6399,49 +5946,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionID:amount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LargeExpense",
-                    "printedName": "TinkCore.ActionableInsight.LargeExpense",
-                    "usr": "s:8TinkCore17ActionableInsightV12LargeExpenseV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Transaction",
-                        "printedName": "TinkCore.Transaction",
-                        "usr": "s:8TinkCore11TransactionV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV12LargeExpenseV13transactionID6amountAeA10IdentifierVyAA11TransactionVG_AA25CurrencyDenominatedAmountVtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV12LargeExpenseV13transactionID6amountAeA10IdentifierVyAA11TransactionVG_AA25CurrencyDenominatedAmountVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -6577,57 +6081,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionIDs:week:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "WeeklyTransactions",
-                    "printedName": "TinkCore.ActionableInsight.WeeklyTransactions",
-                    "usr": "s:8TinkCore17ActionableInsightV18WeeklyTransactionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.Identifier<TinkCore.Transaction>]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Transaction",
-                            "printedName": "TinkCore.Transaction",
-                            "usr": "s:8TinkCore11TransactionV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Week",
-                    "printedName": "TinkCore.ActionableInsight.Week",
-                    "usr": "s:8TinkCore17ActionableInsightV4WeekV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV18WeeklyTransactionsV14transactionIDs4weekAESayAA10IdentifierVyAA11TransactionVGG_AC4WeekVtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV18WeeklyTransactionsV14transactionIDs4weekAESayAA10IdentifierVyAA11TransactionVGG_AC4WeekVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -6731,41 +6184,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(categoryCode:spentAmount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategorySpending",
-                    "printedName": "TinkCore.ActionableInsight.CategorySpending",
-                    "usr": "s:8TinkCore17ActionableInsightV16CategorySpendingV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Code",
-                    "printedName": "TinkCore.Category.Code",
-                    "usr": "s:8TinkCore8CategoryV4CodeV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV16CategorySpendingV12categoryCode11spentAmountAeA0E0V0H0V_AA019CurrencyDenominatedJ0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV16CategorySpendingV12categoryCode11spentAmountAeA0E0V0H0V_AA019CurrencyDenominatedJ0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -6918,47 +6336,6 @@
                         "accessorKind": "get"
                       }
                     ]
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(totalCount:mostCommonDescription:mostCommonCount:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "TransactionsOverview",
-                        "printedName": "TinkCore.ActionableInsight.TransactionSummary.TransactionsOverview",
-                        "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV20TransactionsOverviewV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Int",
-                        "printedName": "Swift.Int",
-                        "usr": "s:Si"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Int",
-                        "printedName": "Swift.Int",
-                        "usr": "s:Si"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV20TransactionsOverviewV10totalCount21mostCommonDescription0klJ0AGSi_SSSitcfc",
-                    "mangledName": "$s8TinkCore17ActionableInsightV18TransactionSummaryV20TransactionsOverviewV10totalCount21mostCommonDescription0klJ0AGSi_SSSitcfc",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "init_kind": "Designated"
                   }
                 ],
                 "declKind": "Struct",
@@ -7165,61 +6542,6 @@
                         "accessorKind": "get"
                       }
                     ]
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(id:date:amount:description:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LargestExpense",
-                        "printedName": "TinkCore.ActionableInsight.TransactionSummary.LargestExpense",
-                        "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV14LargestExpenseV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Transaction",
-                            "printedName": "TinkCore.Transaction",
-                            "usr": "s:8TinkCore11TransactionV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Date",
-                        "printedName": "Foundation.Date",
-                        "usr": "s:10Foundation4DateV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV14LargestExpenseV2id4date6amount11descriptionAgA10IdentifierVyAA0E0VG_10Foundation4DateVAA25CurrencyDenominatedAmountVSStcfc",
-                    "mangledName": "$s8TinkCore17ActionableInsightV18TransactionSummaryV14LargestExpenseV2id4date6amount11descriptionAgA10IdentifierVyAA0E0VG_10Foundation4DateVAA25CurrencyDenominatedAmountVSStcfc",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "init_kind": "Designated"
                   }
                 ],
                 "declKind": "Struct",
@@ -7361,47 +6683,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(totalExpenses:commonTransactionsOverview:largestExpense:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TransactionSummary",
-                    "printedName": "TinkCore.ActionableInsight.TransactionSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TransactionsOverview",
-                    "printedName": "TinkCore.ActionableInsight.TransactionSummary.TransactionsOverview",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV20TransactionsOverviewV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LargestExpense",
-                    "printedName": "TinkCore.ActionableInsight.TransactionSummary.LargestExpense",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV14LargestExpenseV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV13totalExpenses26commonTransactionsOverview14largestExpenseAeA25CurrencyDenominatedAmountV_AE0jK0VAE07LargestM0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV18TransactionSummaryV13totalExpenses26commonTransactionsOverview14largestExpenseAeA25CurrencyDenominatedAmountV_AE0jK0VAE07LargestM0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -7521,49 +6802,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(week:expensesByCategory:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "WeeklyExpensesByCategory",
-                    "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByCategory",
-                    "usr": "s:8TinkCore17ActionableInsightV24WeeklyExpensesByCategoryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Week",
-                    "printedName": "TinkCore.ActionableInsight.Week",
-                    "usr": "s:8TinkCore17ActionableInsightV4WeekV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.CategorySpending]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CategorySpending",
-                        "printedName": "TinkCore.ActionableInsight.CategorySpending",
-                        "usr": "s:8TinkCore17ActionableInsightV16CategorySpendingV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV24WeeklyExpensesByCategoryV4week08expensesgH0AeC4WeekV_SayAC0H8SpendingVGtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV24WeeklyExpensesByCategoryV4week08expensesgH0AeC4WeekV_SayAC0H8SpendingVGtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -7672,118 +6910,6 @@
                         "accessorKind": "get"
                       }
                     ]
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(day:expenseStatistics:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatisticsByDay",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Day",
-                        "printedName": "TinkCore.ActionableInsight.Day",
-                        "usr": "s:8TinkCore17ActionableInsightV3DayV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatistics",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV17ExpenseStatisticsV"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V3day07expenseJ0AgC0H0V_AE0iJ0Vtcfc",
-                    "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V3day07expenseJ0AgC0H0V_AE0iJ0Vtcfc",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "init_kind": "Designated"
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(date:expenseStatistics:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatisticsByDay",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatistics",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV17ExpenseStatisticsV"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4date07expenseJ0AGSS_AE0iJ0Vtcfc",
-                    "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4date07expenseJ0AGSS_AE0iJ0Vtcfc",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "init_kind": "Designated"
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "date",
-                    "printedName": "date",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4dateSSvp",
-                    "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4dateSSvp",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4dateSSvg",
-                        "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V4dateSSvg",
-                        "moduleName": "TinkCore",
-                        "accessorKind": "get"
-                      }
-                    ]
                   }
                 ],
                 "declKind": "Struct",
@@ -7886,41 +7012,6 @@
                         "accessorKind": "get"
                       }
                     ]
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(totalAmount:averageAmount:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatistics",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV17ExpenseStatisticsV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV17ExpenseStatisticsV11totalAmount07averageL0AgA019CurrencyDenominatedL0V_AKtcfc",
-                    "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV17ExpenseStatisticsV11totalAmount07averageL0AgA019CurrencyDenominatedL0V_AKtcfc",
-                    "moduleName": "TinkCore",
-                    "deprecated": true,
-                    "declAttributes": [
-                      "AccessControl",
-                      "Available"
-                    ],
-                    "init_kind": "Designated"
                   }
                 ],
                 "declKind": "Struct",
@@ -8034,49 +7125,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(week:expenseStatisticsByDay:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "WeeklyExpensesByDay",
-                    "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay",
-                    "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Week",
-                    "printedName": "TinkCore.ActionableInsight.Week",
-                    "usr": "s:8TinkCore17ActionableInsightV4WeekV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ExpenseStatisticsByDay",
-                        "printedName": "TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay",
-                        "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV017ExpenseStatisticsgH0V"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV19WeeklyExpensesByDayV4week017expenseStatisticsgH0AeC4WeekV_SayAE07ExpensekgH0VGtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV19WeeklyExpensesByDayV4week017expenseStatisticsgH0AeC4WeekV_SayAE07ExpensekgH0VGtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8180,41 +7228,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(week:summary:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "WeeklyTransactionsSummary",
-                    "printedName": "TinkCore.ActionableInsight.WeeklyTransactionsSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV25WeeklyTransactionsSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Week",
-                    "printedName": "TinkCore.ActionableInsight.Week",
-                    "usr": "s:8TinkCore17ActionableInsightV4WeekV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TransactionSummary",
-                    "printedName": "TinkCore.ActionableInsight.TransactionSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV25WeeklyTransactionsSummaryV4week7summaryAeC4WeekV_AC011TransactionG0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV25WeeklyTransactionsSummaryV4week7summaryAeC4WeekV_AC011TransactionG0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8334,49 +7347,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:expensesByCategory:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "MonthlyExpensesByCategory",
-                    "printedName": "TinkCore.ActionableInsight.MonthlyExpensesByCategory",
-                    "usr": "s:8TinkCore17ActionableInsightV25MonthlyExpensesByCategoryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.ActionableInsight.CategorySpending]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CategorySpending",
-                        "printedName": "TinkCore.ActionableInsight.CategorySpending",
-                        "usr": "s:8TinkCore17ActionableInsightV16CategorySpendingV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV25MonthlyExpensesByCategoryV5month08expensesgH0AeC5MonthV_SayAC0H8SpendingVGtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV25MonthlyExpensesByCategoryV5month08expensesgH0AeC5MonthV_SayAC0H8SpendingVGtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8512,57 +7482,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionID:accountID:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NewIncomeTransaction",
-                    "printedName": "TinkCore.ActionableInsight.NewIncomeTransaction",
-                    "usr": "s:8TinkCore17ActionableInsightV20NewIncomeTransactionV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Transaction",
-                        "printedName": "TinkCore.Transaction",
-                        "usr": "s:8TinkCore11TransactionV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Account>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Account",
-                        "printedName": "TinkCore.Account",
-                        "usr": "s:8TinkCore7AccountV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV20NewIncomeTransactionV13transactionID07accountI0AeA10IdentifierVyAA0G0VG_AIyAA7AccountVGtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV20NewIncomeTransactionV13transactionID07accountI0AeA10IdentifierVyAA0G0VG_AIyAA7AccountVGtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8666,41 +7585,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:summary:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "MonthlyTransactionsSummary",
-                    "printedName": "TinkCore.ActionableInsight.MonthlyTransactionsSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV26MonthlyTransactionsSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TransactionSummary",
-                    "printedName": "TinkCore.ActionableInsight.TransactionSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV18TransactionSummaryV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV26MonthlyTransactionsSummaryV5month7summaryAeC5MonthV_AC011TransactionG0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV26MonthlyTransactionsSummaryV5month7summaryAeC5MonthV_AC011TransactionG0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8804,41 +7688,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(year:month:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV5MonthV4year5monthAESi_Sitcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV5MonthV4year5monthAESi_Sitcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -8942,41 +7791,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(year:week:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Week",
-                    "printedName": "TinkCore.ActionableInsight.Week",
-                    "usr": "s:8TinkCore17ActionableInsightV4WeekV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV4WeekV4year4weekAESi_Sitcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV4WeekV4year4weekAESi_Sitcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -9124,47 +7938,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(year:month:day:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Day",
-                    "printedName": "TinkCore.ActionableInsight.Day",
-                    "usr": "s:8TinkCore17ActionableInsightV3DayV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV3DayV4year5month3dayAESi_S2itcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV3DayV4year5month3dayAESi_S2itcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -9284,49 +8057,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(id:name:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AccountInfo",
-                    "printedName": "TinkCore.ActionableInsight.AccountInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV11AccountInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Account>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Account",
-                        "printedName": "TinkCore.Account",
-                        "usr": "s:8TinkCore7AccountV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV11AccountInfoV2id4nameAeA10IdentifierVyAA0E0VG_SStcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV11AccountInfoV2id4nameAeA10IdentifierVyAA0E0VG_SStcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -9474,47 +8204,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(balance:savingsAccount:currentAccount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "SuggestSetUpSavingsAccount",
-                    "printedName": "TinkCore.ActionableInsight.SuggestSetUpSavingsAccount",
-                    "usr": "s:8TinkCore17ActionableInsightV26SuggestSetUpSavingsAccountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AccountInfo",
-                    "printedName": "TinkCore.ActionableInsight.AccountInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV11AccountInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AccountInfo",
-                    "printedName": "TinkCore.ActionableInsight.AccountInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV11AccountInfoV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV26SuggestSetUpSavingsAccountV7balance07savingsI007currentI0AeA25CurrencyDenominatedAmountV_AC0I4InfoVALtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV26SuggestSetUpSavingsAccountV7balance07savingsI007currentI0AeA25CurrencyDenominatedAmountV_AC0I4InfoVALtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -9634,49 +8323,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(account:availableCredit:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CreditCardLimit",
-                    "printedName": "TinkCore.ActionableInsight.CreditCardLimit",
-                    "usr": "s:8TinkCore17ActionableInsightV15CreditCardLimitV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AccountInfo",
-                    "printedName": "TinkCore.ActionableInsight.AccountInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV11AccountInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV15CreditCardLimitV7account09availableE0AeC11AccountInfoV_AA25CurrencyDenominatedAmountVSgtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV15CreditCardLimitV7account09availableE0AeC11AccountInfoV_AA25CurrencyDenominatedAmountVSgtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -9824,47 +8470,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(createdAt:currentLeftToSpend:averageLeftToSpend:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendStatistics",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendStatistics",
-                    "usr": "s:8TinkCore17ActionableInsightV21LeftToSpendStatisticsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Date",
-                    "printedName": "Foundation.Date",
-                    "usr": "s:10Foundation4DateV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV21LeftToSpendStatisticsV9createdAt07currentefG007averageefG0AE10Foundation4DateV_AA25CurrencyDenominatedAmountVAMtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV21LeftToSpendStatisticsV9createdAt07currentefG007averageefG0AE10Foundation4DateV_AA25CurrencyDenominatedAmountVAMtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10012,47 +8617,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:amountDifference:leftToSpendStatistics:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendMidMonth",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendMidMonth",
-                    "usr": "s:8TinkCore17ActionableInsightV19LeftToSpendMidMonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendStatistics",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendStatistics",
-                    "usr": "s:8TinkCore17ActionableInsightV21LeftToSpendStatisticsV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV19LeftToSpendMidMonthV5month16amountDifference04leftfG10StatisticsAeC0I0V_AA25CurrencyDenominatedAmountVAC0efgN0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV19LeftToSpendMidMonthV5month16amountDifference04leftfG10StatisticsAeC0I0V_AA25CurrencyDenominatedAmountVAC0efgN0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10156,41 +8720,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:leftToSpend:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendNegativeSummary",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendNegativeSummary",
-                    "usr": "s:8TinkCore17ActionableInsightV26LeftToSpendNegativeSummaryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV26LeftToSpendNegativeSummaryV5month04leftfG0AeC5MonthV_AA25CurrencyDenominatedAmountVtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV26LeftToSpendNegativeSummaryV5month04leftfG0AeC5MonthV_AA25CurrencyDenominatedAmountVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10338,48 +8867,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(categorySpending:suggestedBudgetAmount:suggestedBudgetCategoryDisplayName:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetSuggestCreateTopCategory",
-                    "printedName": "TinkCore.ActionableInsight.BudgetSuggestCreateTopCategory",
-                    "usr": "s:8TinkCore17ActionableInsightV30BudgetSuggestCreateTopCategoryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategorySpending",
-                    "printedName": "TinkCore.ActionableInsight.CategorySpending",
-                    "usr": "s:8TinkCore17ActionableInsightV16CategorySpendingV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "hasDefaultArg": true,
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV30BudgetSuggestCreateTopCategoryV16categorySpending09suggestedE6Amount0leI11DisplayNameAeC0iK0V_AA019CurrencyDenominatedM0VSStcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV30BudgetSuggestCreateTopCategoryV16categorySpending09suggestedE6Amount0leI11DisplayNameAeC0iK0V_AA019CurrencyDenominatedM0VSStcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10571,53 +9058,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:amountDifference:totalExpense:leftToSpendStatistics:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendBeginningMonth",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendBeginningMonth",
-                    "usr": "s:8TinkCore17ActionableInsightV25LeftToSpendBeginningMonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendStatistics",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendStatistics",
-                    "usr": "s:8TinkCore17ActionableInsightV21LeftToSpendStatisticsV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV25LeftToSpendBeginningMonthV5month16amountDifference12totalExpense04leftfG10StatisticsAeC0I0V_AA25CurrencyDenominatedAmountVAmC0efgP0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV25LeftToSpendBeginningMonthV5month16amountDifference12totalExpense04leftfG10StatisticsAeC0I0V_AA25CurrencyDenominatedAmountVAmC0efgP0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10765,47 +9205,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:createdAt:leftToSpend:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendNegative",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendNegative",
-                    "usr": "s:8TinkCore17ActionableInsightV19LeftToSpendNegativeV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Date",
-                    "printedName": "Foundation.Date",
-                    "usr": "s:10Foundation4DateV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV19LeftToSpendNegativeV5month9createdAt04leftfG0AeC5MonthV_10Foundation4DateVAA25CurrencyDenominatedAmountVtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV19LeftToSpendNegativeV5month9createdAt04leftfG0AeC5MonthV_10Foundation4DateVAA25CurrencyDenominatedAmountVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -10969,55 +9368,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(id:code:name:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategoryInfo",
-                    "printedName": "TinkCore.ActionableInsight.CategoryInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV12CategoryInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Category>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Category",
-                        "printedName": "TinkCore.Category",
-                        "usr": "s:8TinkCore8CategoryV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Code",
-                    "printedName": "TinkCore.Category.Code",
-                    "usr": "s:8TinkCore8CategoryV4CodeV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV12CategoryInfoV2id4code4nameAeA10IdentifierVyAA0E0VG_AL4CodeVSStcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV12CategoryInfoV2id4code4nameAeA10IdentifierVyAA0E0VG_AL4CodeVSStcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -11253,59 +9603,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(category:lastMonth:lastMonthSpending:twoMonthsAgoSpending:percentage:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "SpendingByCategoryIncreased",
-                    "printedName": "TinkCore.ActionableInsight.SpendingByCategoryIncreased",
-                    "usr": "s:8TinkCore17ActionableInsightV27SpendingByCategoryIncreasedV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategoryInfo",
-                    "printedName": "TinkCore.ActionableInsight.CategoryInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV12CategoryInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV27SpendingByCategoryIncreasedV8category9lastMonth0jkE0012twoMonthsAgoE010percentageAeC0G4InfoV_AC0K0VAA25CurrencyDenominatedAmountVAPSdtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV27SpendingByCategoryIncreasedV8category9lastMonth0jkE0012twoMonthsAgoE010percentageAeC0G4InfoV_AC0K0VAA25CurrencyDenominatedAmountVAPSdtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -11409,41 +9706,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:leftAmount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendPositiveSummarySavingsAccount",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendPositiveSummarySavingsAccount",
-                    "usr": "s:8TinkCore17ActionableInsightV40LeftToSpendPositiveSummarySavingsAccountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV40LeftToSpendPositiveSummarySavingsAccountV5month10leftAmountAeC5MonthV_AA019CurrencyDenominatedN0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV40LeftToSpendPositiveSummarySavingsAccountV5month10leftAmountAeC5MonthV_AA019CurrencyDenominatedN0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -11635,53 +9897,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(month:amountDifference:leftToSpendStatistics:leftToSpendPerDay:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendPositiveFinalWeek",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendPositiveFinalWeek",
-                    "usr": "s:8TinkCore17ActionableInsightV28LeftToSpendPositiveFinalWeekV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Month",
-                    "printedName": "TinkCore.ActionableInsight.Month",
-                    "usr": "s:8TinkCore17ActionableInsightV5MonthV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LeftToSpendStatistics",
-                    "printedName": "TinkCore.ActionableInsight.LeftToSpendStatistics",
-                    "usr": "s:8TinkCore17ActionableInsightV21LeftToSpendStatisticsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV28LeftToSpendPositiveFinalWeekV5month16amountDifference04leftfG10Statistics0nfG6PerDayAeC5MonthV_AA25CurrencyDenominatedAmountVAC0efgO0VAMtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV28LeftToSpendPositiveFinalWeekV5month16amountDifference04leftfG10Statistics0nfG6PerDayAeC5MonthV_AA25CurrencyDenominatedAmountVAC0efgO0VAMtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -11801,49 +10016,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(id:displayName:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProviderInfo",
-                    "printedName": "TinkCore.ActionableInsight.ProviderInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV12ProviderInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Provider>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Provider",
-                        "printedName": "TinkCore.Provider",
-                        "usr": "s:8TinkCore8ProviderV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV12ProviderInfoV2id11displayNameAeA10IdentifierVyAA0E0VG_SStcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV12ProviderInfoV2id11displayNameAeA10IdentifierVyAA0E0VG_SStcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12007,55 +10179,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(credentialsID:provider:sessionExpiryDate:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AggregationRefreshPSD2Credentials",
-                    "printedName": "TinkCore.ActionableInsight.AggregationRefreshPSD2Credentials",
-                    "usr": "s:8TinkCore17ActionableInsightV33AggregationRefreshPSD2CredentialsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Credentials>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Credentials",
-                        "printedName": "TinkCore.Credentials",
-                        "usr": "s:8TinkCore11CredentialsV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProviderInfo",
-                    "printedName": "TinkCore.ActionableInsight.ProviderInfo",
-                    "usr": "s:8TinkCore17ActionableInsightV12ProviderInfoV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Date",
-                    "printedName": "Foundation.Date",
-                    "usr": "s:10Foundation4DateV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17ActionableInsightV33AggregationRefreshPSD2CredentialsV13credentialsID8provider17sessionExpiryDateAeA10IdentifierVyAA0H0VG_AC12ProviderInfoV10Foundation0N0Vtcfc",
-                "mangledName": "$s8TinkCore17ActionableInsightV33AggregationRefreshPSD2CredentialsV13credentialsID8provider17sessionExpiryDateAeA10IdentifierVyAA0H0VG_AC12ProviderInfoV10Foundation0N0Vtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12189,49 +10312,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(budgetID:budgetPeriodStartTime:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ViewBudget",
-                    "printedName": "TinkCore.InsightActionData.ViewBudget",
-                    "usr": "s:8TinkCore17InsightActionDataO10ViewBudgetV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Budget",
-                        "printedName": "TinkCore.Budget",
-                        "usr": "s:8TinkCore6BudgetV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Date",
-                    "printedName": "Foundation.Date",
-                    "usr": "s:10Foundation4DateV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO10ViewBudgetV8budgetID0H15PeriodStartTimeAeA10IdentifierVyAA0G0VG_10Foundation4DateVtcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO10ViewBudgetV8budgetID0H15PeriodStartTimeAeA10IdentifierVyAA0G0VG_10Foundation4DateVtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12546,101 +10626,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(sourceAccount:destinationAccount:amount:sourceAccountNumber:destinationAccountNumber:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CreateTransfer",
-                    "printedName": "TinkCore.InsightActionData.CreateTransfer",
-                    "usr": "s:8TinkCore17InsightActionDataO14CreateTransferV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Foundation.URL?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Foundation.URL?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO14CreateTransferV13sourceAccount011destinationI06amount0hI6Number0jiL0AE10Foundation3URLVSg_AnA25CurrencyDenominatedAmountVSgSSSgARtcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO14CreateTransferV13sourceAccount011destinationI06amount0hI6Number0jiL0AE10Foundation3URLVSg_AnA25CurrencyDenominatedAmountVSgSSSgARtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12715,43 +10700,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionID:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ViewTransaction",
-                    "printedName": "TinkCore.InsightActionData.ViewTransaction",
-                    "usr": "s:8TinkCore17InsightActionDataO15ViewTransactionV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Transaction",
-                        "printedName": "TinkCore.Transaction",
-                        "usr": "s:8TinkCore11TransactionV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO15ViewTransactionV13transactionIDAeA10IdentifierVyAA0G0VG_tcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO15ViewTransactionV13transactionIDAeA10IdentifierVyAA0G0VG_tcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12826,43 +10774,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionID:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategorizeSingleExpense",
-                    "printedName": "TinkCore.InsightActionData.CategorizeSingleExpense",
-                    "usr": "s:8TinkCore17InsightActionDataO23CategorizeSingleExpenseV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Transaction",
-                        "printedName": "TinkCore.Transaction",
-                        "usr": "s:8TinkCore11TransactionV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO23CategorizeSingleExpenseV13transactionIDAeA10IdentifierVyAA11TransactionVG_tcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO23CategorizeSingleExpenseV13transactionIDAeA10IdentifierVyAA11TransactionVG_tcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -12953,51 +10864,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionIDs:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ViewTransactions",
-                    "printedName": "TinkCore.InsightActionData.ViewTransactions",
-                    "usr": "s:8TinkCore17InsightActionDataO16ViewTransactionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.Identifier<TinkCore.Transaction>]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Transaction",
-                            "printedName": "TinkCore.Transaction",
-                            "usr": "s:8TinkCore11TransactionV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO16ViewTransactionsV14transactionIDsAESayAA10IdentifierVyAA11TransactionVGG_tcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO16ViewTransactionsV14transactionIDsAESayAA10IdentifierVyAA11TransactionVGG_tcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -13088,51 +10954,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionIDs:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CategorizeTransactions",
-                    "printedName": "TinkCore.InsightActionData.CategorizeTransactions",
-                    "usr": "s:8TinkCore17InsightActionDataO22CategorizeTransactionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.Identifier<TinkCore.Transaction>]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Transaction",
-                            "printedName": "TinkCore.Transaction",
-                            "usr": "s:8TinkCore11TransactionV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO22CategorizeTransactionsV14transactionIDsAESayAA10IdentifierVyAA11TransactionVGG_tcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO22CategorizeTransactionsV14transactionIDsAESayAA10IdentifierVyAA11TransactionVGG_tcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -13251,65 +11072,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(transactionIdsByCategory:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ViewTransactionsByCategory",
-                    "printedName": "TinkCore.InsightActionData.ViewTransactionsByCategory",
-                    "usr": "s:8TinkCore17InsightActionDataO26ViewTransactionsByCategoryV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[TinkCore.Category.Code : [TinkCore.Identifier<TinkCore.Transaction>]]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Code",
-                        "printedName": "TinkCore.Category.Code",
-                        "usr": "s:8TinkCore8CategoryV4CodeV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Array",
-                        "printedName": "[TinkCore.Identifier<TinkCore.Transaction>]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Identifier",
-                            "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "Transaction",
-                                "printedName": "TinkCore.Transaction",
-                                "usr": "s:8TinkCore11TransactionV"
-                              }
-                            ],
-                            "usr": "s:8TinkCore10IdentifierV"
-                          }
-                        ],
-                        "usr": "s:Sa"
-                      }
-                    ],
-                    "usr": "s:SD"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO26ViewTransactionsByCategoryV014transactionIdshI0AESDyAA0I0V4CodeVSayAA10IdentifierVyAA11TransactionVGGG_tcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO26ViewTransactionsByCategoryV014transactionIdshI0AESDyAA0I0V4CodeVSayAA10IdentifierVyAA11TransactionVGGG_tcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -13504,71 +11266,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(filters:amount:periodicity:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BudgetSuggestion",
-                    "printedName": "TinkCore.InsightActionData.BudgetSuggestion",
-                    "usr": "s:8TinkCore17InsightActionDataO16BudgetSuggestionV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TinkCore.Budget.Filter]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Filter",
-                        "printedName": "TinkCore.Budget.Filter",
-                        "usr": "s:8TinkCore6BudgetV6FilterO"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.Budget.Periodicity?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Periodicity",
-                        "printedName": "TinkCore.Budget.Periodicity",
-                        "usr": "s:8TinkCore6BudgetV11PeriodicityO"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore17InsightActionDataO16BudgetSuggestionV7filters6amount11periodicityAESayAA0F0V6FilterOG_AA25CurrencyDenominatedAmountVSgAJ11PeriodicityOSgtcfc",
-                "mangledName": "$s8TinkCore17InsightActionDataO16BudgetSuggestionV7filters6amount11periodicityAESayAA0F0V6FilterOG_AA25CurrencyDenominatedAmountVSgAJ11PeriodicityOSgtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -14563,168 +12260,6 @@
             "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.ActionableInsightService>",
             "sugared_genericSig": "<Self where Self : TinkCore.ActionableInsightService>",
             "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "selectAction",
-            "printedName": "selectAction(insightAction:insightID:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(TinkCore.Cancellable & TinkCore.Retriable)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProtocolComposition",
-                    "printedName": "TinkCore.Cancellable & TinkCore.Retriable"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.ActionableInsight>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ActionableInsight",
-                    "printedName": "TinkCore.ActionableInsight",
-                    "usr": "s:8TinkCore17ActionableInsightV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Result<(), Swift.Error>) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Result",
-                    "printedName": "Swift.Result<(), Swift.Error>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "Swift.Error",
-                        "usr": "s:s5ErrorP"
-                      }
-                    ],
-                    "usr": "s:s6ResultO"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8TinkCore24ActionableInsightServiceP12selectAction07insightG00H2ID10completionAA11Cancellable_AA9RetriablepSgSS_AA10IdentifierVyAA0cD0VGys6ResultOyyts5Error_pGctF",
-            "mangledName": "$s8TinkCore24ActionableInsightServiceP12selectAction07insightG00H2ID10completionAA11Cancellable_AA9RetriablepSgSS_AA10IdentifierVyAA0cD0VGys6ResultOyyts5Error_pGctF",
-            "moduleName": "TinkCore",
-            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.ActionableInsightService>",
-            "sugared_genericSig": "<Self where Self : TinkCore.ActionableInsightService>",
-            "deprecated": true,
-            "protocolReq": true,
-            "declAttributes": [
-              "Available"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "archive",
-            "printedName": "archive(id:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(TinkCore.Cancellable & TinkCore.Retriable)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProtocolComposition",
-                    "printedName": "TinkCore.Cancellable & TinkCore.Retriable"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.ActionableInsight>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ActionableInsight",
-                    "printedName": "TinkCore.ActionableInsight",
-                    "usr": "s:8TinkCore17ActionableInsightV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Result<(), Swift.Error>) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Result",
-                    "printedName": "Swift.Result<(), Swift.Error>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "Swift.Error",
-                        "usr": "s:s5ErrorP"
-                      }
-                    ],
-                    "usr": "s:s6ResultO"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8TinkCore24ActionableInsightServiceP7archive2id10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0cD0VG_ys6ResultOyyts5Error_pGctF",
-            "mangledName": "$s8TinkCore24ActionableInsightServiceP7archive2id10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0cD0VG_ys6ResultOyyts5Error_pGctF",
-            "moduleName": "TinkCore",
-            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.ActionableInsightService>",
-            "sugared_genericSig": "<Self where Self : TinkCore.ActionableInsightService>",
-            "deprecated": true,
-            "protocolReq": true,
-            "declAttributes": [
-              "Available"
-            ],
             "reqNewWitnessTableEntry": true,
             "funcSelfKind": "NonMutating"
           }
@@ -16489,91 +14024,6 @@
             ]
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(id:name:amount:filter:periodicity:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Budget",
-                "printedName": "TinkCore.Budget",
-                "usr": "s:8TinkCore6BudgetV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Budget>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Budget",
-                    "printedName": "TinkCore.Budget",
-                    "usr": "s:8TinkCore6BudgetV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TinkCore.Budget.Filter]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Filter",
-                    "printedName": "TinkCore.Budget.Filter",
-                    "usr": "s:8TinkCore6BudgetV6FilterO"
-                  }
-                ],
-                "usr": "s:Sa"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "TinkCore.Budget.Periodicity?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Periodicity",
-                    "printedName": "TinkCore.Budget.Periodicity",
-                    "usr": "s:8TinkCore6BudgetV11PeriodicityO"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore6BudgetV2id4name6amount6filter11periodicityAcA10IdentifierVyACG_SSAA25CurrencyDenominatedAmountVSgSayAC6FilterOGAC11PeriodicityOSgtcfc",
-            "mangledName": "$s8TinkCore6BudgetV2id4name6amount6filter11periodicityAcA10IdentifierVyACG_SSAA25CurrencyDenominatedAmountVSgSayAC6FilterOGAC11PeriodicityOSgtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
             "kind": "TypeDecl",
             "name": "Transaction",
             "printedName": "Transaction",
@@ -17065,127 +14515,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(id:amount:dispensableAmount:date:description:categoryCode:accountID:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Transaction",
-                    "printedName": "TinkCore.Budget.Transaction",
-                    "usr": "s:8TinkCore6BudgetV11TransactionV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Transaction",
-                        "printedName": "TinkCore.Transaction",
-                        "usr": "s:8TinkCore11TransactionV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Foundation.Date?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Date",
-                        "printedName": "Foundation.Date",
-                        "usr": "s:10Foundation4DateV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.Category.Code?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Code",
-                        "printedName": "TinkCore.Category.Code",
-                        "usr": "s:8TinkCore8CategoryV4CodeV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.Identifier<TinkCore.Account>?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Identifier",
-                        "printedName": "TinkCore.Identifier<TinkCore.Account>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Account",
-                            "printedName": "TinkCore.Account",
-                            "usr": "s:8TinkCore7AccountV"
-                          }
-                        ],
-                        "usr": "s:8TinkCore10IdentifierV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore6BudgetV11TransactionV2id6amount17dispensableAmount4date11description12categoryCode9accountIDAeA10IdentifierVyAaDVG_AA019CurrencyDenominatedH0VARSg10Foundation4DateVSgSSSgAA8CategoryV0L0VSgANyAA7AccountVGSgtcfc",
-                "mangledName": "$s8TinkCore6BudgetV11TransactionV2id6amount17dispensableAmount4date11description12categoryCode9accountIDAeA10IdentifierVyAaDVG_AA019CurrencyDenominatedH0VARSg10Foundation4DateVSgSSSgAA8CategoryV0L0VSgANyAA7AccountVGSgtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               }
             ],
             "declKind": "Struct",
@@ -17307,49 +14636,6 @@
                     "accessorKind": "get"
                   }
                 ]
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(dateInterval:spentAmount:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Period",
-                    "printedName": "TinkCore.Budget.Period",
-                    "usr": "s:8TinkCore6BudgetV6PeriodV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "DateInterval",
-                    "printedName": "Foundation.DateInterval",
-                    "usr": "s:10Foundation12DateIntervalV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "CurrencyDenominatedAmount",
-                        "printedName": "TinkCore.CurrencyDenominatedAmount",
-                        "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:8TinkCore6BudgetV6PeriodV12dateInterval11spentAmountAE10Foundation04DateF0V_AA019CurrencyDenominatedH0VSgtcfc",
-                "mangledName": "$s8TinkCore6BudgetV6PeriodV12dateInterval11spentAmountAE10Foundation04DateF0V_AA019CurrencyDenominatedH0VSgtcfc",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "init_kind": "Designated"
               },
               {
                 "kind": "Function",
@@ -17702,83 +14988,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(budgetSpecification:budgetPeriods:dateInterval:totalSpentAmount:averageSpentAmount:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "BudgetDetails",
-                "printedName": "TinkCore.BudgetDetails",
-                "usr": "s:8TinkCore13BudgetDetailsV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Budget",
-                "printedName": "TinkCore.Budget",
-                "usr": "s:8TinkCore6BudgetV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TinkCore.Budget.Period]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Period",
-                    "printedName": "TinkCore.Budget.Period",
-                    "usr": "s:8TinkCore6BudgetV6PeriodV"
-                  }
-                ],
-                "usr": "s:Sa"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "DateInterval",
-                "printedName": "Foundation.DateInterval",
-                "usr": "s:10Foundation12DateIntervalV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "TinkCore.CurrencyDenominatedAmount?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CurrencyDenominatedAmount",
-                    "printedName": "TinkCore.CurrencyDenominatedAmount",
-                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore13BudgetDetailsV19budgetSpecification0E7Periods12dateInterval16totalSpentAmount07averagekL0AcA0C0V_SayAJ6PeriodVG10Foundation04DateI0VAA019CurrencyDenominatedL0VSgAStcfc",
-            "mangledName": "$s8TinkCore13BudgetDetailsV19budgetSpecification0E7Periods12dateInterval16totalSpentAmount07averagekL0AcA0C0V_SayAJ6PeriodVG10Foundation04DateI0VAA019CurrencyDenominatedL0VSgAStcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -18520,41 +15729,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(budget:budgetPeriod:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "BudgetSummary",
-                "printedName": "TinkCore.BudgetSummary",
-                "usr": "s:8TinkCore13BudgetSummaryV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Budget",
-                "printedName": "TinkCore.Budget",
-                "usr": "s:8TinkCore6BudgetV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Period",
-                "printedName": "TinkCore.Budget.Period",
-                "usr": "s:8TinkCore6BudgetV6PeriodV"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore13BudgetSummaryV6budget0E6PeriodAcA0C0V_AG0F0Vtcfc",
-            "mangledName": "$s8TinkCore13BudgetSummaryV6budget0E6PeriodAcA0C0V_AG0F0Vtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -18984,83 +16158,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(id:code:name:sortOrder:parent:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Category",
-                "printedName": "TinkCore.Category",
-                "usr": "s:8TinkCore8CategoryV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Category>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Category",
-                    "printedName": "TinkCore.Category",
-                    "usr": "s:8TinkCore8CategoryV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Code",
-                "printedName": "TinkCore.Category.Code",
-                "usr": "s:8TinkCore8CategoryV4CodeV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "TinkCore.Identifier<TinkCore.Category>?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Category>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Category",
-                        "printedName": "TinkCore.Category",
-                        "usr": "s:8TinkCore8CategoryV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore8CategoryV2id4code4name9sortOrder6parentAcA10IdentifierVyACG_AC4CodeVSSSiAKSgtcfc",
-            "mangledName": "$s8TinkCore8CategoryV2id4code4name9sortOrder6parentAcA10IdentifierVyACG_AC4CodeVSSSiAKSgtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           },
           {
             "kind": "Function",
@@ -23027,66 +20124,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Var",
-            "name": "providerID",
-            "printedName": "providerID",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Provider>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Provider",
-                    "printedName": "TinkCore.Provider",
-                    "usr": "s:8TinkCore8ProviderV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8TinkCore11CredentialsV10providerIDAA10IdentifierVyAA8ProviderVGvp",
-            "mangledName": "$s8TinkCore11CredentialsV10providerIDAA10IdentifierVyAA8ProviderVGvp",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Identifier",
-                    "printedName": "TinkCore.Identifier<TinkCore.Provider>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Provider",
-                        "printedName": "TinkCore.Provider",
-                        "usr": "s:8TinkCore8ProviderV"
-                      }
-                    ],
-                    "usr": "s:8TinkCore10IdentifierV"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8TinkCore11CredentialsV10providerIDAA10IdentifierVyAA8ProviderVGvg",
-                "mangledName": "$s8TinkCore11CredentialsV10providerIDAA10IdentifierVyAA8ProviderVGvg",
-                "moduleName": "TinkCore",
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Struct",
@@ -23923,102 +20960,6 @@
           {
             "kind": "Function",
             "name": "refresh",
-            "printedName": "refresh(id:authenticate:refreshableItems:optIn:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(TinkCore.Cancellable & TinkCore.Retriable)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProtocolComposition",
-                    "printedName": "TinkCore.Cancellable & TinkCore.Retriable"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Credentials>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Credentials",
-                    "printedName": "TinkCore.Credentials",
-                    "usr": "s:8TinkCore11CredentialsV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "RefreshableItems",
-                "printedName": "TinkCore.RefreshableItems",
-                "usr": "s:8TinkCore16RefreshableItemsV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Result<(), Swift.Error>) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Result",
-                    "printedName": "Swift.Result<(), Swift.Error>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "Swift.Error",
-                        "usr": "s:s5ErrorP"
-                      }
-                    ],
-                    "usr": "s:s6ResultO"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8TinkCore18CredentialsServiceP7refresh2id12authenticate16refreshableItems5optIn10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0C0VG_SbAA011RefreshableI0VSbys6ResultOyyts5Error_pGctF",
-            "mangledName": "$s8TinkCore18CredentialsServiceP7refresh2id12authenticate16refreshableItems5optIn10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0C0VG_SbAA011RefreshableI0VSbys6ResultOyyts5Error_pGctF",
-            "moduleName": "TinkCore",
-            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.CredentialsService>",
-            "sugared_genericSig": "<Self where Self : TinkCore.CredentialsService>",
-            "deprecated": true,
-            "protocolReq": true,
-            "declAttributes": [
-              "Available"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "refresh",
             "printedName": "refresh(id:authenticate:refreshableItems:appURI:callbackURI:optIn:completion:)",
             "children": [
               {
@@ -24669,84 +21610,6 @@
             "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.CredentialsService>",
             "sugared_genericSig": "<Self where Self : TinkCore.CredentialsService>",
             "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "authenticate",
-            "printedName": "authenticate(id:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(TinkCore.Cancellable & TinkCore.Retriable)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ProtocolComposition",
-                    "printedName": "TinkCore.Cancellable & TinkCore.Retriable"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Credentials>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Credentials",
-                    "printedName": "TinkCore.Credentials",
-                    "usr": "s:8TinkCore11CredentialsV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Result<(), Swift.Error>) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Result",
-                    "printedName": "Swift.Result<(), Swift.Error>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "Swift.Error",
-                        "usr": "s:s5ErrorP"
-                      }
-                    ],
-                    "usr": "s:s6ResultO"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8TinkCore18CredentialsServiceP12authenticate2id10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0C0VG_ys6ResultOyyts5Error_pGctF",
-            "mangledName": "$s8TinkCore18CredentialsServiceP12authenticate2id10completionAA11Cancellable_AA9RetriablepSgAA10IdentifierVyAA0C0VG_ys6ResultOyyts5Error_pGctF",
-            "moduleName": "TinkCore",
-            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.CredentialsService>",
-            "sugared_genericSig": "<Self where Self : TinkCore.CredentialsService>",
-            "deprecated": true,
-            "protocolReq": true,
-            "declAttributes": [
-              "Available"
-            ],
             "reqNewWitnessTableEntry": true,
             "funcSelfKind": "NonMutating"
           },
@@ -27274,47 +24137,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(dateInterval:name:resolution:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Period",
-                "printedName": "TinkCore.Period",
-                "usr": "s:8TinkCore6PeriodV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "DateInterval",
-                "printedName": "Foundation.DateInterval",
-                "usr": "s:10Foundation12DateIntervalV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Resolution",
-                "printedName": "TinkCore.Period.Resolution",
-                "usr": "s:8TinkCore6PeriodV10ResolutionO"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore6PeriodV12dateInterval4name10resolutionAC10Foundation04DateE0V_SSAC10ResolutionOtcfc",
-            "mangledName": "$s8TinkCore6PeriodV12dateInterval4name10resolutionAC10Foundation04DateE0V_SSAC10ResolutionOtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -30727,50 +27549,6 @@
                 "static": true,
                 "implicit": true,
                 "funcSelfKind": "NonMutating"
-              },
-              {
-                "kind": "Var",
-                "name": "fieldDescription",
-                "printedName": "fieldDescription",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:8TinkCore8ProviderV5FieldV16fieldDescriptionSSvp",
-                "mangledName": "$s8TinkCore8ProviderV5FieldV16fieldDescriptionSSvp",
-                "moduleName": "TinkCore",
-                "deprecated": true,
-                "declAttributes": [
-                  "AccessControl",
-                  "Available"
-                ],
-                "isFromExtension": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:8TinkCore8ProviderV5FieldV16fieldDescriptionSSvg",
-                    "mangledName": "$s8TinkCore8ProviderV5FieldV16fieldDescriptionSSvg",
-                    "moduleName": "TinkCore",
-                    "isFromExtension": true,
-                    "accessorKind": "get"
-                  }
-                ]
               }
             ],
             "declKind": "Struct",
@@ -32578,291 +29356,6 @@
                 "printedName": "Equatable",
                 "usr": "s:SQ",
                 "mangledName": "$sSQ"
-              }
-            ]
-          },
-          {
-            "kind": "TypeDecl",
-            "name": "AuthenticationUserType",
-            "printedName": "AuthenticationUserType",
-            "children": [
-              {
-                "kind": "Var",
-                "name": "unknown",
-                "printedName": "unknown",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(TinkCore.Provider.AuthenticationUserType.Type) -> TinkCore.Provider.AuthenticationUserType",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AuthenticationUserType",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType",
-                        "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "AuthenticationUserType",
-                            "printedName": "TinkCore.Provider.AuthenticationUserType",
-                            "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO7unknownyA2EmF",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO7unknownyA2EmF",
-                "moduleName": "TinkCore"
-              },
-              {
-                "kind": "Var",
-                "name": "business",
-                "printedName": "business",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(TinkCore.Provider.AuthenticationUserType.Type) -> TinkCore.Provider.AuthenticationUserType",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AuthenticationUserType",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType",
-                        "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "AuthenticationUserType",
-                            "printedName": "TinkCore.Provider.AuthenticationUserType",
-                            "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO8businessyA2EmF",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO8businessyA2EmF",
-                "moduleName": "TinkCore",
-                "declAttributes": [
-                  "RawDocComment"
-                ]
-              },
-              {
-                "kind": "Var",
-                "name": "personal",
-                "printedName": "personal",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(TinkCore.Provider.AuthenticationUserType.Type) -> TinkCore.Provider.AuthenticationUserType",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AuthenticationUserType",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType",
-                        "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "AuthenticationUserType",
-                            "printedName": "TinkCore.Provider.AuthenticationUserType",
-                            "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO8personalyA2EmF",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO8personalyA2EmF",
-                "moduleName": "TinkCore",
-                "declAttributes": [
-                  "RawDocComment"
-                ]
-              },
-              {
-                "kind": "Var",
-                "name": "corporate",
-                "printedName": "corporate",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(TinkCore.Provider.AuthenticationUserType.Type) -> TinkCore.Provider.AuthenticationUserType",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AuthenticationUserType",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType",
-                        "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "TinkCore.Provider.AuthenticationUserType.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "AuthenticationUserType",
-                            "printedName": "TinkCore.Provider.AuthenticationUserType",
-                            "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO9corporateyA2EmF",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO9corporateyA2EmF",
-                "moduleName": "TinkCore",
-                "declAttributes": [
-                  "RawDocComment"
-                ]
-              },
-              {
-                "kind": "Function",
-                "name": "==",
-                "printedName": "==(_:_:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AuthenticationUserType",
-                    "printedName": "TinkCore.Provider.AuthenticationUserType",
-                    "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AuthenticationUserType",
-                    "printedName": "TinkCore.Provider.AuthenticationUserType",
-                    "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO"
-                  }
-                ],
-                "declKind": "Func",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO2eeoiySbAE_AEtFZ",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO2eeoiySbAE_AEtFZ",
-                "moduleName": "TinkCore",
-                "static": true,
-                "implicit": true,
-                "funcSelfKind": "NonMutating"
-              },
-              {
-                "kind": "Var",
-                "name": "hashValue",
-                "printedName": "hashValue",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO9hashValueSivp",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO9hashValueSivp",
-                "moduleName": "TinkCore",
-                "implicit": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Int",
-                        "printedName": "Swift.Int",
-                        "usr": "s:Si"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO9hashValueSivg",
-                    "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO9hashValueSivg",
-                    "moduleName": "TinkCore",
-                    "implicit": true,
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Function",
-                "name": "hash",
-                "printedName": "hash(into:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Hasher",
-                    "printedName": "Swift.Hasher",
-                    "paramValueOwnership": "InOut",
-                    "usr": "s:s6HasherV"
-                  }
-                ],
-                "declKind": "Func",
-                "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO4hash4intoys6HasherVz_tF",
-                "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO4hash4intoys6HasherVz_tF",
-                "moduleName": "TinkCore",
-                "implicit": true,
-                "funcSelfKind": "NonMutating"
-              }
-            ],
-            "declKind": "Enum",
-            "usr": "s:8TinkCore8ProviderV22AuthenticationUserTypeO",
-            "mangledName": "$s8TinkCore8ProviderV22AuthenticationUserTypeO",
-            "moduleName": "TinkCore",
-            "declAttributes": [
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "conformances": [
-              {
-                "kind": "Conformance",
-                "name": "Equatable",
-                "printedName": "Equatable",
-                "usr": "s:SQ",
-                "mangledName": "$sSQ"
-              },
-              {
-                "kind": "Conformance",
-                "name": "Hashable",
-                "printedName": "Hashable",
-                "usr": "s:SH",
-                "mangledName": "$sSH"
               }
             ]
           }
@@ -39831,8 +36324,8 @@
           },
           {
             "kind": "Var",
-            "name": "resoultion",
-            "printedName": "resoultion",
+            "name": "resolution",
+            "printedName": "resolution",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -39842,8 +36335,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:8TinkCore9StatisticV10resoultionAC10ResolutionOvp",
-            "mangledName": "$s8TinkCore9StatisticV10resoultionAC10ResolutionOvp",
+            "usr": "s:8TinkCore9StatisticV10resolutionAC10ResolutionOvp",
+            "mangledName": "$s8TinkCore9StatisticV10resolutionAC10ResolutionOvp",
             "moduleName": "TinkCore",
             "declAttributes": [
               "HasStorage",
@@ -39865,8 +36358,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8TinkCore9StatisticV10resoultionAC10ResolutionOvg",
-                "mangledName": "$s8TinkCore9StatisticV10resoultionAC10ResolutionOvg",
+                "usr": "s:8TinkCore9StatisticV10resolutionAC10ResolutionOvg",
+                "mangledName": "$s8TinkCore9StatisticV10resolutionAC10ResolutionOvg",
                 "moduleName": "TinkCore",
                 "implicit": true,
                 "accessorKind": "get"
@@ -40004,79 +36497,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(description:payload:period:resoultion:kind:value:userID:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Statistic",
-                "printedName": "TinkCore.Statistic",
-                "usr": "s:8TinkCore9StatisticV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "StatisticPeriod",
-                "printedName": "TinkCore.StatisticPeriod",
-                "usr": "s:8TinkCore15StatisticPeriodO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Resolution",
-                "printedName": "TinkCore.Statistic.Resolution",
-                "usr": "s:8TinkCore9StatisticV10ResolutionO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Kind",
-                "printedName": "TinkCore.Statistic.Kind",
-                "usr": "s:8TinkCore9StatisticV4KindO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore9StatisticV11description7payload6period10resoultion4kind5value6userIDACSS_SSSgAA0C6PeriodOAC10ResolutionOAC4KindOSdSStcfc",
-            "mangledName": "$s8TinkCore9StatisticV11description7payload6period10resoultion4kind5value6userIDACSS_SSSgAA0C6PeriodOAC10ResolutionOAC4KindOSdSStcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -40813,55 +37233,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(categorizationImprovement:categorizationLevel:clusters:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "SuggestTransactionsResponse",
-                "printedName": "TinkCore.SuggestTransactionsResponse",
-                "usr": "s:8TinkCore27SuggestTransactionsResponseV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TinkCore.TransactionCluster]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TransactionCluster",
-                    "printedName": "TinkCore.TransactionCluster",
-                    "usr": "s:8TinkCore18TransactionClusterV"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore27SuggestTransactionsResponseV25categorizationImprovement0F5Level8clustersACSd_SdSayAA18TransactionClusterVGtcfc",
-            "mangledName": "$s8TinkCore27SuggestTransactionsResponseV25categorizationImprovement0F5Level8clustersACSd_SdSayAA18TransactionClusterVGtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -43965,101 +40336,6 @@
             "init_kind": "Designated"
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(id:accountID:amount:categoryID:description:date:inserted:isUpcomingOrInFuture:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Transaction",
-                "printedName": "TinkCore.Transaction",
-                "usr": "s:8TinkCore11TransactionV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Transaction>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Transaction",
-                    "printedName": "TinkCore.Transaction",
-                    "usr": "s:8TinkCore11TransactionV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Account>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Account",
-                    "printedName": "TinkCore.Account",
-                    "usr": "s:8TinkCore7AccountV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CurrencyDenominatedAmount",
-                "printedName": "TinkCore.CurrencyDenominatedAmount",
-                "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.Category>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Category",
-                    "printedName": "TinkCore.Category",
-                    "usr": "s:8TinkCore8CategoryV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Date",
-                "printedName": "Foundation.Date",
-                "usr": "s:10Foundation4DateV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Date",
-                "printedName": "Foundation.Date",
-                "usr": "s:10Foundation4DateV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore11TransactionV2id9accountID6amount08categoryF011description4date8inserted20isUpcomingOrInFutureAcA10IdentifierVyACG_AMyAA7AccountVGAA25CurrencyDenominatedAmountVAMyAA8CategoryVGSS10Foundation4DateVAYSbtcfc",
-            "mangledName": "$s8TinkCore11TransactionV2id9accountID6amount08categoryF011description4date8inserted20isUpcomingOrInFutureAcA10IdentifierVyACG_AMyAA7AccountVGAA25CurrencyDenominatedAmountVAMyAA8CategoryVGSS10Foundation4DateVAYSbtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
             "kind": "Var",
             "name": "hashValue",
             "printedName": "hashValue",
@@ -44978,55 +41254,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(categorizationImprovement:description:transactions:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TransactionCluster",
-                "printedName": "TinkCore.TransactionCluster",
-                "usr": "s:8TinkCore18TransactionClusterV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TinkCore.Transaction]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Transaction",
-                    "printedName": "TinkCore.Transaction",
-                    "usr": "s:8TinkCore11TransactionV"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore18TransactionClusterV25categorizationImprovement11description12transactionsACSd_SSSayAA0C0VGtcfc",
-            "mangledName": "$s8TinkCore18TransactionClusterV25categorizationImprovement11description12transactionsACSd_SSSayAA0C0VGtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -47632,83 +43859,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(created:id:username:nationalID:profile:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "User",
-                "printedName": "TinkCore.User",
-                "usr": "s:8TinkCore4UserV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Date",
-                "printedName": "Foundation.Date",
-                "usr": "s:10Foundation4DateV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Identifier",
-                "printedName": "TinkCore.Identifier<TinkCore.User>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "User",
-                    "printedName": "TinkCore.User",
-                    "usr": "s:8TinkCore4UserV"
-                  }
-                ],
-                "usr": "s:8TinkCore10IdentifierV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UserProfile",
-                "printedName": "TinkCore.UserProfile",
-                "usr": "s:8TinkCore11UserProfileV"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore4UserV7created2id8username10nationalID7profileAC10Foundation4DateV_AA10IdentifierVyACGSSSgAoA0C7ProfileVtcfc",
-            "mangledName": "$s8TinkCore4UserV7created2id8username10nationalID7profileAC10Foundation4DateV_AA10IdentifierVyACGSSSgAoA0C7ProfileVtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -48033,73 +44183,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(currency:locale:market:periodAdjustedDay:periodMode:timeZone:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "UserProfile",
-                "printedName": "TinkCore.UserProfile",
-                "usr": "s:8TinkCore11UserProfileV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CurrencyCode",
-                "printedName": "TinkCore.CurrencyCode",
-                "usr": "s:8TinkCore12CurrencyCodeV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Locale",
-                "printedName": "Foundation.Locale",
-                "usr": "s:10Foundation6LocaleV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Market",
-                "printedName": "TinkCore.Market",
-                "usr": "s:8TinkCore6MarketV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Resolution",
-                "printedName": "TinkCore.Period.Resolution",
-                "usr": "s:8TinkCore6PeriodV10ResolutionO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Foundation.TimeZone?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TimeZone",
-                    "printedName": "Foundation.TimeZone",
-                    "usr": "s:10Foundation8TimeZoneV"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TinkCore11UserProfileV8currency6locale6market17periodAdjustedDay0H4Mode8timeZoneAcA12CurrencyCodeV_10Foundation6LocaleVAA6MarketVSiAA6PeriodV10ResolutionOAL04TimeM0VSgtcfc",
-            "mangledName": "$s8TinkCore11UserProfileV8currency6locale6market17periodAdjustedDay0H4Mode8timeZoneAcA12CurrencyCodeV_10Foundation6LocaleVAA6MarketVSiAA6PeriodV10ResolutionOAL04TimeM0VSgtcfc",
-            "moduleName": "TinkCore",
-            "deprecated": true,
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
@@ -48949,13 +45032,6 @@
       "offset": 7737,
       "length": 3,
       "value": "1.0"
-    },
-    {
-      "filePath": "\/usr\/local\/var\/buildkite-agent\/builds\/Mac-mini\/tink-ab\/tink-core-ios-pre-release\/Sources\/TinkCore\/PFM\/Models\/ActionableInsight.swift",
-      "kind": "StringLiteral",
-      "offset": 18392,
-      "length": 2,
-      "value": "\"\""
     },
     {
       "filePath": "\/usr\/local\/var\/buildkite-agent\/builds\/Mac-mini\/tink-ab\/tink-core-ios-pre-release\/Sources\/TinkCore\/Shared\/REST\/CertificatePinningDelegate.swift",
@@ -52377,13 +48453,13 @@
       "filePath": "\/usr\/local\/var\/buildkite-agent\/builds\/Mac-mini\/tink-ab\/tink-core-ios-pre-release\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",
       "kind": "StringLiteral",
       "offset": 106,
-      "length": 8,
-      "value": "\"1.11.1\""
+      "length": 7,
+      "value": "\"2.0.0\""
     },
     {
       "filePath": "\/usr\/local\/var\/buildkite-agent\/builds\/Mac-mini\/tink-ab\/tink-core-ios-pre-release\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",
       "kind": "Array",
-      "offset": 1153,
+      "offset": 1152,
       "length": 2,
       "value": "[]"
     },

@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
-// swift-module-flags: -target x86_64-apple-macos10.13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
+// swift-module-flags: -target x86_64-apple-macos11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TinkCore
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Dispatch
 import Foundation
@@ -86,7 +86,6 @@ public struct ActionableInsight {
   public struct InsightAction {
     public let label: Swift.String?
     public let data: TinkCore.InsightActionData?
-    @available(*, deprecated)
     public init(label: Swift.String?, data: TinkCore.InsightActionData?)
   }
   @frozen public enum State {
@@ -136,34 +135,20 @@ public struct ActionableInsight {
   public let title: Swift.String
   public let description: Swift.String
   public let created: Foundation.Date
-  @available(*, deprecated)
-  public init(id: TinkCore.ActionableInsight.ID, kind: TinkCore.ActionableInsight.Kind, state: TinkCore.ActionableInsight.State, title: Swift.String, description: Swift.String, created: Foundation.Date)
 }
 extension TinkCore.ActionableInsight {
   public struct AccountBalanceLowData {
     public let accountID: TinkCore.Account.ID
     public let balance: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(accountID: TinkCore.Account.ID, balance: TinkCore.CurrencyDenominatedAmount)
   }
   public struct BudgetSummary {
     public let budgetID: TinkCore.Budget.ID
     public let budgetPeriod: TinkCore.ActionableInsight.BudgetPeriod
-    @available(*, deprecated)
-    public init(budgetID: TinkCore.Budget.ID, budgetPeriod: TinkCore.ActionableInsight.BudgetPeriod)
-    @available(*, deprecated, renamed: "budgetID")
-    public var budgetId: TinkCore.Budget.ID {
-      get
-    }
-    @available(*, deprecated, renamed: "init(budgetID:budgetPeriod:)")
-    public init(budgetId: TinkCore.Budget.ID, budgetPeriod: TinkCore.ActionableInsight.BudgetPeriod)
   }
   public struct BudgetPeriod {
     public let dateInterval: Foundation.DateInterval
     public let spentAmount: TinkCore.CurrencyDenominatedAmount
     public let budgetAmount: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(dateInterval: Foundation.DateInterval, spentAmount: TinkCore.CurrencyDenominatedAmount, budgetAmount: TinkCore.CurrencyDenominatedAmount)
   }
   public enum BudgetPeriodUnit {
     case year
@@ -180,199 +165,127 @@ extension TinkCore.ActionableInsight {
     public let achievedBudgets: [TinkCore.ActionableInsight.BudgetSummary]
     public let overspentBudgets: [TinkCore.ActionableInsight.BudgetSummary]
     public let periodUnit: TinkCore.ActionableInsight.BudgetPeriodUnit
-    @available(*, deprecated)
-    public init(achievedBudgets: [TinkCore.ActionableInsight.BudgetSummary], overspentBudgets: [TinkCore.ActionableInsight.BudgetSummary], periodUnit: TinkCore.ActionableInsight.BudgetPeriodUnit)
-    @available(*, deprecated, message: "Use `periodUnit` instead.")
-    public var period: Swift.String {
-      get
-    }
-    @available(*, deprecated, message: "Use `init(achievedBudgets:overspentBudgets:period:)` instead")
-    public init(achievedBudgets: [TinkCore.ActionableInsight.BudgetSummary], overspentBudgets: [TinkCore.ActionableInsight.BudgetSummary], period: Swift.String)
   }
   public struct LargeExpense {
     public let transactionID: TinkCore.Transaction.ID
     public let amount: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(transactionID: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount)
   }
-  @available(*, deprecated, renamed: "WeeklyTransactions")
-  public typealias WeeklyTranscations = TinkCore.ActionableInsight.WeeklyTransactions
   public struct WeeklyTransactions {
     public let transactionIDs: [TinkCore.Transaction.ID]
     public let week: TinkCore.ActionableInsight.Week
-    @available(*, deprecated)
-    public init(transactionIDs: [TinkCore.Transaction.ID], week: TinkCore.ActionableInsight.Week)
   }
   public struct CategorySpending {
     public let categoryCode: TinkCore.Category.Code
     public let spentAmount: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(categoryCode: TinkCore.Category.Code, spentAmount: TinkCore.CurrencyDenominatedAmount)
   }
   public struct TransactionSummary {
     public struct TransactionsOverview {
       public let totalCount: Swift.Int
       public let mostCommonDescription: Swift.String
       public let mostCommonCount: Swift.Int
-      @available(*, deprecated)
-      public init(totalCount: Swift.Int, mostCommonDescription: Swift.String, mostCommonCount: Swift.Int)
     }
     public struct LargestExpense {
       public let id: TinkCore.Transaction.ID
       public let date: Foundation.Date
       public let amount: TinkCore.CurrencyDenominatedAmount
       public let description: Swift.String
-      @available(*, deprecated)
-      public init(id: TinkCore.Transaction.ID, date: Foundation.Date, amount: TinkCore.CurrencyDenominatedAmount, description: Swift.String)
     }
     public let totalExpenses: TinkCore.CurrencyDenominatedAmount
     public let commonTransactionsOverview: TinkCore.ActionableInsight.TransactionSummary.TransactionsOverview
     public let largestExpense: TinkCore.ActionableInsight.TransactionSummary.LargestExpense
-    @available(*, deprecated)
-    public init(totalExpenses: TinkCore.CurrencyDenominatedAmount, commonTransactionsOverview: TinkCore.ActionableInsight.TransactionSummary.TransactionsOverview, largestExpense: TinkCore.ActionableInsight.TransactionSummary.LargestExpense)
   }
   public struct WeeklyExpensesByCategory {
     public let week: TinkCore.ActionableInsight.Week
     public let expensesByCategory: [TinkCore.ActionableInsight.CategorySpending]
-    @available(*, deprecated)
-    public init(week: TinkCore.ActionableInsight.Week, expensesByCategory: [TinkCore.ActionableInsight.CategorySpending])
   }
   public struct WeeklyExpensesByDay {
     public struct ExpenseStatisticsByDay {
       public let day: TinkCore.ActionableInsight.Day
       public let expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics
-      @available(*, deprecated)
-      public init(day: TinkCore.ActionableInsight.Day, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
-      @available(*, deprecated, message: "Use init(day:expenseStatistics:) instead.")
-      public init(date: Swift.String, expenseStatistics: TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatistics)
-      @available(*, deprecated, message: "Use day property instead.")
-      public var date: Swift.String {
-        get
-      }
     }
     public struct ExpenseStatistics {
       public let totalAmount: TinkCore.CurrencyDenominatedAmount
       public let averageAmount: TinkCore.CurrencyDenominatedAmount
-      @available(*, deprecated)
-      public init(totalAmount: TinkCore.CurrencyDenominatedAmount, averageAmount: TinkCore.CurrencyDenominatedAmount)
     }
     public let week: TinkCore.ActionableInsight.Week
     public let expenseStatisticsByDay: [TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay]
-    @available(*, deprecated)
-    public init(week: TinkCore.ActionableInsight.Week, expenseStatisticsByDay: [TinkCore.ActionableInsight.WeeklyExpensesByDay.ExpenseStatisticsByDay])
   }
   public struct WeeklyTransactionsSummary {
     public let week: TinkCore.ActionableInsight.Week
     public let summary: TinkCore.ActionableInsight.TransactionSummary
-    @available(*, deprecated)
-    public init(week: TinkCore.ActionableInsight.Week, summary: TinkCore.ActionableInsight.TransactionSummary)
   }
   public struct MonthlyExpensesByCategory {
     public let month: TinkCore.ActionableInsight.Month
     public let expensesByCategory: [TinkCore.ActionableInsight.CategorySpending]
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, expensesByCategory: [TinkCore.ActionableInsight.CategorySpending])
   }
   public struct NewIncomeTransaction {
     public let transactionID: TinkCore.Transaction.ID
     public let accountID: TinkCore.Account.ID
-    @available(*, deprecated)
-    public init(transactionID: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID)
   }
   public struct MonthlyTransactionsSummary {
     public let month: TinkCore.ActionableInsight.Month
     public let summary: TinkCore.ActionableInsight.TransactionSummary
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, summary: TinkCore.ActionableInsight.TransactionSummary)
   }
   public struct Month {
     public let year: Swift.Int
     public let month: Swift.Int
-    @available(*, deprecated)
-    public init(year: Swift.Int, month: Swift.Int)
   }
   public struct Week {
     public let year: Swift.Int
     public let week: Swift.Int
-    @available(*, deprecated)
-    public init(year: Swift.Int, week: Swift.Int)
   }
   public struct Day {
     public let year: Swift.Int
     public let month: Swift.Int
     public let day: Swift.Int
-    @available(*, deprecated)
-    public init(year: Swift.Int, month: Swift.Int, day: Swift.Int)
   }
   public struct AccountInfo {
     public let id: TinkCore.Account.ID
     public let name: Swift.String
-    @available(*, deprecated)
-    public init(id: TinkCore.Account.ID, name: Swift.String)
   }
   public struct SuggestSetUpSavingsAccount {
-    @available(*, deprecated, message: "Use ActionableInsight.AccountInfo instead.")
-    public typealias AccountInfo = TinkCore.ActionableInsight.AccountInfo
     public let balance: TinkCore.CurrencyDenominatedAmount
     public let savingsAccount: TinkCore.ActionableInsight.AccountInfo
     public let currentAccount: TinkCore.ActionableInsight.AccountInfo
-    @available(*, deprecated)
-    public init(balance: TinkCore.CurrencyDenominatedAmount, savingsAccount: TinkCore.ActionableInsight.AccountInfo, currentAccount: TinkCore.ActionableInsight.AccountInfo)
   }
   public struct CreditCardLimit {
     public let account: TinkCore.ActionableInsight.AccountInfo
     public let availableCredit: TinkCore.CurrencyDenominatedAmount?
-    @available(*, deprecated)
-    public init(account: TinkCore.ActionableInsight.AccountInfo, availableCredit: TinkCore.CurrencyDenominatedAmount?)
   }
   public struct LeftToSpendStatistics {
     public let createdAt: Foundation.Date
     public let currentLeftToSpend: TinkCore.CurrencyDenominatedAmount
     public let averageLeftToSpend: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(createdAt: Foundation.Date, currentLeftToSpend: TinkCore.CurrencyDenominatedAmount, averageLeftToSpend: TinkCore.CurrencyDenominatedAmount)
   }
   public struct LeftToSpendMidMonth {
     public let month: TinkCore.ActionableInsight.Month
     public let amountDifference: TinkCore.CurrencyDenominatedAmount
     public let leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, amountDifference: TinkCore.CurrencyDenominatedAmount, leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics)
   }
   public struct LeftToSpendNegativeSummary {
     public let month: TinkCore.ActionableInsight.Month
     public let leftToSpend: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, leftToSpend: TinkCore.CurrencyDenominatedAmount)
   }
   public struct BudgetSuggestCreateTopCategory {
     public let categorySpending: TinkCore.ActionableInsight.CategorySpending
     public let suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount
     public let suggestedBudgetCategoryDisplayName: Swift.String
-    @available(*, deprecated)
-    public init(categorySpending: TinkCore.ActionableInsight.CategorySpending, suggestedBudgetAmount: TinkCore.CurrencyDenominatedAmount, suggestedBudgetCategoryDisplayName: Swift.String = "")
   }
   public struct LeftToSpendBeginningMonth {
     public let month: TinkCore.ActionableInsight.Month
     public let amountDifference: TinkCore.CurrencyDenominatedAmount
     public let totalExpense: TinkCore.CurrencyDenominatedAmount
     public let leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, amountDifference: TinkCore.CurrencyDenominatedAmount, totalExpense: TinkCore.CurrencyDenominatedAmount, leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics)
   }
   public struct LeftToSpendNegative {
     public let month: TinkCore.ActionableInsight.Month
     public let createdAt: Foundation.Date
     public let leftToSpend: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, createdAt: Foundation.Date, leftToSpend: TinkCore.CurrencyDenominatedAmount)
   }
   public struct CategoryInfo {
     public let id: TinkCore.Category.ID
     public let code: TinkCore.Category.Code
     public let name: Swift.String
-    @available(*, deprecated)
-    public init(id: TinkCore.Category.ID, code: TinkCore.Category.Code, name: Swift.String)
   }
   public struct SpendingByCategoryIncreased {
     public let category: TinkCore.ActionableInsight.CategoryInfo
@@ -380,43 +293,31 @@ extension TinkCore.ActionableInsight {
     public let lastMonthSpending: TinkCore.CurrencyDenominatedAmount
     public let twoMonthsAgoSpending: TinkCore.CurrencyDenominatedAmount
     public let percentage: Swift.Double
-    @available(*, deprecated)
-    public init(category: TinkCore.ActionableInsight.CategoryInfo, lastMonth: TinkCore.ActionableInsight.Month, lastMonthSpending: TinkCore.CurrencyDenominatedAmount, twoMonthsAgoSpending: TinkCore.CurrencyDenominatedAmount, percentage: Swift.Double)
   }
   public struct LeftToSpendPositiveSummarySavingsAccount {
     public let month: TinkCore.ActionableInsight.Month
     public let leftAmount: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, leftAmount: TinkCore.CurrencyDenominatedAmount)
   }
   public struct LeftToSpendPositiveFinalWeek {
     public let month: TinkCore.ActionableInsight.Month
     public let amountDifference: TinkCore.CurrencyDenominatedAmount
     public let leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics
     public let leftToSpendPerDay: TinkCore.CurrencyDenominatedAmount
-    @available(*, deprecated)
-    public init(month: TinkCore.ActionableInsight.Month, amountDifference: TinkCore.CurrencyDenominatedAmount, leftToSpendStatistics: TinkCore.ActionableInsight.LeftToSpendStatistics, leftToSpendPerDay: TinkCore.CurrencyDenominatedAmount)
   }
   public struct ProviderInfo {
     public let id: TinkCore.Provider.ID
     public let displayName: Swift.String
-    @available(*, deprecated)
-    public init(id: TinkCore.Provider.ID, displayName: Swift.String)
   }
   public struct AggregationRefreshPSD2Credentials {
     public let credentialsID: TinkCore.Credentials.ID
     public let provider: TinkCore.ActionableInsight.ProviderInfo
     public let sessionExpiryDate: Foundation.Date
-    @available(*, deprecated)
-    public init(credentialsID: TinkCore.Credentials.ID, provider: TinkCore.ActionableInsight.ProviderInfo, sessionExpiryDate: Foundation.Date)
   }
 }
 public enum InsightActionData {
   public struct ViewBudget {
     public let budgetID: TinkCore.Budget.ID
     public let budgetPeriodStartTime: Foundation.Date
-    @available(*, deprecated)
-    public init(budgetID: TinkCore.Budget.ID, budgetPeriodStartTime: Foundation.Date)
   }
   public struct CreateTransfer {
     public let sourceAccount: Foundation.URL?
@@ -424,40 +325,26 @@ public enum InsightActionData {
     public let amount: TinkCore.CurrencyDenominatedAmount?
     public let sourceAccountNumber: Swift.String?
     public let destinationAccountNumber: Swift.String?
-    @available(*, deprecated)
-    public init(sourceAccount: Foundation.URL?, destinationAccount: Foundation.URL?, amount: TinkCore.CurrencyDenominatedAmount?, sourceAccountNumber: Swift.String? = nil, destinationAccountNumber: Swift.String? = nil)
   }
   public struct ViewTransaction {
     public let transactionID: TinkCore.Transaction.ID
-    @available(*, deprecated)
-    public init(transactionID: TinkCore.Transaction.ID)
   }
   public struct CategorizeSingleExpense {
     public let transactionID: TinkCore.Transaction.ID
-    @available(*, deprecated)
-    public init(transactionID: TinkCore.Transaction.ID)
   }
   public struct ViewTransactions {
     public let transactionIDs: [TinkCore.Transaction.ID]
-    @available(*, deprecated)
-    public init(transactionIDs: [TinkCore.Transaction.ID])
   }
   public struct CategorizeTransactions {
     public let transactionIDs: [TinkCore.Transaction.ID]
-    @available(*, deprecated)
-    public init(transactionIDs: [TinkCore.Transaction.ID])
   }
   public struct ViewTransactionsByCategory {
     public let transactionIdsByCategory: [TinkCore.Category.Code : [TinkCore.Transaction.ID]]
-    @available(*, deprecated)
-    public init(transactionIdsByCategory: [TinkCore.Category.Code : [TinkCore.Transaction.ID]])
   }
   public struct BudgetSuggestion {
     public let filters: [TinkCore.Budget.Filter]
     public let amount: TinkCore.CurrencyDenominatedAmount?
     public let periodicity: TinkCore.Budget.Periodicity?
-    @available(*, deprecated)
-    public init(filters: [TinkCore.Budget.Filter], amount: TinkCore.CurrencyDenominatedAmount?, periodicity: TinkCore.Budget.Periodicity?)
   }
   case unknown
   case acknowledge
@@ -478,10 +365,6 @@ public protocol ActionableInsightService {
   func insights(completion: @escaping (Swift.Result<[TinkCore.ActionableInsight], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func archivedInsights(completion: @escaping (Swift.Result<[TinkCore.ActionableInsight], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func select(_ insightAction: TinkCore.ActionableInsight.InsightAction, forInsightWithID insightID: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
-  func selectAction(insightAction: Swift.String, insightID: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  @available(*, deprecated, message: "Use select(_:forInsightWithID:completion:) method instead.")
-  func archive(id: TinkCore.ActionableInsight.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
 }
 public protocol AuthenticationService {
   func clientDescription(clientID: Swift.String, scopes: [TinkCore.Scope], redirectURI: Foundation.URL, completion: @escaping (Swift.Result<TinkCore.ClientDescription, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -537,8 +420,6 @@ public struct Budget {
   public let filter: [TinkCore.Budget.Filter]
   public let periodicity: TinkCore.Budget.Periodicity?
   public let created: Foundation.Date?
-  @available(*, deprecated)
-  public init(id: TinkCore.Budget.ID, name: Swift.String, amount: TinkCore.CurrencyDenominatedAmount?, filter: [TinkCore.Budget.Filter], periodicity: TinkCore.Budget.Periodicity?)
 }
 extension TinkCore.Budget {
   public struct Transaction {
@@ -550,8 +431,6 @@ extension TinkCore.Budget {
     public let categoryCode: TinkCore.Category.Code?
     public let accountID: TinkCore.Account.ID?
     public let pending: Swift.Bool?
-    @available(*, deprecated, message: "Deprecated initializer will igonre properties: pending (set to nil)")
-    public init(id: TinkCore.Transaction.ID, amount: TinkCore.CurrencyDenominatedAmount, dispensableAmount: TinkCore.CurrencyDenominatedAmount?, date: Foundation.Date?, description: Swift.String?, categoryCode: TinkCore.Category.Code?, accountID: TinkCore.Account.ID?)
   }
 }
 public struct BudgetDetails {
@@ -560,15 +439,11 @@ public struct BudgetDetails {
   public let dateInterval: Foundation.DateInterval
   public let totalSpentAmount: TinkCore.CurrencyDenominatedAmount?
   public let averageSpentAmount: TinkCore.CurrencyDenominatedAmount?
-  @available(*, deprecated)
-  public init(budgetSpecification: TinkCore.Budget, budgetPeriods: [TinkCore.Budget.Period], dateInterval: Foundation.DateInterval, totalSpentAmount: TinkCore.CurrencyDenominatedAmount?, averageSpentAmount: TinkCore.CurrencyDenominatedAmount?)
 }
 extension TinkCore.Budget {
   public struct Period : Swift.Equatable {
     public let dateInterval: Foundation.DateInterval
     public let spentAmount: TinkCore.CurrencyDenominatedAmount?
-    @available(*, deprecated)
-    public init(dateInterval: Foundation.DateInterval, spentAmount: TinkCore.CurrencyDenominatedAmount?)
     public static func == (a: TinkCore.Budget.Period, b: TinkCore.Budget.Period) -> Swift.Bool
   }
 }
@@ -584,8 +459,6 @@ public protocol BudgetService {
 public struct BudgetSummary {
   public let budget: TinkCore.Budget
   public let budgetPeriod: TinkCore.Budget.Period
-  @available(*, deprecated)
-  public init(budget: TinkCore.Budget, budgetPeriod: TinkCore.Budget.Period)
 }
 public protocol CalendarService {
   func period(period: Swift.String, completion: @escaping (Swift.Result<[TinkCore.Period], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
@@ -600,8 +473,6 @@ public struct Category : Swift.Equatable {
   public let name: Swift.String
   public let sortOrder: Swift.Int
   public let parent: TinkCore.Category.ID?
-  @available(*, deprecated)
-  public init(id: TinkCore.Category.ID, code: TinkCore.Category.Code, name: Swift.String, sortOrder: Swift.Int, parent: TinkCore.Category.ID?)
   public static func == (a: TinkCore.Category, b: TinkCore.Category) -> Swift.Bool
 }
 extension TinkCore.Category {
@@ -711,12 +582,6 @@ extension TinkCore.Tink {
     public init(clientID: Swift.String, redirectURI: Foundation.URL, environment: TinkCore.Tink.Environment = .production, certificateURL: Foundation.URL? = nil) throws
   }
 }
-extension TinkCore.Credentials {
-  @available(*, deprecated, renamed: "providerName")
-  public var providerID: TinkCore.Provider.Name {
-    get
-  }
-}
 public struct Credentials : Swift.Identifiable {
   public typealias ID = TinkCore.Identifier<TinkCore.Credentials>
   public let id: TinkCore.Credentials.ID
@@ -784,8 +649,6 @@ public protocol CredentialsService {
   func delete(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func update(id: TinkCore.Credentials.ID, providerName: TinkCore.Provider.Name, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func update(id: TinkCore.Credentials.ID, providerName: TinkCore.Provider.Name, appURI: Foundation.URL?, callbackURI: Foundation.URL?, fields: [Swift.String : Swift.String], products: [TinkCore.Product], completion: @escaping (Swift.Result<TinkCore.Credentials, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  @available(*, deprecated)
-  func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, appURI: Foundation.URL?, callbackURI: Foundation.URL?, optIn: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func refresh(id: TinkCore.Credentials.ID, authenticate: Swift.Bool, refreshableItems: TinkCore.RefreshableItems, appURI: Foundation.URL?, callbackURI: Foundation.URL?, optIn: Swift.Bool, products: [TinkCore.Product], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func addSupplementalInformation(id: TinkCore.Credentials.ID, fields: [Swift.String : Swift.String], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -793,8 +656,6 @@ public protocol CredentialsService {
   func enable(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func disable(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func thirdPartyCallback(state: Swift.String, parameters: [Swift.String : Swift.String], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
-  @available(*, deprecated)
-  func authenticate(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func authenticate(id: TinkCore.Credentials.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func authenticate(id: TinkCore.Credentials.ID, appURI: Foundation.URL?, callbackURI: Foundation.URL?, products: [TinkCore.Product], completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func qrCode(id: TinkCore.Credentials.ID, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -837,8 +698,6 @@ extension TinkCore.CurrencyDenominatedAmount {
   public static func * (lhs: TinkCore.CurrencyDenominatedAmount, rhs: TinkCore.CurrencyDenominatedAmount) -> TinkCore.CurrencyDenominatedAmount
   public static func / (lhs: TinkCore.CurrencyDenominatedAmount, rhs: TinkCore.CurrencyDenominatedAmount) -> TinkCore.CurrencyDenominatedAmount
 }
-@available(*, deprecated, renamed: "Tink.Environment")
-public typealias Environment = TinkCore.Tink.Environment
 extension TinkCore.Tink {
   public enum Environment {
     case production
@@ -913,8 +772,6 @@ public struct Period {
   public let dateInterval: Foundation.DateInterval
   public let name: Swift.String
   public let resolution: TinkCore.Period.Resolution
-  @available(*, deprecated)
-  public init(dateInterval: Foundation.DateInterval, name: Swift.String, resolution: TinkCore.Period.Resolution)
 }
 extension TinkCore.Period.Resolution {
   public var statisticResolution: TinkCore.Statistic.Resolution {
@@ -934,31 +791,6 @@ public enum Product {
   public static func == (a: TinkCore.Product, b: TinkCore.Product) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
-    get
-  }
-}
-extension TinkCore.Provider {
-  @available(*, deprecated, renamed: "Field")
-  public typealias FieldSpecification = TinkCore.Provider.Field
-  public enum AuthenticationUserType {
-    case unknown
-    case business
-    case personal
-    case corporate
-    public static func == (a: TinkCore.Provider.AuthenticationUserType, b: TinkCore.Provider.AuthenticationUserType) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  @available(*, unavailable, message: "Use `financialServices` instead.")
-  public var authenticationUserType: TinkCore.Provider.AuthenticationUserType {
-    get
-  }
-}
-extension TinkCore.Provider.Field {
-  @available(*, deprecated, renamed: "description")
-  public var fieldDescription: Swift.String {
     get
   }
 }
@@ -1325,12 +1157,10 @@ public struct Statistic {
   public let description: Swift.String
   public let payload: Swift.String?
   public let period: TinkCore.StatisticPeriod
-  public let resoultion: TinkCore.Statistic.Resolution
+  public let resolution: TinkCore.Statistic.Resolution
   public let kind: TinkCore.Statistic.Kind
   public let value: Swift.Double
   public let userID: Swift.String
-  @available(*, deprecated)
-  public init(description: Swift.String, payload: Swift.String?, period: TinkCore.StatisticPeriod, resoultion: TinkCore.Statistic.Resolution, kind: TinkCore.Statistic.Kind, value: Swift.Double, userID: Swift.String)
 }
 public enum StatisticPeriod : Swift.Hashable {
   case year(Swift.Int)
@@ -1353,8 +1183,6 @@ public struct SuggestTransactionsResponse {
   public let categorizationImprovement: Swift.Double
   public let categorizationLevel: Swift.Double
   public let clusters: [TinkCore.TransactionCluster]
-  @available(*, deprecated)
-  public init(categorizationImprovement: Swift.Double, categorizationLevel: Swift.Double, clusters: [TinkCore.TransactionCluster])
 }
 extension TinkCore.Tink {
   @discardableResult
@@ -1418,8 +1246,6 @@ public struct Transaction {
   public let type: TinkCore.TransactionType
   public let userId: Swift.String
   public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool, notes: Swift.String?, originalDescription: Swift.String, originalDate: Foundation.Date, originalAmount: TinkCore.CurrencyDenominatedAmount, isPending: Swift.Bool, categoryType: TinkCore.CategoryType, dispensableAmount: Swift.Double?, lastModified: Foundation.Date, type: TinkCore.TransactionType, userId: Swift.String)
-  @available(*, deprecated)
-  public init(id: TinkCore.Transaction.ID, accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, categoryID: TinkCore.Category.ID, description: Swift.String, date: Foundation.Date, inserted: Foundation.Date, isUpcomingOrInFuture: Swift.Bool)
 }
 extension TinkCore.Transaction : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
@@ -1456,8 +1282,6 @@ public struct TransactionCluster {
   public let categorizationImprovement: Swift.Double
   public let description: Swift.String
   public let transactions: [TinkCore.Transaction]
-  @available(*, deprecated)
-  public init(categorizationImprovement: Swift.Double, description: Swift.String, transactions: [TinkCore.Transaction])
 }
 public struct TransactionsQuery : Swift.Equatable {
   public var accountIDs: [TinkCore.Account.ID]
@@ -1517,8 +1341,6 @@ public struct User {
   public let id: TinkCore.User.ID
   public let username: Swift.String?
   public let profile: TinkCore.UserProfile
-  @available(*, deprecated)
-  public init(created: Foundation.Date, id: TinkCore.User.ID, username: Swift.String?, nationalID: Swift.String?, profile: TinkCore.UserProfile)
 }
 public struct UserProfile {
   public let currency: TinkCore.CurrencyCode
@@ -1527,8 +1349,6 @@ public struct UserProfile {
   public let periodAdjustedDay: Swift.Int
   public let periodMode: TinkCore.Period.Resolution?
   public let timeZone: Foundation.TimeZone?
-  @available(*, deprecated)
-  public init(currency: TinkCore.CurrencyCode, locale: Foundation.Locale, market: TinkCore.Market, periodAdjustedDay: Swift.Int, periodMode: TinkCore.Period.Resolution, timeZone: Foundation.TimeZone?)
 }
 public protocol UserService {
   func userProfile(completion: @escaping (Swift.Result<TinkCore.UserProfile, Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
@@ -1552,8 +1372,6 @@ extension TinkCore.Period.Resolution : Swift.Equatable {}
 extension TinkCore.Period.Resolution : Swift.Hashable {}
 extension TinkCore.Product : Swift.Equatable {}
 extension TinkCore.Product : Swift.Hashable {}
-extension TinkCore.Provider.AuthenticationUserType : Swift.Equatable {}
-extension TinkCore.Provider.AuthenticationUserType : Swift.Hashable {}
 extension TinkCore.Provider.Kind : Swift.Equatable {}
 extension TinkCore.Provider.Kind : Swift.Hashable {}
 extension TinkCore.Provider.Status : Swift.Equatable {}

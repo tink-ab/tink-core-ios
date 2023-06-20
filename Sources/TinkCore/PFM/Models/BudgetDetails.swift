@@ -11,13 +11,4 @@ public struct BudgetDetails {
     public let totalSpentAmount: CurrencyDenominatedAmount?
     /// Average period spending for the listed periods.
     public let averageSpentAmount: CurrencyDenominatedAmount?
-
-    @available(*, deprecated)
-    public init(budgetSpecification: Budget, budgetPeriods: [Budget.Period], dateInterval: DateInterval, totalSpentAmount: CurrencyDenominatedAmount?, averageSpentAmount: CurrencyDenominatedAmount?) {
-        self.budgetSpecification = budgetSpecification
-        self.budgetPeriods = budgetPeriods
-        self.dateInterval = dateInterval
-        self.totalSpentAmount = totalSpentAmount
-        self.averageSpentAmount = averageSpentAmount
-    }
 }

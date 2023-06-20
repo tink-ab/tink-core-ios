@@ -62,11 +62,6 @@ public struct Transaction {
         self.type = type
         self.userId = userId
     }
-
-    @available(*, deprecated)
-    public init(id: ID, accountID: Account.ID, amount: CurrencyDenominatedAmount, categoryID: Category.ID, description: String, date: Date, inserted: Date, isUpcomingOrInFuture: Bool) {
-        self.init(id: id, accountID: accountID, amount: amount, categoryID: categoryID, description: description, date: date, inserted: inserted, isUpcomingOrInFuture: isUpcomingOrInFuture, notes: nil, originalDescription: description, originalDate: date, originalAmount: amount, isPending: false, categoryType: .unknown, dispensableAmount: nil, lastModified: date, type: .unknown, userId: "")
-    }
 }
 
 extension Transaction: Hashable {}

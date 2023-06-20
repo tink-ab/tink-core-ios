@@ -9,13 +9,6 @@ public struct Period {
     public let dateInterval: DateInterval
     public let name: String
     public let resolution: Resolution
-
-    @available(*, deprecated)
-    public init(dateInterval: DateInterval, name: String, resolution: Period.Resolution) {
-        self.dateInterval = dateInterval
-        self.name = name
-        self.resolution = resolution
-    }
 }
 
 extension Period.Resolution {

@@ -1,8 +1,5 @@
 import Foundation
 
-@available(*, deprecated, renamed: "Tink.Environment")
-public typealias Environment = Tink.Environment
-
 extension Tink {
     /// Represents which endpoints Tink will use.
     public enum Environment {

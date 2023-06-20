@@ -7,7 +7,7 @@ extension Statistic {
               let resolution = Statistic.Resolution(restStatisticResolution: restStatistic.resolution)
         else { return nil }
         self =
-            .init(description: restStatistic.description, payload: restStatistic.payload, period: period, resoultion: resolution, kind: type, value: restStatistic.value, userID: restStatistic.userId)
+            .init(description: restStatistic.description, payload: restStatistic.payload, period: period, resolution: resolution, kind: type, value: restStatistic.value, userID: restStatistic.userId)
     }
 }
 
