@@ -22,3 +22,4 @@ let package = Package(
         ),
     ]
 )
+2.0.0

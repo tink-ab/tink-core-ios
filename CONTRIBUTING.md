@@ -23,3 +23,4 @@ To make it easier to help you and your needs, please fill out the following:
 
 ## Other information
 <!-- Anything else we might need to know or that can help us identify the problem faster. -->
+2.0.0

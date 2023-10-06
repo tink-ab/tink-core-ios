@@ -15,3 +15,4 @@ Pod::Spec.new do |spec|
 
   spec.vendored_frameworks = 'TinkCore.xcframework'
 end
+2.0.0

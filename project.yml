@@ -25,3 +25,4 @@ targets:
       - Tests/TinkCoreTests
     dependencies:
       - target: TinkCore_${platform}
+2.0.0
