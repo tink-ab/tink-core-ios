@@ -456,6 +456,7 @@ public protocol BudgetService {
   func budgetSummaries(includeArchived: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.BudgetSummary], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
   func budgetDetails(id: TinkCore.Budget.ID, dateInterval: Foundation.DateInterval, completion: @escaping (Swift.Result<TinkCore.BudgetDetails, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
   func archive(id: TinkCore.Budget.ID, completion: @escaping (Swift.Result<TinkCore.Budget, Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
+  func recommendedBudgets(completion: @escaping (Swift.Result<[TinkCore.RecommendedBudget], Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
 }
 public struct BudgetSummary {
   public let budget: TinkCore.Budget
@@ -942,6 +943,12 @@ extension Swift.Set where Element == TinkCore.Provider.AccessType {
 public protocol ProviderService {
   func providers(name: TinkCore.Provider.Name?, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
   func providers(market: TinkCore.Market, capabilities: TinkCore.Provider.Capabilities?, includeTestProviders: Swift.Bool, excludeNonTestProviders: Swift.Bool, completion: @escaping (Swift.Result<[TinkCore.Provider], Swift.Error>) -> Swift.Void) -> TinkCore.RetryCancellable?
+}
+public struct RecommendedBudget {
+  public let amount: TinkCore.CurrencyDenominatedAmount?
+  public let filter: [TinkCore.Budget.Filter]
+  public let name: Swift.String
+  public let recurringPeriodicity: TinkCore.Budget.RecurringPeriodicity?
 }
 public struct RefreshableItems : Swift.OptionSet {
   public let rawValue: Swift.Int

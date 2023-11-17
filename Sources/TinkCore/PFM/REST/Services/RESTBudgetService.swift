@@ -262,4 +262,19 @@ final class RESTBudgetService: BudgetService {
         }
         return client.performRequest(request)
     }
+
+    @discardableResult
+    func recommendedBudgets(
+        completion: @escaping (Result<[RecommendedBudget], Error>) -> Void
+    ) -> Cancellable? {
+        let request = RESTResourceRequest<RESTRecommendedBudgetResponse>(
+            path: "/api/v1/budgets/recommended",
+            method: .get,
+            contentType: .json
+        ) { result in
+            let newResult = result.map { $0.recommendedBudgets.compactMap(RecommendedBudget.init(restRecommendedBudget:)) }
+            completion(newResult)
+        }
+        return client.performRequest(request)
+    }
 }

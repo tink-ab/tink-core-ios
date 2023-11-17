@@ -1,5 +1,5 @@
-import XCTest
 @testable import TinkCore
+import XCTest
 
 class ScopeTests: XCTestCase {
     func testScopeDescription() {
