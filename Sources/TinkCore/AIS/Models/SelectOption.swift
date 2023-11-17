@@ -14,7 +14,7 @@ public struct SelectOption: Equatable {
         self.value = value
     }
 
-    internal init(restSelectOption: RESTSelectOption) {
+    init(restSelectOption: RESTSelectOption) {
         self.iconURL = restSelectOption.iconUrl
         self.text = restSelectOption.text
         self.value = restSelectOption.value

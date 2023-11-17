@@ -1,5 +1,5 @@
-import XCTest
 @testable import TinkCore
+import XCTest
 
 extension CurrencyDenominatedAmount {
     var doubleValue: Double {
