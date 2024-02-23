@@ -20,7 +20,7 @@ final class RESTBudgetService: BudgetService {
         var tags = [String]()
         var searchQuery = String()
 
-        filter.forEach { budgetFilter in
+        for budgetFilter in filter {
             switch budgetFilter {
             case .account(let accountID): accountIDs.append(accountID)
             case .category(let categoryCode): categoryCodes.append(categoryCode)
@@ -73,7 +73,7 @@ final class RESTBudgetService: BudgetService {
         var tags = [String]()
         var searchQuery = String()
 
-        filter.forEach { budgetFilter in
+        for budgetFilter in filter {
             switch budgetFilter {
             case .account(let accountID): accountIDs.append(accountID)
             case .category(let categoryCode): categoryCodes.append(categoryCode)

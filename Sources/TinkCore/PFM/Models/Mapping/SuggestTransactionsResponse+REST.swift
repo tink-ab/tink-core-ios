@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 extension SuggestTransactionsResponse {
     init(from restSuggestTransactionsResponse: RESTSuggestTransactionsResponse) {
         self.categorizationImprovement = restSuggestTransactionsResponse.categorizationImprovement

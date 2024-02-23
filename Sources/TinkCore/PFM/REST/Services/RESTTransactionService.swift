@@ -97,6 +97,7 @@ final class RESTTransactionService: TransactionService {
         return client.performRequest(request)
     }
 
+    @available(*, deprecated)
     func suggestTransactions(numberOfClusters: Int?, evaluateEverything: Bool? = nil, completion: @escaping (Result<SuggestTransactionsResponse, Error>) -> Void) -> Cancellable? {
         var parameters: [URLQueryItem] = []
 

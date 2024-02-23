@@ -37572,8 +37572,10 @@
         "usr": "s:8TinkCore27SuggestTransactionsResponseV",
         "mangledName": "$s8TinkCore27SuggestTransactionsResponseV",
         "moduleName": "TinkCore",
+        "deprecated": true,
         "declAttributes": [
           "AccessControl",
+          "Available",
           "RawDocComment"
         ]
       },
@@ -41593,8 +41595,10 @@
         "usr": "s:8TinkCore18TransactionClusterV",
         "mangledName": "$s8TinkCore18TransactionClusterV",
         "moduleName": "TinkCore",
+        "deprecated": true,
         "declAttributes": [
           "AccessControl",
+          "Available",
           "RawDocComment"
         ]
       },
@@ -43939,7 +43943,11 @@
             "moduleName": "TinkCore",
             "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.TransactionService>",
             "sugared_genericSig": "<Self where Self : TinkCore.TransactionService>",
+            "deprecated": true,
             "protocolReq": true,
+            "declAttributes": [
+              "Available"
+            ],
             "reqNewWitnessTableEntry": true,
             "funcSelfKind": "NonMutating"
           }
@@ -46748,7 +46756,7 @@
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Services\/RESTBudgetService.swift",
       "kind": "BooleanLiteral",
-      "offset": 8566,
+      "offset": 8558,
       "length": 5,
       "value": "false"
     },
@@ -48764,14 +48772,14 @@
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/Shared\/Model\/Scope.swift",
       "kind": "StringLiteral",
-      "offset": 1347,
+      "offset": 1348,
       "length": 11,
       "value": "\"web_hooks\""
     },
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/Shared\/Model\/Scope.swift",
       "kind": "StringLiteral",
-      "offset": 1347,
+      "offset": 1348,
       "length": 11,
       "value": "\"web_hooks\""
     },
@@ -48787,7 +48795,7 @@
       "kind": "StringLiteral",
       "offset": 106,
       "length": 7,
-      "value": "\"2.1.0\""
+      "value": "\"2.2.0\""
     },
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",

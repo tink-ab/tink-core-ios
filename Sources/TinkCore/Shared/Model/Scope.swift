@@ -1,4 +1,5 @@
 import Foundation
+
 /// Access to Tink is divided into scopes which grant access to different API endpoints.
 /// Each API customer has a set of scopes which control the maximum permitted data access.
 /// To see the total set of scopes that you can use, go to app settings in the Tink Console.
