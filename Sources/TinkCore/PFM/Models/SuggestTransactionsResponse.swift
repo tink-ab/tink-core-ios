@@ -1,6 +1,7 @@
 import Foundation
 
 /// The response when fetching transactions to categorize.
+@available(*, deprecated)
 public struct SuggestTransactionsResponse {
     /// The categorization improvement achived if cluster is categorized.
     public let categorizationImprovement: Double

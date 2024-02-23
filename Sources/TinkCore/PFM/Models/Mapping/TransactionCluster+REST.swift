@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 extension TransactionCluster {
     init(from restTransactionCluster: RESTTransactionCluster) {
         self.categorizationImprovement = restTransactionCluster.categorizationImprovement

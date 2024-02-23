@@ -2,6 +2,7 @@ import Foundation
 @testable import TinkCore
 import XCTest
 
+@available(*, deprecated)
 class SuggestTransactionsTests: XCTestCase {
     func testSuggestTransactions() {
         let restCurrencyDenominatedAmount = RESTCurrencyDenominatedAmount(
