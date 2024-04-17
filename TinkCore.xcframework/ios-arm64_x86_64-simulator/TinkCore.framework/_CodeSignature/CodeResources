@@ -10,11 +10,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MFybbhHDbweMtueXWFu5j5hJNSw=
+		h0ce7eKgw+4p4/xRscOelY8ungk=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		SdLvrjm9B3avHGHjllKKLcgBOAM=
+		0WZrmOAy5L/77Xr3QwgIhCsw9Mo=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NoYlLmGkKcnijsfORFKlGluLTDA=
+		ZtPEx7OAFKJ20i65E3FnHqmlbUs=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		SdLvrjm9B3avHGHjllKKLcgBOAM=
+		0WZrmOAy5L/77Xr3QwgIhCsw9Mo=
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -50,11 +50,15 @@
 		</data>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		a0k8kUkrxQ3tHe723ob46yNKnaw=
+		rPUfqFpKr/SFuOj6OenSc1VzFlc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		wyJ38VafMA5keMBOwsS6A1iwvnU=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		1COtvwsr42hyiKPIbOq4y1IN4MM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,7 +74,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bYR3j3ak9MdmBTSfAIIWNHO4n7nTHz/XTzzImdgrBg4=
+			Duin3mJW3acnn1a+lHVWziiGk5BwZoo5dhzZOV470mE=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -98,14 +102,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ajS+un0KJJuLWwY3nNRwa7nf2JlZOhoDGqs3em4sk0E=
+			mdjc5Yw71zdcIb+v+IJpaJg+Of8pTC4RZEUPKhUv7Ug=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bYR3j3ak9MdmBTSfAIIWNHO4n7nTHz/XTzzImdgrBg4=
+			Duin3mJW3acnn1a+lHVWziiGk5BwZoo5dhzZOV470mE=
 			</data>
 		</dict>
 		<key>Modules/TinkCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -133,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RJe0zA45breGLuhiCMmY7aNyCmWjVLSMgaKXMrKuCow=
+			+ZNz0NuP/j+YO8NuAC3KYHf7iLXNYC5CN3c2Hu0towc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -141,6 +145,13 @@
 			<key>hash2</key>
 			<data>
 			hiOfEA9Q9v3X2aSWZc490OFcXNAqbbTkofFg9yxEDzY=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EvG7U279vfV3ix+jwStbuIeMZzvedp8nyb2JCSDRkAE=
 			</data>
 		</dict>
 	</dict>

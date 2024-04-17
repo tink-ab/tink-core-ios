@@ -48795,7 +48795,7 @@
       "kind": "StringLiteral",
       "offset": 106,
       "length": 7,
-      "value": "\"2.2.0\""
+      "value": "\"2.3.0\""
     },
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",

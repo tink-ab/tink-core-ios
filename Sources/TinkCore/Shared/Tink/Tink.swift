@@ -4,7 +4,7 @@ import Foundation
 #endif
 
 /// Current TinkCore version.
-public let version = "2.2.0"
+public let version = "2.3.0"
 
 /// The `Tink` class encapsulates a connection to the Tink API.
 ///
