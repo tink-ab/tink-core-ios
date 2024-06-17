@@ -24226,6 +24226,828 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "PredictedRecurringTransaction",
+        "printedName": "PredictedRecurringTransaction",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.PredictedRecurringTransaction>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PredictedRecurringTransaction",
+                    "printedName": "TinkCore.PredictedRecurringTransaction",
+                    "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV2idAA10IdentifierVyACGvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV2idAA10IdentifierVyACGvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.PredictedRecurringTransaction>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PredictedRecurringTransaction",
+                        "printedName": "TinkCore.PredictedRecurringTransaction",
+                        "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV2idAA10IdentifierVyACGvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV2idAA10IdentifierVyACGvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "accountID",
+            "printedName": "accountID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.Account>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Account",
+                    "printedName": "TinkCore.Account",
+                    "usr": "s:8TinkCore7AccountV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV9accountIDAA10IdentifierVyAA7AccountVGvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV9accountIDAA10IdentifierVyAA7AccountVGvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.Account>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Account",
+                        "printedName": "TinkCore.Account",
+                        "usr": "s:8TinkCore7AccountV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV9accountIDAA10IdentifierVyAA7AccountVGvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV9accountIDAA10IdentifierVyAA7AccountVGvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "amount",
+            "printedName": "amount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CurrencyDenominatedAmount",
+                "printedName": "TinkCore.CurrencyDenominatedAmount",
+                "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV6amountAA25CurrencyDenominatedAmountVvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV6amountAA25CurrencyDenominatedAmountVvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CurrencyDenominatedAmount",
+                    "printedName": "TinkCore.CurrencyDenominatedAmount",
+                    "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV6amountAA25CurrencyDenominatedAmountVvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV6amountAA25CurrencyDenominatedAmountVvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "groupID",
+            "printedName": "groupID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroup",
+                    "printedName": "TinkCore.RecurringTransactionsGroup",
+                    "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroup",
+                        "printedName": "TinkCore.RecurringTransactionsGroup",
+                        "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroup",
+                        "printedName": "TinkCore.RecurringTransactionsGroup",
+                        "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvs",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvs",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvM",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV7groupIDAA10IdentifierVyAA0D17TransactionsGroupVGvM",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "booked",
+            "printedName": "booked",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV6bookedSSvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV6bookedSSvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV6bookedSSvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV6bookedSSvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "date",
+            "printedName": "date",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV4dateSSvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV4dateSSvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV4dateSSvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV4dateSSvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV11descriptionSSvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV11descriptionSSvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV11descriptionSSvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV11descriptionSSvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "originalDescription",
+            "printedName": "originalDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV19originalDescriptionSSvp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV19originalDescriptionSSvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV19originalDescriptionSSvg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV19originalDescriptionSSvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(accountID:amount:groupID:booked:date:description:originalDescription:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PredictedRecurringTransaction",
+                "printedName": "TinkCore.PredictedRecurringTransaction",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.Account>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Account",
+                    "printedName": "TinkCore.Account",
+                    "usr": "s:8TinkCore7AccountV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CurrencyDenominatedAmount",
+                "printedName": "TinkCore.CurrencyDenominatedAmount",
+                "usr": "s:8TinkCore25CurrencyDenominatedAmountV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroup",
+                    "printedName": "TinkCore.RecurringTransactionsGroup",
+                    "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV9accountID6amount05groupG06booked4date11description19originalDescriptionAcA10IdentifierVyAA7AccountVG_AA25CurrencyDenominatedAmountVALyAA0D17TransactionsGroupVGS4Stcfc",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV9accountID6amount05groupG06booked4date11description19originalDescriptionAcA10IdentifierVyAA7AccountVG_AA25CurrencyDenominatedAmountVALyAA0D17TransactionsGroupVGS4Stcfc",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "PredictedRecurringTransaction",
+                "printedName": "TinkCore.PredictedRecurringTransaction",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "PredictedRecurringTransaction",
+                "printedName": "TinkCore.PredictedRecurringTransaction",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV2eeoiySbAC_ACtFZ",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV2eeoiySbAC_ACtFZ",
+            "moduleName": "TinkCore",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV9hashValueSivp",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV9hashValueSivp",
+            "moduleName": "TinkCore",
+            "implicit": true,
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore29PredictedRecurringTransactionV9hashValueSivg",
+                "mangledName": "$s8TinkCore29PredictedRecurringTransactionV9hashValueSivg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8TinkCore29PredictedRecurringTransactionV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s8TinkCore29PredictedRecurringTransactionV4hash4intoys6HasherVz_tF",
+            "moduleName": "TinkCore",
+            "implicit": true,
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8TinkCore29PredictedRecurringTransactionV",
+        "mangledName": "$s8TinkCore29PredictedRecurringTransactionV",
+        "moduleName": "TinkCore",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PredictedRecurringTransactionService",
+        "printedName": "PredictedRecurringTransactionService",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "transactions",
+            "printedName": "transactions(groupIdIn:pageToken:pageSize:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TinkCore.Cancellable?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Cancellable",
+                    "printedName": "TinkCore.Cancellable",
+                    "usr": "s:8TinkCore11CancellableP"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<([TinkCore.PredictedRecurringTransaction], Swift.String), Swift.Error>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<([TinkCore.PredictedRecurringTransaction], Swift.String), Swift.Error>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([TinkCore.PredictedRecurringTransaction], Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[TinkCore.PredictedRecurringTransaction]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "PredictedRecurringTransaction",
+                                "printedName": "TinkCore.PredictedRecurringTransaction",
+                                "usr": "s:8TinkCore29PredictedRecurringTransactionV"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8TinkCore36PredictedRecurringTransactionServiceP12transactions9groupIdIn9pageToken0K4Size10completionAA11Cancellable_pSgSSSg_AKSiSgys6ResultOySayAA0cdE0VG_SSts5Error_pGctF",
+            "mangledName": "$s8TinkCore36PredictedRecurringTransactionServiceP12transactions9groupIdIn9pageToken0K4Size10completionAA11Cancellable_pSgSSSg_AKSiSgys6ResultOySayAA0cdE0VG_SSts5Error_pGctF",
+            "moduleName": "TinkCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.PredictedRecurringTransactionService>",
+            "sugared_genericSig": "<Self where Self : TinkCore.PredictedRecurringTransactionService>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:8TinkCore36PredictedRecurringTransactionServiceP",
+        "mangledName": "$s8TinkCore36PredictedRecurringTransactionServiceP",
+        "moduleName": "TinkCore",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Product",
         "printedName": "Product",
         "children": [
@@ -30117,6 +30939,27 @@
         "moduleName": "TinkCore"
       },
       {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
         "kind": "TypeDecl",
         "name": "RecommendedBudget",
         "printedName": "RecommendedBudget",
@@ -30353,6 +31196,588 @@
         "declKind": "Struct",
         "usr": "s:8TinkCore17RecommendedBudgetV",
         "mangledName": "$s8TinkCore17RecommendedBudgetV",
+        "moduleName": "TinkCore",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RecurringTransactionsGroup",
+        "printedName": "RecurringTransactionsGroup",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroup",
+                    "printedName": "TinkCore.RecurringTransactionsGroup",
+                    "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore26RecurringTransactionsGroupV2idAA10IdentifierVyACGvp",
+            "mangledName": "$s8TinkCore26RecurringTransactionsGroupV2idAA10IdentifierVyACGvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroup",
+                        "printedName": "TinkCore.RecurringTransactionsGroup",
+                        "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore26RecurringTransactionsGroupV2idAA10IdentifierVyACGvg",
+                "mangledName": "$s8TinkCore26RecurringTransactionsGroupV2idAA10IdentifierVyACGvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "categoryID",
+            "printedName": "categoryID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Identifier",
+                "printedName": "TinkCore.Identifier<TinkCore.Category>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Category",
+                    "printedName": "TinkCore.Category",
+                    "usr": "s:8TinkCore8CategoryV"
+                  }
+                ],
+                "usr": "s:8TinkCore10IdentifierV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvp",
+            "mangledName": "$s8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.Category>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Category",
+                        "printedName": "TinkCore.Category",
+                        "usr": "s:8TinkCore8CategoryV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvg",
+                "mangledName": "$s8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Identifier",
+                    "printedName": "TinkCore.Identifier<TinkCore.Category>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Category",
+                        "printedName": "TinkCore.Category",
+                        "usr": "s:8TinkCore8CategoryV"
+                      }
+                    ],
+                    "usr": "s:8TinkCore10IdentifierV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvs",
+                "mangledName": "$s8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvs",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvM",
+                "mangledName": "$s8TinkCore26RecurringTransactionsGroupV10categoryIDAA10IdentifierVyAA8CategoryVGvM",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8TinkCore26RecurringTransactionsGroupV",
+        "mangledName": "$s8TinkCore26RecurringTransactionsGroupV",
+        "moduleName": "TinkCore",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TinkCore"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RecurringTransactionsGroupStatus",
+        "printedName": "RecurringTransactionsGroupStatus",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "undefinded",
+            "printedName": "undefinded",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TinkCore.RecurringTransactionsGroupStatus.Type) -> TinkCore.RecurringTransactionsGroupStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupStatus",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                    "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroupStatus",
+                        "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                        "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO10undefindedyA2CmF",
+            "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO10undefindedyA2CmF",
+            "moduleName": "TinkCore"
+          },
+          {
+            "kind": "Var",
+            "name": "active",
+            "printedName": "active",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TinkCore.RecurringTransactionsGroupStatus.Type) -> TinkCore.RecurringTransactionsGroupStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupStatus",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                    "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroupStatus",
+                        "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                        "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO6activeyA2CmF",
+            "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO6activeyA2CmF",
+            "moduleName": "TinkCore"
+          },
+          {
+            "kind": "Var",
+            "name": "inactive",
+            "printedName": "inactive",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TinkCore.RecurringTransactionsGroupStatus.Type) -> TinkCore.RecurringTransactionsGroupStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupStatus",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                    "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecurringTransactionsGroupStatus",
+                        "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                        "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO8inactiveyA2CmF",
+            "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO8inactiveyA2CmF",
+            "moduleName": "TinkCore"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TinkCore.RecurringTransactionsGroupStatus?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupStatus",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                    "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO8rawValueACSgSS_tcfc",
+            "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO8rawValueACSgSS_tcfc",
+            "moduleName": "TinkCore",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO8rawValueSSvp",
+            "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO8rawValueSSvp",
+            "moduleName": "TinkCore",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO8rawValueSSvg",
+                "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO8rawValueSSvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO",
+        "mangledName": "$s8TinkCore32RecurringTransactionsGroupStatusO",
+        "moduleName": "TinkCore",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RecurringTransactionsGroupService",
+        "printedName": "RecurringTransactionsGroupService",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "recurringTransactionsGroups",
+            "printedName": "recurringTransactionsGroups(pageToken:pageSize:status:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TinkCore.Cancellable?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Cancellable",
+                    "printedName": "TinkCore.Cancellable",
+                    "usr": "s:8TinkCore11CancellableP"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TinkCore.RecurringTransactionsGroupStatus?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupStatus",
+                    "printedName": "TinkCore.RecurringTransactionsGroupStatus",
+                    "usr": "s:8TinkCore32RecurringTransactionsGroupStatusO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<([TinkCore.RecurringTransactionsGroup], Swift.String), Swift.Error>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<([TinkCore.RecurringTransactionsGroup], Swift.String), Swift.Error>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([TinkCore.RecurringTransactionsGroup], Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[TinkCore.RecurringTransactionsGroup]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "RecurringTransactionsGroup",
+                                "printedName": "TinkCore.RecurringTransactionsGroup",
+                                "usr": "s:8TinkCore26RecurringTransactionsGroupV"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8TinkCore33RecurringTransactionsGroupServiceP09recurringD6Groups9pageToken0I4Size6status10completionAA11Cancellable_pSgSSSg_SiSgAA0cdE6StatusOSgys6ResultOySayAA0cdE0VG_SSts5Error_pGctF",
+            "mangledName": "$s8TinkCore33RecurringTransactionsGroupServiceP09recurringD6Groups9pageToken0I4Size6status10completionAA11Cancellable_pSgSSSg_SiSgAA0cdE6StatusOSgys6ResultOySayAA0cdE0VG_SSts5Error_pGctF",
+            "moduleName": "TinkCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : TinkCore.RecurringTransactionsGroupService>",
+            "sugared_genericSig": "<Self where Self : TinkCore.RecurringTransactionsGroupService>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:8TinkCore33RecurringTransactionsGroupServiceP",
+        "mangledName": "$s8TinkCore33RecurringTransactionsGroupServiceP",
         "moduleName": "TinkCore",
         "declAttributes": [
           "AccessControl"
@@ -34914,6 +36339,100 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "recurringTransactionService",
+            "printedName": "recurringTransactionService",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PredictedRecurringTransactionService",
+                "printedName": "TinkCore.PredictedRecurringTransactionService",
+                "usr": "s:8TinkCore36PredictedRecurringTransactionServiceP"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore16ServiceContainerC020recurringTransactionC0AA018PredictedRecurringfC0_pvp",
+            "mangledName": "$s8TinkCore16ServiceContainerC020recurringTransactionC0AA018PredictedRecurringfC0_pvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "Final",
+              "Lazy",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PredictedRecurringTransactionService",
+                    "printedName": "TinkCore.PredictedRecurringTransactionService",
+                    "usr": "s:8TinkCore36PredictedRecurringTransactionServiceP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore16ServiceContainerC020recurringTransactionC0AA018PredictedRecurringfC0_pvg",
+                "mangledName": "$s8TinkCore16ServiceContainerC020recurringTransactionC0AA018PredictedRecurringfC0_pvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "recurringTransactionsGroupService",
+            "printedName": "recurringTransactionsGroupService",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "RecurringTransactionsGroupService",
+                "printedName": "TinkCore.RecurringTransactionsGroupService",
+                "usr": "s:8TinkCore33RecurringTransactionsGroupServiceP"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TinkCore16ServiceContainerC026recurringTransactionsGroupC0AA09RecurringfgC0_pvp",
+            "mangledName": "$s8TinkCore16ServiceContainerC026recurringTransactionsGroupC0AA09RecurringfgC0_pvp",
+            "moduleName": "TinkCore",
+            "declAttributes": [
+              "Final",
+              "Lazy",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecurringTransactionsGroupService",
+                    "printedName": "TinkCore.RecurringTransactionsGroupService",
+                    "usr": "s:8TinkCore33RecurringTransactionsGroupServiceP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TinkCore16ServiceContainerC026recurringTransactionsGroupC0AA09RecurringfgC0_pvg",
+                "mangledName": "$s8TinkCore16ServiceContainerC026recurringTransactionsGroupC0AA09RecurringfgC0_pvg",
+                "moduleName": "TinkCore",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Class",
@@ -36384,6 +37903,80 @@
                 "declKind": "EnumElement",
                 "usr": "s:8TinkCore9StatisticV4KindO18leftToSpendAverageyA2EmF",
                 "mangledName": "$s8TinkCore9StatisticV4KindO18leftToSpendAverageyA2EmF",
+                "moduleName": "TinkCore"
+              },
+              {
+                "kind": "Var",
+                "name": "safeToSpend",
+                "printedName": "safeToSpend",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TinkCore.Statistic.Kind.Type) -> TinkCore.Statistic.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "TinkCore.Statistic.Kind",
+                        "usr": "s:8TinkCore9StatisticV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TinkCore.Statistic.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "TinkCore.Statistic.Kind",
+                            "usr": "s:8TinkCore9StatisticV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8TinkCore9StatisticV4KindO11safeToSpendyA2EmF",
+                "mangledName": "$s8TinkCore9StatisticV4KindO11safeToSpendyA2EmF",
+                "moduleName": "TinkCore"
+              },
+              {
+                "kind": "Var",
+                "name": "expensesByCostStructure",
+                "printedName": "expensesByCostStructure",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TinkCore.Statistic.Kind.Type) -> TinkCore.Statistic.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "TinkCore.Statistic.Kind",
+                        "usr": "s:8TinkCore9StatisticV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TinkCore.Statistic.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "TinkCore.Statistic.Kind",
+                            "usr": "s:8TinkCore9StatisticV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8TinkCore9StatisticV4KindO23expensesByCostStructureyA2EmF",
+                "mangledName": "$s8TinkCore9StatisticV4KindO23expensesByCostStructureyA2EmF",
                 "moduleName": "TinkCore"
               },
               {
@@ -48233,6 +49826,20 @@
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Models\/RESTStatisticQuery.swift",
       "kind": "StringLiteral",
+      "offset": 1275,
+      "length": 15,
+      "value": "\"safe-to-spend\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Models\/RESTStatisticQuery.swift",
+      "kind": "StringLiteral",
+      "offset": 1326,
+      "length": 28,
+      "value": "\"expenses-by-cost-structure\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Models\/RESTStatisticQuery.swift",
+      "kind": "StringLiteral",
       "offset": 692,
       "length": 21,
       "value": "\"balances-by-account\""
@@ -48299,6 +49906,20 @@
       "offset": 1228,
       "length": 23,
       "value": "\"left-to-spend-average\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Models\/RESTStatisticQuery.swift",
+      "kind": "StringLiteral",
+      "offset": 1275,
+      "length": 15,
+      "value": "\"safe-to-spend\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Models\/RESTStatisticQuery.swift",
+      "kind": "StringLiteral",
+      "offset": 1326,
+      "length": 28,
+      "value": "\"expenses-by-cost-structure\""
     },
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/REST\/Services\/RESTStatisticService.swift",
@@ -48588,6 +50209,48 @@
       "value": "\"UNKNOWN\""
     },
     {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 96,
+      "length": 11,
+      "value": "\"UNDEFINED\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 126,
+      "length": 8,
+      "value": "\"ACTIVE\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 155,
+      "length": 10,
+      "value": "\"INACTIVE\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 96,
+      "length": 11,
+      "value": "\"UNDEFINED\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 126,
+      "length": 8,
+      "value": "\"ACTIVE\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/PFM\/Services\/RecurringTransactionsGroupService.swift",
+      "kind": "StringLiteral",
+      "offset": 155,
+      "length": 10,
+      "value": "\"INACTIVE\""
+    },
+    {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/AIS\/Models\/RefreshableItem.swift",
       "kind": "IntegerLiteral",
       "offset": 341,
@@ -48795,7 +50458,7 @@
       "kind": "StringLiteral",
       "offset": 106,
       "length": 7,
-      "value": "\"2.3.0\""
+      "value": "\"2.4.0\""
     },
     {
       "filePath": "\/Users\/runner\/work\/tink-core-ios-private\/tink-core-ios-private\/Sources\/TinkCore\/Shared\/Tink\/Tink.swift",

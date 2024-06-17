@@ -29,4 +29,6 @@ public final class ServiceContainer {
     public private(set) lazy var categoryService: CategoryService = RESTCategoryService(client: client)
     public private(set) lazy var statisticService: StatisticService = RESTStatisticService(client: client)
     public private(set) lazy var transactionService: TransactionService = RESTTransactionService(client: client)
+    public private(set) lazy var recurringTransactionService: PredictedRecurringTransactionService = RESTPredictedRecurringTransactionService(client: client)
+    public private(set) lazy var recurringTransactionsGroupService: RecurringTransactionsGroupService = RESTRecurringTransactionsGroupService(client: client)
 }

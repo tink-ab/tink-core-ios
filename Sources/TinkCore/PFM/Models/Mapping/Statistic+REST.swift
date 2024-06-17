@@ -24,6 +24,8 @@ extension Statistic.Kind {
         case .incomeByCategory: self = .incomeByCategory
         case .leftToSpend: self = .leftToSpend
         case .leftToSpendAverage: self = .leftToSpendAverage
+        case .safeToSpend: self = .safeToSpend
+        case .expensesByCostStructure: self = .expensesByCostStructure
         case .unknown: return nil
         }
     }
@@ -42,6 +44,8 @@ extension RESTStatisticQueryType {
         case .incomeByCategory: self = .incomeByCategory
         case .leftToSpend: self = .leftToSpend
         case .leftToSpendAverage: self = .leftToSpendAverage
+        case .safeToSpend: self = .safeToSpend
+        case .expensesByCostStructure: self = .expensesByCostStructure
         }
     }
 }
