@@ -16,6 +16,8 @@ public struct Statistic {
         case incomeAndExpenses
         case leftToSpend
         case leftToSpendAverage
+        case safeToSpend
+        case expensesByCostStructure
     }
 
     public let description: String

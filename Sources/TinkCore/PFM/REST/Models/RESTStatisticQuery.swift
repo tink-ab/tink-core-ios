@@ -31,6 +31,8 @@ enum RESTStatisticQueryType: String, Encodable, DefaultableDecodable {
     case incomeAndExpenses = "income-and-expenses"
     case leftToSpend = "left-to-spend"
     case leftToSpendAverage = "left-to-spend-average"
+    case safeToSpend = "safe-to-spend"
+    case expensesByCostStructure = "expenses-by-cost-structure"
     case unknown
 
     static var decodeFallbackValue: RESTStatisticQueryType = .unknown

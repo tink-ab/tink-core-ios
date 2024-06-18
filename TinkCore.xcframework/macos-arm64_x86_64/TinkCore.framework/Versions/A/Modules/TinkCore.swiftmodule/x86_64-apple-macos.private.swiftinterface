@@ -779,6 +779,29 @@ extension TinkCore.Period.Resolution {
     get
   }
 }
+public struct PredictedRecurringTransaction {
+  public typealias ID = TinkCore.Identifier<TinkCore.PredictedRecurringTransaction>
+  public let id: TinkCore.PredictedRecurringTransaction.ID
+  public let accountID: TinkCore.Account.ID
+  public let amount: TinkCore.CurrencyDenominatedAmount
+  public var groupID: TinkCore.RecurringTransactionsGroup.ID
+  public let booked: Swift.String
+  public let date: Swift.String
+  public let description: Swift.String
+  public let originalDescription: Swift.String
+  public init(accountID: TinkCore.Account.ID, amount: TinkCore.CurrencyDenominatedAmount, groupID: TinkCore.RecurringTransactionsGroup.ID, booked: Swift.String, date: Swift.String, description: Swift.String, originalDescription: Swift.String)
+}
+extension TinkCore.PredictedRecurringTransaction : Swift.Hashable, Swift.Equatable {
+  public static func == (lhs: TinkCore.PredictedRecurringTransaction, rhs: TinkCore.PredictedRecurringTransaction) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public typealias NextPageToken = Swift.String
+public protocol PredictedRecurringTransactionService {
+  func transactions(groupIdIn: Swift.String?, pageToken: Swift.String?, pageSize: Swift.Int?, completion: @escaping (Swift.Result<([TinkCore.PredictedRecurringTransaction], TinkCore.NextPageToken), Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
+}
 public enum Product {
   case realTimeBalance
   case paymentInitiation
@@ -949,6 +972,24 @@ public struct RecommendedBudget {
   public let name: Swift.String
   public let recurringPeriodicity: TinkCore.Budget.RecurringPeriodicity?
 }
+public struct RecurringTransactionsGroup {
+  public typealias ID = TinkCore.Identifier<TinkCore.RecurringTransactionsGroup>
+  public let id: TinkCore.RecurringTransactionsGroup.ID
+  public var categoryID: TinkCore.Category.ID
+}
+public enum RecurringTransactionsGroupStatus : Swift.String {
+  case undefinded
+  case active
+  case inactive
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol RecurringTransactionsGroupService {
+  func recurringTransactionsGroups(pageToken: Swift.String?, pageSize: Swift.Int?, status: TinkCore.RecurringTransactionsGroupStatus?, completion: @escaping (Swift.Result<([TinkCore.RecurringTransactionsGroup], TinkCore.NextPageToken), Swift.Error>) -> Swift.Void) -> TinkCore.Cancellable?
+}
 public struct RefreshableItems : Swift.OptionSet {
   public let rawValue: Swift.Int
   public init(rawValue: Swift.Int)
@@ -1114,6 +1155,12 @@ public struct SelectOption : Swift.Equatable {
   final public var transactionService: TinkCore.TransactionService {
     get
   }
+  final public var recurringTransactionService: TinkCore.PredictedRecurringTransactionService {
+    get
+  }
+  final public var recurringTransactionsGroupService: TinkCore.RecurringTransactionsGroupService {
+    get
+  }
   @objc deinit
 }
 public enum ServiceError : Swift.Error {
@@ -1155,6 +1202,8 @@ public struct Statistic {
     case incomeAndExpenses
     case leftToSpend
     case leftToSpendAverage
+    case safeToSpend
+    case expensesByCostStructure
     public static func == (a: TinkCore.Statistic.Kind, b: TinkCore.Statistic.Kind) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
@@ -1390,6 +1439,9 @@ extension TinkCore.Provider.FinancialService.Segment : Swift.Equatable {}
 extension TinkCore.Provider.FinancialService.Segment : Swift.Hashable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Equatable {}
 extension TinkCore.Provider.ReleaseStatus : Swift.Hashable {}
+extension TinkCore.RecurringTransactionsGroupStatus : Swift.Equatable {}
+extension TinkCore.RecurringTransactionsGroupStatus : Swift.Hashable {}
+extension TinkCore.RecurringTransactionsGroupStatus : Swift.RawRepresentable {}
 extension TinkCore.Scope.ReadAccess : Swift.Equatable {}
 extension TinkCore.Scope.ReadAccess : Swift.Hashable {}
 extension TinkCore.Scope.ReadAccess : Swift.RawRepresentable {}
